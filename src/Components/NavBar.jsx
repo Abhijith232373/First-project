@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const NavBar = () => {
   const [query, setQuery] = useState("");
@@ -22,6 +23,7 @@ const NavBar = () => {
         <div className="flex items-center space-x-4 gap-5">
           <img src="src/assets/user.svg" alt="user" className="w-6 h-6" />
           <img src="src/assets/cart.svg" alt="cart" className="w-6 h-6" />
+        <FavoriteBorderIcon/> 
         </div>
       </nav>
       <div className="p-10"  > 
