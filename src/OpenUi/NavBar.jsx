@@ -5,6 +5,8 @@ const NavBar = () => {
   const [query, setQuery] = useState("");
   const [showNav, setShowNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const NavStyle =`relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px]
+                         after:bg-black after:transition-all after:duration-400 hover:after:w-full hover:cursor-pointer`
 
   // Handle scroll behavior
   useEffect(() => {
@@ -23,20 +25,26 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+
   return (
     <div>
       {/* Navbar */}
       <nav
-        className={`fixed top-0 left-0 w-full flex flex-wrap justify-between items-center px-6 bg-blue-100 h-16 font-serif rounded-b-lg shadow-md transition-transform duration-300 z-50 ${
+        className={`fixed top-0 left-0 w-full flex flex-wrap justify-between items-center px-6 bg-amber-50 h-16 font-serif rounded-b-lg shadow-md transition-transform duration-300 z-50 ${
           showNav ? "translate-y-0" : "-translate-y-full"
         }`}
       >
         {/* Left Links */}
         <div className="flex space-x-6">
-          <div className="hover:cursor-pointer">Home</div>
-          <div className="hover:cursor-pointer">About</div>
-          <div className="hover:cursor-pointer">Cart</div>
-          <div className="hover:cursor-pointer">Login</div>
+          <div className={NavStyle}>Dummy</div>
+          <div className={NavStyle}>Shop All</div>
+          <div className={NavStyle}>Living</div>
+          <div className={NavStyle}>Dining</div>
+          <div className={NavStyle}>Bedroom</div>
+          <div className={NavStyle}>Storage</div>
+          <div className={NavStyle}>HomeDecor</div>
+          <div className={NavStyle}>Alphington outlet</div>
+          <div className={NavStyle}>Services</div>
         </div>
 
         {/* Search */}

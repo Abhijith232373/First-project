@@ -13,9 +13,9 @@ const ItemsBanners = () => {
 
     return (
         <div className="px-6 py-8">
-            <h1 className="text-2xl font-semibold mb-6">Popular Categories</h1>
+            <h1 className="text-2xl font-semibold mb-6 flex justify-center font-serif ">Popular Categories</h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1">
                 {items.map((item) => (
                     <div
                         key={item.id}
@@ -38,7 +38,7 @@ const ItemsBanners = () => {
 
                             {/* Bottom Text & Shop Now */}
                             <div className="text-center">
-                                <h2 className="text-lg font-semibold text-white mb-2">{item.title}</h2>
+                                <h2 className="text-lg font-serif text-white mb-2">{item.title}</h2>
                                 <a
                                     href="#"
                                     className="inline-block bg-red-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-red-700 transition"
