@@ -1,22 +1,402 @@
 {
-"products": [
-{
-"id": 1,
-"name": "Oak Study Table",
-"price": 8999,
-"category": "Furniture",
-"image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1200&auto=format&fit=crop",
-"description": "Solid oak study table with cable grommet and smooth edges. Size 120x60 cm.",
-"rating": 4.6
-},
-{
-"id": 2,
-"name": "Modern Lounge Chair",
-"price": 12999,
-"category": "Furniture",
-"image": "https://images.unsplash.com/photo-1501045661006-fcebe0257c3f?q=80&w=1200&auto=format&fit=crop",
-"description": "Ergonomic lounge chair with breathable fabric and black steel legs.",
-"rating": 4.7
-}
-]
+  "furniture": [
+    {
+      "id": 1,
+      "name": "Modern Sofa",
+      "title": "Luxury 3-Seater Sofa",
+      "price": 25999,
+      "description": "A premium fabric sofa with wooden legs and soft cushioning for ultimate comfort.",
+      "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7"
+    },
+    {
+      "id": 2,
+      "name": "Dining Table",
+      "title": "6-Seater Wooden Dining Table",
+      "price": 18999,
+      "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
+      "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Coffee Table",
+      "title": "Round Glass Coffee Table",
+      "price": 6999,
+      "description": "Stylish center table with tempered glass top and metal frame.",
+      "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486"
+    },
+    {
+      "id": 4,
+      "name": "Office Chair",
+      "title": "Ergonomic Mesh Chair",
+      "price": 4999,
+      "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
+      "image": "https://images.unsplash.com/photo-1598300058851-77c0c9e3e5c3"
+    },
+    {
+      "id": 5,
+      "name": "Wardrobe",
+      "title": "3-Door Wooden Wardrobe",
+      "price": 15999,
+      "description": "Spacious wardrobe with multiple compartments, drawers, and a sleek matte finish.",
+      "image": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+    },
+    {
+      "id": 6,
+      "name": "Bed Frame",
+      "title": "King Size Bed Frame",
+      "price": 22999,
+      "description": "Strong and durable wooden bed frame with a modern headboard design.",
+      "image": "https://images.unsplash.com/photo-1601979034944-03a5c2b9f5d3"
+    },
+    {
+      "id": 7,
+      "name": "Bookshelf",
+      "title": "5-Tier Wooden Bookshelf",
+      "price": 8999,
+      "description": "A tall open shelf made of engineered wood, perfect for books and decor.",
+      "image": "https://images.unsplash.com/photo-1616628188502-8c93f15b9a6c"
+    },
+    {
+      "id": 8,
+      "name": "Recliner Chair",
+      "title": "Leather Recliner Chair",
+      "price": 17999,
+      "description": "Comfortable reclining chair with plush leather upholstery and smooth recline mechanism.",
+      "image": "https://images.unsplash.com/photo-1582582494700-3d50a3c3a4ab"
+    },
+    {
+      "id": 9,
+      "name": "TV Stand",
+      "title": "Wooden TV Console",
+      "price": 7999,
+      "description": "Sleek TV stand with storage cabinets and a modern wood finish.",
+      "image": "https://images.unsplash.com/photo-1606813909394-07e0879cdb6d"
+    },
+    {
+      "id": 10,
+      "name": "Study Desk",
+      "title": "Compact Wooden Study Table",
+      "price": 6499,
+      "description": "Space-saving study desk with drawers, ideal for home offices or student rooms.",
+      "image": "https://images.unsplash.com/photo-1600607681803-0d3d04aa23d9"
+    },
+    {
+    "id": 11,
+    "name": "Accent Chair",
+    "title": "Velvet Upholstered Accent Chair",
+    "price": 11999,
+    "description": "Elegant accent chair with velvet fabric, perfect for living rooms or bedrooms.",
+    "image": "https://images.unsplash.com/photo-1616627568533-2b92a0a9e21a"
+  },
+  {
+    "id": 12,
+    "name": "Nightstand",
+    "title": "2-Drawer Wooden Nightstand",
+    "price": 5999,
+    "description": "Compact bedside table with two drawers for extra storage space.",
+    "image": "https://images.unsplash.com/photo-1601979035016-6b1a08e1bb3c"
+  },
+  {
+    "id": 13,
+    "name": "Shoe Rack",
+    "title": "Multi-Layer Wooden Shoe Rack",
+    "price": 3499,
+    "description": "Durable shoe organizer with multiple tiers and compact design.",
+    "image": "https://images.unsplash.com/photo-1600585154200-6c2d5f57db32"
+  },
+  {
+    "id": 14,
+    "name": "Bar Stool",
+    "title": "Adjustable Metal Bar Stool",
+    "price": 4499,
+    "description": "Modern bar stool with adjustable height and comfortable seating.",
+    "image": "https://images.unsplash.com/photo-1600607681385-0c2ecbc6e42f"
+  },
+  {
+    "id": 15,
+    "name": "Sectional Sofa",
+    "title": "L-Shaped Fabric Sectional Sofa",
+    "price": 32999,
+    "description": "Spacious sectional sofa with soft fabric and durable wooden frame.",
+    "image": "https://images.unsplash.com/photo-1615874959474-d609969a20ed"
+  },
+  {
+    "id": 16,
+    "name": "Dining Chair",
+    "title": "Set of 2 Wooden Dining Chairs",
+    "price": 6999,
+    "description": "Classic dining chairs crafted with premium oak wood and cushioned seats.",
+    "image": "https://images.unsplash.com/photo-1600585153931-30d97e46a36e"
+  },
+  {
+    "id": 17,
+    "name": "TV Unit",
+    "title": "Modern Wall-Mounted TV Unit",
+    "price": 13999,
+    "description": "Stylish wall-mounted TV cabinet with open shelves and storage compartments.",
+    "image": "https://images.unsplash.com/photo-1600585154327-366f2de0d8d4"
+  },
+  {
+    "id": 18,
+    "name": "Bookshelf Cabinet",
+    "title": "Closed Wooden Bookshelf with Glass Doors",
+    "price": 14999,
+    "description": "Elegant bookshelf with glass doors to protect your books and décor items.",
+    "image": "https://images.unsplash.com/photo-1628744445207-ef87e4d0f5ab"
+  },
+  {
+    "id": 19,
+    "name": "Storage Ottoman",
+    "title": "Fabric Ottoman with Storage",
+    "price": 3999,
+    "description": "Multipurpose ottoman that works as seating, footrest, and hidden storage.",
+    "image": "https://images.unsplash.com/photo-1606813909394-07e0879cdb6d"
+  },
+  {
+    "id": 20,
+    "name": "Kitchen Island",
+    "title": "Wooden Kitchen Island with Shelves",
+    "price": 17999,
+    "description": "Functional kitchen island with ample storage and countertop space.",
+    "image": "https://images.unsplash.com/photo-1627460028748-93d8a50e1399"
+  },{
+    "id": 21,
+    "name": "Rocking Chair",
+    "title": "Classic Wooden Rocking Chair",
+    "price": 8499,
+    "description": "Traditional rocking chair made of teak wood, perfect for relaxing evenings.",
+    "image": "https://images.unsplash.com/photo-1616628188502-8c93f15b9a6c"
+  },
+  {
+    "id": 22,
+    "name": "Wardrobe Cabinet",
+    "title": "Sliding Door Wardrobe",
+    "price": 18999,
+    "description": "Spacious wardrobe with sliding doors and multiple storage sections.",
+    "image": "https://images.unsplash.com/photo-1600585154356-596af9009d4a"
+  },
+  {
+    "id": 23,
+    "name": "Bean Bag",
+    "title": "Large Leather Bean Bag",
+    "price": 2999,
+    "description": "Comfortable bean bag chair filled with high-density beans for extra support.",
+    "image": "https://images.unsplash.com/photo-1616627568533-7d2b0e64c5a9"
+  },
+  {
+    "id": 24,
+    "name": "Dining Bench",
+    "title": "Solid Wood Dining Bench",
+    "price": 6499,
+    "description": "Minimalist wooden bench ideal for dining tables or entryways.",
+    "image": "https://images.unsplash.com/photo-1616627568509-ffb70b1a21a2"
+  },
+  {
+    "id": 25,
+    "name": "Folding Table",
+    "title": "Portable Folding Study Table",
+    "price": 2799,
+    "description": "Space-saving foldable table suitable for study or work-from-home setups.",
+    "image": "https://images.unsplash.com/photo-1600607681769-5d5b4974a8b7"
+  },
+  {
+    "id": 26,
+    "name": "Chaise Lounge",
+    "title": "Velvet Chaise Lounge",
+    "price": 15499,
+    "description": "Luxurious chaise lounge with velvet finish and wooden legs.",
+    "image": "https://images.unsplash.com/photo-1616628188430-7b12a8c9172f"
+  },
+  {
+    "id": 27,
+    "name": "Corner Shelf",
+    "title": "Wall-Mounted Corner Shelf",
+    "price": 2499,
+    "description": "Compact corner shelf made of engineered wood, ideal for décor items.",
+    "image": "https://images.unsplash.com/photo-1628744445078-ef10f54a45cc"
+  },
+  {
+    "id": 28,
+    "name": "Bunk Bed",
+    "title": "Wooden Twin Bunk Bed",
+    "price": 21999,
+    "description": "Durable bunk bed with safety rails, perfect for kids’ rooms.",
+    "image": "https://images.unsplash.com/photo-1601979035012-9d0d1f9fbc43"
+  },
+  {
+    "id": 29,
+    "name": "Console Table",
+    "title": "Entryway Console Table",
+    "price": 5599,
+    "description": "Sleek and modern console table with storage drawer for entryways.",
+    "image": "https://images.unsplash.com/photo-1606813909394-3a4af1e98d2d"
+  },
+  {
+    "id": 30,
+    "name": "Vanity Table",
+    "title": "Makeup Vanity with Mirror",
+    "price": 12999,
+    "description": "Stylish vanity table with drawers and a round mirror, perfect for bedrooms.",
+    "image": "https://images.unsplash.com/photo-1627460028729-0e872e7b4a13"
+  },{
+    "id": 31,
+    "name": "Hammock Chair",
+    "title": "Hanging Cotton Hammock Chair",
+    "price": 4999,
+    "description": "Comfortable hanging hammock chair made of soft cotton, ideal for balconies or patios.",
+    "image": "https://images.unsplash.com/photo-1600607682420-82e4b0f51c9c"
+  },
+  {
+    "id": 32,
+    "name": "Side Table",
+    "title": "Round Wooden Side Table",
+    "price": 3299,
+    "description": "Minimalist side table with a round wooden top and metal legs.",
+    "image": "https://images.unsplash.com/photo-1600585154244-8d3bfa50d5a1"
+  },
+  {
+    "id": 33,
+    "name": "Dining Set",
+    "title": "4-Seater Dining Set",
+    "price": 15999,
+    "description": "Compact dining set with 1 wooden table and 4 cushioned chairs.",
+    "image": "https://images.unsplash.com/photo-1616628188419-050b26dfec66"
+  },
+  {
+    "id": 34,
+    "name": "Work Desk",
+    "title": "Adjustable Height Work Desk",
+    "price": 12499,
+    "description": "Modern work desk with adjustable height feature, ideal for home offices.",
+    "image": "https://images.unsplash.com/photo-1601979034941-32b4c6b1a0f0"
+  },
+  {
+    "id": 35,
+    "name": "Patio Chair",
+    "title": "Outdoor Wicker Patio Chair",
+    "price": 5999,
+    "description": "Durable outdoor chair made of weather-resistant wicker material.",
+    "image": "https://images.unsplash.com/photo-1616627568527-54f3ad07e6f5"
+  },
+  {
+    "id": 36,
+    "name": "Storage Cabinet",
+    "title": "Compact Wooden Storage Cabinet",
+    "price": 8999,
+    "description": "Multi-purpose wooden cabinet with shelves and doors for extra storage.",
+    "image": "https://images.unsplash.com/photo-1600585154361-3a6fdd1d4a2e"
+  },
+  {
+    "id": 37,
+    "name": "Loveseat Sofa",
+    "title": "2-Seater Fabric Loveseat",
+    "price": 17999,
+    "description": "Cozy loveseat sofa with soft fabric and sturdy construction.",
+    "image": "https://images.unsplash.com/photo-1616628188428-285a4d8c1e37"
+  },
+  {
+    "id": 38,
+    "name": "Coat Rack",
+    "title": "Standing Wooden Coat Rack",
+    "price": 2599,
+    "description": "Classic standing coat rack with hooks for jackets, hats, and bags.",
+    "image": "https://images.unsplash.com/photo-1606813909394-7ac8c8799d31"
+  },
+  {
+    "id": 39,
+    "name": "Gaming Chair",
+    "title": "Ergonomic Leather Gaming Chair",
+    "price": 14499,
+    "description": "High-back gaming chair with adjustable recline and lumbar support.",
+    "image": "https://images.unsplash.com/photo-1616627568531-8a68c3ab3e20"
+  },
+  {
+    "id": 40,
+    "name": "Garden Bench",
+    "title": "Metal Garden Bench",
+    "price": 6999,
+    "description": "Classic outdoor bench made of wrought iron, perfect for gardens and patios.",
+    "image": "https://images.unsplash.com/photo-1600607681839-6c9c93e827ad"
+  },  {
+    "id": 41,
+    "name": "Bookshelf Ladder",
+    "title": "Wooden Ladder Bookshelf",
+    "price": 7499,
+    "description": "Stylish leaning ladder bookshelf with multiple open shelves for books and décor.",
+    "image": "https://images.unsplash.com/photo-1616627568534-71c8caa8d3d3"
+  },
+  {
+    "id": 42,
+    "name": "Kitchen Stool",
+    "title": "Wooden Counter Height Stool",
+    "price": 2999,
+    "description": "Compact counter stool made of solid oak, perfect for kitchens and bars.",
+    "image": "https://images.unsplash.com/photo-1616627568511-4bcd23a3af45"
+  },
+  {
+    "id": 43,
+    "name": "Storage Bed",
+    "title": "Queen Size Bed with Storage",
+    "price": 25999,
+    "description": "Elegant wooden bed with built-in under-storage compartments.",
+    "image": "https://images.unsplash.com/photo-1600585154298-1c3f3c5c5b73"
+  },
+  {
+    "id": 44,
+    "name": "Entryway Bench",
+    "title": "Wooden Bench with Cushion",
+    "price": 6499,
+    "description": "Entryway bench with soft cushioned seating and a bottom shoe rack.",
+    "image": "https://images.unsplash.com/photo-1616628188421-fb7cc41d8f39"
+  },
+  {
+    "id": 45,
+    "name": "Glass Cabinet",
+    "title": "Tall Display Glass Cabinet",
+    "price": 13999,
+    "description": "Glass-front display cabinet with wooden frame, ideal for showcasing collections.",
+    "image": "https://images.unsplash.com/photo-1601979034946-b1d3a2c2ef28"
+  },
+  {
+    "id": 46,
+    "name": "Pouf",
+    "title": "Round Knitted Pouf",
+    "price": 2599,
+    "description": "Hand-knitted pouf that doubles as seating or footrest in living rooms.",
+    "image": "https://images.unsplash.com/photo-1628744445123-56d8c75e4c2a"
+  },
+  {
+    "id": 47,
+    "name": "Filing Cabinet",
+    "title": "3-Drawer Wooden Filing Cabinet",
+    "price": 7999,
+    "description": "Office filing cabinet with three drawers and lock for secure storage.",
+    "image": "https://images.unsplash.com/photo-1600607681955-5f50f4c83a27"
+  },
+  {
+    "id": 48,
+    "name": "Daybed",
+    "title": "Wooden Daybed with Cushions",
+    "price": 17999,
+    "description": "Multi-functional daybed with soft cushions, suitable for lounging or guest rooms.",
+    "image": "https://images.unsplash.com/photo-1616628188437-6fa1b7056c21"
+  },
+  {
+    "id": 49,
+    "name": "Wine Rack",
+    "title": "Freestanding Wooden Wine Rack",
+    "price": 4599,
+    "description": "Compact wine rack with storage for 12 bottles, made from premium wood.",
+    "image": "https://images.unsplash.com/photo-1606813909394-7f1c832c9d2a"
+  },
+  {
+    "id": 50,
+    "name": "Hall Tree",
+    "title": "Wooden Hall Tree with Hooks",
+    "price": 10499,
+    "description": "Tall hall tree with coat hooks, a storage bench, and overhead shelf.",
+    "image": "https://images.unsplash.com/photo-1627460028777-9d42faeb5a24"
+  }
+
+  ]
 }

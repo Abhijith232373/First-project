@@ -58,8 +58,8 @@ const NavBar = () => {
 
         {/* Right Icons */}
         <div className="flex items-center gap-5 mt-2 md:mt-0">
-          <img src="src/assets/user.svg" alt="user" className="w-6 h-6" />
-          <img src="src/assets/cart.svg" alt="cart" className="w-6 h-6" />
+          <img src="src/assets/Navbar/user.svg" alt="user" className="w-6 h-6" />
+          <img src="src/assets/Navbar/cart.svg" alt="cart" className="w-6 h-6" />
           <FavoriteBorderIcon />
         </div>
       </nav>
