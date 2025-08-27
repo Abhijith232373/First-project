@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-
+import { Link } from "react-router-dom";
 const NavBar = () => {
   const [query, setQuery] = useState("");
   const [showNav, setShowNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const NavStyle =`relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px]
-                         after:bg-black after:transition-all after:duration-400 hover:after:w-full hover:cursor-pointer`
+    after:bg-black after:transition-all after:duration-400 hover:after:w-full hover:cursor-pointer`
 
   // Handle scroll behavior
   useEffect(() => {
@@ -43,8 +43,6 @@ const NavBar = () => {
           <div className={NavStyle}>Bedroom</div>
           <div className={NavStyle}>Storage</div>
           <div className={NavStyle}>HomeDecor</div>
-          <div className={NavStyle}>Alphington outlet</div>
-          <div className={NavStyle}>Services</div>
         </div>
 
         {/* Search */}
@@ -58,7 +56,7 @@ const NavBar = () => {
 
         {/* Right Icons */}
         <div className="flex items-center gap-5 mt-2 md:mt-0">
-          <img src="src/assets/Navbar/user.svg" alt="user" className="w-6 h-6" />
+         <Link to='/user'><img src="src/assets/Navbar/user.svg" alt="user" className="w-6 h-6" /></Link>
           <img src="src/assets/Navbar/cart.svg" alt="cart" className="w-6 h-6" />
           <FavoriteBorderIcon />
         </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"; // MUI icon for wishlist
+import { Link } from "react-router-dom";
 
 const ItemsBanners = () => {
   const items = [
@@ -24,12 +25,12 @@ const ItemsBanners = () => {
             className="relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition duration-300"
           >
             {/* Link wrapping image + content */}
-            <a href="#" className="block group">
-              <img
+            <a href="#products" className="block group">
+           <Link to='products'>   <img
                 src={item.img}
                 alt={item.title}
                 className="w-full h-64 object-cover group-hover:scale-105 transition duration-300"
-              />
+              /></Link>
 
               <div className="flex flex-col items-center justify-center bg-white py-4">
                 <h2 className="text-lg font-serif font-semibold text-gray-800 mb-2">

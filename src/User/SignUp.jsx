@@ -1,13 +1,18 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="absolute inset-0 bg-[url('src/assets/img1.jpg')] bg-cover bg-center ">
       <div className="absolute ml-[500px] mt-42 bg-gray-200 opacity-90 p-6 rounded-2xl shadow-xl w-full max-w-sm">
         <h2 className="text-2xl font-bold text-center text-indigo-600 mb-4">
           Sign Up
         </h2>
+
         <Formik
           initialValues={{ name: "", email: "", password: "", confirm: "" }}
           validate={(values) => {
@@ -32,9 +37,18 @@ const SignUp = () => {
             }
             return errors;
           }}
-          onSubmit={(values, { resetForm }) => {
-            alert("Signup Successful 🎉");
-            resetForm();
+          onSubmit={async (values, { resetForm }) => {
+            try {
+              const { confirm, ...userData } = values;
+              await axios.post("http://localhost:3000/users", userData);
+
+              alert("Signup Successful 🎉");
+              resetForm();
+              navigate("/login"); // redirect to login page
+            } catch (error) {
+              console.error("Signup failed", error);
+              alert("Something went wrong");
+            }
           }}
         >
           {() => (
@@ -80,6 +94,7 @@ const SignUp = () => {
                   className="text-red-500 text-sm mt-1"
                 />
               </div>
+
               <div>
                 <Field
                   type="password"
@@ -106,9 +121,11 @@ const SignUp = () => {
 
         <p className="text-sm text-center mt-4 text-gray-600">
           Already have an account?{" "}
-          <span className="text-indigo-600 font-medium cursor-pointer hover:underline">
-            Login
-          </span>
+          <Link to="/user">
+            <span className="text-indigo-600 font-medium cursor-pointer hover:underline">
+              Login
+            </span>
+          </Link>
         </p>
       </div>
     </div>

@@ -1,18 +1,27 @@
-// import NavBar from "./OpenUi/NavBar"
-// import SignUp from "./Pages/SignUp"
-// import { BrowserRouter as Router,Routes,Route } from "react-router-dom"
-// import HomePage from'./Pages/HomePage'
-import Products from './Pages/Products'
+import { BrowserRouter as Router,Routes,Route } from "react-router-dom"
+import HomePage from'./Pages/HomePage'
+
+// import NavBar from './OpenUi/NavBar'
+// import Products from './Pages/Products'
+import Login from './User/Login'
+import SignUp from "./User/SignUp"
+import Products from "./Pages/Products"
 function App() {
 
   return (
   <>
-  <Products/>
-    {/* <HomePage/> */}
-    {/* <Routes>
-    <Route path='/signup' element={< SignUp/>} /> 
-      <Route path="/nav" element={<NavBar/>}/>
-     </Routes> */}
+
+{/* <Login/> */}
+  {/* <NavBar/>  */}
+  {/* <Products/> */}
+    <Routes>
+    <Route path='/'  element={<HomePage/>}/>
+    <Route path='/user' element={<Login/>} /> 
+    <Route path ='/signup' element ={<SignUp/>}/>
+    <Route path ='/products' element ={<Products/>}/>
+
+
+     </Routes>
      </>
   )
 }
