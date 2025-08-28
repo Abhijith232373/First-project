@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -6,15 +6,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import CircularProgress from "@mui/material/CircularProgress";
 import { CartContext } from "./CartContext";
 
-const Products = () => {
-
-const { addToCart } = useContext(CartContext);
+const Dining = () => {
+  const { addToCart } = useContext(CartContext);
 
   const [products, setProducts] = useState([]);
-  const [filtered, setFiltered] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  const [category, setCategory] = useState("All");
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   // Infinite Scroll states
@@ -25,10 +21,11 @@ const { addToCart } = useContext(CartContext);
     setLoading(true);
     try {
       const res = await axios.get("http://localhost:3000/furniture");
-      setProducts(res.data);
-      setFiltered(res.data);
+      // 👉 Only Dining products
+      const diningItems = res.data.filter((p) => p.category === "Dining");
+      setProducts(diningItems);
     } catch (err) {
-      console.error("Error fetching products:", err);
+      console.error("Error fetching dining products:", err);
     } finally {
       setLoading(false);
     }
@@ -38,41 +35,30 @@ const { addToCart } = useContext(CartContext);
     fetchProducts();
   }, []);
 
-  // 👉 Apply category filter
-  useEffect(() => {
-    let data = [...products];
-    if (category !== "All") {
-      data = data.filter((p) => p.category === category);
-    }
-    setFiltered(data);
-    setVisibleCount(8); // reset scroll count
-  }, [category, products]);
-
-  // 👉 Infinite scroll handler with delay
+  // 👉 Infinite scroll
   useEffect(() => {
     const handleScroll = () => {
       if (
         window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 &&
         !scrollLoading &&
-        visibleCount < filtered.length
+        visibleCount < products.length
       ) {
         setScrollLoading(true);
-        // Simulate loading delay
         setTimeout(() => {
           setVisibleCount((prev) => prev + 10);
           setScrollLoading(false);
-        }, 1500); // 1.5 seconds delay
+        }, 1500);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [scrollLoading, visibleCount, filtered.length]);
+  }, [scrollLoading, visibleCount, products.length]);
 
   return (
     <div className="px-6 py-12 bg-gray-50 min-h-screen relative mt-24">
       <h2 className="text-4xl font-extrabold mb-6 text-center text-gray-800">
-        ✨ Furniture Collection ✨
+        🍽 Dining Collection
       </h2>
 
       {/* Loader */}
@@ -82,10 +68,10 @@ const { addToCart } = useContext(CartContext);
         </div>
       )}
 
-      {/* Product Grid */}
+      {/* Dining Product Grid */}
       {!loading && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {filtered.slice(0, visibleCount).map((item) => (
+          {products.slice(0, visibleCount).map((item) => (
             <div
               key={item.id}
               className="bg-white rounded-2xl shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 overflow-hidden relative cursor-pointer"
@@ -126,16 +112,16 @@ const { addToCart } = useContext(CartContext);
                 </div>
 
                 {/* Cart Button */}
-<button
-  onClick={(e) => {
-    e.stopPropagation(); // so modal doesn’t open
-    addToCart(item);
-  }}
-  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-xl flex items-center justify-center gap-2 transition"
->
-  <ShoppingCartIcon fontSize="small" />
-  Add to Cart
-</button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    addToCart(item);
+                  }}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-xl flex items-center justify-center gap-2 transition"
+                >
+                  <ShoppingCartIcon fontSize="small" />
+                  Add to Cart
+                </button>
               </div>
             </div>
           ))}
@@ -149,7 +135,7 @@ const { addToCart } = useContext(CartContext);
         </div>
       )}
 
-      {/* Product Quick View Modal */}
+      {/* Dining Quick View Modal */}
       {selectedProduct && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
           <div className="bg-white w-[90%] md:w-[70%] lg:w-[50%] rounded-2xl shadow-xl p-6 relative">
@@ -190,7 +176,10 @@ const { addToCart } = useContext(CartContext);
 
                 {/* Buttons */}
                 <div className="flex gap-3">
-                  <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition">
+                  <button
+                    onClick={() => addToCart(selectedProduct)}
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition"
+                  >
                     <ShoppingCartIcon fontSize="small" />
                     Add to Cart
                   </button>
@@ -209,4 +198,4 @@ const { addToCart } = useContext(CartContext);
   );
 };
 
-export default Products;
+export default Dining;

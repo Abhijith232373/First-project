@@ -6,7 +6,8 @@
       "title": "Luxury 3-Seater Sofa",
       "price": 25999,
       "description": "A premium fabric sofa with wooden legs and soft cushioning for ultimate comfort.",
-      "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7"
+      "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
+      "category": "Living"
     },
     {
       "id": 2,
@@ -14,7 +15,8 @@
       "title": "6-Seater Wooden Dining Table",
       "price": 18999,
       "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
-      "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg"
+      "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
+      "category": "Dining"
     },
     {
       "id": 3,
@@ -22,7 +24,8 @@
       "title": "Round Glass Coffee Table",
       "price": 6999,
       "description": "Stylish center table with tempered glass top and metal frame.",
-      "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486"
+      "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
+      "category": "Dining"
     },
     {
       "id": 4,
@@ -38,7 +41,9 @@
       "title": "3-Door Wooden Wardrobe",
       "price": 15999,
       "description": "Spacious wardrobe with multiple compartments, drawers, and a sleek matte finish.",
-      "image": "https://m.media-amazon.com/images/I/71vCcWFif2L._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/71vCcWFif2L._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Storage"
+
     },
     {
       "id": 6,
@@ -46,7 +51,8 @@
       "title": "King Size Bed Frame",
       "price": 22999,
       "description": "Strong and durable wooden bed frame with a modern headboard design.",
-      "image": "https://m.media-amazon.com/images/I/71GfbOawqGL._AC_SR230,210_CB1169409_QL70_.jpg"
+      "image": "https://m.media-amazon.com/images/I/71GfbOawqGL._AC_SR230,210_CB1169409_QL70_.jpg",
+      "category": "Living"
     },
     {
       "id": 7,
@@ -54,7 +60,9 @@
       "title": "5-Tier Wooden Bookshelf",
       "price": 8999,
       "description": "A tall open shelf made of engineered wood, perfect for books and decor.",
-      "image": "https://m.media-amazon.com/images/I/61VPI3JU0UL._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/61VPI3JU0UL._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Storage"
+
     },
     {
       "id": 8,
@@ -70,7 +78,8 @@
       "title": "Wooden TV Console",
       "price": 7999,
       "description": "Sleek TV stand with storage cabinets and a modern wood finish.",
-      "image": "https://m.media-amazon.com/images/I/61PzdiNM57L._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/61PzdiNM57L._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Living"
     },
     {
       "id": 10,
@@ -86,7 +95,8 @@
       "title": "Velvet Upholstered Accent Chair",
       "price": 11999,
       "description": "Elegant accent chair with velvet fabric, perfect for living rooms or bedrooms.",
-      "image": "https://m.media-amazon.com/images/I/51cYlJo-HOL._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/51cYlJo-HOL._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Living"
     },
     {
       "id": 12,
@@ -94,7 +104,8 @@
       "title": "2-Drawer Wooden Nightstand",
       "price": 5999,
       "description": "Compact bedside table with two drawers for extra storage space.",
-      "image": "https://m.media-amazon.com/images/I/618+VE0DP7L._SX679_.jpg"
+      "image": "https://m.media-amazon.com/images/I/618+VE0DP7L._SX679_.jpg",
+      "category": "Living"
     },
     {
       "id": 13,
@@ -102,7 +113,9 @@
       "title": "Multi-Layer Wooden Shoe Rack",
       "price": 3499,
       "description": "Durable shoe organizer with multiple tiers and compact design.",
-      "image": "https://m.media-amazon.com/images/I/81GCXMdcliL._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/81GCXMdcliL._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Storage"
+
     },
     {
       "id": 14,
@@ -110,7 +123,8 @@
       "title": "Adjustable Metal Bar Stool",
       "price": 4499,
       "description": "Modern bar stool with adjustable height and comfortable seating.",
-      "image": "https://m.media-amazon.com/images/I/51Gi7k1PLgL._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/51Gi7k1PLgL._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Living"
     },
     {
       "id": 15,
@@ -118,7 +132,8 @@
       "title": "L-Shaped Fabric Sectional Sofa",
       "price": 32999,
       "description": "Spacious sectional sofa with soft fabric and durable wooden frame.",
-      "image": "https://m.media-amazon.com/images/I/71IQ83y45yL._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/71IQ83y45yL._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Living"
     },
     {
       "id": 16,
@@ -126,7 +141,8 @@
       "title": "Set of 2 Wooden Dining Chairs",
       "price": 6999,
       "description": "Classic dining chairs crafted with premium oak wood and cushioned seats.",
-      "image": "https://m.media-amazon.com/images/I/61LB3uIOfBL._SX679_.jpg"
+      "image": "https://m.media-amazon.com/images/I/61LB3uIOfBL._SX679_.jpg",
+      "category": "Dining"
     },
     {
       "id": 17,
@@ -134,7 +150,8 @@
       "title": "Modern Wall-Mounted TV Unit",
       "price": 13999,
       "description": "Stylish wall-mounted TV cabinet with open shelves and storage compartments.",
-      "image": "https://m.media-amazon.com/images/I/61R0A8SR6eL._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/61R0A8SR6eL._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Living"
     },
     {
       "id": 18,
@@ -142,7 +159,9 @@
       "title": "Closed Wooden Bookshelf with Glass Doors",
       "price": 14999,
       "description": "Elegant bookshelf with glass doors to protect your books and décor items.",
-      "image": "https://m.media-amazon.com/images/I/81uXi3PNX3L._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/81uXi3PNX3L._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Storage"
+
     },
     {
       "id": 19,
@@ -150,7 +169,9 @@
       "title": "Fabric Ottoman with Storage",
       "price": 3999,
       "description": "Multipurpose ottoman that works as seating, footrest, and hidden storage.",
-      "image": "https://m.media-amazon.com/images/I/71GiXy5jwYL._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/71GiXy5jwYL._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Storage"
+
     },
     {
       "id": 20,
@@ -158,7 +179,9 @@
       "title": "Wooden Kitchen Island with Shelves",
       "price": 17999,
       "description": "Functional kitchen island with ample storage and countertop space.",
-      "image": "https://m.media-amazon.com/images/S/al-eu-726f4d26-7fdb/28db463d-2623-4c37-8950-9a0bc85f79f1._CR0,0,1200,628_SX810_CB1169409_QL70_.jpg"
+      "image": "https://m.media-amazon.com/images/S/al-eu-726f4d26-7fdb/28db463d-2623-4c37-8950-9a0bc85f79f1._CR0,0,1200,628_SX810_CB1169409_QL70_.jpg",
+      "category": "Storage"
+
     },
     {
       "id": 21,
@@ -174,7 +197,9 @@
       "title": "Sliding Door Wardrobe",
       "price": 18999,
       "description": "Spacious wardrobe with sliding doors and multiple storage sections.",
-      "image": "https://m.media-amazon.com/images/I/617qPhWNkEL._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/617qPhWNkEL._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Storage"
+
     },
     {
       "id": 23,
@@ -182,7 +207,9 @@
       "title": "Large Leather Bean Bag",
       "price": 2999,
       "description": "Comfortable bean bag chair filled with high-density beans for extra support.",
-      "image": "https://m.media-amazon.com/images/I/51YxdZGeJLL._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/51YxdZGeJLL._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Living"
+
     },
     {
       "id": 24,
@@ -190,7 +217,8 @@
       "title": "Solid Wood Dining Bench",
       "price": 6499,
       "description": "Minimalist wooden bench ideal for dining tables or entryways.",
-      "image": "https://m.media-amazon.com/images/I/51JvjlrSGEL._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/51JvjlrSGEL._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Dining"
     },
     {
       "id": 25,
@@ -262,7 +290,8 @@
       "title": "4-Seater Dining Set",
       "price": 15999,
       "description": "Compact dining set with 1 wooden table and 4 cushioned chairs.",
-      "image": "https://m.media-amazon.com/images/I/61oRqBoiknL._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/61oRqBoiknL._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Dining"
     },
     {
       "id": 34,
@@ -286,7 +315,9 @@
       "title": "Compact Wooden Storage Cabinet",
       "price": 8999,
       "description": "Multi-purpose wooden cabinet with shelves and doors for extra storage.",
-      "image": "https://m.media-amazon.com/images/I/61-ciXvq36L._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/61-ciXvq36L._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Storage"
+
     },
     {
       "id": 37,
@@ -342,7 +373,9 @@
       "title": "Queen Size Bed with Storage",
       "price": 25999,
       "description": "Elegant wooden bed with built-in under-storage compartments.",
-      "image": "https://m.media-amazon.com/images/I/714XukSlrYL._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/714XukSlrYL._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Storage"
+
     },
     {
       "id": 44,
@@ -406,7 +439,8 @@
       "title": "Wooden Dining Hutch Cabinet",
       "price": 18999,
       "description": "Elegant dining hutch with glass doors and shelves for crockery and décor.",
-      "image": "https://m.media-amazon.com/images/I/71DCOLTbvvL._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/71DCOLTbvvL._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Dining"
     },
     {
       "id": 52,
@@ -414,7 +448,9 @@
       "title": "Vintage Wooden Storage Trunk",
       "price": 6499,
       "description": "Classic storage trunk with iron handles, ideal for blankets and accessories.",
-      "image": "hhttps://m.media-amazon.com/images/I/61SmBsqTORL._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "hhttps://m.media-amazon.com/images/I/61SmBsqTORL._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Storage"
+
     },
     {
       "id": 53,
@@ -430,7 +466,9 @@
       "title": "2-Seater Breakfast Nook Table",
       "price": 8499,
       "description": "Compact wooden breakfast table with two matching stools.",
-      "image": "https://m.media-amazon.com/images/I/61mYngHWKMS._AC_UY327_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/61mYngHWKMS._AC_UY327_FMwebp_QL65_.jpg",
+      "category": "Dining"
+
     },
     {
       "id": 55,
@@ -438,7 +476,9 @@
       "title": "Geometric Wall Display Shelf",
       "price": 3599,
       "description": "Modern wall-mounted shelf with geometric design for books and décor.",
-      "image": "https://m.media-amazon.com/images/I/61kt+g-FuUL._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/61kt+g-FuUL._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Living"
+
     },
     {
       "id": 56,

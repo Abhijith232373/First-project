@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { CartContext } from "../Pages/CartContext";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 const NavBar = () => {
+   const { cart } = useContext(CartContext);
   const [query, setQuery] = useState("");
   const [showNav, setShowNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -37,11 +41,11 @@ const NavBar = () => {
         {/* Left Links */}
         <div className="flex space-x-6">
           <div className={NavStyle}>Dummy</div>
-          <div className={NavStyle}>Shop All</div>
-          <div className={NavStyle}>Living</div>
-          <div className={NavStyle}>Dining</div>
+        < Link to='/products' ><div className={NavStyle}>Shop All</div>  </Link>
+           <Link to='/living' ><div className={NavStyle}>Living</div></Link>
+         <Link to='/dining' > <div className={NavStyle}>Dining</div></Link>
           <div className={NavStyle}>Bedroom</div>
-          <div className={NavStyle}>Storage</div>
+          <Link to='/Storage' ><div className={NavStyle}>Storage</div></Link>
           <div className={NavStyle}>HomeDecor</div>
         </div>
 
@@ -57,7 +61,14 @@ const NavBar = () => {
         {/* Right Icons */}
         <div className="flex items-center gap-5 mt-2 md:mt-0">
          <Link to='/user'><img src="src/assets/Navbar/user.svg" alt="user" className="w-6 h-6" /></Link>
-          <img src="src/assets/Navbar/cart.svg" alt="cart" className="w-6 h-6" />
+          <Link to="/cart">
+          <ShoppingCartIcon className="text-gray-700 w-6 h-6"  />
+          {cart.length > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full px-2 py-0.5">
+              {cart.reduce((total, item) => total + item.quantity, 0)}
+            </span>
+          )}
+        </Link>
           <FavoriteBorderIcon />
         </div>
       </nav>
