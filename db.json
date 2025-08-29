@@ -1,7 +1,7 @@
 {
   "furniture": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Modern Sofa",
       "title": "Luxury 3-Seater Sofa",
       "price": 25999,
@@ -10,7 +10,7 @@
       "category": "Living"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Dining Table",
       "title": "6-Seater Wooden Dining Table",
       "price": 18999,
@@ -19,7 +19,7 @@
       "category": "Dining"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Coffee Table",
       "title": "Round Glass Coffee Table",
       "price": 6999,
@@ -28,7 +28,7 @@
       "category": "Dining"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Office Chair",
       "title": "Ergonomic Mesh Chair",
       "price": 4999,
@@ -36,17 +36,16 @@
       "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Wardrobe",
       "title": "3-Door Wooden Wardrobe",
       "price": 15999,
       "description": "Spacious wardrobe with multiple compartments, drawers, and a sleek matte finish.",
       "image": "https://m.media-amazon.com/images/I/71vCcWFif2L._AC_UL480_FMwebp_QL65_.jpg",
       "category": "Storage"
-
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Bed Frame",
       "title": "King Size Bed Frame",
       "price": 22999,
@@ -55,17 +54,16 @@
       "category": "Living"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Bookshelf",
       "title": "5-Tier Wooden Bookshelf",
       "price": 8999,
       "description": "A tall open shelf made of engineered wood, perfect for books and decor.",
       "image": "https://m.media-amazon.com/images/I/61VPI3JU0UL._AC_UL480_FMwebp_QL65_.jpg",
       "category": "Storage"
-
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Recliner Chair",
       "title": "Leather Recliner Chair",
       "price": 17999,
@@ -73,7 +71,7 @@
       "image": "https://m.media-amazon.com/images/I/81pU8M1ieSL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "TV Stand",
       "title": "Wooden TV Console",
       "price": 7999,
@@ -82,7 +80,7 @@
       "category": "Living"
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "Study Desk",
       "title": "Compact Wooden Study Table",
       "price": 6499,
@@ -90,7 +88,7 @@
       "image": "https://m.media-amazon.com/images/I/715LbKtHxlL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "Accent Chair",
       "title": "Velvet Upholstered Accent Chair",
       "price": 11999,
@@ -99,7 +97,7 @@
       "category": "Living"
     },
     {
-      "id": 12,
+      "id": "12",
       "name": "Nightstand",
       "title": "2-Drawer Wooden Nightstand",
       "price": 5999,
@@ -108,17 +106,16 @@
       "category": "Living"
     },
     {
-      "id": 13,
+      "id": "13",
       "name": "Shoe Rack",
       "title": "Multi-Layer Wooden Shoe Rack",
       "price": 3499,
       "description": "Durable shoe organizer with multiple tiers and compact design.",
       "image": "https://m.media-amazon.com/images/I/81GCXMdcliL._AC_UL480_FMwebp_QL65_.jpg",
       "category": "Storage"
-
     },
     {
-      "id": 14,
+      "id": "14",
       "name": "Bar Stool",
       "title": "Adjustable Metal Bar Stool",
       "price": 4499,
@@ -127,7 +124,7 @@
       "category": "Living"
     },
     {
-      "id": 15,
+      "id": "15",
       "name": "Sectional Sofa",
       "title": "L-Shaped Fabric Sectional Sofa",
       "price": 32999,
@@ -136,7 +133,7 @@
       "category": "Living"
     },
     {
-      "id": 16,
+      "id": "16",
       "name": "Dining Chair",
       "title": "Set of 2 Wooden Dining Chairs",
       "price": 6999,
@@ -145,7 +142,7 @@
       "category": "Dining"
     },
     {
-      "id": 17,
+      "id": "17",
       "name": "TV Unit",
       "title": "Modern Wall-Mounted TV Unit",
       "price": 13999,
@@ -154,37 +151,34 @@
       "category": "Living"
     },
     {
-      "id": 18,
+      "id": "18",
       "name": "Bookshelf Cabinet",
       "title": "Closed Wooden Bookshelf with Glass Doors",
       "price": 14999,
       "description": "Elegant bookshelf with glass doors to protect your books and décor items.",
       "image": "https://m.media-amazon.com/images/I/81uXi3PNX3L._AC_UL480_FMwebp_QL65_.jpg",
       "category": "Storage"
-
     },
     {
-      "id": 19,
+      "id": "19",
       "name": "Storage Ottoman",
       "title": "Fabric Ottoman with Storage",
       "price": 3999,
       "description": "Multipurpose ottoman that works as seating, footrest, and hidden storage.",
       "image": "https://m.media-amazon.com/images/I/71GiXy5jwYL._AC_UL480_FMwebp_QL65_.jpg",
       "category": "Storage"
-
     },
     {
-      "id": 20,
+      "id": "20",
       "name": "Kitchen Island",
       "title": "Wooden Kitchen Island with Shelves",
       "price": 17999,
       "description": "Functional kitchen island with ample storage and countertop space.",
       "image": "https://m.media-amazon.com/images/S/al-eu-726f4d26-7fdb/28db463d-2623-4c37-8950-9a0bc85f79f1._CR0,0,1200,628_SX810_CB1169409_QL70_.jpg",
       "category": "Storage"
-
     },
     {
-      "id": 21,
+      "id": "21",
       "name": "Rocking Chair",
       "title": "Classic Wooden Rocking Chair",
       "price": 8499,
@@ -192,27 +186,25 @@
       "image": "https://m.media-amazon.com/images/I/81F2HKnJ-PL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 22,
+      "id": "22",
       "name": "Wardrobe Cabinet",
       "title": "Sliding Door Wardrobe",
       "price": 18999,
       "description": "Spacious wardrobe with sliding doors and multiple storage sections.",
       "image": "https://m.media-amazon.com/images/I/617qPhWNkEL._AC_UL480_FMwebp_QL65_.jpg",
       "category": "Storage"
-
     },
     {
-      "id": 23,
+      "id": "23",
       "name": "Bean Bag",
       "title": "Large Leather Bean Bag",
       "price": 2999,
       "description": "Comfortable bean bag chair filled with high-density beans for extra support.",
       "image": "https://m.media-amazon.com/images/I/51YxdZGeJLL._AC_UL480_FMwebp_QL65_.jpg",
       "category": "Living"
-
     },
     {
-      "id": 24,
+      "id": "24",
       "name": "Dining Bench",
       "title": "Solid Wood Dining Bench",
       "price": 6499,
@@ -221,7 +213,7 @@
       "category": "Dining"
     },
     {
-      "id": 25,
+      "id": "25",
       "name": "Folding Table",
       "title": "Portable Folding Study Table",
       "price": 2799,
@@ -229,7 +221,7 @@
       "image": "https://m.media-amazon.com/images/I/71SsXTZ15tL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 26,
+      "id": "26",
       "name": "Chaise Lounge",
       "title": "Velvet Chaise Lounge",
       "price": 15499,
@@ -237,7 +229,7 @@
       "image": "https://m.media-amazon.com/images/I/81Zi+rn3MCL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 27,
+      "id": "27",
       "name": "Corner Shelf",
       "title": "Wall-Mounted Corner Shelf",
       "price": 2499,
@@ -245,7 +237,7 @@
       "image": "https://m.media-amazon.com/images/I/61kK+jBUczL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 28,
+      "id": "28",
       "name": "Bunk Bed",
       "title": "Wooden Twin Bunk Bed",
       "price": 21999,
@@ -253,7 +245,7 @@
       "image": "https://m.media-amazon.com/images/I/816XJVosz+S._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 29,
+      "id": "29",
       "name": "Console Table",
       "title": "Entryway Console Table",
       "price": 5599,
@@ -261,7 +253,7 @@
       "image": "https://m.media-amazon.com/images/I/81i3aKfDWnL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 30,
+      "id": "30",
       "name": "Vanity Table",
       "title": "Makeup Vanity with Mirror",
       "price": 12999,
@@ -269,7 +261,7 @@
       "image": "https://m.media-amazon.com/images/I/71te4xwL9RL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 31,
+      "id": "31",
       "name": "Hammock Chair",
       "title": "Hanging Cotton Hammock Chair",
       "price": 4999,
@@ -277,7 +269,7 @@
       "image": "https://m.media-amazon.com/images/I/71gBMYUH0ML._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 32,
+      "id": "32",
       "name": "Side Table",
       "title": "Round Wooden Side Table",
       "price": 3299,
@@ -285,7 +277,7 @@
       "image": "https://m.media-amazon.com/images/I/818VPBTCxBL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 33,
+      "id": "33",
       "name": "Dining Set",
       "title": "4-Seater Dining Set",
       "price": 15999,
@@ -294,7 +286,7 @@
       "category": "Dining"
     },
     {
-      "id": 34,
+      "id": "34",
       "name": "Work Desk",
       "title": "Adjustable Height Work Desk",
       "price": 12499,
@@ -302,7 +294,7 @@
       "image": "https://m.media-amazon.com/images/I/81Boo5TWkcL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 35,
+      "id": "35",
       "name": "Patio Chair",
       "title": "Outdoor Wicker Patio Chair",
       "price": 5999,
@@ -310,17 +302,16 @@
       "image": "https://m.media-amazon.com/images/I/719lrH6aCDL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 36,
+      "id": "36",
       "name": "Storage Cabinet",
       "title": "Compact Wooden Storage Cabinet",
       "price": 8999,
       "description": "Multi-purpose wooden cabinet with shelves and doors for extra storage.",
       "image": "https://m.media-amazon.com/images/I/61-ciXvq36L._AC_UL480_FMwebp_QL65_.jpg",
       "category": "Storage"
-
     },
     {
-      "id": 37,
+      "id": "37",
       "name": "Loveseat Sofa",
       "title": "2-Seater Fabric Loveseat",
       "price": 17999,
@@ -328,7 +319,7 @@
       "image": "https://m.media-amazon.com/images/I/61y1NDNi1BL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 38,
+      "id": "38",
       "name": "Coat Rack",
       "title": "Standing Wooden Coat Rack",
       "price": 2599,
@@ -336,7 +327,7 @@
       "image": "https://m.media-amazon.com/images/I/71Xu-vV6X1L._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 39,
+      "id": "39",
       "name": "Gaming Chair",
       "title": "Ergonomic Leather Gaming Chair",
       "price": 14499,
@@ -344,7 +335,7 @@
       "image": "https://m.media-amazon.com/images/I/71ubcjZeihL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 40,
+      "id": "40",
       "name": "Garden Bench",
       "title": "Metal Garden Bench",
       "price": 6999,
@@ -352,7 +343,7 @@
       "image": "https://m.media-amazon.com/images/I/81ZGDTtpMKL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 41,
+      "id": "41",
       "name": "Bookshelf Ladder",
       "title": "Wooden Ladder Bookshelf",
       "price": 7499,
@@ -360,7 +351,7 @@
       "image": "https://m.media-amazon.com/images/I/81uXi3PNX3L._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 42,
+      "id": "42",
       "name": "Kitchen Stool",
       "title": "Wooden Counter Height Stool",
       "price": 2999,
@@ -368,17 +359,16 @@
       "image": "https://m.media-amazon.com/images/I/51eSN4fNM6L._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 43,
+      "id": "43",
       "name": "Storage Bed",
       "title": "Queen Size Bed with Storage",
       "price": 25999,
       "description": "Elegant wooden bed with built-in under-storage compartments.",
       "image": "https://m.media-amazon.com/images/I/714XukSlrYL._AC_UL480_FMwebp_QL65_.jpg",
       "category": "Storage"
-
     },
     {
-      "id": 44,
+      "id": "44",
       "name": "Entryway Bench",
       "title": "Wooden Bench with Cushion",
       "price": 6499,
@@ -386,7 +376,7 @@
       "image": "https://m.media-amazon.com/images/I/41F-iNbwGWL._AC_SR230,210_CB1169409_QL70_.jpg"
     },
     {
-      "id": 45,
+      "id": "45",
       "name": "Glass Cabinet",
       "title": "Tall Display Glass Cabinet",
       "price": 13999,
@@ -394,7 +384,7 @@
       "image": "https://m.media-amazon.com/images/I/81DzrbVvfFL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 46,
+      "id": "46",
       "name": "Pouf",
       "title": "Round Knitted Pouf",
       "price": 2599,
@@ -402,7 +392,7 @@
       "image": "https://m.media-amazon.com/images/I/61KYFBwRQBL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 47,
+      "id": "47",
       "name": "Filing Cabinet",
       "title": "3-Drawer Wooden Filing Cabinet",
       "price": 7999,
@@ -410,7 +400,7 @@
       "image": "https://m.media-amazon.com/images/I/71TEz+XGy4L._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 48,
+      "id": "48",
       "name": "Daybed",
       "title": "Wooden Daybed with Cushions",
       "price": 17999,
@@ -418,7 +408,7 @@
       "image": "https://m.media-amazon.com/images/I/718NN8GzkhL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 49,
+      "id": "49",
       "name": "Wine Rack",
       "title": "Freestanding Wooden Wine Rack",
       "price": 4599,
@@ -426,7 +416,7 @@
       "image": "https://m.media-amazon.com/images/I/61oVE2CUv+L._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 50,
+      "id": "50",
       "name": "Hall Tree",
       "title": "Wooden Hall Tree with Hooks",
       "price": 10499,
@@ -434,7 +424,7 @@
       "image": "https://m.media-amazon.com/images/I/81NxwrCh6WL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 51,
+      "id": "51",
       "name": "Dining Hutch",
       "title": "Wooden Dining Hutch Cabinet",
       "price": 18999,
@@ -443,17 +433,16 @@
       "category": "Dining"
     },
     {
-      "id": 52,
+      "id": "52",
       "name": "Storage Trunk",
       "title": "Vintage Wooden Storage Trunk",
       "price": 6499,
       "description": "Classic storage trunk with iron handles, ideal for blankets and accessories.",
       "image": "hhttps://m.media-amazon.com/images/I/61SmBsqTORL._AC_UL480_FMwebp_QL65_.jpg",
       "category": "Storage"
-
     },
     {
-      "id": 53,
+      "id": "53",
       "name": "Swivel Chair",
       "title": "Leather Swivel Office Chair",
       "price": 9999,
@@ -461,27 +450,25 @@
       "image": "https://m.media-amazon.com/images/I/81Ka6FAoh2L._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 54,
+      "id": "54",
       "name": "Breakfast Table",
       "title": "2-Seater Breakfast Nook Table",
       "price": 8499,
       "description": "Compact wooden breakfast table with two matching stools.",
       "image": "https://m.media-amazon.com/images/I/61mYngHWKMS._AC_UY327_FMwebp_QL65_.jpg",
       "category": "Dining"
-
     },
     {
-      "id": 55,
+      "id": "55",
       "name": "Display Shelf",
       "title": "Geometric Wall Display Shelf",
       "price": 3599,
       "description": "Modern wall-mounted shelf with geometric design for books and décor.",
       "image": "https://m.media-amazon.com/images/I/61kt+g-FuUL._AC_UL480_FMwebp_QL65_.jpg",
       "category": "Living"
-
     },
     {
-      "id": 56,
+      "id": "56",
       "name": "Garden Swing",
       "title": "2-Seater Outdoor Swing Chair",
       "price": 12499,
@@ -489,7 +476,7 @@
       "image": "https://m.media-amazon.com/images/I/71szVyUHjDL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 57,
+      "id": "57",
       "name": "Office Desk",
       "title": "Corner Wooden Office Desk",
       "price": 14999,
@@ -497,7 +484,7 @@
       "image": "https://m.media-amazon.com/images/I/813NRjUFs2L._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 58,
+      "id": "58",
       "name": "Accent Cabinet",
       "title": "Rustic Wooden Accent Cabinet",
       "price": 10999,
@@ -505,7 +492,7 @@
       "image": "https://m.media-amazon.com/images/I/51SlCXkVkyL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 59,
+      "id": "59",
       "name": "Laundry Basket",
       "title": "Bamboo Laundry Hamper",
       "price": 2999,
@@ -513,7 +500,7 @@
       "image": "https://m.media-amazon.com/images/I/81xUmceJfAL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 60,
+      "id": "60",
       "name": "Room Divider",
       "title": "Foldable Wooden Room Divider",
       "price": 7499,
@@ -521,7 +508,7 @@
       "image": "https://m.media-amazon.com/images/I/71x+UwMzrnL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 61,
+      "id": "61",
       "name": "Nest of Tables",
       "title": "Set of 3 Wooden Nesting Tables",
       "price": 5499,
@@ -529,7 +516,7 @@
       "image": "https://m.media-amazon.com/images/I/61gVH7OggIL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 62,
+      "id": "62",
       "name": "Massage Chair",
       "title": "Full Body Recliner Massage Chair",
       "price": 45999,
@@ -537,7 +524,7 @@
       "image": "https://m.media-amazon.com/images/I/41keyL9njTL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 63,
+      "id": "63",
       "name": "Entryway Table",
       "title": "Rustic Wooden Entryway Console",
       "price": 8799,
@@ -545,7 +532,7 @@
       "image": "https://m.media-amazon.com/images/I/61QZu8+VE4L._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 64,
+      "id": "64",
       "name": "Hanging Shelf",
       "title": "Wall-Mounted Rope Hanging Shelf",
       "price": 2499,
@@ -553,7 +540,7 @@
       "image": "https://m.media-amazon.com/images/I/81py3y75KnL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 65,
+      "id": "65",
       "name": "Kids Study Table",
       "title": "Adjustable Kids Study Desk with Chair",
       "price": 6999,
@@ -561,7 +548,7 @@
       "image": "https://m.media-amazon.com/images/I/71Di1+V51kL._AC_UY327_FMwebp_QL65_.jpg"
     },
     {
-      "id": 66,
+      "id": "66",
       "name": "Kitchen Cabinet",
       "title": "Modular Kitchen Storage Cabinet",
       "price": 11999,
@@ -569,7 +556,7 @@
       "image": "https://m.media-amazon.com/images/I/610ltxZmb-L._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 67,
+      "id": "67",
       "name": "TV Recliner Sofa",
       "title": "2-Seater Recliner Sofa",
       "price": 25999,
@@ -577,7 +564,7 @@
       "image": "https://m.media-amazon.com/images/I/71coqr8j97L._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 68,
+      "id": "68",
       "name": "Workstation Desk",
       "title": "Dual Monitor Computer Workstation",
       "price": 16499,
@@ -585,7 +572,7 @@
       "image": "https://m.media-amazon.com/images/I/6138Uosc7DL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 69,
+      "id": "69",
       "name": "Garden Table Set",
       "title": "Outdoor Patio Table with 4 Chairs",
       "price": 13999,
@@ -593,7 +580,7 @@
       "image": "https://m.media-amazon.com/images/I/71eAZ+qqHDL._AC_UL480_FMwebp_QL65_.jpg"
     },
     {
-      "id": 70,
+      "id": "70",
       "name": "Pet Bed",
       "title": "Wooden Pet Bed with Cushion",
       "price": 3499,
@@ -607,6 +594,12 @@
       "name": "Abhijith",
       "email": "abhijith@gmail.com",
       "password": "1234567"
+    },
+    {
+      "id": "3403",
+      "name": "a",
+      "email": "abhijithh@gmail.com",
+      "password": "12345678"
     }
   ]
 }
