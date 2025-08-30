@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+// src/Pages/CartContext.jsx
+import { createContext, useState } from "react";
 
 export const CartContext = createContext();
 
@@ -10,7 +11,6 @@ export const CartProvider = ({ children }) => {
     setCart((prev) => {
       const exists = prev.find((item) => item.id === product.id);
       if (exists) {
-        // Increase quantity
         return prev.map((item) =>
           item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         );
@@ -24,15 +24,20 @@ export const CartProvider = ({ children }) => {
     setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
-  // Update qty
-  const updateQty = (id, qty) => {
+  // Update quantity
+  const updateQuantity = (id, qty) => {
     setCart((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, quantity: qty } : item))
+      prev.map((item) =>
+        item.id === id ? { ...item, quantity: Math.max(1, qty) } : item
+      )
     );
   };
 
+  // Total
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQty }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, total }}>
       {children}
     </CartContext.Provider>
   );

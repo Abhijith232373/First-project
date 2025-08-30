@@ -593,13 +593,27 @@
       "id": "66b4",
       "name": "Abhijith",
       "email": "abhijith@gmail.com",
-      "password": "1234567"
+      "password": "1234567",
+      "wishlist": [
+        {
+          "id": "2",
+          "name": "Dining Table",
+          "title": "6-Seater Wooden Dining Table",
+          "price": 18999,
+          "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
+          "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
+          "category": "Dining"
+        }
+      ],
+      "cart": []
     },
     {
       "id": "3403",
       "name": "a",
       "email": "abhijithh@gmail.com",
-      "password": "12345678"
+      "password": "12345678",
+      "wishlist": [],
+      "cart": []
     }
   ]
 }

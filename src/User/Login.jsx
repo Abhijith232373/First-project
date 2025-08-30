@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { AuthContext } from "../Pages/AuthContext";  // ⬅ import context
+
+
+
+
+
+
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext); // ⬅ get login function
 
   return (
     <div className="absolute inset-0 bg-[url('src/assets/img1.jpg')] bg-cover bg-center ">
@@ -35,7 +43,13 @@ const Login = () => {
 
               if (res.data.length > 0) {
                 alert("Login Successful ✅");
+
+                // Save user to localStorage
                 localStorage.setItem("user", JSON.stringify(res.data[0]));
+
+                // 🔥 Immediately update AuthContext state
+                login(res.data[0]);
+
                 resetForm();
                 navigate("/"); // redirect to homepage
               } else {

@@ -5,7 +5,8 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CloseIcon from "@mui/icons-material/Close";
 import CircularProgress from "@mui/material/CircularProgress";
-import { CartContext } from "./CartContext";
+import { CartContext } from "../Context/CartContext";
+import NavBar from "../OpenUi/NavBar";
 
 const Living = () => {
   const { addToCart } = useContext(CartContext);
@@ -55,6 +56,9 @@ const Living = () => {
   }, [scrollLoading, visibleCount, products.length]);
 
   return (
+    <>
+    <NavBar/>
+    
     <div className="px-6 py-12 bg-gray-50 min-h-screen relative mt-24">
       <h2 className="text-4xl font-extrabold mb-6 text-center text-gray-800">
         🛋 Living Collection
@@ -153,6 +157,7 @@ const Living = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 
