@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
+import { useNavigate } from "react-router-dom"; // ✅ Import navigation hook
 
 const Cart = () => {
   const { cart, updateQuantity, removeFromCart } = useContext(CartContext);
+  const navigate = useNavigate(); // ✅ to redirect user
 
-  // Calculate total price
-  const total = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  // Calculate total price & total items
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   if (cart.length === 0) {
     return (
@@ -19,7 +19,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="p-6">
+    <div className="p-6 pb-28"> {/* extra bottom padding for sticky footer */}
       <h2 className="text-3xl font-bold mb-6">Your Cart</h2>
 
       <div className="space-y-4">
@@ -76,10 +76,20 @@ const Cart = () => {
         ))}
       </div>
 
-      {/* Total */}
-      <div className="mt-6 flex justify-between items-center text-xl font-bold">
-        <span>Total:</span>
-        <span>₹{total}</span>
+      {/* Sticky Checkout Footer */}
+      <div className="fixed bottom-0 left-0 w-full bg-white shadow-lg border-t px-6 py-4 flex justify-between items-center">
+        <div>
+          <p className="text-gray-600 text-sm">
+            Total ({totalItems} items):
+          </p>
+          <p className="text-xl font-bold text-gray-800">₹{total}</p>
+        </div>
+        <button
+          onClick={() => navigate("/buydetails")} // ✅ redirect to BuyDetails
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition"
+        >
+          Place Order
+        </button>
       </div>
     </div>
   );

@@ -25,6 +25,7 @@ const Banners = () => {
     pagination={{ clickable: true }}
     className="w-full h-full"
   >
+    
     <SwiperSlide>
       <img src={HomeInteriors} alt="Home Interiors" className="w-full h-full object-cover rounded-lg sm:rounded-xl lg:rounded-2xl" />
     </SwiperSlide>

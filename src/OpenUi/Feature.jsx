@@ -73,8 +73,7 @@ const Future = () => {
 
  {/* Explore Now Link */}
               <div className="flex justify-center py-3">
-                <a
-                  href="#"
+               <a href='/products'
                   className="px-4 py-2 text-sm font-semibold rounded-lg bg-gray-800 text-white hover:bg-gray-900 transition duration-300"
                 >
                   Explore Now

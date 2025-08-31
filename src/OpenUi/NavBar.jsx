@@ -1,33 +1,37 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { CartContext } from "../Context/CartContext";
 import { AuthContext } from "../Pages/AuthContext";
 import { WishlistContext } from "../Context/WishlistContext";
-import { SearchContext } from "../Context/SearchContext"; // ⬅ new search context
-import { Link } from "react-router-dom";
+import { SearchContext } from "../Context/SearchContext";
 
 const NavBar = () => {
   const { wishlist } = useContext(WishlistContext);
   const { cart } = useContext(CartContext);
   const { isLoggedIn, logout } = useContext(AuthContext);
-  const { query, setQuery } = useContext(SearchContext); // ⬅ use search context
+  const { query, setQuery } = useContext(SearchContext);
 
   const [showNav, setShowNav] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  const NavStyle = `relative inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px] 
-    after:bg-black after:transition-all after:duration-400 hover:after:w-full hover:cursor-pointer`;
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Active link underline
+  const NavStyle = (path) =>
+    `relative inline-block px-2 py-1 text-[15px] after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] 
+     after:bg-blue-600 after:transition-all after:duration-300 hover:after:w-full hover:text-blue-600 hover:cursor-pointer ${
+       location.pathname === path ? "text-blue-600 font-semibold after:w-full" : "text-gray-700"
+     }`;
 
   // hide/show navbar on scroll
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
-        setShowNav(false);
-      } else {
-        setShowNav(true);
-      }
+      if (window.scrollY > lastScrollY) setShowNav(false);
+      else setShowNav(true);
       setLastScrollY(window.scrollY);
     };
 
@@ -35,84 +39,107 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  // handle search enter key
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      navigate("/products");
+    }
+  };
+
   return (
-    <div>
-      <nav
-        className={`fixed top-0 left-0 w-full flex flex-wrap justify-between items-center px-6 bg-amber-50 h-16 font-serif rounded-b-lg shadow-md transition-transform duration-300 z-50 ${
-          showNav ? "translate-y-0" : "-translate-y-full"
-        }`}
-      >
-        {/* Left Links */}
-        <div className="flex space-x-6">
-          <div className={NavStyle}>Dummy</div>
+    <nav
+      className={`fixed top-0 left-0 w-full flex justify-between items-center px-6 bg-white h-16 shadow-md transition-transform duration-300 z-50 ${
+        showNav ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
+      {/* LEFT: Logo */}
+      <div className="flex items-center gap-6">
+        <Link to="/">
+          <img
+            src="src/assets/logo/Home4u-logo-transparent.png"
+            alt="Home4U Logo"
+            className="h-18 w-auto object-contain"
+          />
+        </Link>
+
+        {/* Nav Links */}
+        <div className="hidden md:flex space-x-6">
           <Link to="/products">
-            <div className={NavStyle}>Shop All</div>
+            <div className={NavStyle("/products")}>Shop All</div>
           </Link>
           <Link to="/living">
-            <div className={NavStyle}>Living</div>
+            <div className={NavStyle("/living")}>Living</div>
           </Link>
           <Link to="/dining">
-            <div className={NavStyle}>Dining</div>
+            <div className={NavStyle("/dining")}>Dining</div>
           </Link>
-          <div className={NavStyle}>Bedroom</div>
+          <Link to="/bedroom">
+            <div className={NavStyle("/bedroom")}>Bedroom</div>
+          </Link>
           <Link to="/storage">
-            <div className={NavStyle}>Storage</div>
+            <div className={NavStyle("/storage")}>Storage</div>
           </Link>
-          <div className={NavStyle}>HomeDecor</div>
+          <Link to="/homedecor">
+            <div className={NavStyle("/homedecor")}>Home Decor</div>
+          </Link>
+          <Link to="/kitchen">
+            <div className={NavStyle("/kitchen")}>Kitchen</div>
+          </Link>
         </div>
+      </div>
 
+      {/* RIGHT: Search + Icons */}
+      <div className="flex items-center gap-5">
         {/* Search */}
         <input
           type="text"
           placeholder="Search..."
           value={query}
-          onChange={(e) => setQuery(e.target.value)} // ⬅ store in context
-          className="px-3 py-1 rounded-lg outline-none border focus:ring-2 focus:ring-blue-600 mt-2 md:mt-0 w-full md:w-60"
+          onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={handleKeyDown}
+          className="px-3 py-1 rounded-lg outline-none border focus:ring-2 focus:ring-blue-600 hidden md:block w-60"
         />
 
-        {/* Right Icons */}
-        <div className="flex items-center gap-5 mt-2 md:mt-0 relative">
-          {/* Show User Icon only if NOT logged in */}
-          {!isLoggedIn && (
-            <Link to="/user">
-              <img
-                src="src/assets/Navbar/user.svg"
-                alt="user"
-                className="w-6 h-6"
-              />
-            </Link>
-          )}
-
-          {/* Cart */}
-          <Link to="/cart" className="relative">
-            <ShoppingCartIcon className="text-gray-700 w-6 h-6" />
-            {cart.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full px-2 py-0.5">
-                {cart.reduce((total, item) => total + item.quantity, 0)}
-              </span>
-            )}
-          </Link>
-
-          {/* Wishlist */}
-          <Link to="/wishlist" className="relative">
-            <FavoriteBorderIcon className="text-gray-700 w-6 h-6" />
-            {wishlist.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1">
-                {wishlist.length}
-              </span>
-            )}
-          </Link>
-
-          {/* Show Logout only if logged in */}
-          {isLoggedIn && (
-            <LogoutIcon
-              onClick={logout}
-              className="cursor-pointer text-gray-700 w-6 h-6"
+        {/* Icons */}
+        {!isLoggedIn && (
+          <Link to="/user">
+            <img
+              src="src/assets/Navbar/user.svg"
+              alt="user"
+              className="w-6 h-6"
             />
+          </Link>
+        )}
+
+        {/* Cart */}
+        <Link to="/cart" className="relative">
+          <ShoppingCartIcon className="text-gray-700 w-6 h-6" />
+          {cart.length > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full px-2 py-0.5">
+              {cart.reduce((total, item) => total + item.quantity, 0)}
+            </span>
           )}
-        </div>
-      </nav>
-    </div>
+        </Link>
+
+        {/* Wishlist */}
+        <Link to="/wishlist" className="relative">
+          <FavoriteBorderIcon className="text-gray-700 w-6 h-6" />
+          {wishlist.length > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1">
+              {wishlist.length}
+            </span>
+          )}
+        </Link>
+
+        {/* Logout */}
+        {isLoggedIn && (
+          <LogoutIcon
+            onClick={logout}
+            className="cursor-pointer text-gray-700 w-6 h-6"
+          />
+        )}
+      </div>
+    </nav>
   );
 };
 

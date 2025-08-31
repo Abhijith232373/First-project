@@ -34,12 +34,16 @@ const Footer = () => {
 
           {/* Column 1 */}
           <ul className="font-serif space-y-2">
-            <li className="font-semibold text-white">Dummy name</li>
+            <li className="font-semibold text-white">    <img
+            src="src\assets\logo\Home4u-logo.png"
+            alt="Home4U Logo"
+            className="h-12 w-auto object-contain rounded-4xl"
+          /></li>
             <li className='text-white'>Head Office</li>
             <li className='text-white'>MC Road Kottayam, 686633</li>
             <li className='text-white'>Kalikavu</li>
             <li className={stylesh}>Call us : 1300 228 252</li><br />
-            <li className={stylesh}>Email: Dummy@gmail.com</li>
+            <li className={stylesh}>Email: Home4u@gmail.com</li>
             <div className="flex justify-center md:justify-start gap-3 mt-2">
               <FacebookIcon className='text-white' />
               <InstagramIcon className='text-white' />
@@ -56,7 +60,6 @@ const Footer = () => {
             <li className={stylesh}>Bedroom</li><br />
             <li className={stylesh}>Storage</li><br />
             <li className={stylesh}>Home Decor</li><br />
-            <li className={stylesh}>Alphingation Outlet</li>
           </ul>
 
           {/* Column 3 */}
