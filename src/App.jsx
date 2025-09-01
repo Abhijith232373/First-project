@@ -1,35 +1,45 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { AuthProvider } from "./Pages/AuthContext";
+// App.jsx
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+
+// Contexts
+import { AuthProvider } from "./Context/AuthContext";
+import { CartProvider } from "./Context/CartContext";
 import { WishlistProvider } from "./Context/WishlistContext";
 import { SortProvider } from "./Context/SortContext";
 import { ProductFilterProvider } from "./Context/ProductFilterContext";
-import {SearchProvider} from './Context/SearchContext'
+import { SearchProvider } from "./Context/SearchContext";
 
-
-import HomePage from './Pages/HomePage'
-import Login from './User/Login'
-import SignUp from "./User/SignUp"
-import Products from "./Components/Products"
-import Dining from "./Components/Dining"
-import Living from "./Components/Living"
-import Storage from "./Components/Storage"
-import WishlistPage from './Pages/WishlistPage'
-import Cart from './Pages/Cart'
+// Pages / Components
+import HomePage from './Pages/HomePage';
+import Login from './User/Login';
+import SignUp from "./User/SignUp";
+import Products from "./Components/Products";
+import Dining from "./Components/Dining";
+import Living from "./Components/Living";
+import Storage from "./Components/Storage";
+import WishlistPage from './Pages/WishlistPage';
+import Cart from './Pages/Cart';
 import Bedroom from "./Components/BedRoom";
 import HomeDecor from "./Components/HomeDecor";
 import Kitchen from "./Components/Kitchen";
 import BuyDetails from "./Pages/BuyDetails";
-function App() {
+import Orders from "./Pages/Orders";
 
+function App() {
   return (
-    <>
-      <AuthProvider>
+    <AuthProvider>
+      <CartProvider>
         <WishlistProvider>
           <SortProvider>
             <ProductFilterProvider>
               <SearchProvider>
+                <Toaster position="top-right" reverseOrder={false} />
+
 
                 <Routes>
+
+
                   <Route path='/' element={<HomePage />} />
                   <Route path='/user' element={<Login />} />
                   <Route path='/signup' element={<SignUp />} />
@@ -43,17 +53,16 @@ function App() {
                   <Route path="/wishlist" element={<WishlistPage />} />
                   <Route path="/cart" element={<Cart />} />
                   <Route path="/buydetails" element={<BuyDetails />} />
+                  <Route path="/orders" element={<Orders/>}/>
 
                 </Routes>
-
-
               </SearchProvider>
             </ProductFilterProvider>
           </SortProvider>
         </WishlistProvider>
-      </AuthProvider>
-    </>
-  )
+      </CartProvider>
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;

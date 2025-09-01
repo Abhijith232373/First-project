@@ -14,35 +14,47 @@ import SofaBeds from "../assets/Banners/Sofa_Cum_Beds_Slidehsow-min.png";
 
 const Banners = () => {
   return (
-    <div className="w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-screen p-2 sm:p-4 md:p-8 lg:p-12 mt-6 sm:mt-8 md:mt-10 lg:mt-12">
-  <Swiper
-    modules={[Autoplay, Pagination]}
-    autoplay={{
-      delay: 4000,
-      disableOnInteraction: false,
-    }}
-    loop={true}
-    pagination={{ clickable: true }}
-    className="w-full h-full"
-  >
-    
-    <SwiperSlide>
-      <img src={HomeInteriors} alt="Home Interiors" className="w-full h-full object-cover rounded-lg sm:rounded-xl lg:rounded-2xl" />
-    </SwiperSlide>
-    <SwiperSlide>
-      <img src={Dining} alt="Dining Sets" className="w-full h-full object-cover rounded-lg sm:rounded-xl lg:rounded-2xl" />
-    </SwiperSlide>
-    <SwiperSlide>
-      <img src={Storage} alt="Storage Beds" className="w-full h-full object-cover rounded-lg sm:rounded-xl lg:rounded-2xl" />
-    </SwiperSlide>
-    <SwiperSlide>
-      <img src={SofaBeds} alt="Sofa Beds" className="w-full h-full object-cover rounded-lg sm:rounded-xl lg:rounded-2xl" />
-    </SwiperSlide>
-  </Swiper>
-</div>
-
-
-    
+    <div className="w-full h-[30vh] sm:h-[40vh] md:h-[60vh] lg:h-[80vh] xl:h-screen mt-4 sm:mt-6 md:mt-10">
+      <Swiper
+        modules={[Autoplay, Pagination]}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
+        loop={true}
+        pagination={{ clickable: true }}
+        className="w-full h-full"
+      >
+        <SwiperSlide>
+          <img
+            src={HomeInteriors}
+            alt="Home Interiors"
+            className="w-full h-full object-cover rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src={Dining}
+            alt="Dining Sets"
+            className="w-full h-full object-cover rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src={Storage}
+            alt="Storage Beds"
+            className="w-full h-full object-cover rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src={SofaBeds}
+            alt="Sofa Beds"
+            className="w-full h-full object-cover rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl"
+          />
+        </SwiperSlide>
+      </Swiper>
+    </div>
   );
 };
 

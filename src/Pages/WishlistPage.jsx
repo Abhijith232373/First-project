@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { WishlistContext } from "../Context/WishlistContext";
-import { CartContext } from "../Context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 const WishlistPage = () => {
   const { wishlist, removeFromWishlist } = useContext(WishlistContext);
-  const { addToCart } = useContext(CartContext);
+  const navigate = useNavigate();
 
   if (wishlist.length === 0) {
     return (
@@ -39,12 +39,12 @@ const WishlistPage = () => {
             <div className="mt-auto flex gap-3">
               <button
                 onClick={() => {
-                  addToCart(item);
-                  removeFromWishlist(item.id);
+                  // ✅ Redirect to buydetails with item info
+                  navigate("/buydetails", { state: { product: item } });
                 }}
-                className="flex-1 px-3 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+                className="flex-1 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
               >
-                🛒 Add to Cart
+                ⚡ Buy Now
               </button>
 
               <button

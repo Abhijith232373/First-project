@@ -76,14 +76,21 @@ const Storage = () => {
     return Math.round(((originalPrice - price) / originalPrice) * 100);
   };
 
-  // ✅ Handle Add to Cart -> Show loading -> Navigate to Cart
+  // ✅ Handle Add to Cart -> If logged in -> add & redirect, else -> go to /user
   const handleAddToCart = (item) => {
+    const user = localStorage.getItem("user"); // 👈 check login state
+
+    if (!user) {
+      navigate("/user"); // not logged in -> go to login/signup
+      return;
+    }
+
     setLoadingProductId(item.id);
     setTimeout(() => {
       addToCart(item);
       setLoadingProductId(null);
-      navigate("/cart"); // ✅ Redirect to Cart page
-    }, 1000); // simulate loading
+      navigate("/cart"); // ✅ logged in -> go to cart
+    }, 1000);
   };
 
   return (
@@ -148,7 +155,6 @@ const Storage = () => {
                   <h3 className="text-lg font-semibold text-gray-900 truncate">
                     {item.name}
                   </h3>
-                  <p className="text-sm text-gray-500 truncate">{item.title}</p>
                   <div className="flex items-center space-x-2 mt-2">
                     <span className="text-gray-400 line-through text-sm">
                       ₹{item.price + 5000}

@@ -1,12 +1,14 @@
+// src/OpenUi/NavBar.jsx
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { CartContext } from "../Context/CartContext";
-import { AuthContext } from "../Pages/AuthContext";
+import { AuthContext } from "../Context/AuthContext";
 import { WishlistContext } from "../Context/WishlistContext";
 import { SearchContext } from "../Context/SearchContext";
+import toast from "react-hot-toast"; // ✅ Toast for alerts
 
 const NavBar = () => {
   const { wishlist } = useContext(WishlistContext);
@@ -46,6 +48,13 @@ const NavBar = () => {
     }
   };
 
+  // handle logout with toast
+  const handleLogout = () => {
+    logout();
+    toast.error("Logged out  👋");
+    navigate("/"); // redirect home
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 w-full flex justify-between items-center px-6 bg-white h-16 shadow-md transition-transform duration-300 z-50 ${
@@ -58,7 +67,7 @@ const NavBar = () => {
           <img
             src="src/assets/logo/Home4u-logo-transparent.png"
             alt="Home4U Logo"
-            className="h-18 w-auto object-contain"
+            className="h-12 w-auto object-contain" // ✅ fixed Tailwind size
           />
         </Link>
 
@@ -97,10 +106,10 @@ const NavBar = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
-          className="px-3 py-1 rounded-lg outline-none border focus:ring-2 focus:ring-blue-600 hidden md:block w-60"
+          className="px-3 py-1 rounded-lg outline-none border focus:ring-1 hidden md:block w-60"
         />
 
-        {/* Icons */}
+        {/* User Login */}
         {!isLoggedIn && (
           <Link to="/user">
             <img
@@ -125,7 +134,7 @@ const NavBar = () => {
         <Link to="/wishlist" className="relative">
           <FavoriteBorderIcon className="text-gray-700 w-6 h-6" />
           {wishlist.length > 0 && (
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1">
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full px-2 py-0.5">
               {wishlist.length}
             </span>
           )}
@@ -134,7 +143,7 @@ const NavBar = () => {
         {/* Logout */}
         {isLoggedIn && (
           <LogoutIcon
-            onClick={logout}
+            onClick={handleLogout}
             className="cursor-pointer text-gray-700 w-6 h-6"
           />
         )}

@@ -1,7 +1,8 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { AuthContext } from "../Pages/AuthContext"; // logged-in user context
+import { AuthContext } from "./AuthContext"; // logged-in user context
 import { CartContext } from "./CartContext"; // for addToCart
+import toast from "react-hot-toast";
 
 export const WishlistContext = createContext();
 
@@ -37,7 +38,7 @@ export const WishlistProvider = ({ children }) => {
   // ✅ Toggle (add/remove)
   const toggleWishlist = async (product) => {
     if (!user) {
-      alert("Please login to add items to wishlist");
+      toast.error("Please login to add items to wishlist")
       return;
     }
 

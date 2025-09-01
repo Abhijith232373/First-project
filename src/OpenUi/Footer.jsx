@@ -2,20 +2,21 @@ import React from 'react'
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import XIcon from '@mui/icons-material/X';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const stylesh = `relative text-white inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px]
+  const stylesh = `relative text-sm text-white inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px]
    after:bg-white after:transition-all after:duration-300 hover:after:w-full hover:cursor-pointer`;
 
   return (
     <div className="w-full">
       {/* Top Section */}
       <div className="w-full bg-amber-50 flex flex-col md:flex-row justify-around items-center text-center font-serif py-6 gap-6">
-        <div>
+       <Link to='/orders' ><div>
           <img className="w-[60px] mx-auto" src="src/assets/Footer/fast-shipping-filled.webp" alt="Fast Shipping" />
-          <p className="font-semibold">Fast Shipping</p>
+          <p className="font-semibold">Your Orders</p>
           <p className="text-sm">48-Hour Dispatch on Selected items</p>
-        </div>
+        </div></Link> 
         <div>
           <img className="w-[60px] mx-auto" src="src/assets/Footer/family-owned-operated-filled.webp" alt="Happy Customers" />
           <p className="font-semibold">Happy Customers</p>

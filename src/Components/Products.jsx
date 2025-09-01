@@ -4,6 +4,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CloseIcon from "@mui/icons-material/Close";
 import CircularProgress from "@mui/material/CircularProgress";
+import { useNavigate } from "react-router-dom";
 
 // 👉 Contexts
 import { SearchContext } from "../Context/SearchContext";
@@ -28,6 +29,9 @@ const Products = () => {
 
   const [visibleCount, setVisibleCount] = useState(8);
   const [scrollLoading, setScrollLoading] = useState(false);
+
+  const [addingId, setAddingId] = useState(null); // ✅ track which product is adding
+  const navigate = useNavigate();
 
   // Fetch Products
   useEffect(() => {
@@ -99,14 +103,29 @@ const Products = () => {
     return { mrp, discount };
   };
 
+  // ✅ Handle Add to Cart with loading + login check + redirect
+  const handleAddToCart = (e, item) => {
+    e.stopPropagation();
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      window.location.href = "/user"; // redirect if not logged in
+      return;
+    }
+
+    setAddingId(item.id); // show loading on that button
+    addToCart(item);
+
+    setTimeout(() => {
+      setAddingId(null);
+      navigate("/cart"); // redirect after adding
+    }, 1000);
+  };
+
   return (
     <>
       <NavBar />
       <div className="px-6 py-12 bg-gray-50 min-h-screen mt-10">
-        {/* <h2 className="text-4xl font-extrabold mb-6 text-center text-gray-800">
-          ✨ Furniture Collection ✨
-        </h2> */}
-
         {/* Filter & Sort */}
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
           <select
@@ -119,8 +138,8 @@ const Products = () => {
             <option value="Bedroom">🛏️ Bedroom</option>
             <option value="Dining">🍽️ Dining</option>
             <option value="Storage">📦 Storage</option>
-            <option value="Homedecor">📦 HomeDecor</option>
-            <option value="Kitchen">📦 Kitchen</option>
+            <option value="Homedecor">🏠 HomeDecor</option>
+            <option value="Kitchen">🍳 Kitchen</option>
           </select>
 
           <select
@@ -152,7 +171,7 @@ const Products = () => {
                       className="relative group bg-white rounded-2xl shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition overflow-hidden cursor-pointer"
                       onClick={() => setSelectedProduct(item)}
                     >
-                      {/* Discount badge on hover */}
+                      {/* Discount badge */}
                       <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-tr-lg rounded-bl-lg opacity-0 group-hover:opacity-100 transition">
                         {discount}% OFF
                       </div>
@@ -165,7 +184,7 @@ const Products = () => {
                         }}
                         className={`absolute top-2 right-2 rounded-full p-2 shadow transition z-10 ${
                           wishlist.find((p) => p.id === item.id)
-                            ? "bg-red-100"
+                            ? "bg-red-400"
                             : "bg-white"
                         }`}
                       >
@@ -173,7 +192,7 @@ const Products = () => {
                           className={`${
                             wishlist.find((p) => p.id === item.id)
                               ? "text-red-500"
-                              : "text-gray-600"
+                              : "text-gray-800"
                           }`}
                         />
                       </button>
@@ -192,17 +211,25 @@ const Products = () => {
                           <p className="text-xl font-bold text-blue-600">
                             ₹{item.price}
                           </p>
-                          <p className="text-sm line-through text-gray-400">₹{mrp}</p>
+                          <p className="text-sm line-through text-gray-400">
+                            ₹{mrp}
+                          </p>
                         </div>
+
+                        {/* ✅ Add to Cart Button */}
                         <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            addToCart(item);
-                          }}
+                          onClick={(e) => handleAddToCart(e, item)}
+                          disabled={addingId === item.id}
                           className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2"
                         >
-                          <ShoppingCartIcon fontSize="small" />
-                          Add to Cart
+                          {addingId === item.id ? (
+                            <CircularProgress size={20} color="inherit" />
+                          ) : (
+                            <>
+                              <ShoppingCartIcon fontSize="small" />
+                              Add to Cart
+                            </>
+                          )}
                         </button>
                       </div>
                     </div>

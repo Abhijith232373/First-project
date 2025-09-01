@@ -7,7 +7,7 @@ const ItemsBanners = () => {
     { id: 1, img: "src/assets/ItemsBanners/storage.jpg", title: "Storage", path: "/storage" },
     { id: 2, img: "src/assets/ItemsBanners/sofas.webp", title: "Living", path: "/Living" },
     { id: 3, img: "src/assets/ItemsBanners/dining-room.webp", title: "Dining Room", path: "/dining" },
-    { id: 4, img: "src/assets/ItemsBanners/ki.jpg", title: "kitchen", path: "/kitchen" },
+    { id: 4, img: "src/assets/ItemsBanners/ki.jpg", title: "Kitchen", path: "/kitchen" },
     { id: 5, img: "src/assets/ItemsBanners/bedroom.webp", title: "Bedroom", path: "/bedroom" },
     { id: 6, img: "src/assets/ItemsBanners/homedecor.jpg", title: "Home Decor", path: "/homedecor" },
   ];
@@ -32,7 +32,15 @@ const ItemsBanners = () => {
               />
 
               {/* Overlay with text */}
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col items-center justify-center text-center text-white">
+              <div
+                className="
+                  absolute inset-0 
+                  bg-black/40 
+                  flex flex-col items-center justify-center text-center text-white
+                  opacity-100 sm:opacity-0 sm:group-hover:opacity-100 
+                  transition duration-500
+                "
+              >
                 <h2 className="text-2xl font-semibold mb-2 drop-shadow-lg">
                   {item.title}
                 </h2>
