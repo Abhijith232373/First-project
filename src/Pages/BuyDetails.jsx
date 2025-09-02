@@ -1,14 +1,19 @@
+// src/Pages/BuyDetails.jsx
 import React, { useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
 import { AuthContext } from "../Context/AuthContext";
+import { OrderContext } from "../Context/OrderContext";
 
 const BuyDetails = () => {
   const { cart, clearCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
+  const { addOrder } = useContext(OrderContext);
   const navigate = useNavigate();
+
+  
 
   const initialValues = {
     name: user?.name || "",
@@ -34,23 +39,29 @@ const BuyDetails = () => {
       return;
     }
 
-    const newOrder = {
+    const orderData = {
       id: Date.now(),
       userId: user.id,
-      details: values,
+      details: {
+        name: values.name,
+        phone: values.phone,
+        address: `${values.address}, ${values.locality}, ${values.district}, ${values.state}, ${values.pincode}, Landmark: ${values.landmark}`,
+      },
       items: cart,
+      payment: values.payment,
       date: new Date().toLocaleString(),
     };
 
-    // Save to localStorage
-    const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
-    const updatedOrders = [...existingOrders, newOrder];
-    localStorage.setItem("orders", JSON.stringify(updatedOrders));
+    // Add order to global context
+    addOrder(orderData);
 
+    // Clear cart & show success
     clearCart();
     toast.success("✅ Order Placed Successfully!");
     resetForm();
-    setTimeout(() => navigate("/orders"), 1000); // redirect to Orders page
+
+    // Navigate to Orders page
+    navigate("/orders");
   };
 
   return (
@@ -83,7 +94,9 @@ const BuyDetails = () => {
                       Qty: {item.quantity || 1}
                     </p>
                   </div>
-                  <p className="font-semibold text-gray-800">₹{item.price}</p>
+                  <p className="font-semibold text-gray-800">
+                    ₹{item.price * (item.quantity || 1)}
+                  </p>
                 </div>
               ))}
             </div>
@@ -122,6 +135,15 @@ const BuyDetails = () => {
                       </div>
                     )
                   )}
+                  <div className="md:col-span-2">
+                    <label className="block font-medium mb-1">Locality</label>
+                    <Field
+                      name="locality"
+                      placeholder="Locality / Area"
+                      className="w-full p-2 border rounded-md"
+                      required
+                    />
+                  </div>
                   <div className="md:col-span-2">
                     <label className="block font-medium mb-1">Address</label>
                     <Field

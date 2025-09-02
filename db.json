@@ -754,43 +754,9 @@
           "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167"
         }
       ],
-      "cart": [
-        {
-          "id": "13",
-          "name": "Shoe Rack",
-          "title": "Multi-Layer Wooden Shoe Rack",
-          "price": 3499,
-          "description": "Durable shoe organizer with multiple tiers and compact design.",
-          "image": "https://m.media-amazon.com/images/I/81GCXMdcliL._AC_UL480_FMwebp_QL65_.jpg",
-          "category": "Storage",
-          "quantity": 1
-        }
-      ],
-      "orders": []
-    },
-    {
-      "id": "9597",
-      "name": "aruna",
-      "email": "aruna@gmail.com",
-      "password": "12345678"
-    },
-    {
-      "id": "275f",
-      "name": "aruna",
-      "email": "aruna@gmail.com",
-      "password": "87654321"
-    },
-    {
-      "id": "e0c8",
-      "name": "aruna",
-      "email": "arunapr@gmail.com",
-      "password": "87654321"
-    },
-    {
-      "id": "658f",
-      "name": "aruna",
-      "email": "arunapr@gmail.com",
-      "password": "87654321"
+      "cart": [],
+      "orders": [],
+      "products": []
     },
     {
       "id": "f40a",
@@ -816,6 +782,23 @@
           "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
           "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
           "category": "Dining"
+        },
+        {
+          "id": "3",
+          "name": "Coffee Table",
+          "title": "Round Glass Coffee Table",
+          "price": 6999,
+          "description": "Stylish center table with tempered glass top and metal frame.",
+          "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
+          "category": "Dining"
+        },
+        {
+          "id": "4",
+          "name": "Office Chair",
+          "title": "Ergonomic Mesh Chair",
+          "price": 4999,
+          "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
+          "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167"
         }
       ],
       "orders": []

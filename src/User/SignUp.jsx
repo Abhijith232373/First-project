@@ -53,7 +53,7 @@ const SignUp = () => {
           onSubmit={async (values, { resetForm }) => {
             try {
               const { confirm, ...userData } = values;
-              await axios.post("http://localhost:3000/users", userData);
+              await axios.post("http://localhost:5000/users", userData);
               
               toast.success('Success !')
               resetForm();

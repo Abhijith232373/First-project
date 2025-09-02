@@ -1,252 +1,214 @@
-// Storage.jsx
+// src/Pages/StorageProducts.jsx
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CloseIcon from "@mui/icons-material/Close";
 import CircularProgress from "@mui/material/CircularProgress";
-import { CartContext } from "../Context/CartContext";
-import { WishlistContext } from "../Context/WishlistContext";
-import NavBar from "../OpenUi/NavBar";
+import LocalMallIcon from '@mui/icons-material/LocalMall';
 import { useNavigate } from "react-router-dom";
 
-const Storage = () => {
+// 👉 Contexts
+import { CartContext } from "../Context/CartContext";
+import { WishlistContext } from "../Context/WishlistContext";
+import { ProductFilterContext } from "../Context/ProductFilterContext";
+
+import NavBar from "../OpenUi/NavBar";
+
+const Storage= () => {
   const { addToCart } = useContext(CartContext);
-  const { addToWishlist } = useContext(WishlistContext);
-  const navigate = useNavigate();
+  const { wishlist, toggleWishlist } = useContext(WishlistContext);
+  const { sortOrder, setSortOrder } = useContext(ProductFilterContext);
 
   const [products, setProducts] = useState([]);
+  const [filtered, setFiltered] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [sortOrder, setSortOrder] = useState("none");
+  const [cartModal, setCartModal] = useState(null);
 
   const [visibleCount, setVisibleCount] = useState(8);
   const [scrollLoading, setScrollLoading] = useState(false);
 
-  // ✅ Only track which product is loading
-  const [loadingProductId, setLoadingProductId] = useState(null);
+  const [addingId, setAddingId] = useState(null); // ✅ track which product is adding
+  const navigate = useNavigate();
 
-  // Fetch Storage products
-  const fetchProducts = async () => {
-    setLoading(true);
-    try {
-      const res = await axios.get("http://localhost:3000/furniture");
-      const storageItems = res.data.filter((p) => p.category === "Storage");
-      setProducts(storageItems);
-    } catch (err) {
-      console.error("Error fetching storage products:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  // Fetch Products
   useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get("http://localhost:5000/furniture");
+        setProducts(res.data);
+      } catch (err) {
+        console.error("Error fetching products:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchProducts();
   }, []);
+
+  // Filter Storage + sort
+  useEffect(() => {
+    let data = products.filter((p) => p.category === "Storage");
+
+    if (sortOrder === "low-high") data.sort((a, b) => a.price - b.price);
+    if (sortOrder === "high-low") data.sort((a, b) => b.price - a.price);
+
+    setFiltered(data);
+    setVisibleCount(8);
+  }, [products, sortOrder]);
 
   // Infinite scroll
   useEffect(() => {
     const handleScroll = () => {
       if (
-        window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 &&
+        window.innerHeight + window.scrollY >=
+          document.body.offsetHeight - 100 &&
         !scrollLoading &&
-        visibleCount < products.length
+        visibleCount < filtered.length
       ) {
         setScrollLoading(true);
         setTimeout(() => {
           setVisibleCount((prev) => prev + 10);
           setScrollLoading(false);
-        }, 1500);
+        }, 1200);
       }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [scrollLoading, visibleCount, products.length]);
+  }, [scrollLoading, visibleCount, filtered.length]);
 
-  // Sort products
-  const sortedProducts = [...products].sort((a, b) => {
-    if (sortOrder === "low-high") return a.price - b.price;
-    if (sortOrder === "high-low") return b.price - a.price;
-    return 0;
-  });
-
-  // Calculate discount
-  const calculateDiscount = (price) => {
-    const originalPrice = price + 5000;
-    return Math.round(((originalPrice - price) / originalPrice) * 100);
+  // Discount helper
+  const getDiscountInfo = (price) => {
+    const mrp = price + 5000;
+    const discount = Math.round(((mrp - price) / mrp) * 100);
+    return { mrp, discount };
   };
 
-  // ✅ Handle Add to Cart -> If logged in -> add & redirect, else -> go to /user
-  const handleAddToCart = (item) => {
-    const user = localStorage.getItem("user"); // 👈 check login state
-
+  // Add to cart
+  const handleAddToCart = (e, item) => {
+    e.stopPropagation();
+    const user = JSON.parse(localStorage.getItem("user"));
     if (!user) {
-      navigate("/user"); // not logged in -> go to login/signup
+      window.location.href = "/user";
       return;
     }
-
-    setLoadingProductId(item.id);
+    setAddingId(item.id);
+    addToCart(item);
     setTimeout(() => {
-      addToCart(item);
-      setLoadingProductId(null);
-      navigate("/cart"); // ✅ logged in -> go to cart
+      setAddingId(null);
+      navigate("/cart");
     }, 1000);
   };
 
   return (
     <>
       <NavBar />
-
-      <div className="px-6 py-12 bg-gray-50 min-h-screen relative mt-10">
-        {/* Header + Sort */}
-        <div className="flex justify-between items-center mb-6">
+      <div className="px-6 py-12 bg-gray-50 min-h-screen mt-10">
+        <div className="flex justify-end mb-8">
           <select
-            className="border px-3 py-1 rounded-md"
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value)}
+            className="border rounded-lg px-4 py-2 shadow-sm bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <option value="none">Sort By Price</option>
-            <option value="low-high">Low to High</option>
-            <option value="high-low">High to Low</option>
+            <option value="">Sort by</option>
+            <option value="low-high">Price: Low → High</option>
+            <option value="high-low">Price: High → Low</option>
           </select>
         </div>
 
-        {/* Loader */}
         {loading && (
           <div className="flex justify-center py-8">
             <CircularProgress />
           </div>
         )}
 
-        {/* Product Grid */}
         {!loading && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {sortedProducts.slice(0, visibleCount).map((item) => (
-              <div
-                key={item.id}
-                className="relative bg-white rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300 cursor-pointer p-4 flex flex-col justify-between"
-                onClick={() => setSelectedProduct(item)}
-              >
-                {/* Discount badge */}
-                <div className="absolute bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-tr-lg rounded-bl-lg top-2 left-2 z-10">
-                  {calculateDiscount(item.price)}% OFF
-                </div>
+          <>
+            {filtered.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                {filtered.slice(0, visibleCount).map((item) => {
+                  const { mrp, discount } = getDiscountInfo(item.price);
+                  return (
+                    <div
+                      key={item.id}
+                      className="relative group bg-white rounded-2xl shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition overflow-hidden cursor-pointer"
+                      onClick={() => setSelectedProduct(item)}
+                    >
+                      <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-tr-lg rounded-bl-lg opacity-0 group-hover:opacity-100 transition">
+                        {discount}% OFF
+                      </div>
 
-                {/* Wishlist button */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    addToWishlist(item);
-                  }}
-                  className="absolute top-2 right-2 bg-white rounded-full p-1 shadow hover:bg-red-100 z-10"
-                >
-                  <FavoriteBorderIcon className="text-gray-600 hover:text-red-500" />
-                </button>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleWishlist(item);
+                        }}
+                        className={`absolute top-2 right-2 rounded-full p-2 shadow transition z-10 ${
+                          wishlist.find((p) => p.id === item.id)
+                            ? "bg-red-400"
+                            : "bg-white"
+                        }`}
+                      >
+                        <FavoriteBorderIcon
+                          className={`${
+                            wishlist.find((p) => p.id === item.id)
+                              ? "text-red-500"
+                              : "text-gray-800"
+                          }`}
+                        />
+                      </button>
 
-                {/* Product Image */}
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  loading="lazy"
-                  className="w-full h-48 object-cover rounded-lg mb-3"
-                />
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-full h-56 object-cover"
+                      />
 
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 truncate">
-                    {item.name}
-                  </h3>
-                  <div className="flex items-center space-x-2 mt-2">
-                    <span className="text-gray-400 line-through text-sm">
-                      ₹{item.price + 5000}
-                    </span>
-                    <span className="text-blue-600 font-bold">₹{item.price}</span>
-                  </div>
-                </div>
+                      <div className="p-4">
+                        <h3 className="text-lg font-semibold text-gray-900 truncate">
+                          {item.name}
+                        </h3>
+                        <div className="flex items-center gap-2 mt-2">
+                          <p className="text-xl font-bold text-blue-600">
+                            ₹{item.price}
+                          </p>
+                          <p className="text-sm line-through text-gray-400">
+                            ₹{mrp}
+                          </p>
+                        </div>
 
-                {/* ✅ Add to Cart / Loading */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleAddToCart(item);
-                  }}
-                  className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2"
-                  disabled={loadingProductId === item.id}
-                >
-                  {loadingProductId === item.id ? (
-                    <CircularProgress size={20} color="inherit" />
-                  ) : (
-                    <>
-                      <ShoppingCartIcon fontSize="small" />
-                      Add to Cart
-                    </>
-                  )}
-                </button>
+                        <button
+                          onClick={(e) => handleAddToCart(e, item)}
+                          disabled={addingId === item.id}
+                          className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2"
+                        >
+                          {addingId === item.id ? (
+                            <CircularProgress size={20} color="inherit" />
+                          ) : (
+                            <>
+                              <ShoppingCartIcon fontSize="small" />
+                              Add to Cart
+                            </>
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            ))}
-          </div>
+            ) : (
+              <div className="text-center text-gray-500 py-12">
+                No Storage products found.
+              </div>
+            )}
+          </>
         )}
 
         {scrollLoading && (
           <div className="flex justify-center py-6">
             <CircularProgress />
-          </div>
-        )}
-
-        {/* Quick View Modal */}
-        {selectedProduct && (
-          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-            <div className="bg-white w-[90%] md:w-[70%] lg:w-[50%] rounded-2xl shadow-xl p-6 relative">
-              <button
-                className="absolute top-3 right-3 text-gray-500 hover:text-red-500"
-                onClick={() => setSelectedProduct(null)}
-              >
-                <CloseIcon />
-              </button>
-              <div className="flex flex-col md:flex-row gap-6">
-                <img
-                  src={selectedProduct.image}
-                  alt={selectedProduct.name}
-                  loading="lazy"
-                  className="w-full md:w-1/2 h-80 object-cover rounded-xl"
-                />
-                <div className="flex-1">
-                  <h2 className="text-2xl font-bold mb-2">{selectedProduct.name}</h2>
-                  <p className="text-gray-500 mb-4">{selectedProduct.title}</p>
-                  <p className="text-gray-700 mb-4">{selectedProduct.description}</p>
-                  <div className="flex items-center space-x-3 mb-6">
-                    <span className="text-gray-400 line-through">
-                      ₹{selectedProduct.price + 5000}
-                    </span>
-                    <span className="text-2xl font-bold text-blue-600">
-                      ₹{selectedProduct.price}
-                    </span>
-                  </div>
-                  <div className="flex gap-3">
-                    <button
-                      onClick={() => handleAddToCart(selectedProduct)}
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-xl flex items-center justify-center gap-2"
-                      disabled={loadingProductId === selectedProduct.id}
-                    >
-                      {loadingProductId === selectedProduct.id ? (
-                        <CircularProgress size={22} color="inherit" />
-                      ) : (
-                        <>
-                          <ShoppingCartIcon fontSize="small" />
-                          Add to Cart
-                        </>
-                      )}
-                    </button>
-                    <button
-                      onClick={() => addToWishlist(selectedProduct)}
-                      className="flex-1 bg-red-500 hover:bg-red-600 text-white py-3 px-6 rounded-xl flex items-center justify-center gap-2"
-                    >
-                      <FavoriteBorderIcon fontSize="small" />
-                      Add to Wishlist
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         )}
       </div>

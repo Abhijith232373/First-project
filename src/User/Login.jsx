@@ -49,7 +49,7 @@ const Login = () => {
             onSubmit={async (values, { resetForm }) => {
               try {
                 const res = await axios.get(
-                  `http://localhost:3000/users?email=${values.email}&password=${values.password}`
+                  `http://localhost:5000/users?email=${values.email}&password=${values.password}`
                 );
 
                 if (res.data.length > 0) {

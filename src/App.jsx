@@ -9,6 +9,7 @@ import { WishlistProvider } from "./Context/WishlistContext";
 import { SortProvider } from "./Context/SortContext";
 import { ProductFilterProvider } from "./Context/ProductFilterContext";
 import { SearchProvider } from "./Context/SearchContext";
+import { OrderProvider } from "./Context/OrderContext";
 
 // Pages / Components
 import HomePage from './Pages/HomePage';
@@ -34,6 +35,7 @@ function App() {
           <SortProvider>
             <ProductFilterProvider>
               <SearchProvider>
+                <OrderProvider>
                 <Toaster position="top-right" reverseOrder={false} />
 
 
@@ -56,6 +58,7 @@ function App() {
                   <Route path="/orders" element={<Orders/>}/>
 
                 </Routes>
+                </OrderProvider>
               </SearchProvider>
             </ProductFilterProvider>
           </SortProvider>

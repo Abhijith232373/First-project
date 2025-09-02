@@ -4,7 +4,10 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CloseIcon from "@mui/icons-material/Close";
 import CircularProgress from "@mui/material/CircularProgress";
+import LocalMallIcon from '@mui/icons-material/LocalMall';
 import { useNavigate } from "react-router-dom";
+
+
 
 // 👉 Contexts
 import { SearchContext } from "../Context/SearchContext";
@@ -38,7 +41,7 @@ const Products = () => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:3000/furniture");
+        const res = await axios.get("http://localhost:5000/furniture");
         setProducts(res.data);
         setFiltered(res.data);
       } catch (err) {
@@ -306,13 +309,13 @@ const Products = () => {
                       <ShoppingCartIcon fontSize="small" />
                       Add to Cart
                     </button>
-                    <button
-                      onClick={() => toggleWishlist(selectedProduct)}
-                      className="flex-1 bg-red-500 hover:bg-red-600 text-white py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition"
-                    >
-                      <FavoriteBorderIcon fontSize="small" />
-                      Add to Wishlist
-                    </button>
+            {/* <button
+          onClick={() => navigate("/buydetails")} // ✅ redirect to BuyDetails
+          className="bg-green-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition"
+        >
+          <LocalMallIcon fontSize="small"/>
+          Buy now
+        </button> */} 
                   </div>
                 </div>
               </div>

@@ -122,7 +122,7 @@ const NavBar = () => {
 
         {/* Cart */}
         <Link to="/cart" className="relative">
-          <ShoppingCartIcon className="text-gray-700 w-6 h-6" />
+          <ShoppingCartIcon className="text-gray-600 w-6 h-6" />
           {cart.length > 0 && (
             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full px-2 py-0.5">
               {cart.reduce((total, item) => total + item.quantity, 0)}
@@ -132,7 +132,7 @@ const NavBar = () => {
 
         {/* Wishlist */}
         <Link to="/wishlist" className="relative">
-          <FavoriteBorderIcon className="text-gray-700 w-6 h-6" />
+          <FavoriteBorderIcon className="text-gray-600 w-6 h-6" />
           {wishlist.length > 0 && (
             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full px-2 py-0.5">
               {wishlist.length}
@@ -144,7 +144,7 @@ const NavBar = () => {
         {isLoggedIn && (
           <LogoutIcon
             onClick={handleLogout}
-            className="cursor-pointer text-gray-700 w-6 h-6"
+            className="cursor-pointer text-gray-600 w-6 h-6"
           />
         )}
       </div>

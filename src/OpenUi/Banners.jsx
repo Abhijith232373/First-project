@@ -14,7 +14,7 @@ import SofaBeds from "../assets/Banners/Sofa_Cum_Beds_Slidehsow-min.png";
 
 const Banners = () => {
   return (
-    <div className="w-full h-[30vh] sm:h-[40vh] md:h-[60vh] lg:h-[80vh] xl:h-screen mt-4 sm:mt-6 md:mt-10">
+    <div className="w-full h-[30vh] sm:h-[40vh] md:h-[60vh] lg:h-[80vh] xl:h-[90vh] mt-4 sm:mt-6 md:mt-10 ">
       <Swiper
         modules={[Autoplay, Pagination]}
         autoplay={{
