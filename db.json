@@ -754,9 +754,54 @@
           "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167"
         }
       ],
-      "cart": [],
-      "orders": [],
-      "products": []
+      "cart": [
+        {
+          "id": "2",
+          "name": "Dining Table",
+          "title": "6-Seater Wooden Dining Table",
+          "price": 18999,
+          "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
+          "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
+          "category": "Dining",
+          "quantity": 1
+        }
+      ],
+      "orders": [
+        {
+          "id": "1756892864563",
+          "date": "03/09/2025, 15:17:44",
+          "payment": "gpay",
+          "details": {
+            "name": "Abhijith P.R",
+            "phone": "08590988810",
+            "address": "Pallipurathu, fdvfdf, kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "3",
+              "name": "Coffee Table",
+              "title": "Round Glass Coffee Table",
+              "price": 6999,
+              "description": "Stylish center table with tempered glass top and metal frame.",
+              "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
+              "category": "Dining",
+              "quantity": 1,
+              "canceled": false
+            },
+            {
+              "id": "2",
+              "name": "Dining Table",
+              "title": "6-Seater Wooden Dining Table",
+              "price": 18999,
+              "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
+              "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
+              "category": "Dining",
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "f40a",
@@ -802,6 +847,38 @@
         }
       ],
       "orders": []
+    },
+    {
+      "id": "d6be",
+      "name": "aaro",
+      "email": "aaro@gmail.com",
+      "password": "1234567",
+      "cart": [],
+      "orders": [
+        {
+          "id": "1756893075125",
+          "date": "03/09/2025, 15:21:15",
+          "payment": "supermoney",
+          "details": {
+            "name": "aaro",
+            "phone": "08590988810",
+            "address": "Pallipurathu, none, kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "2",
+              "name": "Dining Table",
+              "title": "6-Seater Wooden Dining Table",
+              "price": 18999,
+              "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
+              "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
+              "category": "Dining",
+              "quantity": 1,
+              "canceled": true
+            }
+          ]
+        }
+      ]
     }
   ]
 }

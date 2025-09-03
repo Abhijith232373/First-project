@@ -5,15 +5,12 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
 import { AuthContext } from "../Context/AuthContext";
-import { OrderContext } from "../Context/OrderContext";
+import axios from "axios";
 
 const BuyDetails = () => {
   const { cart, clearCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
-  const { addOrder } = useContext(OrderContext);
   const navigate = useNavigate();
-
-  
 
   const initialValues = {
     name: user?.name || "",
@@ -27,7 +24,7 @@ const BuyDetails = () => {
     payment: "cod",
   };
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = async (values, { resetForm }) => {
     if (!cart || cart.length === 0) {
       toast.error("Your cart is empty ❌");
       return;
@@ -40,28 +37,42 @@ const BuyDetails = () => {
     }
 
     const orderData = {
-      id: Date.now(),
-      userId: user.id,
+      id: Date.now().toString(),
+      date: new Date().toLocaleString(),
+      payment: values.payment,
       details: {
         name: values.name,
         phone: values.phone,
         address: `${values.address}, ${values.locality}, ${values.district}, ${values.state}, ${values.pincode}, Landmark: ${values.landmark}`,
       },
-      items: cart,
-      payment: values.payment,
-      date: new Date().toLocaleString(),
+      items: cart.map((item) => ({
+        ...item,
+        canceled: false,
+      })),
     };
 
-    // Add order to global context
-    addOrder(orderData);
+    try {
+      // Fetch existing user
+      const res = await axios.get(`http://localhost:5000/users/${user.id}`);
+      const existingOrders = res.data.orders || [];
 
-    // Clear cart & show success
-    clearCart();
-    toast.success("✅ Order Placed Successfully!");
-    resetForm();
+      // Update user with new order
+      await axios.patch(`http://localhost:5000/users/${user.id}`, {
+        orders: [...existingOrders, orderData],
+      });
 
-    // Navigate to Orders page
-    navigate("/orders");
+      // Clear cart
+      clearCart();
+
+      toast.success("✅ Order Placed Successfully!");
+      resetForm();
+
+      // Navigate to Orders page
+      navigate("/orders");
+    } catch (err) {
+      console.error("Error placing order:", err);
+      toast.error("Failed to place order ❌");
+    }
   };
 
   return (

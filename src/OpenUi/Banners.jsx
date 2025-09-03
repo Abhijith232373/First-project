@@ -7,7 +7,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import HomeInteriors from "../assets/Banners/Home_Interiors.jpg";
+import HomeInteriors from "../assets/Banners/onamoffer.jpg";
 import Dining from "../assets/Banners/Dining_starting_Slideshow.png";
 import Storage from "../assets/Banners/Storage_beds_starting.png";
 import SofaBeds from "../assets/Banners/Sofa_Cum_Beds_Slidehsow-min.png";

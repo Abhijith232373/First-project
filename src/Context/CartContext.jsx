@@ -87,7 +87,7 @@ export const CartProvider = ({ children }) => {
       return [...prev, { ...product, quantity: 1 }];
     });
 
-    toast.success(`${product.name} added to cart 🛒`);
+    toast.success(`${product.name} added to cart `);
     return true;
   };
 
@@ -135,10 +135,10 @@ export const CartProvider = ({ children }) => {
       });
 
       setOrders(updatedOrders);
-      toast.success("✅ Order placed successfully");
+      toast.success(" Order placed successfully");
     } catch (err) {
       console.error("Error placing order:", err);
-      toast.error("❌ Failed to place order");
+      toast.error(" Failed to place order");
     }
   };
 

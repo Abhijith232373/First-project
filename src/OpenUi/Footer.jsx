@@ -54,13 +54,14 @@ const Footer = () => {
 
           {/* Column 2 */}
           <ul className="font-serif space-y-2">
-            <li className="font-semibold text-white">Shop by</li>
-            <li className={stylesh}>Shop All</li><br />
-            <li className={stylesh}>Living</li><br />
-            <li className={stylesh}>Dining</li><br />
-            <li className={stylesh}>Bedroom</li><br />
-            <li className={stylesh}>Storage</li><br />
-            <li className={stylesh}>Home Decor</li><br />
+           
+          <li className="font-semibold text-white">Shop by</li>
+           <Link to='/products' > <li className={stylesh}>All</li><br /></Link>
+           <Link to='/L=living' > <li className={stylesh}>Living</li><br /></Link>
+           <Link to='/dining' > <li className={stylesh}>Dining</li><br /></Link>
+           <Link to='/bedroom' > <li className={stylesh}>Bedroom</li><br /></Link>
+           <Link to='/Storage' > <li className={stylesh}>Storage</li><br /></Link>
+           <Link to='/Homedecor' > <li className={stylesh}>Home Decor</li><br /></Link>
           </ul>
 
           {/* Column 3 */}
@@ -84,8 +85,9 @@ const Footer = () => {
           {/* Column 5 */}
           <ul className="font-serif space-y-2">
             <li className="font-semibold text-white">Download App</li>
-            <li><img className="w-[120px] mx-auto md:mx-0" src="src/assets/Footer/app_store_badge.svg" alt="App Store" /></li>
-            <li><img className="w-[120px] mx-auto md:mx-0" src="src/assets/Footer/google-play-badge.png" alt="Google Play" /></li>
+           <a href="https://www.apple.com/in/app-store/">
+            <li><img className="w-[120px] mx-auto md:mx-0" src="src/assets/Footer/app_store_badge.svg" alt="App Store" /></li></a>
+            <a href='https://play.google.com/'> <li><img className="w-[120px] mx-auto md:mx-0" src="src/assets/Footer/google-play-badge.png" alt="Google Play" /></li></a>
           </ul>
         </div>
       </div>

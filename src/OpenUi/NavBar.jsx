@@ -51,7 +51,7 @@ const NavBar = () => {
   // handle logout with toast
   const handleLogout = () => {
     logout();
-    toast.error("Logged out  👋");
+    toast.error("Logged out");
     navigate("/"); // redirect home
   };
 

@@ -1,11 +1,75 @@
 // src/Pages/Orders.jsx
-import React, { useContext } from "react";
-import { OrderContext } from "../Context/OrderContext";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Context/AuthContext";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const Orders = () => {
-  const { orders, cancelProduct, removeProduct } = useContext(OrderContext);
+  const { user } = useContext(AuthContext);
+  const [orders, setOrders] = useState([]);
 
-  if (orders.length === 0) return <p className="text-center mt-12">No orders yet.</p>;
+  // Fetch user orders
+  useEffect(() => {
+    if (user) {
+      axios
+        .get(`http://localhost:5000/users/${user.id}`)
+        .then((res) => {
+          setOrders(res.data.orders || []);
+        })
+        .catch((err) => console.error("Error fetching orders:", err));
+    } else {
+      setOrders([]);
+    }
+  }, [user]);
+
+  if (!user) {
+    return (
+      <p className="text-center mt-12">⚠️ Please log in to see your orders.</p>
+    );
+  }
+
+  if (orders.length === 0) {
+    return <p className="text-center mt-12">No orders yet.</p>;
+  }
+
+  // Cancel single item inside order
+  const handleCancel = async (itemId, orderId) => {
+    const updatedOrders = orders.map((o) =>
+      o.id === orderId
+        ? {
+            ...o,
+            items: o.items.map((item) =>
+              item.id === itemId ? { ...item, canceled: true } : item
+            ),
+          }
+        : o
+    );
+
+    setOrders(updatedOrders);
+
+    await axios.patch(`http://localhost:5000/users/${user.id}`, {
+      orders: updatedOrders,
+    });
+
+    toast.error("Item canceled!");
+  };
+
+  // Delete single item inside order
+  const handleRemove = async (itemId, orderId) => {
+    const updatedOrders = orders.map((o) =>
+      o.id === orderId
+        ? { ...o, items: o.items.filter((item) => item.id !== itemId) }
+        : o
+    );
+
+    setOrders(updatedOrders);
+
+    await axios.patch(`http://localhost:5000/users/${user.id}`, {
+      orders: updatedOrders,
+    });
+
+    toast.success(" Item deleted!");
+  };
 
   return (
     <div className="max-w-7xl mx-auto mt-12 px-4">
@@ -14,14 +78,14 @@ const Orders = () => {
       {orders.map((order) => (
         <div key={order.id} className="bg-white p-6 rounded-2xl shadow mb-6">
           <h3 className="text-xl font-semibold mb-2">Order ID: {order.id}</h3>
-          <p className="text-gray-600 mb-2">Placed on: {order.date}</p>
-          <p className="text-gray-600 mb-4">Payment: {order.payment}</p>
+          <p className="text-gray-600 mb-2">📅 Placed on: {order.date}</p>
+          <p className="text-gray-600 mb-4">💳 Payment: {order.payment}</p>
 
           <h4 className="font-semibold mb-2">Items:</h4>
           {order.items.map((item) => (
             <div
               key={item.id}
-              className={`flex items-center justify-between mb-2 p-2 rounded ${
+              className={`flex items-center justify-between mb-2 p-2 rounded border ${
                 item.canceled ? "bg-gray-100 line-through opacity-50" : ""
               }`}
             >
@@ -37,21 +101,25 @@ const Orders = () => {
               <div className="flex gap-2">
                 {!item.canceled && (
                   <button
-                    onClick={() => cancelProduct(order.id, item.id)}
+                    onClick={() => handleCancel(item.id, order.id)}
                     className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                   >
-                   Order Cancel
+                    Cancel
                   </button>
                 )}
 
                 <button
-                  onClick={() => removeProduct(order.id, item.id)}
+                  onClick={() => handleRemove(item.id, order.id)}
                   className="bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600"
                 >
                   Delete
                 </button>
 
-                {item.canceled && <span className="text-red-500 font-semibold ml-2">Canceled</span>}
+                {item.canceled && (
+                  <span className="text-red-500 font-semibold ml-2">
+                    ❌ Canceled
+                  </span>
+                )}
               </div>
             </div>
           ))}

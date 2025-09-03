@@ -50,7 +50,7 @@ const BedRoom = () => {
 
   // Filter BedRoom + sort
   useEffect(() => {
-    let data = products.filter((p) => p.category === "BedRoom");
+    let data = products.filter((p) => p.category === "Bedroom");
 
     if (sortOrder === "low-high") data.sort((a, b) => a.price - b.price);
     if (sortOrder === "high-low") data.sort((a, b) => b.price - a.price);
