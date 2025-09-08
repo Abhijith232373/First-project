@@ -24,7 +24,7 @@ const Orders = () => {
 
   if (!user) {
     return (
-      <p className="text-center mt-12">⚠️ Please log in to see your orders.</p>
+      <p className="text-center mt-12"> Please log in to see your orders.</p>
     );
   }
 
@@ -73,7 +73,7 @@ const Orders = () => {
 
   return (
     <div className="max-w-7xl mx-auto mt-12 px-4">
-      <h2 className="text-3xl font-bold text-center mb-6">🛒 Your Orders</h2>
+      <h2 className="text-3xl font-bold text-center mb-6"> Your Orders</h2>
 
       {orders.map((order) => (
         <div key={order.id} className="bg-white p-6 rounded-2xl shadow mb-6">

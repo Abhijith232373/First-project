@@ -737,13 +737,22 @@
       "password": "12345678",
       "wishlist": [
         {
-          "id": "2",
-          "name": "Dining Table",
-          "title": "6-Seater Wooden Dining Table",
-          "price": 18999,
-          "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
-          "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
+          "id": "3",
+          "name": "Coffee Table",
+          "title": "Round Glass Coffee Table",
+          "price": 6999,
+          "description": "Stylish center table with tempered glass top and metal frame.",
+          "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
           "category": "Dining"
+        },
+        {
+          "id": "6",
+          "name": "Bed Frame",
+          "title": "King Size Bed Frame",
+          "price": 22999,
+          "description": "Strong and durable wooden bed frame with a modern headboard design.",
+          "image": "https://m.media-amazon.com/images/I/71GfbOawqGL._AC_SR230,210_CB1169409_QL70_.jpg",
+          "category": "Living"
         },
         {
           "id": "4",
@@ -754,18 +763,7 @@
           "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167"
         }
       ],
-      "cart": [
-        {
-          "id": "2",
-          "name": "Dining Table",
-          "title": "6-Seater Wooden Dining Table",
-          "price": 18999,
-          "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
-          "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
-          "category": "Dining",
-          "quantity": 1
-        }
-      ],
+      "cart": [],
       "orders": [
         {
           "id": "1756892864563",
@@ -795,6 +793,29 @@
               "price": 18999,
               "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
               "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
+              "category": "Dining",
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        },
+        {
+          "id": "1757330883169",
+          "date": "08/09/2025, 16:58:03",
+          "payment": "gpay",
+          "details": {
+            "name": "Abhijith P.R",
+            "phone": "08590988810",
+            "address": "Pallipurathu, none, kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "3",
+              "name": "Coffee Table",
+              "title": "Round Glass Coffee Table",
+              "price": 6999,
+              "description": "Stylish center table with tempered glass top and metal frame.",
+              "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
               "category": "Dining",
               "quantity": 1,
               "canceled": false
@@ -879,6 +900,21 @@
           ]
         }
       ]
+    },
+    {
+      "id": "e5e9",
+      "name": "joji",
+      "email": "joji@gmail.com",
+      "password": "12345678",
+      "cart": [],
+      "orders": []
+    }
+  ],
+  "admins": [
+    {
+      "id": "1",
+      "email": "admin@gmail.com",
+      "password": "232373"
     }
   ]
 }

@@ -9,7 +9,7 @@ const WishlistPage = () => {
   if (wishlist.length === 0) {
     return (
       <h2 className="text-center mt-10 text-gray-500 text-xl">
-        Your wishlist is empty 💔
+        Your wishlist is empty 
       </h2>
     );
   }

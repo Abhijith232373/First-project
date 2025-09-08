@@ -9,6 +9,7 @@ import { AuthContext } from "../Context/AuthContext";
 import { WishlistContext } from "../Context/WishlistContext";
 import { SearchContext } from "../Context/SearchContext";
 import toast from "react-hot-toast"; // ✅ Toast for alerts
+import SearchBar from "./SearchBar";
 
 const NavBar = () => {
   const { wishlist } = useContext(WishlistContext);
@@ -100,14 +101,16 @@ const NavBar = () => {
       {/* RIGHT: Search + Icons */}
       <div className="flex items-center gap-5">
         {/* Search */}
-        <input
+        {/* <input
           type="text"
           placeholder="Search..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
           className="px-3 py-1 rounded-lg outline-none border focus:ring-1 hidden md:block w-60"
-        />
+        /> */}
+
+          <SearchBar/>
 
         {/* User Login */}
         {!isLoggedIn && (
@@ -119,7 +122,7 @@ const NavBar = () => {
             />
           </Link>
         )}
-
+          <div></div>
         {/* Cart */}
         <Link to="/cart" className="relative">
           <ShoppingCartIcon className="text-gray-600 w-6 h-6" />

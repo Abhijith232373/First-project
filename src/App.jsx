@@ -13,28 +13,29 @@ import { OrderProvider } from "./Context/OrderContext";
 
 // Pages / Components
 import HomePage from './Pages/HomePage';
-import Login from './User/Login';
-import SignUp from "./User/SignUp";
-import Products from "./Components/Products";
-import Dining from "./Components/Dining";
-import Living from "./Components/Living";
-import Storage from "./Components/Storage";
+import Login from './Auth/Login';
+import SignUp from "./Auth/SignUp";
+import Products from "./Catagorys/Products";
+import Dining from "./Catagorys/Dining";
+import Living from "./Catagorys/Living";
+import Storage from "./Catagorys/Storage";
 import WishlistPage from './Pages/WishlistPage';
 import Cart from './Pages/Cart';
-import Bedroom from "./Components/BedRoom";
-import HomeDecor from "./Components/HomeDecor";
-import Kitchen from "./Components/Kitchen";
+import Bedroom from "./Catagorys/BedRoom";
+import HomeDecor from "./Catagorys/HomeDecor";
+import Kitchen from "./Catagorys/Kitchen";
 import BuyDetails from "./Pages/BuyDetails";
 import Orders from "./Pages/Orders";
+import CategoryPage from "./Pages/CategoryPage";
 
 function App() {
   return (
     <AuthProvider>
+              <SearchProvider>
       <CartProvider>
         <WishlistProvider>
           <SortProvider>
             <ProductFilterProvider>
-              <SearchProvider>
                 <OrderProvider>
                 <Toaster position="top-right" reverseOrder={false} />
 
@@ -56,14 +57,14 @@ function App() {
                   <Route path="/cart" element={<Cart />} />
                   <Route path="/buydetails" element={<BuyDetails />} />
                   <Route path="/orders" element={<Orders/>}/>
-
+<Route path="/category/:category" element={<CategoryPage />} />
                 </Routes>
                 </OrderProvider>
-              </SearchProvider>
             </ProductFilterProvider>
           </SortProvider>
         </WishlistProvider>
       </CartProvider>
+              </SearchProvider>
     </AuthProvider>
   );
 }

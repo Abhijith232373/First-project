@@ -62,7 +62,7 @@ const Cart = () => {
 
             {/* Subtotal */}
             <p className="w-24 text-right font-semibold">
-              ₹{item.price * item.quantity}
+              Rs. {item.price * item.quantity}
             </p>
 
             {/* Remove */}
@@ -85,7 +85,7 @@ const Cart = () => {
           <p className="text-xl font-bold text-gray-800">₹{total}</p>
         </div>
         <button
-          onClick={() => navigate("/buydetails")} // ✅ redirect to BuyDetails
+          onClick={() => navigate("/buydetails")} // redirect to BuyDetails
           className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition"
         >
           Place Order

@@ -1,4 +1,3 @@
-// src/Context/CartContext.jsx
 import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "./AuthContext";
@@ -94,7 +93,7 @@ export const CartProvider = ({ children }) => {
   // 🔹 Remove item from cart
   const removeFromCart = (id) => {
     setCart((prev) => prev.filter((item) => item.id !== id));
-    toast.success("Item removed from cart ❌");
+    toast.success("Item removed from cart ");
   };
 
   // 🔹 Update quantity
@@ -152,7 +151,7 @@ export const CartProvider = ({ children }) => {
       });
 
       setOrders(updatedOrders);
-      toast.success("Order cancelled ❌");
+      toast.success("Order cancelled ");
     } catch (err) {
       console.error("Error cancelling order:", err);
       toast.error("Failed to cancel order");

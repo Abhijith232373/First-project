@@ -26,7 +26,7 @@ const BuyDetails = () => {
 
   const handleSubmit = async (values, { resetForm }) => {
     if (!cart || cart.length === 0) {
-      toast.error("Your cart is empty ❌");
+      toast.error("Your cart is empty ");
       return;
     }
 
@@ -64,28 +64,28 @@ const BuyDetails = () => {
       // Clear cart
       clearCart();
 
-      toast.success("✅ Order Placed Successfully!");
+      toast.success(" Order Placed Successfully!");
       resetForm();
 
       // Navigate to Orders page
       navigate("/orders");
     } catch (err) {
       console.error("Error placing order:", err);
-      toast.error("Failed to place order ❌");
+      toast.error("Failed to place order ");
     }
   };
 
   return (
     <div className="max-w-7xl mx-auto mt-12 px-4">
       <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
-        🚚 Checkout
+         Checkout
       </h2>
 
       <div className="flex flex-col md:flex-row gap-8">
         {/* LEFT SIDE - Cart Items */}
         <div className="flex-1 bg-white shadow-2xl rounded-2xl p-6">
           <h3 className="text-2xl font-semibold mb-4 border-b pb-2">
-            🛒 Items in Your Cart
+             Items in Your Cart
           </h3>
           {cart && cart.length > 0 ? (
             <div className="space-y-4">
@@ -123,7 +123,7 @@ const BuyDetails = () => {
               <Form className="space-y-6">
                 {/* Delivery Fields */}
                 <h3 className="text-2xl font-semibold mb-2 border-b pb-2">
-                  📝 Delivery Details
+                   Delivery Details
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {["name", "phone", "pincode", "district", "state"].map(
@@ -178,7 +178,7 @@ const BuyDetails = () => {
 
                 {/* Payment */}
                 <h3 className="text-2xl font-semibold mb-2 border-b pb-2">
-                  💳 Payment Method
+                   Payment Method
                 </h3>
                 <div className="grid grid-cols-2 gap-3 mb-4">
                   {[
@@ -231,7 +231,7 @@ const BuyDetails = () => {
                   type="submit"
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-semibold"
                 >
-                  ✅ Confirm Order
+                   Confirm Order
                 </button>
               </Form>
             )}

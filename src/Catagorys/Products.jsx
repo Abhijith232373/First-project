@@ -5,11 +5,11 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CloseIcon from "@mui/icons-material/Close";
 import CircularProgress from "@mui/material/CircularProgress";
 import LocalMallIcon from '@mui/icons-material/LocalMall';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useNavigate } from "react-router-dom";
 
 
 
-// 👉 Contexts
 import { SearchContext } from "../Context/SearchContext";
 import { CartContext } from "../Context/CartContext";
 import { WishlistContext } from "../Context/WishlistContext";
@@ -89,7 +89,7 @@ const Products = () => {
       ) {
         setScrollLoading(true);
         setTimeout(() => {
-          setVisibleCount((prev) => prev + 10);
+          setVisibleCount((prev) => prev + 20);
           setScrollLoading(false);
         }, 1200);
       }
@@ -136,13 +136,13 @@ const Products = () => {
             onChange={(e) => setCategory(e.target.value)}
             className="border rounded-lg px-4 py-2 shadow-sm bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <option value="All">✨ All</option>
-            <option value="Living">🛋️ Living</option>
-            <option value="Bedroom">🛏️ Bedroom</option>
-            <option value="Dining">🍽️ Dining</option>
-            <option value="Storage">📦 Storage</option>
-            <option value="Homedecor">🏠 HomeDecor</option>
-            <option value="Kitchen">🍳 Kitchen</option>
+            <option value="All"> All</option>
+            <option value="Living">Living</option>
+            <option value="Bedroom"> Bedroom</option>
+            <option value="Dining"> Dining</option>
+            <option value="Storage"> Storage</option>
+            <option value="Homedecor"> HomeDecor</option>
+            <option value="Kitchen"> Kitchen</option>
           </select>
 
           <select
@@ -180,25 +180,17 @@ const Products = () => {
                       </div>
 
                       {/* Wishlist */}
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleWishlist(item);
-                        }}
-                        className={`absolute top-2 right-2 rounded-full p-2 shadow transition z-10 ${
-                          wishlist.find((p) => p.id === item.id)
-                            ? "bg-red-400"
-                            : "bg-white"
-                        }`}
-                      >
-                        <FavoriteBorderIcon
-                          className={`${
-                            wishlist.find((p) => p.id === item.id)
-                              ? "text-red-500"
-                              : "text-gray-800"
-                          }`}
-                        />
-                      </button>
+                 <FavoriteIcon
+  onClick={(e) => {
+    e.stopPropagation();
+    toggleWishlist(item);
+  }}
+  className={`absolute top-2 right-2 cursor-pointer transition-colors duration-200 z-10 
+    ${wishlist.find((p) => p.id === item.id) 
+      ? "text-red-600"   // Active (in wishlist)
+      : "text-red-300 hover:text-red-400"} // Default + hover
+  `}
+/>
 
                       <img
                         src={item.image}
@@ -211,11 +203,11 @@ const Products = () => {
                           {item.name}
                         </h3>
                         <div className="flex items-center gap-2 mt-2">
-                          <p className="text-xl font-bold text-blue-600">
-                            ₹{item.price}
+                          <p className="text-xl font-bold text-green-500">
+                            Rs. {item.price}
                           </p>
                           <p className="text-sm line-through text-gray-400">
-                            ₹{mrp}
+                            Rs. {mrp}
                           </p>
                         </div>
 
@@ -223,7 +215,7 @@ const Products = () => {
                         <button
                           onClick={(e) => handleAddToCart(e, item)}
                           disabled={addingId === item.id}
-                          className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2"
+                          className="mt-4 w-full bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2"
                         >
                           {addingId === item.id ? (
                             <CircularProgress size={20} color="inherit" />
@@ -253,116 +245,118 @@ const Products = () => {
           </div>
         )}
 
-        {/* Quick View Modal */}
-        {selectedProduct && (
-          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-            <div className="bg-white w-[90%] md:w-[70%] lg:w-[50%] rounded-2xl shadow-xl p-6 relative">
-              <button
-                className="absolute top-3 right-3 text-gray-500 hover:text-red-500"
-                onClick={() => setSelectedProduct(null)}
-              >
-                <CloseIcon />
-              </button>
+{/* Quick View Modal */}
+{selectedProduct && (
+  <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+    <div className="bg-white w-[90%] md:w-[70%] lg:w-[90%] lg:h-[90%] rounded-2xl shadow-xl p-10 pt-32 relative">
+      <button
+        className="absolute top-3 right-3 text-gray-500 hover:text-red-500"
+        onClick={() => setSelectedProduct(null)}
+      >
+        <CloseIcon />
+      </button>
 
-              <div className="flex flex-col md:flex-row gap-6">
-                <img
-                  src={selectedProduct.image}
-                  alt={selectedProduct.name}
-                  className="w-full md:w-1/2 h-80 object-cover rounded-xl"
-                />
+      <div className="flex flex-col md:flex-row gap-6">
+        <img
+          src={selectedProduct.image}
+          alt={selectedProduct.name}
+          className="w-full md:w-1/2 h-90 object-cover rounded-xl"
+        />
 
-                <div className="flex-1">
-                  <h2 className="text-2xl font-bold mb-2">
-                    {selectedProduct.name}
-                  </h2>
-                  <p className="text-gray-500 mb-4">{selectedProduct.title}</p>
-                  <p className="text-gray-700 mb-4">
-                    {selectedProduct.description}
-                  </p>
+        <div className="flex-1">
+          <h2 className="text-2xl font-bold mb-2">{selectedProduct.name}</h2>
+          <p className="text-gray-500 mb-4">{selectedProduct.title}</p>
+          <p className="text-gray-700 mb-4">{selectedProduct.description}</p>
 
-                  {(() => {
-                    const { mrp, discount } = getDiscountInfo(
-                      selectedProduct.price
-                    );
-                    return (
-                      <div className="flex items-center gap-3 mb-6">
-                        <span className="text-gray-400 line-through">₹{mrp}</span>
-                        <span className="text-2xl font-bold text-blue-600">
-                          ₹{selectedProduct.price}
-                        </span>
-                        <span className="text-green-600 font-semibold">
-                          {discount}% OFF
-                        </span>
-                      </div>
-                    );
-                  })()}
-
-                  <div className="flex gap-3">
-                    <button
-                      onClick={() => {
-                        addToCart(selectedProduct);
-                        setCartModal(selectedProduct);
-                        setSelectedProduct(null);
-                      }}
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition"
-                    >
-                      <ShoppingCartIcon fontSize="small" />
-                      Add to Cart
-                    </button>
-            {/* <button
-          onClick={() => navigate("/buydetails")} // ✅ redirect to BuyDetails
-          className="bg-green-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition"
-        >
-          <LocalMallIcon fontSize="small"/>
-          Buy now
-        </button> */} 
-                  </div>
-                </div>
+          {(() => {
+            const { mrp, discount } = getDiscountInfo(selectedProduct.price);
+            return (
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-gray-400 line-through">₹{mrp}</span>
+                <span className="text-2xl font-bold text-blue-600">
+                  Rs. {selectedProduct.price}
+                </span>
+                <span className="text-green-600 font-semibold">
+                  {discount}% OFF
+                </span>
               </div>
-            </div>
-          </div>
-        )}
+            );
+          })()}
 
-        {/* Add to Cart Confirmation */}
-        {cartModal && (
-          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-2xl shadow-lg w-[90%] md:w-[400px] p-6 relative">
-              <button
-                className="absolute top-3 right-3 text-gray-500 hover:text-red-500"
-                onClick={() => setCartModal(null)}
-              >
-                <CloseIcon />
-              </button>
-              <div className="flex flex-col items-center text-center">
-                <img
-                  src={cartModal.image}
-                  alt={cartModal.name}
-                  className="w-32 h-32 object-cover rounded-xl mb-4"
-                />
-                <h3 className="text-lg font-semibold mb-2">
-                  {cartModal.name} added to cart ✅
-                </h3>
-                <p className="text-gray-500 mb-4">
-                  You can continue shopping or go to your cart.
-                </p>
-                <div className="flex gap-4 w-full">
-                  <button
-                    onClick={() => setCartModal(null)}
-                    className="flex-1 border border-gray-300 py-2 rounded-lg hover:bg-gray-100 transition"
-                  >
-                    Continue Shopping
-                  </button>
-                  <button
-                    onClick={() => (window.location.href = "/cart")}
-                    className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
-                  >
-                    Go to Cart
-                  </button>
-                </div>
-              </div>
-            </div>
+          <div className="flex gap-3">
+            {/* ✅ Add to Cart */}
+            <button
+              onClick={() => {
+                addToCart(selectedProduct);
+                setCartModal(selectedProduct);
+                setSelectedProduct(null);
+              }}
+              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition"
+            >
+              <ShoppingCartIcon fontSize="small" />
+              Add to Cart
+            </button>
+
+            {/* ✅ Buy Now */}
+            <button
+              onClick={() => {
+                navigate("/buydetails", { state: { product: selectedProduct } });
+                setSelectedProduct(null);
+              }}
+              className="flex-1 bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition"
+            >
+              <LocalMallIcon fontSize="small" />
+              Buy Now
+            </button>
           </div>
-        )}
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
+{/* Add to Cart Confirmation */}
+{cartModal && (
+  <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div className="bg-white rounded-2xl shadow-lg w-[90%] md:w-[70%] h-[90%] pt-24 p-6 relative">
+      <button
+        className="absolute top-3 right-3 text-gray-500 hover:text-red-500"
+        onClick={() => setCartModal(null)}
+      >
+        <CloseIcon />
+      </button>
+      <div className="flex flex-col items-center text-center">
+        <img
+          src={cartModal.image}
+          alt={cartModal.name}
+          className="w-64 h-74 object-cover rounded-xl mb-4"
+        />
+        <h3 className="text-lg font-semibold mb-2">
+          {cartModal.name} added to cart
+        </h3>
+        <p className="text-gray-500 mb-4">
+          You can continue shopping or go to your cart.
+        </p>
+        <div className="flex gap-4 w-full">
+          <button
+            onClick={() => setCartModal(null)}
+            className="flex-1 border border-gray-300 py-2 rounded-lg hover:bg-gray-100 transition"
+          >
+            Continue Shopping
+          </button>
+          <button
+            onClick={() => (window.location.href = "/cart")}
+            className="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+          >
+            Go to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
+      
       </div>
     </>
   );

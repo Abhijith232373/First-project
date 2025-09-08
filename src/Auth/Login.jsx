@@ -1,16 +1,17 @@
+// src/Pages/Login.jsx
 import React, { useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../Context/AuthContext"; 
-import toast from "react-hot-toast"; // ✅ import toast
+import toast from "react-hot-toast";
 
 const Login = () => {
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
 
   return (
-    <div className="absolute inset-0 bg-[url('src/assets/user/bg4.jpg')]  bg-cover bg-center flex items-center justify-center px-4">
+    <div className="absolute inset-0 bg-[url('src/assets/user/bg4.jpg')] bg-cover bg-center flex items-center justify-center px-4">
       {/* Login Card with inner background */}
       <div className="relative bg-gray-700/70 p-6 sm:p-8 rounded-2xl shadow-xl w-full max-w-sm
                       bg-[url('src/assets/user/bg3.jpg')] bg-cover bg-center">
@@ -22,7 +23,7 @@ const Login = () => {
           {/* Top Image (logo / illustration) */}
           <div className="flex justify-center mb-4">
             <img
-              src="src/assets/logo/Home4u-logo.png" // ⬅️ your logo
+              src="src/assets/logo/Home4u-logo.png"
               alt="Login"
               className="w-16 h-16 object-contain rounded-4xl"
             />
@@ -48,24 +49,35 @@ const Login = () => {
             }}
             onSubmit={async (values, { resetForm }) => {
               try {
+                // 1️⃣ Check admin login
+                const adminRes = await axios.get(
+                  `http://localhost:5000/admins?email=${values.email}&password=${values.password}`
+                );
+
+                if (adminRes.data.length > 0) {
+                  toast.success("Welcome Admin 🚀");
+                  localStorage.setItem("user", JSON.stringify({ ...adminRes.data[0], role: "admin" }));
+                  login({ ...adminRes.data[0], role: "admin" });
+                  resetForm();
+                  return navigate("/admin"); // redirect admin
+                }
+
+                // 2️⃣ Check normal users
                 const res = await axios.get(
                   `http://localhost:5000/users?email=${values.email}&password=${values.password}`
                 );
 
                 if (res.data.length > 0) {
-                  toast.success("Login Successful ✅"); // ✅ toast instead of alert
-
-                  // Save user to localStorage
-                  localStorage.setItem("user", JSON.stringify(res.data[0]));
-
-                  // Update AuthContext
-                  login(res.data[0]);
-
+                  toast.success("Login Successful ✅");
+                  localStorage.setItem("user", JSON.stringify({ ...res.data[0], role: "user" }));
+                  login({ ...res.data[0], role: "user" });
                   resetForm();
-                  navigate("/"); 
-                } else {
-                  toast.error("Invalid email or password ❌"); // ✅ toast
+                  return navigate("/"); 
                 }
+
+                // 3️⃣ Not found → ask signup
+                toast.error("No account found ❌ Please signup first!");
+
               } catch (error) {
                 toast.error("Something went wrong, try again ❌");
               }
