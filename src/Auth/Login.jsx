@@ -13,8 +13,8 @@ const Login = () => {
   return (
     <div className="absolute inset-0 bg-[url('src/assets/user/bg4.jpg')] bg-cover bg-center flex items-center justify-center px-4">
       {/* Login Card with inner background */}
-      <div className="relative bg-gray-700/70 p-6 sm:p-8 rounded-2xl shadow-xl w-full max-w-sm
-                      bg-[url('src/assets/user/bg3.jpg')] bg-cover bg-center">
+      <div className="relative bg-white p-6 sm:p-8 rounded-2xl shadow-xl w-full max-w-sm
+                     bg-cover bg-center">
         {/* Overlay for slight transparency */}
         <div className="absolute inset-0 bg-gray-400/20 rounded-2xl"></div>
 
@@ -123,10 +123,10 @@ const Login = () => {
             )}
           </Formik>
 
-          <p className="text-sm text-center mt-4 text-white relative z-10">
+          <p className="text-sm text-center mt-4 text-gary-600 relative z-10">
             Don’t have an account?{" "}
             <Link to="/signup">
-              <span className="text-white font-medium cursor-pointer hover:underline">
+              <span className="text-gary-700 font-medium cursor-pointer hover:underline">
                 Sign Up
               </span>
             </Link>

@@ -735,35 +735,19 @@
       "name": "a",
       "email": "abhijithh@gmail.com",
       "password": "12345678",
-      "wishlist": [
+      "wishlist": [],
+      "cart": [
         {
-          "id": "3",
-          "name": "Coffee Table",
-          "title": "Round Glass Coffee Table",
-          "price": 6999,
-          "description": "Stylish center table with tempered glass top and metal frame.",
-          "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
-          "category": "Dining"
-        },
-        {
-          "id": "6",
-          "name": "Bed Frame",
-          "title": "King Size Bed Frame",
-          "price": 22999,
-          "description": "Strong and durable wooden bed frame with a modern headboard design.",
-          "image": "https://m.media-amazon.com/images/I/71GfbOawqGL._AC_SR230,210_CB1169409_QL70_.jpg",
-          "category": "Living"
-        },
-        {
-          "id": "4",
-          "name": "Office Chair",
-          "title": "Ergonomic Mesh Chair",
-          "price": 4999,
-          "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
-          "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167"
+          "id": "11",
+          "name": "Accent Chair",
+          "title": "Velvet Upholstered Accent Chair",
+          "price": 11999,
+          "description": "Elegant accent chair with velvet fabric, perfect for living rooms or bedrooms.",
+          "image": "https://m.media-amazon.com/images/I/51cYlJo-HOL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Living",
+          "quantity": 1
         }
       ],
-      "cart": [],
       "orders": [
         {
           "id": "1756892864563",
@@ -908,6 +892,73 @@
       "password": "12345678",
       "cart": [],
       "orders": []
+    },
+    {
+      "id": "7a53",
+      "name": "ab",
+      "email": "ab@gmail.com",
+      "password": "12345678",
+      "cart": [],
+      "orders": [
+        {
+          "id": "1757396210263",
+          "date": "09/09/2025, 11:06:50",
+          "payment": "cod",
+          "details": {
+            "name": "abijith pr",
+            "phone": "08590988810",
+            "address": "Pallipurathu, erunkulam bridgeon, kottyam, Kerala, 686633, Landmark: erunakulam"
+          },
+          "items": []
+        }
+      ],
+      "wishlist": [
+        {
+          "id": "1",
+          "name": "Modern Sofa",
+          "title": "Luxury 3-Seater Sofa",
+          "price": 25999,
+          "description": "A premium fabric sofa with wooden legs and soft cushioning for ultimate comfort.",
+          "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
+          "category": "Living"
+        },
+        {
+          "id": "31",
+          "name": "Hammock Chair",
+          "title": "Hanging Cotton Hammock Chair",
+          "price": 4999,
+          "description": "Comfortable hanging hammock chair made of soft cotton, ideal for balconies or patios.",
+          "image": "https://m.media-amazon.com/images/I/71gBMYUH0ML._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "HomeDecor"
+        },
+        {
+          "id": "30",
+          "name": "Vanity Table",
+          "title": "Makeup Vanity with Mirror",
+          "price": 12999,
+          "description": "Stylish vanity table with drawers and a round mirror, perfect for bedrooms.",
+          "image": "https://m.media-amazon.com/images/I/71te4xwL9RL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Bedroom"
+        },
+        {
+          "id": "29",
+          "name": "Console Table",
+          "title": "Entryway Console Table",
+          "price": 5599,
+          "description": "Sleek and modern console table with storage drawer for entryways.",
+          "image": "https://m.media-amazon.com/images/I/81i3aKfDWnL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Bedroom"
+        },
+        {
+          "id": "34",
+          "name": "Work Desk",
+          "title": "Adjustable Height Work Desk",
+          "price": 12499,
+          "description": "Modern work desk with adjustable height feature, ideal for home offices.",
+          "image": "https://m.media-amazon.com/images/I/81Boo5TWkcL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Bedroom"
+        }
+      ]
     }
   ],
   "admins": [

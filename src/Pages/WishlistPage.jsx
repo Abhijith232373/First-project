@@ -42,16 +42,16 @@ const WishlistPage = () => {
                   // ✅ Redirect to buydetails with item info
                   navigate("/buydetails", { state: { product: item } });
                 }}
-                className="flex-1 px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+                className="flex-1 px-2 py-1 text-green-600 font-serif font-extrabold rounded-lg hover:text-green-900 hover:cursor-pointer transition"
               >
-                ⚡ Buy Now
+                 Buy Now
               </button>
 
               <button
                 onClick={() => removeFromWishlist(item.id)}
-                className="flex-1 px-3 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+                className="flex-1 px-2 py-1 text-red-500  font-serif font-extrabold rounded-lg hover:cursor-pointer hover:text-red-600 transition"
               >
-                ❌ Remove
+                 Remove
               </button>
             </div>
           </div>

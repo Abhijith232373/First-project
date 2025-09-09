@@ -7,9 +7,10 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { CartContext } from "../Context/CartContext";
 import { AuthContext } from "../Context/AuthContext";
 import { WishlistContext } from "../Context/WishlistContext";
-import { SearchContext } from "../Context/SearchContext";
+import { SearchContext } from "../context/SearchContext";
 import toast from "react-hot-toast"; // ✅ Toast for alerts
 import SearchBar from "./SearchBar";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const NavBar = () => {
   const { wishlist } = useContext(WishlistContext);
@@ -115,14 +116,15 @@ const NavBar = () => {
         {/* User Login */}
         {!isLoggedIn && (
           <Link to="/user">
-            <img
-              src="src/assets/Navbar/user.svg"
-              alt="user"
-              className="w-6 h-6"
+            <AccountCircleIcon
+              className="w-12 h-6 text-gray-600"
             />
           </Link>
         )}
-          <div></div>
+
+
+        
+          {/* <div></div> */}
         {/* Cart */}
         <Link to="/cart" className="relative">
           <ShoppingCartIcon className="text-gray-600 w-6 h-6" />

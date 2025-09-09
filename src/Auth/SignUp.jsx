@@ -3,6 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import EmailIcon from "@mui/icons-material/Email";
+
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -11,8 +13,7 @@ const SignUp = () => {
     <div className="absolute inset-0 bg-[url('src/assets/user/bg4.jpg')] bg-cover bg-center flex items-center justify-center px-4">
       {/* Sign Up Card */}
 
-      <div className="relative bg-gray-700/70 p-6 sm:p-8 rounded-2xl shadow-xl w-full max-w-sm
-                      bg-[url('src/assets/user/bg7.jpg')] bg-cover bg-center">
+      <div className="relative bg-white   p-6 sm:p-8 rounded-2xl shadow-xl w-full max-w-sm ">
 
           {/* Top Image (logo / illustration) */}
           <div className="flex justify-center mb-4">
@@ -23,7 +24,7 @@ const SignUp = () => {
           </div>
 
         <h2 className="text-2xl sm:text-3xl font-bold text-center text-indigo-600 mb-4">
-          Sign Up
+          Create Account
         </h2>
 
         <Formik
@@ -59,7 +60,7 @@ const SignUp = () => {
               resetForm();
               navigate("/user"); // redirect to login page
             } catch (error) {
-              console.error("Signup failed", error);
+              console.error("Signup failed", error); 
               toast.error("This didn't work.")
             }
           }}
@@ -80,19 +81,23 @@ const SignUp = () => {
                   />
               </div>
 
-              <div>
-                <Field
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none"
-                  />
-                <ErrorMessage
-                  name="email"
-                  component="p"
-                  className="text-red-500 text-sm mt-1"
-                  />
-              </div>
+       <div>
+  <div className="flex items-center border rounded-lg px-3 focus-within:ring-2 focus-within:ring-indigo-400">
+    <EmailIcon  className="text-gray-400 mr-2 scale-80" />
+    <Field
+      type="email"
+      name="email"
+      placeholder="Email"
+      className="w-full py-2 outline-none"
+    />
+  </div>
+  <ErrorMessage
+    name="email"
+    component="p"
+    className="text-red-500 text-sm mt-1"
+  />
+</div>
+
 
               <div>
                 <Field
