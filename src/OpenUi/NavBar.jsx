@@ -7,7 +7,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { CartContext } from "../Context/CartContext";
 import { AuthContext } from "../Context/AuthContext";
 import { WishlistContext } from "../Context/WishlistContext";
-import { SearchContext } from "../context/SearchContext";
+import { SearchContext } from '../Context/SearchContext';
 import toast from "react-hot-toast"; // ✅ Toast for alerts
 import SearchBar from "./SearchBar";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -27,8 +27,8 @@ const NavBar = () => {
   // Active link underline
   const NavStyle = (path) =>
     `relative inline-block px-2 py-1 text-[15px] after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] 
-     after:bg-blue-600 after:transition-all after:duration-300 hover:after:w-full hover:text-blue-600 hover:cursor-pointer ${
-       location.pathname === path ? "text-blue-600 font-semibold after:w-full" : "text-gray-700"
+     after:bg-gray-600 after:transition-all after:duration-300 hover:after:w-full hover:text-gray-600 hover:cursor-pointer ${
+       location.pathname === path ? "text-gray-600 font-semibold after:w-full" : "text-gray-700"
      }`;
 
   // hide/show navbar on scroll

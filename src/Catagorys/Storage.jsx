@@ -1,46 +1,54 @@
-// src/Pages/StorageProducts.jsx
+// src/Pages/Storage.jsx
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import CloseIcon from "@mui/icons-material/Close";
 import CircularProgress from "@mui/material/CircularProgress";
-import LocalMallIcon from '@mui/icons-material/LocalMall';
-import { useNavigate } from "react-router-dom";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
-// 👉 Contexts
+import { SearchContext } from "../Context/SearchContext";
 import { CartContext } from "../Context/CartContext";
 import { WishlistContext } from "../Context/WishlistContext";
 import { ProductFilterContext } from "../Context/ProductFilterContext";
 
 import NavBar from "../OpenUi/NavBar";
+import QuickViewModal from "../components/QuickViewModal";
 
-const Storage= () => {
+import { Listbox } from "@headlessui/react";
+import { ChevronUpDownIcon } from "@heroicons/react/24/solid";
+
+const sortOptions = [
+  { value: "", label: "Sort by" },
+  { value: "low-high", label: "Price: Low → High" },
+  { value: "high-low", label: "Price: High → Low" },
+];
+
+const Storage = () => {
   const { addToCart } = useContext(CartContext);
   const { wishlist, toggleWishlist } = useContext(WishlistContext);
   const { sortOrder, setSortOrder } = useContext(ProductFilterContext);
+  const { query } = useContext(SearchContext);
 
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [cartModal, setCartModal] = useState(null);
 
   const [visibleCount, setVisibleCount] = useState(8);
   const [scrollLoading, setScrollLoading] = useState(false);
 
-  const [addingId, setAddingId] = useState(null); // ✅ track which product is adding
-  const navigate = useNavigate();
+  const [addingId, setAddingId] = useState(null);
 
-  // Fetch Products
+  // Fetch only Storage products
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
       try {
         const res = await axios.get("http://localhost:5000/furniture");
-        setProducts(res.data);
+        const storageProducts = res.data.filter((p) => p.category === "Storage");
+        setProducts(storageProducts);
+        setFiltered(storageProducts);
       } catch (err) {
-        console.error("Error fetching products:", err);
+        console.error(err);
       } finally {
         setLoading(false);
       }
@@ -48,29 +56,38 @@ const Storage= () => {
     fetchProducts();
   }, []);
 
-  // Filter Storage + sort
+  // Search + Sort
   useEffect(() => {
-    let data = products.filter((p) => p.category === "Storage");
+    let data = [...products];
+
+    if (query?.trim()) {
+      const q = query.toLowerCase().trim();
+      data = data.filter(
+        (p) =>
+          (p.name && p.name.toLowerCase().includes(q)) ||
+          (p.title && p.title.toLowerCase().includes(q)) ||
+          (p.description && p.description.toLowerCase().includes(q))
+      );
+    }
 
     if (sortOrder === "low-high") data.sort((a, b) => a.price - b.price);
     if (sortOrder === "high-low") data.sort((a, b) => b.price - a.price);
 
     setFiltered(data);
     setVisibleCount(8);
-  }, [products, sortOrder]);
+  }, [products, sortOrder, query]);
 
   // Infinite scroll
   useEffect(() => {
     const handleScroll = () => {
       if (
-        window.innerHeight + window.scrollY >=
-          document.body.offsetHeight - 100 &&
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 &&
         !scrollLoading &&
         visibleCount < filtered.length
       ) {
         setScrollLoading(true);
         setTimeout(() => {
-          setVisibleCount((prev) => prev + 10);
+          setVisibleCount((prev) => prev + 20);
           setScrollLoading(false);
         }, 1200);
       }
@@ -79,43 +96,47 @@ const Storage= () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [scrollLoading, visibleCount, filtered.length]);
 
-  // Discount helper
   const getDiscountInfo = (price) => {
     const mrp = price + 5000;
     const discount = Math.round(((mrp - price) / mrp) * 100);
     return { mrp, discount };
   };
 
-  // Add to cart
-  const handleAddToCart = (e, item) => {
-    e.stopPropagation();
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) {
-      window.location.href = "/user";
-      return;
-    }
+  const handleAddToCart = (item) => {
     setAddingId(item.id);
     addToCart(item);
-    setTimeout(() => {
-      setAddingId(null);
-      navigate("/cart");
-    }, 1000);
+    setTimeout(() => setAddingId(null), 300);
   };
 
   return (
     <>
       <NavBar />
       <div className="px-6 py-12 bg-gray-50 min-h-screen mt-10">
-        <div className="flex justify-end mb-8">
-          <select
-            value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value)}
-            className="border rounded-lg px-4 py-2 shadow-sm bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="">Sort by</option>
-            <option value="low-high">Price: Low → High</option>
-            <option value="high-low">Price: High → Low</option>
-          </select>
+        {/* Sort Filter only */}
+        <div className="flex justify-end items-center mb-8">
+          <Listbox value={sortOrder} onChange={setSortOrder}>
+            <div className="relative w-60">
+              <Listbox.Button className="w-full rounded-lg border bg-white px-4 py-2 text-left shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500 flex justify-between items-center">
+                {sortOptions.find((opt) => opt.value === sortOrder)?.label || "Sort by"}
+                <ChevronUpDownIcon className="h-5 w-5 text-gray-400" />
+              </Listbox.Button>
+              <Listbox.Options className="absolute mt-1 w-full rounded-lg border bg-white shadow-lg z-10">
+                {sortOptions.map((opt, idx) => (
+                  <Listbox.Option
+                    key={idx}
+                    value={opt.value}
+                    className={({ active }) =>
+                      `cursor-pointer px-4 py-2 ${
+                        active ? "bg-gray-100 text-gray-900 hover:bg-gray-300" : "text-gray-700"
+                      }`
+                    }
+                  >
+                    {opt.label}
+                  </Listbox.Option>
+                ))}
+              </Listbox.Options>
+            </div>
+          </Listbox>
         </div>
 
         {loading && (
@@ -127,38 +148,30 @@ const Storage= () => {
         {!loading && (
           <>
             {filtered.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
                 {filtered.slice(0, visibleCount).map((item) => {
                   const { mrp, discount } = getDiscountInfo(item.price);
                   return (
                     <div
                       key={item.id}
-                      className="relative group bg-white rounded-2xl shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition overflow-hidden cursor-pointer"
+                      className="relative group bg-white shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition overflow-hidden cursor-pointer"
                       onClick={() => setSelectedProduct(item)}
                     >
                       <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-tr-lg rounded-bl-lg opacity-0 group-hover:opacity-100 transition">
                         {discount}% OFF
                       </div>
 
-                      <button
+                      <FavoriteIcon
                         onClick={(e) => {
                           e.stopPropagation();
                           toggleWishlist(item);
                         }}
-                        className={`absolute top-2 right-2 rounded-full p-2 shadow transition z-10 ${
+                        className={`absolute top-2 right-2 cursor-pointer transition-colors duration-200 z-10 ${
                           wishlist.find((p) => p.id === item.id)
-                            ? "bg-red-400"
-                            : "bg-white"
+                            ? "text-red-600"
+                            : "text-red-300 hover:text-red-400"
                         }`}
-                      >
-                        <FavoriteBorderIcon
-                          className={`${
-                            wishlist.find((p) => p.id === item.id)
-                              ? "text-red-500"
-                              : "text-gray-800"
-                          }`}
-                        />
-                      </button>
+                      />
 
                       <img
                         src={item.image}
@@ -167,31 +180,32 @@ const Storage= () => {
                       />
 
                       <div className="p-4">
-                        <h3 className="text-lg font-semibold text-gray-900 truncate">
+                        <h3 className="text-lg font-semibold text-gray-600 truncate">
                           {item.name}
                         </h3>
                         <div className="flex items-center gap-2 mt-2">
-                          <p className="text-xl font-bold text-blue-600">
-                            ₹{item.price}
+                          <p className="text-lg font-bold text-gray-500">
+                            Rs. {item.price}
                           </p>
                           <p className="text-sm line-through text-gray-400">
-                            ₹{mrp}
+                            Rs. {mrp}
                           </p>
                         </div>
 
                         <button
-                          onClick={(e) => handleAddToCart(e, item)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleAddToCart(item);
+                          }}
                           disabled={addingId === item.id}
-                          className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2"
+                          className="mt-4 w-full bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 flex items-center justify-center gap-2"
                         >
                           {addingId === item.id ? (
                             <CircularProgress size={20} color="inherit" />
                           ) : (
-                            <>
-                              <ShoppingCartIcon fontSize="small" />
-                              Add to Cart
-                            </>
+                            <ShoppingCartIcon fontSize="small" />
                           )}
+                          Add to Cart
                         </button>
                       </div>
                     </div>
@@ -200,7 +214,7 @@ const Storage= () => {
               </div>
             ) : (
               <div className="text-center text-gray-500 py-12">
-                No Storage products found.
+                No products found {query ? `for "${query}"` : ""}
               </div>
             )}
           </>
@@ -210,6 +224,15 @@ const Storage= () => {
           <div className="flex justify-center py-6">
             <CircularProgress />
           </div>
+        )}
+
+        {/* Quick View Modal */}
+        {selectedProduct && (
+          <QuickViewModal
+            product={selectedProduct}
+            onClose={() => setSelectedProduct(null)}
+            addToCart={handleAddToCart}
+          />
         )}
       </div>
     </>

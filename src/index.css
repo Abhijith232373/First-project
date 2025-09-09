@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
-body {
+/* body {
   overflow-x: hidden;  /* 🔒 stops side scrolling */
+  
+/* } */ 
+
+body {
+  font-family: 'Roboto', sans-serif;   /* Default text */
 }
+
+h1, h2, h3, h4, h5, h6, .heading {
+  font-family: 'Poppins', sans-serif; /* Headings */
+  font-weight: 600;
+  color: gray;
+}
+

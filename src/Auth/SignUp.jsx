@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import EmailIcon from "@mui/icons-material/Email";
+import LockIcon from '@mui/icons-material/Lock';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
 const SignUp = () => {
@@ -67,13 +69,16 @@ const SignUp = () => {
           >
           {() => (
             <Form className="space-y-4">
-              <div>
+             
+                         <div className="flex items-center border rounded-lg px-3 focus-within:ring-2 focus-within:ring-indigo-400">
+    <AccountCircleIcon  className="text-gray-400 mr-2 scale-80" />
                 <Field
                   type="text"
                   name="name"
                   placeholder="Name"
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none"
+      className="w-full py-2 outline-none"
                   />
+                  
                 <ErrorMessage
                   name="name"
                   component="p"
@@ -81,7 +86,7 @@ const SignUp = () => {
                   />
               </div>
 
-       <div>
+      
   <div className="flex items-center border rounded-lg px-3 focus-within:ring-2 focus-within:ring-indigo-400">
     <EmailIcon  className="text-gray-400 mr-2 scale-80" />
     <Field
@@ -90,7 +95,7 @@ const SignUp = () => {
       placeholder="Email"
       className="w-full py-2 outline-none"
     />
-  </div>
+  
   <ErrorMessage
     name="email"
     component="p"
@@ -98,28 +103,33 @@ const SignUp = () => {
   />
 </div>
 
+<div>
+<div className="flex items-center border rounded-lg px-3 focus-within:ring-2 focus-within:ring-indigo-400">
+    <LockIcon  className="text-gray-400 mr-2 scale-80" />
+  
+  <Field
+    type="password"
+    name="password"
+    placeholder="Password"
+    className="w-full py-2 outline-none"
+  />
+</div>
+  <ErrorMessage
+    name="password"
+    component="p"
+    className="text-red-500 text-sm mt-1"
+  />
+</div>
 
-              <div>
-                <Field
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none"
-                  />
-                <ErrorMessage
-                  name="password"
-                  component="p"
-                  className="text-red-500 text-sm mt-1"
-                  />
-              </div>
-
-              <div>
+<div>
+             <div className="flex items-center border rounded-lg px-3 focus-within:ring-2 focus-within:ring-indigo-400">
+    <LockIcon  className="text-gray-400 mr-2 scale-80" />
                 <Field
                   type="password"
                   name="confirm"
                   placeholder="Confirm Password"
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none"
-                  />
+className="w-full py-2 outline-none" />
+</div>
                 <ErrorMessage
                   name="confirm"
                   component="p"

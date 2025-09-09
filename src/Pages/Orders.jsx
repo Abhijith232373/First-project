@@ -55,21 +55,21 @@ const Orders = () => {
   };
 
   // Delete single item inside order
-  const handleRemove = async (itemId, orderId) => {
-    const updatedOrders = orders.map((o) =>
-      o.id === orderId
-        ? { ...o, items: o.items.filter((item) => item.id !== itemId) }
-        : o
-    );
+  // const handleRemove = async (itemId, orderId) => {
+  //   const updatedOrders = orders.map((o) =>
+  //     o.id === orderId
+  //       ? { ...o, items: o.items.filter((item) => item.id !== itemId) }
+  //       : o
+  //   );
 
-    setOrders(updatedOrders);
+  //   setOrders(updatedOrders);
 
-    await axios.patch(`http://localhost:5000/users/${user.id}`, {
-      orders: updatedOrders,
-    });
+  //   await axios.patch(`http://localhost:5000/users/${user.id}`, {
+  //     orders: updatedOrders,
+  //   });
 
-    toast.success(" Item deleted!");
-  };
+  //   toast.success(" Item deleted!");
+  // };
 
   return (
     <div className="max-w-7xl mx-auto mt-12 px-4">
@@ -78,8 +78,8 @@ const Orders = () => {
       {orders.map((order) => (
         <div key={order.id} className="bg-white p-6 rounded-2xl shadow mb-6">
           <h3 className="text-xl font-semibold mb-2">Order ID: {order.id}</h3>
-          <p className="text-gray-600 mb-2">📅 Placed on: {order.date}</p>
-          <p className="text-gray-600 mb-4">💳 Payment: {order.payment}</p>
+          <p className="text-gray-600 mb-2"> Placed on: {order.date}</p>
+          <p className="text-gray-600 mb-4"> Payment: {order.payment}</p>
 
           <h4 className="font-semibold mb-2">Items:</h4>
           {order.items.map((item) => (
@@ -108,16 +108,16 @@ const Orders = () => {
                   </button>
                 )}
 
-                <button
-                  onClick={() => handleRemove(item.id, order.id)}
-                  className="bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600"
-                >
-                  Delete
-                </button>
+                {/* <button
+                //   onClick={() => handleRemove(item.id, order.id)}
+                //   className="bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600"
+                // >
+                //   Delete
+                // </button> */}
 
                 {item.canceled && (
                   <span className="text-red-500 font-semibold ml-2">
-                    ❌ Canceled
+                     Canceled
                   </span>
                 )}
               </div>

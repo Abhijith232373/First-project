@@ -735,41 +735,96 @@
       "name": "a",
       "email": "abhijithh@gmail.com",
       "password": "12345678",
-      "wishlist": [],
+      "wishlist": [
+        {
+          "id": "1",
+          "name": "Modern Sofa",
+          "title": "Luxury 3-Seater Sofa",
+          "price": 25999,
+          "description": "A premium fabric sofa with wooden legs and soft cushioning for ultimate comfort.",
+          "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
+          "category": "Living"
+        },
+        {
+          "id": "2",
+          "name": "Dining Table",
+          "title": "6-Seater Wooden Dining Table",
+          "price": 18999,
+          "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
+          "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
+          "category": "Dining"
+        },
+        {
+          "id": "3",
+          "name": "Coffee Table",
+          "title": "Round Glass Coffee Table",
+          "price": 6999,
+          "description": "Stylish center table with tempered glass top and metal frame.",
+          "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
+          "category": "Dining"
+        },
+        {
+          "id": "72",
+          "name": "Knife Set",
+          "title": "Stainless Steel Kitchen Knife Set",
+          "price": 2599,
+          "description": "8-piece premium stainless steel knife set with ergonomic handles and wooden block.",
+          "image": "https://m.media-amazon.com/images/I/71DfDZ25HkL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Kitchen"
+        },
+        {
+          "id": "74",
+          "name": "Nonstick Pan",
+          "title": "Nonstick Frying Pan",
+          "price": 1299,
+          "description": "High-quality nonstick pan for frying, sautéing, and cooking with minimal oil.",
+          "image": "https://m.media-amazon.com/images/I/615Xoy83cRL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Kitchen"
+        }
+      ],
       "cart": [
         {
-          "id": "11",
-          "name": "Accent Chair",
-          "title": "Velvet Upholstered Accent Chair",
-          "price": 11999,
-          "description": "Elegant accent chair with velvet fabric, perfect for living rooms or bedrooms.",
-          "image": "https://m.media-amazon.com/images/I/51cYlJo-HOL._AC_UL480_FMwebp_QL65_.jpg",
-          "category": "Living",
+          "id": "72",
+          "name": "Knife Set",
+          "title": "Stainless Steel Kitchen Knife Set",
+          "price": 2599,
+          "description": "8-piece premium stainless steel knife set with ergonomic handles and wooden block.",
+          "image": "https://m.media-amazon.com/images/I/71DfDZ25HkL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Kitchen",
+          "quantity": 1
+        },
+        {
+          "id": "73",
+          "name": "Cutting Board",
+          "title": "Bamboo Cutting Board",
+          "price": 799,
+          "description": "Durable and eco-friendly bamboo cutting board suitable for all kitchen tasks.",
+          "image": "https://m.media-amazon.com/images/I/71vNOaJLQ2L._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Kitchen",
+          "quantity": 1
+        },
+        {
+          "id": "74",
+          "name": "Nonstick Pan",
+          "title": "Nonstick Frying Pan",
+          "price": 1299,
+          "description": "High-quality nonstick pan for frying, sautéing, and cooking with minimal oil.",
+          "image": "https://m.media-amazon.com/images/I/615Xoy83cRL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Kitchen",
           "quantity": 1
         }
       ],
       "orders": [
         {
-          "id": "1756892864563",
-          "date": "03/09/2025, 15:17:44",
+          "id": "1757435130267",
+          "date": "09/09/2025, 21:55:30",
           "payment": "gpay",
           "details": {
             "name": "Abhijith P.R",
             "phone": "08590988810",
-            "address": "Pallipurathu, fdvfdf, kottyam, Kerala, 686633, Landmark: "
+            "address": "Pallipurathu, , kottyam, Kerala, 686633, Landmark: "
           },
           "items": [
-            {
-              "id": "3",
-              "name": "Coffee Table",
-              "title": "Round Glass Coffee Table",
-              "price": 6999,
-              "description": "Stylish center table with tempered glass top and metal frame.",
-              "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
-              "category": "Dining",
-              "quantity": 1,
-              "canceled": false
-            },
             {
               "id": "2",
               "name": "Dining Table",
@@ -784,23 +839,23 @@
           ]
         },
         {
-          "id": "1757330883169",
-          "date": "08/09/2025, 16:58:03",
+          "id": "1757435494485",
+          "date": "09/09/2025, 22:01:34",
           "payment": "gpay",
           "details": {
             "name": "Abhijith P.R",
             "phone": "08590988810",
-            "address": "Pallipurathu, none, kottyam, Kerala, 686633, Landmark: "
+            "address": "Pallipurathu, , kottyam, Kerala, 686633, Landmark: "
           },
           "items": [
             {
-              "id": "3",
-              "name": "Coffee Table",
-              "title": "Round Glass Coffee Table",
-              "price": 6999,
-              "description": "Stylish center table with tempered glass top and metal frame.",
-              "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
-              "category": "Dining",
+              "id": "1",
+              "name": "Modern Sofa",
+              "title": "Luxury 3-Seater Sofa",
+              "price": 25999,
+              "description": "A premium fabric sofa with wooden legs and soft cushioning for ultimate comfort.",
+              "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
+              "category": "Living",
               "quantity": 1,
               "canceled": false
             }

@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../Context/AuthContext"; 
 import toast from "react-hot-toast";
+import EmailIcon from "@mui/icons-material/Email";
+import LockIcon from '@mui/icons-material/Lock';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -86,12 +88,14 @@ const Login = () => {
             {() => (
               <Form className="space-y-4 relative z-10">
                 <div>
+                  <div className="flex items-center border rounded-lg px-3 focus-within:ring-2 focus-within:ring-indigo-400">
+    <EmailIcon  className="text-gray-400 mr-2 scale-80" />
                   <Field
                     type="email"
                     name="email"
                     placeholder="Email"
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none"
-                  />
+className="w-full py-2 outline-none"/>
+                  </div>
                   <ErrorMessage
                     name="email"
                     component="p"
@@ -100,12 +104,15 @@ const Login = () => {
                 </div>
 
                 <div>
+                                   <div className="flex items-center border rounded-lg px-3 focus-within:ring-2 focus-within:ring-indigo-400">
+    <LockIcon  className="text-gray-400 mr-2 scale-80" />
                   <Field
                     type="password"
                     name="password"
                     placeholder="Password"
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-400 outline-none"
+                    className="w-full py-2 outline-none"
                   />
+                  </div>
                   <ErrorMessage
                     name="password"
                     component="p"

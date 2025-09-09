@@ -2,7 +2,7 @@
 import React, { useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
 import { AuthContext } from "../Context/AuthContext";
 import axios from "axios";
@@ -11,6 +11,15 @@ const BuyDetails = () => {
   const { cart, clearCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // ✅ Single product from Quick View Buy Now
+  const quickBuyProduct = location.state?.product;
+
+  // If Quick Buy is active, use only that product in checkout
+  const checkoutItems = quickBuyProduct
+    ? [{ ...quickBuyProduct, quantity: 1 }]
+    : cart;
 
   const initialValues = {
     name: user?.name || "",
@@ -25,7 +34,7 @@ const BuyDetails = () => {
   };
 
   const handleSubmit = async (values, { resetForm }) => {
-    if (!cart || cart.length === 0) {
+    if (!checkoutItems || checkoutItems.length === 0) {
       toast.error("Your cart is empty ");
       return;
     }
@@ -45,7 +54,7 @@ const BuyDetails = () => {
         phone: values.phone,
         address: `${values.address}, ${values.locality}, ${values.district}, ${values.state}, ${values.pincode}, Landmark: ${values.landmark}`,
       },
-      items: cart.map((item) => ({
+      items: checkoutItems.map((item) => ({
         ...item,
         canceled: false,
       })),
@@ -61,10 +70,10 @@ const BuyDetails = () => {
         orders: [...existingOrders, orderData],
       });
 
-      // Clear cart
-      clearCart();
+      // Clear cart only if checkout from cart
+      if (!quickBuyProduct) clearCart();
 
-      toast.success(" Order Placed Successfully!");
+      toast.success("Order Placed Successfully!");
       resetForm();
 
       // Navigate to Orders page
@@ -78,29 +87,31 @@ const BuyDetails = () => {
   return (
     <div className="max-w-7xl mx-auto mt-12 px-4">
       <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
-         Checkout
+        Checkout
       </h2>
 
       <div className="flex flex-col md:flex-row gap-8">
-        {/* LEFT SIDE - Cart Items */}
+        {/* LEFT SIDE - Items */}
         <div className="flex-1 bg-white shadow-2xl rounded-2xl p-6">
           <h3 className="text-2xl font-semibold mb-4 border-b pb-2">
-             Items in Your Cart
+            {quickBuyProduct ? "Product Details" : "Items in Your Cart"}
           </h3>
-          {cart && cart.length > 0 ? (
+          {checkoutItems && checkoutItems.length > 0 ? (
             <div className="space-y-4">
-              {cart.map((item) => (
+              {checkoutItems.map((item) => (
                 <div
                   key={item.id}
                   className="flex items-center justify-between border rounded-lg p-3 shadow-sm"
                 >
                   <img
                     src={item.image}
-                    alt={item.title}
+                    alt={item.title || item.name}
                     className="w-16 h-16 object-cover rounded-md"
                   />
                   <div className="flex-1 ml-4">
-                    <h4 className="font-medium text-gray-800">{item.title}</h4>
+                    <h4 className="font-medium text-gray-800">
+                      {item.title || item.name}
+                    </h4>
                     <p className="text-sm text-gray-500">
                       Qty: {item.quantity || 1}
                     </p>
@@ -112,7 +123,7 @@ const BuyDetails = () => {
               ))}
             </div>
           ) : (
-            <p className="text-gray-500">Your cart is empty.</p>
+            <p className="text-gray-500">No items to checkout.</p>
           )}
         </div>
 
@@ -121,9 +132,8 @@ const BuyDetails = () => {
           <Formik initialValues={initialValues} onSubmit={handleSubmit}>
             {({ values }) => (
               <Form className="space-y-6">
-                {/* Delivery Fields */}
                 <h3 className="text-2xl font-semibold mb-2 border-b pb-2">
-                   Delivery Details
+                  Delivery Details
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {["name", "phone", "pincode", "district", "state"].map(
@@ -152,7 +162,6 @@ const BuyDetails = () => {
                       name="locality"
                       placeholder="Locality / Area"
                       className="w-full p-2 border rounded-md"
-                      required
                     />
                   </div>
                   <div className="md:col-span-2">
@@ -176,9 +185,8 @@ const BuyDetails = () => {
                   </div>
                 </div>
 
-                {/* Payment */}
                 <h3 className="text-2xl font-semibold mb-2 border-b pb-2">
-                   Payment Method
+                  Payment Method
                 </h3>
                 <div className="grid grid-cols-2 gap-3 mb-4">
                   {[
@@ -229,9 +237,9 @@ const BuyDetails = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-semibold"
+                  className="w-full  hover:bg-gray-200 cursor-pointer transition delay-150 duration-300 ease-in-out active:cursor-progress text-green-600 text-xl py-3 rounded-md font-semibold"
                 >
-                   Confirm Order
+                  Confirm Order
                 </button>
               </Form>
             )}

@@ -1,6 +1,6 @@
 // src/components/SearchBar.jsx
 import React, { useContext, useState } from "react";
-import { SearchContext } from "../context/SearchContext";
+import { SearchContext } from '../Context/SearchContext';
 import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {

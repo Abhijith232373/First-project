@@ -16,7 +16,7 @@ const WishlistPage = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-6">My Wishlist ❤️</h2>
+      <h2 className="text-2xl font-bold mb-6">My Wishlist </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {wishlist.map((item) => (
@@ -42,7 +42,7 @@ const WishlistPage = () => {
                   // ✅ Redirect to buydetails with item info
                   navigate("/buydetails", { state: { product: item } });
                 }}
-                className="flex-1 px-2 py-1 text-green-600 font-serif font-extrabold rounded-lg hover:text-green-900 hover:cursor-pointer transition"
+                className="flex-1 px-2 py-1 text-green-400 font-serif font-extrabold rounded-lg hover:text-green-600 hover:cursor-pointer transition"
               >
                  Buy Now
               </button>
