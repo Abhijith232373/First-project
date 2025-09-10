@@ -23,7 +23,6 @@ const Future = () => {
         Featured Products
       </h1>
 
-      {/* Navigation Buttons */}
       <div className="absolute top-1/2 -left-4 transform -translate-y-1/2 z-20">
         <button className="swiper-button-prev rounded-full p-2 bg-white shadow-md">
           <ChevronLeft className="w-5 h-5 text-gray-700" />
@@ -35,9 +34,7 @@ const Future = () => {
         </button>
       </div>
 
-      {/* Swiper Carousel */}
-      <Swiper
-        modules={[Autoplay, Navigation]}
+      <Swiper modules={[Autoplay, Navigation]}
         spaceBetween={20}
         loop={true}
         navigation={{
@@ -49,29 +46,26 @@ const Future = () => {
           disableOnInteraction: false,
         }}
         breakpoints={{
-          320: { slidesPerView: 1.2 }, // mobile
-          640: { slidesPerView: 2.2 }, // tablets
-          1024: { slidesPerView: 3.5 }, // small laptops
-          1280: { slidesPerView: 4.5 }, // desktops
+          320: { slidesPerView: 1.2 },
+          640: { slidesPerView: 2.2 }, 
+          1024: { slidesPerView: 3.5 }, 
+          1280: { slidesPerView: 4.5 }, 
         }}
         className="w-full"
       >
         {items.map((item) => (
           <SwiperSlide key={item.id}>
             <div className="relative rounded-xl overflow-hidden hover:shadow-xl transition duration-300 group bg-white">
-              {/* SALE Tag */}
               <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-md shadow-md z-10">
                 SALE
               </div>
 
-              {/* Image */}
               <img
                 src={item.img}
                 alt={`item-${item.id}`}
                 className="w-full h-[250px] md:h-[300px] object-cover transform transition-transform duration-500 group-hover:scale-110"
               />
 
- {/* Explore Now Link */}
               <div className="flex justify-center py-3">
                <a href='/products'
                   className="px-4 py-2 text-sm font-semibold rounded-lg bg-gray-800 text-white hover:bg-gray-900 transition duration-300"

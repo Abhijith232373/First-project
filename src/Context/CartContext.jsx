@@ -1,16 +1,14 @@
-// src/Context/CartContext.jsx
 import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { AuthContext } from "./AuthContext"; // for logged-in user
+import { AuthContext } from "./AuthContext"; 
 import toast from "react-hot-toast";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const { user } = useContext(AuthContext); // get current logged-in user
+  const { user } = useContext(AuthContext); 
   const [cart, setCart] = useState([]);
 
-  // ✅ Load cart from DB when user logs in
   useEffect(() => {
     if (user?.id) {
       axios
@@ -18,13 +16,12 @@ export const CartProvider = ({ children }) => {
         .then((res) => {
           setCart(res.data.cart || []);
         })
-        .catch((err) => console.error("❌ Error fetching cart:", err));
+        .catch((err) => console.error(" Error fetching cart:", err));
     } else {
-      setCart([]); // clear cart if no user
+      setCart([]);
     }
   }, [user]);
 
-  // ✅ Update cart in DB
   const updateCartInDB = async (updatedCart) => {
     if (!user?.id) return;
     try {
@@ -32,11 +29,11 @@ export const CartProvider = ({ children }) => {
         cart: updatedCart,
       });
     } catch (err) {
-      console.error("❌ Error updating cart:", err);
+      console.error(" Error updating cart:", err);
     }
   };
 
-  // ✅ Add item to cart
+ 
   const addToCart = (product) => {
     if (!user) {
       toast.error("Please login to add items to cart");
@@ -47,58 +44,54 @@ export const CartProvider = ({ children }) => {
     const exists = cart.find((item) => item.id === product.id);
 
     if (exists) {
-      // increase quantity if already in cart
       updatedCart = cart.map((item) =>
         item.id === product.id
           ? { ...item, quantity: (item.quantity || 1) + 1 }
           : item
       );
-      toast("Increased quantity 🛒");
+      toast("Increased quantity ");
     } else {
       updatedCart = [...cart, { ...product, quantity: 1 }];
-      toast.success("Added to cart 🛒");
+      toast.success("Added to cart ");
     }
 
     setCart(updatedCart);
     updateCartInDB(updatedCart);
   };
 
-  // ✅ Increment quantity of a particular product
   const incrementQuantity = (id) => {
     const updatedCart = cart.map((item) =>
       item.id === id ? { ...item, quantity: (item.quantity || 1) + 1 } : item
     );
     setCart(updatedCart);
     updateCartInDB(updatedCart);
-    toast("Quantity increased 🟢");
+    toast("Quantity increased ");
   };
 
-  // ✅ Decrement quantity of a particular product
   const decrementQuantity = (id) => {
     const updatedCart = cart
       .map((item) =>
         item.id === id ? { ...item, quantity: (item.quantity || 1) - 1 } : item
       )
-      .filter((item) => item.quantity > 0); // remove if quantity <= 0
+      .filter((item) => item.quantity > 0); 
 
     setCart(updatedCart);
     updateCartInDB(updatedCart);
-    toast("Quantity decreased 🟡");
+    toast("Quantity decreased ");
   };
 
-  // ✅ Remove item from cart
   const removeFromCart = (id) => {
     const updatedCart = cart.filter((item) => item.id !== id);
     setCart(updatedCart);
     updateCartInDB(updatedCart);
-    toast("Removed from cart ❌");
+    toast("Removed from cart ");
   };
 
-  // ✅ Clear cart
+ 
   const clearCart = () => {
     setCart([]);
     updateCartInDB([]);
-    toast("Cart cleared 🧹");
+    toast("Cart cleared ");
   };
 
   return (

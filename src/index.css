@@ -1,16 +1,13 @@
 @import "tailwindcss";
 
-/* body {
-  overflow-x: hidden;  /* 🔒 stops side scrolling */
-  
-/* } */ 
+
 
 body {
-  font-family: 'Roboto', sans-serif;   /* Default text */
+  font-family: 'Roboto', sans-serif;   
 }
 
 h1, h2, h3, h4, h5, h6, .heading {
-  font-family: 'Poppins', sans-serif; /* Headings */
+  font-family: 'Poppins', sans-serif; 
   font-weight: 600;
   color: gray;
 }

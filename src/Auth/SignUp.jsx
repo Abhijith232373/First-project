@@ -21,7 +21,7 @@ const SignUp = () => {
           />
         </div>
 
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-indigo-600 mb-4">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-600 mb-4">
           Create Account
         </h2>
 
@@ -150,7 +150,7 @@ const SignUp = () => {
 
               <button
                 type="submit"
-                className="w-full py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg shadow-lg hover:opacity-90 transition-all"
+                className="w-full py-2 bg-gradient-to-r from-gray-500 to-gray-600 text-white rounded-lg shadow-lg hover:opacity-90 transition-all"
               >
                 Sign Up
               </button>

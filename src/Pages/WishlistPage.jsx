@@ -24,22 +24,18 @@ const WishlistPage = () => {
             key={item.id}
             className="p-4 shadow-md rounded-xl bg-white flex flex-col"
           >
-            {/* Image */}
             <img
               src={item.image}
               alt={item.name}
               className="w-full h-40 object-cover rounded-md mb-3"
             />
 
-            {/* Details */}
             <h3 className="text-lg font-semibold">{item.name}</h3>
             <p className="text-gray-600 mb-3">₹{item.price}</p>
 
-            {/* Action Buttons */}
             <div className="mt-auto flex gap-3">
               <button
                 onClick={() => {
-                  // ✅ Redirect to buydetails with item info
                   navigate("/buydetails", { state: { product: item } });
                 }}
                 className="flex-1 px-2 py-1 text-green-400 font-serif font-extrabold rounded-lg hover:text-green-600 hover:cursor-pointer transition"

@@ -1,17 +1,17 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { AuthContext } from "./AuthContext"; // logged-in user context
-import { CartContext } from "./CartContext"; // for addToCart
+import { AuthContext } from "./AuthContext"; 
+import { CartContext } from "./CartContext";
 import toast from "react-hot-toast";
 
 export const WishlistContext = createContext();
 
 export const WishlistProvider = ({ children }) => {
-  const { user } = useContext(AuthContext); // get current user
+  const { user } = useContext(AuthContext); 
   const { addToCart } = useContext(CartContext);
   const [wishlist, setWishlist] = useState([]);
 
-  // Load wishlist from DB when user logs in
+  
   useEffect(() => {
     if (user?.id) {
       axios
@@ -19,13 +19,12 @@ export const WishlistProvider = ({ children }) => {
         .then((res) => {
           setWishlist(res.data.wishlist || []);
         })
-        .catch((err) => console.error("❌ Error fetching wishlist:", err));
+        .catch((err) => console.error(" Error fetching wishlist:", err));
     } else {
-      setWishlist([]); // clear wishlist if no user
+      setWishlist([]); 
     }
   }, [user]);
 
-  // Update wishlist in DB
   const updateWishlistInDB = async (updatedWishlist) => {
     if (!user?.id) return;
     try {
@@ -33,11 +32,10 @@ export const WishlistProvider = ({ children }) => {
         wishlist: updatedWishlist,
       });
     } catch (err) {
-      console.error("❌ Error updating wishlist:", err);
+      console.error(" Error updating wishlist:", err);
     }
   };
 
-  // ✅ Toggle add/remove wishlist
   const toggleWishlist = async (product) => {
     if (!user) {
       toast.error("Please login to add items to wishlist");
@@ -46,11 +44,9 @@ export const WishlistProvider = ({ children }) => {
 
     let updatedWishlist;
     if (wishlist.find((item) => item.id === product.id)) {
-      // remove
       updatedWishlist = wishlist.filter((item) => item.id !== product.id);
       toast("Removed from wishlist", { icon: "❌" });
     } else {
-      // add
       updatedWishlist = [...wishlist, product];
       toast.success("Added to wishlist ");
     }
@@ -59,7 +55,6 @@ export const WishlistProvider = ({ children }) => {
     updateWishlistInDB(updatedWishlist);
   };
 
-  // ✅ Explicit remove
   const removeFromWishlist = (id) => {
     const updatedWishlist = wishlist.filter((item) => item.id !== id);
     setWishlist(updatedWishlist);
@@ -67,7 +62,6 @@ export const WishlistProvider = ({ children }) => {
     toast("Removed from wishlist", { icon: "❌" });
   };
 
-  // ✅ Move item to cart
   const moveToCart = (item) => {
     addToCart(item);
     removeFromWishlist(item.id);

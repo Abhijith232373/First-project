@@ -24,9 +24,11 @@ import Kitchen from "./Catagorys/Kitchen";
 import BuyDetails from "./Pages/BuyDetails";
 import Orders from "./Pages/Orders";
 import CategoryPage from "./Pages/CategoryPage";
+import ProductDetails from "./Pages/ProductDetails";
 
 function App() {
   return (
+    
     <AuthProvider>
       <SearchProvider>
         <CartProvider>
@@ -34,22 +36,16 @@ function App() {
             <SortProvider>
               <ProductFilterProvider>
                 <OrderProvider>
-                  
                   <Toaster position="top-right" reverseOrder={false} />
-
                   <Routes>
-                    {/* Public routes */}
                     <Route path="/" element={<HomePage />} />
                     <Route path="/user" element={ <PublicRoute><Login /> </PublicRoute> } />
                     <Route  path="/signup"  element={  <PublicRoute> <SignUp /> </PublicRoute> }/>
-
-                    {/* Protected routes */}
                     <Route path="/wishlist" element={<ProtectedRoute><WishlistPage /></ProtectedRoute>}/>
                     <Route path="/cart"element={<ProtectedRoute><Cart /></ProtectedRoute> }/>
                     <Route path="/buydetails" element={ <ProtectedRoute> <BuyDetails /> </ProtectedRoute>}/>
                     <Route path="/orders"element={<ProtectedRoute><Orders /> </ProtectedRoute>}/>
-
-                    {/* Other routes */}
+                     <Route path="/product/:id" element={<ProductDetails/>} />
                     <Route path="/products" element={<Products />} />
                     <Route path="/dining" element={<Dining />} />
                     <Route path="/living" element={<Living />} />

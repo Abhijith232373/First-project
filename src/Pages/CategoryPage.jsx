@@ -1,7 +1,6 @@
-// src/pages/CategoryPage.jsx
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { SearchContext } from "../context/SearchContext";
+import { SearchContext } from '../Context/SearchContext';
 
 const CategoryPage = () => {
   const { category } = useParams();

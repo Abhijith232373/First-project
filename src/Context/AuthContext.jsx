@@ -1,8 +1,5 @@
-// src/Context/AuthContext.jsx
 import { createContext, useState, useEffect, useContext } from "react";
-
 export const AuthContext = createContext();
-
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
@@ -16,14 +13,12 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  // ✅ login
   const login = (userData) => {
     setUser(userData);
     setIsLoggedIn(true);
     localStorage.setItem("user", JSON.stringify(userData));
   };
 
-  // ✅ logout
   const logout = () => {
     setUser(null);
     setIsLoggedIn(false);
@@ -37,7 +32,6 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// ✅ Custom hook
 export const useAuth = () => {
   return useContext(AuthContext);
 };

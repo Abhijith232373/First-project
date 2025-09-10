@@ -10,7 +10,6 @@ const Footer = () => {
 
   return (
     <div className="w-full">
-      {/* Top Section */}
       <div className="w-full bg-amber-50 flex flex-col md:flex-row justify-around items-center text-center font-serif py-6 gap-6">
        <Link to='/orders' ><div>
           <img className="w-[60px] mx-auto" src="src/assets/Footer/fast-shipping-filled.webp" alt="Fast Shipping" />
@@ -29,11 +28,9 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Section */}
       <div className="w-full bg-black">
         <div className="flex flex-col md:flex-row justify-around p-6 md:p-10 gap-8 md:gap-0 text-center md:text-left">
 
-          {/* Column 1 */}
           <ul className="font-serif space-y-2">
             <li className="font-semibold text-white">    <img
             src="src\assets\logo\Home4u-logo.png"
@@ -52,7 +49,6 @@ const Footer = () => {
             </div>
           </ul>
 
-          {/* Column 2 */}
           <ul className="font-serif space-y-2">
            
           <li className="font-semibold text-white">Shop by</li>
@@ -64,14 +60,12 @@ const Footer = () => {
            <Link to='/Homedecor' > <li className={stylesh}>Home Decor</li><br /></Link>
           </ul>
 
-          {/* Column 3 */}
           <ul className="font-serif space-y-2">
             <li className="font-semibold text-white">Information</li>
             <li className={stylesh}>Store Location</li><br />
             <li className={stylesh}>About</li><br />
           </ul>
 
-          {/* Column 4 */}
           <ul className="font-serif space-y-2">
             <li className="font-semibold text-white">Customer Service</li>
             <li className={stylesh}>Privacy Policy</li><br />
@@ -82,7 +76,6 @@ const Footer = () => {
             <li className={stylesh}>Care and Warranty</li><br />
           </ul>
 
-          {/* Column 5 */}
           <ul className="font-serif space-y-2">
             <li className="font-semibold text-white">Download App</li>
            <a href="https://www.apple.com/in/app-store/">

@@ -1,16 +1,16 @@
-// src/OpenUi/NavBar.jsx
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { CartContext } from "../Context/CartContext";
 import { AuthContext } from "../Context/AuthContext";
 import { WishlistContext } from "../Context/WishlistContext";
 import { SearchContext } from '../Context/SearchContext';
-import toast from "react-hot-toast"; // ✅ Toast for alerts
+import toast from "react-hot-toast";
 import SearchBar from "./SearchBar";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LocalMallIcon from '@mui/icons-material/LocalMall';
 
 const NavBar = () => {
   const { wishlist } = useContext(WishlistContext);
@@ -24,14 +24,11 @@ const NavBar = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Active link underline
   const NavStyle = (path) =>
     `relative inline-block px-2 py-1 text-[15px] after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] 
-     after:bg-gray-600 after:transition-all after:duration-300 hover:after:w-full hover:text-gray-600 hover:cursor-pointer ${
-       location.pathname === path ? "text-gray-600 font-semibold after:w-full" : "text-gray-700"
-     }`;
+     after:bg-gray-600 after:transition-all after:duration-300 hover:after:w-full hover:text-gray-600 hover:cursor-pointer ${location.pathname === path ? "text-gray-600 font-semibold after:w-full" : "text-gray-700"
+    }`;
 
-  // hide/show navbar on scroll
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > lastScrollY) setShowNav(false);
@@ -43,37 +40,32 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  // handle search enter key
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       navigate("/products");
     }
   };
 
-  // handle logout with toast
   const handleLogout = () => {
     logout();
     toast.error("Logged out");
-    navigate("/"); // redirect home
+    navigate("/");
   };
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full flex justify-between items-center px-6 bg-white h-16 shadow-md transition-transform duration-300 z-50 ${
-        showNav ? "translate-y-0" : "-translate-y-full"
-      }`}
+      className={`fixed top-0 left-0 w-full flex justify-between items-center px-6 bg-white h-16 shadow-md transition-transform duration-300 z-50 ${showNav ? "translate-y-0" : "-translate-y-full"
+        }`}
     >
-      {/* LEFT: Logo */}
       <div className="flex items-center gap-6">
         <Link to="/">
           <img
             src="src/assets/logo/Home4u-logo-transparent.png"
             alt="Home4U Logo"
-            className="h-12 w-auto object-contain" // ✅ fixed Tailwind size
+            className="h-12 w-auto object-contain"
           />
         </Link>
 
-        {/* Nav Links */}
         <div className="hidden md:flex space-x-6">
           <Link to="/products">
             <div className={NavStyle("/products")}>Shop All</div>
@@ -99,33 +91,11 @@ const NavBar = () => {
         </div>
       </div>
 
-      {/* RIGHT: Search + Icons */}
+
       <div className="flex items-center gap-5">
-        {/* Search */}
-        {/* <input
-          type="text"
-          placeholder="Search..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={handleKeyDown}
-          className="px-3 py-1 rounded-lg outline-none border focus:ring-1 hidden md:block w-60"
-        /> */}
 
-          <SearchBar/>
+        <SearchBar />
 
-        {/* User Login */}
-        {!isLoggedIn && (
-          <Link to="/user">
-            <AccountCircleIcon
-              className="w-12 h-6 text-gray-600"
-            />
-          </Link>
-        )}
-
-
-        
-          {/* <div></div> */}
-        {/* Cart */}
         <Link to="/cart" className="relative">
           <ShoppingCartIcon className="text-gray-600 w-6 h-6" />
           {cart.length > 0 && (
@@ -135,17 +105,22 @@ const NavBar = () => {
           )}
         </Link>
 
-        {/* Wishlist */}
         <Link to="/wishlist" className="relative">
-          <FavoriteBorderIcon className="text-gray-600 w-6 h-6" />
+          <FavoriteIcon className="text-gray-600 w-6 h-6" />
           {wishlist.length > 0 && (
             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full px-2 py-0.5">
               {wishlist.length}
             </span>
           )}
         </Link>
-
-        {/* Logout */}
+        <Link to='/orders'> <LocalMallIcon className="text-gray-600 w-6 h-6" /></Link>
+                  {!isLoggedIn && (
+          <Link to="/user">
+            <AccountCircleIcon
+              className="w-12 h-6 text-gray-600"
+            />
+          </Link>
+        )}
         {isLoggedIn && (
           <LogoutIcon
             onClick={handleLogout}

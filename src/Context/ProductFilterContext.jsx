@@ -4,7 +4,7 @@ export const ProductFilterContext = createContext();
 
 export const ProductFilterProvider = ({ children }) => {
   const [category, setCategory] = useState("All");
-  const [sortOrder, setSortOrder] = useState(""); // "low-high" or "high-low"
+  const [sortOrder, setSortOrder] = useState(""); 
 
   return (
     <ProductFilterContext.Provider

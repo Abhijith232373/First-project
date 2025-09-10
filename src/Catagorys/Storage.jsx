@@ -1,21 +1,16 @@
-// src/Pages/Storage.jsx
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CircularProgress from "@mui/material/CircularProgress";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-
 import { SearchContext } from "../Context/SearchContext";
 import { CartContext } from "../Context/CartContext";
 import { WishlistContext } from "../Context/WishlistContext";
 import { ProductFilterContext } from "../Context/ProductFilterContext";
-
 import NavBar from "../OpenUi/NavBar";
 import QuickViewModal from '../Pages/QuickViewModal';
-
 import { Listbox } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/24/solid";
-
 const sortOptions = [
   { value: "", label: "Sort by" },
   { value: "low-high", label: "Price: Low → High" },
@@ -38,7 +33,6 @@ const Storage = () => {
 
   const [addingId, setAddingId] = useState(null);
 
-  // Fetch only Storage products
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
@@ -56,7 +50,6 @@ const Storage = () => {
     fetchProducts();
   }, []);
 
-  // Search + Sort
   useEffect(() => {
     let data = [...products];
 
@@ -77,7 +70,6 @@ const Storage = () => {
     setVisibleCount(8);
   }, [products, sortOrder, query]);
 
-  // Infinite scroll
   useEffect(() => {
     const handleScroll = () => {
       if (
@@ -112,7 +104,6 @@ const Storage = () => {
     <>
       <NavBar />
       <div className="px-6 py-12 bg-gray-50 min-h-screen mt-10">
-        {/* Sort Filter only */}
         <div className="flex justify-end items-center mb-8">
           <Listbox value={sortOrder} onChange={setSortOrder}>
             <div className="relative w-60">
@@ -126,8 +117,7 @@ const Storage = () => {
                     key={idx}
                     value={opt.value}
                     className={({ active }) =>
-                      `cursor-pointer px-4 py-2 ${
-                        active ? "bg-gray-100 text-gray-900 hover:bg-gray-300" : "text-gray-700"
+                      `cursor-pointer px-4 py-2 ${active ? "bg-gray-100 text-gray-900 hover:bg-gray-300" : "text-gray-700"
                       }`
                     }
                   >
@@ -166,11 +156,10 @@ const Storage = () => {
                           e.stopPropagation();
                           toggleWishlist(item);
                         }}
-                        className={`absolute top-2 right-2 cursor-pointer transition-colors duration-200 z-10 ${
-                          wishlist.find((p) => p.id === item.id)
+                        className={`absolute top-2 right-2 cursor-pointer transition-colors duration-200 z-10 ${wishlist.find((p) => p.id === item.id)
                             ? "text-red-600"
                             : "text-red-300 hover:text-red-400"
-                        }`}
+                          }`}
                       />
 
                       <img
@@ -226,7 +215,6 @@ const Storage = () => {
           </div>
         )}
 
-        {/* Quick View Modal */}
         {selectedProduct && (
           <QuickViewModal
             product={selectedProduct}

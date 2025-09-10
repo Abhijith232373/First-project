@@ -1,7 +1,7 @@
-// src/components/SearchBar.jsx
 import React, { useContext, useState } from "react";
-import { SearchContext } from '../Context/SearchContext';
+import { SearchContext } from "../Context/SearchContext";
 import { useNavigate } from "react-router-dom";
+import SearchIcon from '@mui/icons-material/Search';
 
 const SearchBar = () => {
   const { query, setQuery, products } = useContext(SearchContext);
@@ -15,23 +15,23 @@ const SearchBar = () => {
   const handleSelect = (product) => {
     setQuery("");
     setShowResults(false);
-    // 👇 redirect to category page (change to /product/:id if needed)
-    navigate(`/category/${product.category}`);
+    navigate(`/product/${product.id}`);
   };
 
   return (
-    <div className="relative w-full max-w-md mx-auto">
-      <input
-        type="text"
-        value={query}
-        placeholder="Search furniture..."
-        className="w-full border rounded-lg p-2"
-        onChange={(e) => {
-          setQuery(e.target.value);
-          setShowResults(true);
-        }}
-        onBlur={() => setTimeout(() => setShowResults(false), 200)}
-      />
+<div className="relative w-full">
+  <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 " />
+  <input
+    type="text"
+    value={query}
+    placeholder="Search furniture..."
+ className="w-full border rounded-lg p-2 pl-10 focus:outline-none focus:ring-0 focus:border-gray-300" 
+    onChange={(e) => {
+      setQuery(e.target.value);
+      setShowResults(true);
+    }}
+    onBlur={() => setTimeout(() => setShowResults(false), 200)}
+  />
 
       {showResults && query && (
         <ul className="absolute w-full bg-white shadow-lg rounded-lg mt-1 z-50 max-h-60 overflow-y-auto">
@@ -39,13 +39,13 @@ const SearchBar = () => {
             filteredProducts.map((product) => (
               <li
                 key={product.id}
-                onClick={() => handleSelect(product)}
+                onMouseDown={() => handleSelect(product)}
                 className="flex items-center gap-3 p-2 hover:bg-gray-200 cursor-pointer"
               >
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-12 h-12 object-cover rounded"
+                  className="w-10 h-10 object-cover rounded-4xl"
                 />
                 <span>{product.name}</span>
               </li>

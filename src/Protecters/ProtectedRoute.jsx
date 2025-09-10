@@ -5,7 +5,7 @@ const ProtectedRoute = ({ children }) => {
   const { isLoggedIn } = useAuth();
 
   if (!isLoggedIn) {
-    // ❌ Not logged in → redirect to login
+  
     return <Navigate to="/user" replace />;
   }
 

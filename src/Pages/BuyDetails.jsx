@@ -1,4 +1,3 @@
-// src/Pages/BuyDetails.jsx
 import React, { useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import toast from "react-hot-toast";
@@ -6,6 +5,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
 import { AuthContext } from "../Context/AuthContext";
 import axios from "axios";
+import HomeIcon from '@mui/icons-material/Home';
+import { Link } from "react-router-dom";
 
 const BuyDetails = () => {
   const { cart, clearCart } = useContext(CartContext);
@@ -30,7 +31,6 @@ const BuyDetails = () => {
     payment: "cod",
   };
 
-  // ✅ Validation for spaces
   const validate = (values) => {
     const errors = {};
     const checkSpace = (val, fieldName) => {
@@ -43,7 +43,6 @@ const BuyDetails = () => {
       return null;
     };
 
-    // Required fields validation
     const requiredFields = ["name", "phone", "pincode", "district", "state", "address"];
     requiredFields.forEach((field) => {
       const error = checkSpace(values[field], field.charAt(0).toUpperCase() + field.slice(1));
@@ -102,11 +101,11 @@ const BuyDetails = () => {
   return (
     <div className="max-w-7xl mx-auto mt-12 px-4">
       <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
-        Checkout
+        <Link to='/'> <HomeIcon className="w-12 h-12" />  </Link>    Checkout
+
       </h2>
 
       <div className="flex flex-col md:flex-row gap-8">
-        {/* LEFT SIDE */}
         <div className="flex-1 bg-white shadow-2xl rounded-2xl p-6">
           <h3 className="text-2xl font-semibold mb-4 border-b pb-2">
             {quickBuyProduct ? "Product Details" : "Items in Your Cart"}
@@ -142,7 +141,6 @@ const BuyDetails = () => {
           )}
         </div>
 
-        {/* RIGHT SIDE */}
         <div className="flex-1 bg-white shadow-2xl rounded-2xl p-6">
           <Formik
             initialValues={initialValues}
@@ -231,11 +229,10 @@ const BuyDetails = () => {
                   ].map((method) => (
                     <label
                       key={method.id}
-                      className={`cursor-pointer border rounded-md p-2 flex items-center gap-2 ${
-                        values.payment === method.id
+                      className={`cursor-pointer border rounded-md p-2 flex items-center gap-2 ${values.payment === method.id
                           ? "border-blue-500 ring-1 ring-blue-400 bg-blue-50"
                           : "border-gray-300"
-                      }`}
+                        }`}
                     >
                       <Field
                         type="radio"

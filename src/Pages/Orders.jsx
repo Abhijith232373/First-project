@@ -1,4 +1,3 @@
-// src/Pages/Orders.jsx
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import axios from "axios";
@@ -8,7 +7,6 @@ const Orders = () => {
   const { user } = useContext(AuthContext);
   const [orders, setOrders] = useState([]);
 
-  // Fetch user orders
   useEffect(() => {
     if (user) {
       axios
@@ -32,16 +30,15 @@ const Orders = () => {
     return <p className="text-center mt-12">No orders yet.</p>;
   }
 
-  // Cancel single item inside order
   const handleCancel = async (itemId, orderId) => {
     const updatedOrders = orders.map((o) =>
       o.id === orderId
         ? {
-            ...o,
-            items: o.items.map((item) =>
-              item.id === itemId ? { ...item, canceled: true } : item
-            ),
-          }
+          ...o,
+          items: o.items.map((item) =>
+            item.id === itemId ? { ...item, canceled: true } : item
+          ),
+        }
         : o
     );
 
@@ -54,22 +51,7 @@ const Orders = () => {
     toast.error("Item canceled!");
   };
 
-  // Delete single item inside order
-  // const handleRemove = async (itemId, orderId) => {
-  //   const updatedOrders = orders.map((o) =>
-  //     o.id === orderId
-  //       ? { ...o, items: o.items.filter((item) => item.id !== itemId) }
-  //       : o
-  //   );
 
-  //   setOrders(updatedOrders);
-
-  //   await axios.patch(`http://localhost:5000/users/${user.id}`, {
-  //     orders: updatedOrders,
-  //   });
-
-  //   toast.success(" Item deleted!");
-  // };
 
   return (
     <div className="max-w-7xl mx-auto mt-12 px-4">
@@ -85,9 +67,8 @@ const Orders = () => {
           {order.items.map((item) => (
             <div
               key={item.id}
-              className={`flex items-center justify-between mb-2 p-2 rounded border ${
-                item.canceled ? "bg-gray-100 line-through opacity-50" : ""
-              }`}
+              className={`flex items-center justify-between mb-2 p-2 rounded border ${item.canceled ? "bg-gray-100 line-through opacity-50" : ""
+                }`}
             >
               <div className="flex items-center gap-3">
                 <img
@@ -108,16 +89,9 @@ const Orders = () => {
                   </button>
                 )}
 
-                {/* <button
-                //   onClick={() => handleRemove(item.id, order.id)}
-                //   className="bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600"
-                // >
-                //   Delete
-                // </button> */}
-
                 {item.canceled && (
                   <span className="text-red-500 font-semibold ml-2">
-                     Canceled
+                    Canceled
                   </span>
                 )}
               </div>

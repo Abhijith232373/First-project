@@ -1,4 +1,3 @@
-// src/context/SortContext.jsx
 import { createContext, useState } from "react";
 
 export const SortContext = createContext();
