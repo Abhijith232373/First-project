@@ -13,10 +13,7 @@ const BuyDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // ✅ Single product from Quick View Buy Now
   const quickBuyProduct = location.state?.product;
-
-  // If Quick Buy is active, use only that product in checkout
   const checkoutItems = quickBuyProduct
     ? [{ ...quickBuyProduct, quantity: 1 }]
     : cart;
@@ -33,9 +30,32 @@ const BuyDetails = () => {
     payment: "cod",
   };
 
+  // ✅ Validation for spaces
+  const validate = (values) => {
+    const errors = {};
+    const checkSpace = (val, fieldName) => {
+      if (!val.trim()) {
+        return `${fieldName} is required`;
+      }
+      if (/^\s|\s$/.test(val)) {
+        return `No spaces allowed at start or end`;
+      }
+      return null;
+    };
+
+    // Required fields validation
+    const requiredFields = ["name", "phone", "pincode", "district", "state", "address"];
+    requiredFields.forEach((field) => {
+      const error = checkSpace(values[field], field.charAt(0).toUpperCase() + field.slice(1));
+      if (error) errors[field] = error;
+    });
+
+    return errors;
+  };
+
   const handleSubmit = async (values, { resetForm }) => {
     if (!checkoutItems || checkoutItems.length === 0) {
-      toast.error("Your cart is empty ");
+      toast.error("Your cart is empty");
       return;
     }
 
@@ -50,9 +70,9 @@ const BuyDetails = () => {
       date: new Date().toLocaleString(),
       payment: values.payment,
       details: {
-        name: values.name,
-        phone: values.phone,
-        address: `${values.address}, ${values.locality}, ${values.district}, ${values.state}, ${values.pincode}, Landmark: ${values.landmark}`,
+        name: values.name.trim(),
+        phone: values.phone.trim(),
+        address: `${values.address.trim()}, ${values.locality.trim()}, ${values.district.trim()}, ${values.state.trim()}, ${values.pincode.trim()}, Landmark: ${values.landmark.trim()}`,
       },
       items: checkoutItems.map((item) => ({
         ...item,
@@ -61,26 +81,21 @@ const BuyDetails = () => {
     };
 
     try {
-      // Fetch existing user
       const res = await axios.get(`http://localhost:5000/users/${user.id}`);
       const existingOrders = res.data.orders || [];
 
-      // Update user with new order
       await axios.patch(`http://localhost:5000/users/${user.id}`, {
         orders: [...existingOrders, orderData],
       });
 
-      // Clear cart only if checkout from cart
       if (!quickBuyProduct) clearCart();
 
       toast.success("Order Placed Successfully!");
       resetForm();
-
-      // Navigate to Orders page
       navigate("/orders");
     } catch (err) {
       console.error("Error placing order:", err);
-      toast.error("Failed to place order ");
+      toast.error("Failed to place order");
     }
   };
 
@@ -91,7 +106,7 @@ const BuyDetails = () => {
       </h2>
 
       <div className="flex flex-col md:flex-row gap-8">
-        {/* LEFT SIDE - Items */}
+        {/* LEFT SIDE */}
         <div className="flex-1 bg-white shadow-2xl rounded-2xl p-6">
           <h3 className="text-2xl font-semibold mb-4 border-b pb-2">
             {quickBuyProduct ? "Product Details" : "Items in Your Cart"}
@@ -127,9 +142,13 @@ const BuyDetails = () => {
           )}
         </div>
 
-        {/* RIGHT SIDE - Delivery + Payment */}
+        {/* RIGHT SIDE */}
         <div className="flex-1 bg-white shadow-2xl rounded-2xl p-6">
-          <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+          <Formik
+            initialValues={initialValues}
+            validate={validate}
+            onSubmit={handleSubmit}
+          >
             {({ values }) => (
               <Form className="space-y-6">
                 <h3 className="text-2xl font-semibold mb-2 border-b pb-2">
@@ -146,7 +165,6 @@ const BuyDetails = () => {
                           name={field}
                           placeholder={field}
                           className="w-full p-2 border rounded-md"
-                          required
                         />
                         <ErrorMessage
                           name={field}
@@ -172,7 +190,11 @@ const BuyDetails = () => {
                       placeholder="Full Address"
                       className="w-full p-2 border rounded-md"
                       rows="2"
-                      required
+                    />
+                    <ErrorMessage
+                      name="address"
+                      component="p"
+                      className="text-red-500 text-sm"
                     />
                   </div>
                   <div className="md:col-span-2">
@@ -237,7 +259,7 @@ const BuyDetails = () => {
 
                 <button
                   type="submit"
-                  className="w-full  hover:bg-gray-200 cursor-pointer transition delay-150 duration-300 ease-in-out active:cursor-progress text-green-600 text-xl py-3 rounded-md font-semibold"
+                  className="w-full hover:bg-gray-200 cursor-pointer transition delay-150 duration-300 ease-in-out active:cursor-progress text-green-600 text-xl py-3 rounded-md font-semibold"
                 >
                   Confirm Order
                 </button>

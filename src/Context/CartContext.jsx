@@ -63,27 +63,35 @@ export const CartProvider = ({ children }) => {
     updateCartInDB(updatedCart);
   };
 
+  // ✅ Increment quantity of a particular product
+  const incrementQuantity = (id) => {
+    const updatedCart = cart.map((item) =>
+      item.id === id ? { ...item, quantity: (item.quantity || 1) + 1 } : item
+    );
+    setCart(updatedCart);
+    updateCartInDB(updatedCart);
+    toast("Quantity increased 🟢");
+  };
+
+  // ✅ Decrement quantity of a particular product
+  const decrementQuantity = (id) => {
+    const updatedCart = cart
+      .map((item) =>
+        item.id === id ? { ...item, quantity: (item.quantity || 1) - 1 } : item
+      )
+      .filter((item) => item.quantity > 0); // remove if quantity <= 0
+
+    setCart(updatedCart);
+    updateCartInDB(updatedCart);
+    toast("Quantity decreased 🟡");
+  };
+
   // ✅ Remove item from cart
   const removeFromCart = (id) => {
     const updatedCart = cart.filter((item) => item.id !== id);
     setCart(updatedCart);
     updateCartInDB(updatedCart);
     toast("Removed from cart ❌");
-  };
-
-  // ✅ Decrease quantity (or remove if quantity = 1)
-  const decreaseQuantity = (id) => {
-    const updatedCart = cart
-      .map((item) =>
-        item.id === id
-          ? { ...item, quantity: (item.quantity || 1) - 1 }
-          : item
-      )
-      .filter((item) => item.quantity > 0);
-
-    setCart(updatedCart);
-    updateCartInDB(updatedCart);
-    toast("Updated cart 🛒");
   };
 
   // ✅ Clear cart
@@ -99,7 +107,8 @@ export const CartProvider = ({ children }) => {
         cart,
         addToCart,
         removeFromCart,
-        decreaseQuantity,
+        incrementQuantity,
+        decrementQuantity,
         clearCart,
       }}
     >

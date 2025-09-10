@@ -1,10 +1,15 @@
 import React, { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
-import { useNavigate } from "react-router-dom"; // ✅ Import navigation hook
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cart, updateQuantity, removeFromCart } = useContext(CartContext);
-  const navigate = useNavigate(); // ✅ to redirect user
+  const {
+    cart,
+    incrementQuantity,
+    decrementQuantity,
+    removeFromCart,
+  } = useContext(CartContext);
+  const navigate = useNavigate();
 
   // Calculate total price & total items
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -19,7 +24,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="p-6 pb-28"> {/* extra bottom padding for sticky footer */}
+    <div className="p-6 pb-28">
       <h2 className="text-3xl font-bold mb-6">Your Cart</h2>
 
       <div className="space-y-4">
@@ -44,16 +49,14 @@ const Cart = () => {
             {/* Quantity */}
             <div className="flex items-center gap-2">
               <button
-                onClick={() =>
-                  updateQuantity(item.id, Math.max(1, item.quantity - 1))
-                }
+                onClick={() => decrementQuantity(item.id)}
                 className="px-2 py-1 bg-gray-200 rounded"
               >
                 -
               </button>
               <span className="px-3">{item.quantity}</span>
               <button
-                onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                onClick={() => incrementQuantity(item.id)}
                 className="px-2 py-1 bg-gray-200 rounded"
               >
                 +
@@ -62,7 +65,7 @@ const Cart = () => {
 
             {/* Subtotal */}
             <p className="w-24 text-right font-semibold">
-              Rs. {item.price * item.quantity}
+              ₹{item.price * item.quantity}
             </p>
 
             {/* Remove */}
@@ -85,7 +88,7 @@ const Cart = () => {
           <p className="text-xl font-bold text-gray-800">₹{total}</p>
         </div>
         <button
-          onClick={() => navigate("/buydetails")} // redirect to BuyDetails
+          onClick={() => navigate("/buydetails")}
           className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition"
         >
           Place Order

@@ -1,8 +1,5 @@
-// App.jsx
-import { Routes, Route } from "react-router-dom";
+import {Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-
-// Contexts
 import { AuthProvider } from "./Context/AuthContext";
 import { CartProvider } from "./Context/CartContext";
 import { WishlistProvider } from "./Context/WishlistContext";
@@ -10,12 +7,8 @@ import { SortProvider } from "./Context/SortContext";
 import { ProductFilterProvider } from "./Context/ProductFilterContext";
 import { SearchProvider } from "./Context/SearchContext";
 import { OrderProvider } from "./Context/OrderContext";
-
-// Routes
 import ProtectedRoute from "./Protecters/ProtectedRoute";
 import PublicRoute from "./Protecters/PublicRoute";
-
-// Pages
 import HomePage from "./Pages/HomePage";
 import Login from "./Auth/Login";
 import SignUp from "./Auth/SignUp";
@@ -41,61 +34,20 @@ function App() {
             <SortProvider>
               <ProductFilterProvider>
                 <OrderProvider>
+                  
                   <Toaster position="top-right" reverseOrder={false} />
 
                   <Routes>
                     {/* Public routes */}
                     <Route path="/" element={<HomePage />} />
-                    <Route
-                      path="/user"
-                      element={
-                        <PublicRoute>
-                          <Login />
-                        </PublicRoute>
-                      }
-                    />
-                    <Route
-                      path="/signup"
-                      element={
-                        <PublicRoute>
-                          <SignUp />
-                        </PublicRoute>
-                      }
-                    />
+                    <Route path="/user" element={ <PublicRoute><Login /> </PublicRoute> } />
+                    <Route  path="/signup"  element={  <PublicRoute> <SignUp /> </PublicRoute> }/>
 
                     {/* Protected routes */}
-                    <Route
-                      path="/wishlist"
-                      element={
-                        <ProtectedRoute>
-                          <WishlistPage />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route
-                      path="/cart"
-                      element={
-                        <ProtectedRoute>
-                          <Cart />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route
-                      path="/buydetails"
-                      element={
-                        <ProtectedRoute>
-                          <BuyDetails />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route
-                      path="/orders"
-                      element={
-                        <ProtectedRoute>
-                          <Orders />
-                        </ProtectedRoute>
-                      }
-                    />
+                    <Route path="/wishlist" element={<ProtectedRoute><WishlistPage /></ProtectedRoute>}/>
+                    <Route path="/cart"element={<ProtectedRoute><Cart /></ProtectedRoute> }/>
+                    <Route path="/buydetails" element={ <ProtectedRoute> <BuyDetails /> </ProtectedRoute>}/>
+                    <Route path="/orders"element={<ProtectedRoute><Orders /> </ProtectedRoute>}/>
 
                     {/* Other routes */}
                     <Route path="/products" element={<Products />} />
@@ -107,6 +59,7 @@ function App() {
                     <Route path="/kitchen" element={<Kitchen />} />
                     <Route path="/category/:category" element={<CategoryPage />} />
                   </Routes>
+                    
                 </OrderProvider>
               </ProductFilterProvider>
             </SortProvider>

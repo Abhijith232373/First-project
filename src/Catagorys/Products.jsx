@@ -12,7 +12,7 @@ import { WishlistContext } from "../Context/WishlistContext";
 import { ProductFilterContext } from "../Context/ProductFilterContext";
 
 import NavBar from "../OpenUi/NavBar";
-import QuickViewModal from '../components/QuickViewModal';
+import QuickViewModal from '../Pages/QuickViewModal';
 
 import { Listbox } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/24/solid";
@@ -102,7 +102,7 @@ const Products = () => {
         setTimeout(() => {
           setVisibleCount((prev) => prev + 20);
           setScrollLoading(false);
-        }, 1200);
+        }, 1000);
       }
     };
     window.addEventListener("scroll", handleScroll);

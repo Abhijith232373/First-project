@@ -746,15 +746,6 @@
           "category": "Living"
         },
         {
-          "id": "2",
-          "name": "Dining Table",
-          "title": "6-Seater Wooden Dining Table",
-          "price": 18999,
-          "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
-          "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
-          "category": "Dining"
-        },
-        {
           "id": "3",
           "name": "Coffee Table",
           "title": "Round Glass Coffee Table",
@@ -780,40 +771,18 @@
           "description": "High-quality nonstick pan for frying, sautéing, and cooking with minimal oil.",
           "image": "https://m.media-amazon.com/images/I/615Xoy83cRL._AC_UL480_FMwebp_QL65_.jpg",
           "category": "Kitchen"
-        }
-      ],
-      "cart": [
-        {
-          "id": "72",
-          "name": "Knife Set",
-          "title": "Stainless Steel Kitchen Knife Set",
-          "price": 2599,
-          "description": "8-piece premium stainless steel knife set with ergonomic handles and wooden block.",
-          "image": "https://m.media-amazon.com/images/I/71DfDZ25HkL._AC_UL480_FMwebp_QL65_.jpg",
-          "category": "Kitchen",
-          "quantity": 1
         },
         {
-          "id": "73",
-          "name": "Cutting Board",
-          "title": "Bamboo Cutting Board",
-          "price": 799,
-          "description": "Durable and eco-friendly bamboo cutting board suitable for all kitchen tasks.",
-          "image": "https://m.media-amazon.com/images/I/71vNOaJLQ2L._AC_UL480_FMwebp_QL65_.jpg",
-          "category": "Kitchen",
-          "quantity": 1
-        },
-        {
-          "id": "74",
-          "name": "Nonstick Pan",
-          "title": "Nonstick Frying Pan",
-          "price": 1299,
-          "description": "High-quality nonstick pan for frying, sautéing, and cooking with minimal oil.",
-          "image": "https://m.media-amazon.com/images/I/615Xoy83cRL._AC_UL480_FMwebp_QL65_.jpg",
-          "category": "Kitchen",
-          "quantity": 1
+          "id": "6",
+          "name": "Bed Frame",
+          "title": "King Size Bed Frame",
+          "price": 22999,
+          "description": "Strong and durable wooden bed frame with a modern headboard design.",
+          "image": "https://m.media-amazon.com/images/I/71GfbOawqGL._AC_SR230,210_CB1169409_QL70_.jpg",
+          "category": "Living"
         }
       ],
+      "cart": [],
       "orders": [
         {
           "id": "1757435130267",
@@ -855,6 +824,29 @@
               "price": 25999,
               "description": "A premium fabric sofa with wooden legs and soft cushioning for ultimate comfort.",
               "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
+              "category": "Living",
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        },
+        {
+          "id": "1757482814720",
+          "date": "10/09/2025, 11:10:14",
+          "payment": "gpay",
+          "details": {
+            "name": "Abhijith P.R",
+            "phone": "08590988810",
+            "address": "Pallipurathu, , kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "6",
+              "name": "Bed Frame",
+              "title": "King Size Bed Frame",
+              "price": 22999,
+              "description": "Strong and durable wooden bed frame with a modern headboard design.",
+              "image": "https://m.media-amazon.com/images/I/71GfbOawqGL._AC_SR230,210_CB1169409_QL70_.jpg",
               "category": "Living",
               "quantity": 1,
               "canceled": false
@@ -1014,13 +1006,94 @@
           "category": "Bedroom"
         }
       ]
-    }
-  ],
-  "admins": [
+    },
     {
-      "id": "1",
-      "email": "admin@gmail.com",
-      "password": "232373"
+      "id": "6ee2",
+      "name": "hashim",
+      "email": "hashim@gmail.com",
+      "password": "123456",
+      "cart": [],
+      "wishlist": [
+        {
+          "id": "44",
+          "name": "Entryway Bench",
+          "title": "Wooden Bench with Cushion",
+          "price": 6499,
+          "description": "Entryway bench with soft cushioned seating and a bottom shoe rack.",
+          "image": "https://m.media-amazon.com/images/I/41F-iNbwGWL._AC_SR230,210_CB1169409_QL70_.jpg",
+          "category": "HomeDecor"
+        }
+      ],
+      "orders": [
+        {
+          "id": "1757480737624",
+          "date": "10/09/2025, 10:35:37",
+          "payment": "gpay",
+          "details": {
+            "name": "hashim",
+            "phone": " ",
+            "address": " ,  ,  ,  ,  , Landmark:  "
+          },
+          "items": [
+            {
+              "id": "40",
+              "name": "Garden Bench",
+              "title": "Metal Garden Bench",
+              "price": 6999,
+              "description": "Classic outdoor bench made of wrought iron, perfect for gardens and patios.",
+              "image": "https://m.media-amazon.com/images/I/81ZGDTtpMKL._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "HomeDecor",
+              "quantity": 1,
+              "canceled": true
+            },
+            {
+              "id": "44",
+              "name": "Entryway Bench",
+              "title": "Wooden Bench with Cushion",
+              "price": 6499,
+              "description": "Entryway bench with soft cushioned seating and a bottom shoe rack.",
+              "image": "https://m.media-amazon.com/images/I/41F-iNbwGWL._AC_SR230,210_CB1169409_QL70_.jpg",
+              "category": "HomeDecor",
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aeba",
+      "name": "  ",
+      "email": ".@gmail.com",
+      "password": "123456",
+      "cart": [
+        {
+          "id": "1",
+          "name": "Modern Sofa",
+          "title": "Luxury 3-Seater Sofa",
+          "price": 25999,
+          "description": "A premium fabric sofa with wooden legs and soft cushioning for ultimate comfort.",
+          "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
+          "category": "Living",
+          "quantity": 1
+        },
+        {
+          "id": "6",
+          "name": "Bed Frame",
+          "title": "King Size Bed Frame",
+          "price": 22999,
+          "description": "Strong and durable wooden bed frame with a modern headboard design.",
+          "image": "https://m.media-amazon.com/images/I/71GfbOawqGL._AC_SR230,210_CB1169409_QL70_.jpg",
+          "category": "Living",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "86e4",
+      "name": "aaa",
+      "email": "aaa@gmail.com",
+      "password": "111111"
     }
   ]
 }

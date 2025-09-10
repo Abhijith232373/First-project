@@ -1,21 +1,16 @@
-// src/Pages/HomeDecor.jsx
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CircularProgress from "@mui/material/CircularProgress";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-
 import { SearchContext } from "../Context/SearchContext";
 import { CartContext } from "../Context/CartContext";
 import { WishlistContext } from "../Context/WishlistContext";
-import { ProductFilterContext } from "../Context/ProductFilterContext";
-
+import { ProductFilterContext } from '../Context/ProductFilterContext';
 import NavBar from "../OpenUi/NavBar";
-import QuickViewModal from "../components/QuickViewModal";
-
+import QuickViewModal from '../Pages/QuickViewModal';
 import { Listbox } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/24/solid";
-
 const sortOptions = [
   { value: "", label: "Sort by" },
   { value: "low-high", label: "Price: Low → High" },
@@ -38,7 +33,6 @@ const HomeDecor = () => {
 
   const [addingId, setAddingId] = useState(null);
 
-  // Fetch only HomeDecor products
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
@@ -58,7 +52,6 @@ const HomeDecor = () => {
     fetchProducts();
   }, []);
 
-  // Search + Sort
   useEffect(() => {
     let data = [...products];
 
@@ -79,7 +72,6 @@ const HomeDecor = () => {
     setVisibleCount(8);
   }, [products, sortOrder, query]);
 
-  // Infinite scroll
   useEffect(() => {
     const handleScroll = () => {
       if (
@@ -91,7 +83,7 @@ const HomeDecor = () => {
         setTimeout(() => {
           setVisibleCount((prev) => prev + 20);
           setScrollLoading(false);
-        }, 1200);
+        }, 1000);
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -114,7 +106,6 @@ const HomeDecor = () => {
     <>
       <NavBar />
       <div className="px-6 py-12 bg-gray-50 min-h-screen mt-10">
-        {/* Sort Filter only */}
         <div className="flex justify-end items-center mb-8">
           <Listbox value={sortOrder} onChange={setSortOrder}>
             <div className="relative w-60">
@@ -228,7 +219,6 @@ const HomeDecor = () => {
           </div>
         )}
 
-        {/* Quick View Modal */}
         {selectedProduct && (
           <QuickViewModal
             product={selectedProduct}

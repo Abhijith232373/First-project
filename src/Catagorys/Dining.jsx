@@ -1,18 +1,14 @@
-// src/Pages/Dining.jsx
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CircularProgress from "@mui/material/CircularProgress";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-
 import { SearchContext } from "../Context/SearchContext";
 import { CartContext } from "../Context/CartContext";
 import { WishlistContext } from "../Context/WishlistContext";
 import { ProductFilterContext } from "../Context/ProductFilterContext";
-
 import NavBar from "../OpenUi/NavBar";
-import QuickViewModal from "../components/QuickViewModal";
-
+import QuickViewModal from '../Pages/QuickViewModal';
 import { Listbox } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/24/solid";
 
@@ -38,7 +34,6 @@ const Dining = () => {
 
   const [addingId, setAddingId] = useState(null);
 
-  // Fetch only Dining products
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
@@ -56,7 +51,6 @@ const Dining = () => {
     fetchProducts();
   }, []);
 
-  // Search + Sort
   useEffect(() => {
     let data = [...products];
 
@@ -69,7 +63,6 @@ const Dining = () => {
           (p.description && p.description.toLowerCase().includes(q))
       );
     }
-
     if (sortOrder === "low-high") data.sort((a, b) => a.price - b.price);
     if (sortOrder === "high-low") data.sort((a, b) => b.price - a.price);
 
@@ -77,7 +70,6 @@ const Dining = () => {
     setVisibleCount(8);
   }, [products, sortOrder, query]);
 
-  // Infinite scroll
   useEffect(() => {
     const handleScroll = () => {
       if (
@@ -89,7 +81,7 @@ const Dining = () => {
         setTimeout(() => {
           setVisibleCount((prev) => prev + 20);
           setScrollLoading(false);
-        }, 1200);
+        }, 1000);
       }
     };
     window.addEventListener("scroll", handleScroll);
@@ -112,7 +104,7 @@ const Dining = () => {
     <>
       <NavBar />
       <div className="px-6 py-12 bg-gray-50 min-h-screen mt-10">
-        {/* Sort Filter only */}
+
         <div className="flex justify-end items-center mb-8">
           <Listbox value={sortOrder} onChange={setSortOrder}>
             <div className="relative w-60">
@@ -126,8 +118,7 @@ const Dining = () => {
                     key={idx}
                     value={opt.value}
                     className={({ active }) =>
-                      `cursor-pointer px-4 py-2 ${
-                        active ? "bg-gray-100 text-gray-900 hover:bg-gray-300" : "text-gray-700"
+                      `cursor-pointer px-4 py-2 ${active ? "bg-gray-100 text-gray-900 hover:bg-gray-300" : "text-gray-700"
                       }`
                     }
                   >
@@ -166,11 +157,10 @@ const Dining = () => {
                           e.stopPropagation();
                           toggleWishlist(item);
                         }}
-                        className={`absolute top-2 right-2 cursor-pointer transition-colors duration-200 z-10 ${
-                          wishlist.find((p) => p.id === item.id)
+                        className={`absolute top-2 right-2 cursor-pointer transition-colors duration-200 z-10 ${wishlist.find((p) => p.id === item.id)
                             ? "text-red-600"
                             : "text-red-300 hover:text-red-400"
-                        }`}
+                          }`}
                       />
 
                       <img
@@ -226,7 +216,6 @@ const Dining = () => {
           </div>
         )}
 
-        {/* Quick View Modal */}
         {selectedProduct && (
           <QuickViewModal
             product={selectedProduct}
