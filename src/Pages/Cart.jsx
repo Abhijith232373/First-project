@@ -26,11 +26,11 @@ const Cart = () => {
     <div className="p-6 pb-28">
       <h2 className="text-3xl font-bold mb-6">Your Cart</h2>
 
-      <div className="space-y-4">
+      <div className="space-y-4 shadow-2xl ">
         {cart.map((item) => (
           <div
             key={item.id}
-            className="flex items-center justify-between bg-white p-4 rounded-lg shadow-md"
+            className="flex items-center justify-between bg-white p-4 rounded-lg shadow-md hover:scale-102 transition ease-in-out"
           >
             <img
               src={item.image}

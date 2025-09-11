@@ -8,9 +8,10 @@ import { CartContext } from "../Context/CartContext";
 import { WishlistContext } from "../Context/WishlistContext";
 import { ProductFilterContext } from "../Context/ProductFilterContext";
 import NavBar from "../OpenUi/NavBar";
-import QuickViewModal from '../Pages/QuickViewModal';
+import QuickViewModal from "../Pages/QuickViewModal";
 import { Listbox } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/24/solid";
+import ProductSkeleton from "../Animations/ProductSkeleton";
 
 const sortOptions = [
   { value: "", label: "Sort by" },
@@ -37,6 +38,8 @@ const Dining = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
+      const startTime = Date.now(); // track request start
+
       try {
         const res = await axios.get("http://localhost:5000/furniture");
         const diningProducts = res.data.filter((p) => p.category === "Dining");
@@ -45,7 +48,9 @@ const Dining = () => {
       } catch (err) {
         console.error(err);
       } finally {
-        setLoading(false);
+        const elapsed = Date.now() - startTime;
+        const delay = Math.max(800 - elapsed, 0); // enforce 1.5s min
+        setTimeout(() => setLoading(false), delay);
       }
     };
     fetchProducts();
@@ -104,12 +109,12 @@ const Dining = () => {
     <>
       <NavBar />
       <div className="px-6 py-12 bg-gray-50 min-h-screen mt-10">
-
         <div className="flex justify-end items-center mb-8">
           <Listbox value={sortOrder} onChange={setSortOrder}>
             <div className="relative w-60">
               <Listbox.Button className="w-full rounded-lg border bg-white px-4 py-2 text-left shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500 flex justify-between items-center">
-                {sortOptions.find((opt) => opt.value === sortOrder)?.label || "Sort by"}
+                {sortOptions.find((opt) => opt.value === sortOrder)?.label ||
+                  "Sort by"}
                 <ChevronUpDownIcon className="h-5 w-5 text-gray-400" />
               </Listbox.Button>
               <Listbox.Options className="absolute mt-1 w-full rounded-lg border bg-white shadow-lg z-10">
@@ -118,7 +123,10 @@ const Dining = () => {
                     key={idx}
                     value={opt.value}
                     className={({ active }) =>
-                      `cursor-pointer px-4 py-2 ${active ? "bg-gray-100 text-gray-900 hover:bg-gray-300" : "text-gray-700"
+                      `cursor-pointer px-4 py-2 ${
+                        active
+                          ? "bg-gray-100 text-gray-900 hover:bg-gray-300"
+                          : "text-gray-700"
                       }`
                     }
                   >
@@ -129,6 +137,15 @@ const Dining = () => {
             </div>
           </Listbox>
         </div>
+
+        {/* Skeleton loader */}
+        {loading && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <ProductSkeleton key={i} />
+            ))}
+          </div>
+        )}
 
         {loading && (
           <div className="flex justify-center py-8">
@@ -157,10 +174,11 @@ const Dining = () => {
                           e.stopPropagation();
                           toggleWishlist(item);
                         }}
-                        className={`absolute top-2 right-2 cursor-pointer transition-colors duration-200 z-10 ${wishlist.find((p) => p.id === item.id)
+                        className={`absolute top-2 right-2 cursor-pointer transition-colors duration-200 z-10 ${
+                          wishlist.find((p) => p.id === item.id)
                             ? "text-red-600"
                             : "text-red-300 hover:text-red-400"
-                          }`}
+                        }`}
                       />
 
                       <img

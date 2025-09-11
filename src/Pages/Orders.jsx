@@ -54,11 +54,11 @@ const Orders = () => {
 
 
   return (
-    <div className="max-w-7xl mx-auto mt-12 px-4">
+    <div className="max-w-7xl mx-auto mt-12 px-4 shadow-2xl">
       <h2 className="text-3xl font-bold text-center mb-6"> Your Orders</h2>
 
       {orders.map((order) => (
-        <div key={order.id} className="bg-white p-6 rounded-2xl shadow mb-6">
+        <div key={order.id} className="bg-white p-6 rounded-2xl shadow-2xl mb-6  ">
           <h3 className="text-xl font-semibold mb-2">Order ID: {order.id}</h3>
           <p className="text-gray-600 mb-2"> Placed on: {order.date}</p>
           <p className="text-gray-600 mb-4"> Payment: {order.payment}</p>
@@ -70,7 +70,7 @@ const Orders = () => {
               className={`flex items-center justify-between mb-2 p-2 rounded border ${item.canceled ? "bg-gray-100 line-through opacity-50" : ""
                 }`}
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 ">
                 <img
                   src={item.image}
                   alt={item.title}

@@ -22,7 +22,7 @@ const WishlistPage = () => {
         {wishlist.map((item) => (
           <div
             key={item.id}
-            className="p-4 shadow-md rounded-xl bg-white flex flex-col"
+            className="p-4 shadow-2xl rounded-xl bg-white flex flex-col hover:scale-105 transition ease-in-out"
           >
             <img
               src={item.image}

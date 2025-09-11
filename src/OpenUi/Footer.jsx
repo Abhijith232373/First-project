@@ -12,30 +12,30 @@ const Footer = () => {
     <div className="w-full">
       <div className="w-full bg-amber-50 flex flex-col md:flex-row justify-around items-center text-center font-serif py-6 gap-6">
        <Link to='/orders' ><div>
-          <img className="w-[60px] mx-auto" src="src/assets/Footer/fast-shipping-filled.webp" alt="Fast Shipping" />
-          <p className="font-semibold">Your Orders</p>
-          <p className="text-sm">48-Hour Dispatch on Selected items</p>
+          <img className="w-[60px] mx-auto text-gray-500" src="src/assets/Footer/fast-shipping-filled.webp" alt="Fast Shipping" />
+          <p className="font-semibold text-gray-500">Your Orders</p>
+          <p className="text-sm text-gray-500">48-Hour Dispatch on Selected items</p>
         </div></Link> 
         <div>
-          <img className="w-[60px] mx-auto" src="src/assets/Footer/family-owned-operated-filled.webp" alt="Happy Customers" />
-          <p className="font-semibold">Happy Customers</p>
-          <p className="text-sm">1000+ Happy Customers</p>
+          <img className="w-[60px] mx-auto text-gray-500" src="src/assets/Footer/family-owned-operated-filled.webp" alt="Happy Customers" />
+          <p className="font-semibold text-gray-500">Happy Customers</p>
+          <p className="text-sm text-gray-500">1000+ Happy Customers</p>
         </div>
         <div>
-          <img className="w-[60px] mx-auto" src="src/assets/Footer/quality-guaranteed-filled.webp" alt="Quality Guaranteed" />
-          <p className="font-semibold">Quality Guaranteed</p>
-          <p className="text-sm">For peace of mind</p>
+          <img className="w-[60px] mx-auto text-gray-500" src="src/assets/Footer/quality-guaranteed-filled.webp " alt="Quality Guaranteed" />
+          <p className="font-semibold text-gray-500">Quality Guaranteed</p>
+          <p className="text-sm text-gray-500">For peace of mind</p>
         </div>
       </div>
 
-      <div className="w-full bg-black">
+      <div className="w-full bg-gray-900">
         <div className="flex flex-col md:flex-row justify-around p-6 md:p-10 gap-8 md:gap-0 text-center md:text-left">
 
           <ul className="font-serif space-y-2">
             <li className="font-semibold text-white">    <img
             src="src\assets\logo\Home4u-logo.png"
             alt="Home4U Logo"
-            className="h-12 w-auto object-contain rounded-4xl"
+            className="h-12 w-auto object-contain rounded-4xl "
           /></li>
             <li className='text-white'>Head Office</li>
             <li className='text-white'>MC Road Kottayam, 686633</li>

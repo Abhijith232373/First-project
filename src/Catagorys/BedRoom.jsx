@@ -8,9 +8,10 @@ import { CartContext } from "../Context/CartContext";
 import { WishlistContext } from "../Context/WishlistContext";
 import { ProductFilterContext } from "../Context/ProductFilterContext";
 import NavBar from "../OpenUi/NavBar";
-import QuickViewModal from '../Pages/QuickViewModal';
+import QuickViewModal from "../Pages/QuickViewModal";
 import { Listbox } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/24/solid";
+import ProductSkeleton from "../Animations/ProductSkeleton";
 
 const sortOptions = [
   { value: "", label: "Sort by" },
@@ -37,6 +38,7 @@ const Bedroom = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
+      const startTime = Date.now();
       try {
         const res = await axios.get("http://localhost:5000/furniture");
         const bedroomProducts = res.data.filter((p) => p.category === "Bedroom");
@@ -45,7 +47,9 @@ const Bedroom = () => {
       } catch (err) {
         console.error(err);
       } finally {
-        setLoading(false);
+        const elapsed = Date.now() - startTime;
+        const delay = Math.max(800 - elapsed, 0); // enforce 1.5s min
+        setTimeout(() => setLoading(false), delay);
       }
     };
     fetchProducts();
@@ -105,6 +109,7 @@ const Bedroom = () => {
     <>
       <NavBar />
       <div className="px-6 py-12 bg-gray-50 min-h-screen mt-10">
+        {/* Sort dropdown */}
         <div className="flex justify-end items-center mb-8">
           <Listbox value={sortOrder} onChange={setSortOrder}>
             <div className="relative w-60">
@@ -118,7 +123,8 @@ const Bedroom = () => {
                     key={idx}
                     value={opt.value}
                     className={({ active }) =>
-                      `cursor-pointer px-4 py-2 ${active ? "bg-gray-100 text-gray-900 hover:bg-gray-300" : "text-gray-700"
+                      `cursor-pointer px-4 py-2 ${
+                        active ? "bg-gray-100 text-gray-900 hover:bg-gray-300" : "text-gray-700"
                       }`
                     }
                   >
@@ -130,16 +136,22 @@ const Bedroom = () => {
           </Listbox>
         </div>
 
-        {loading && (
-          <div className="flex justify-center py-8">
-            <CircularProgress />
-          </div>
-        )}
 
+                {/* Skeleton loader */}
+                {loading && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {Array.from({ length: 8 }).map((_, i) => (
+                      <ProductSkeleton key={i} />
+                    ))}
+                  </div>
+                )}
+
+
+        {/* Products */}
         {!loading && (
           <>
             {filtered.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {filtered.slice(0, visibleCount).map((item) => {
                   const { mrp, discount } = getDiscountInfo(item.price);
                   return (
@@ -157,10 +169,11 @@ const Bedroom = () => {
                           e.stopPropagation();
                           toggleWishlist(item);
                         }}
-                        className={`absolute top-2 right-2 cursor-pointer transition-colors duration-200 z-10 ${wishlist.find((p) => p.id === item.id)
+                        className={`absolute top-2 right-2 cursor-pointer transition-colors duration-200 z-10 ${
+                          wishlist.find((p) => p.id === item.id)
                             ? "text-red-600"
                             : "text-red-300 hover:text-red-400"
-                          }`}
+                        }`}
                       />
 
                       <img
@@ -210,14 +223,21 @@ const Bedroom = () => {
           </>
         )}
 
+        {/* Infinite scroll loader */}
         {scrollLoading && (
           <div className="flex justify-center py-6">
             <CircularProgress />
           </div>
         )}
 
+        {/* Quick View Modal */}
         {selectedProduct && (
-          <QuickViewModal product={selectedProduct} onClose={() => setSelectedProduct(null)} addToCart={handleAddToCart} />)}
+          <QuickViewModal
+            product={selectedProduct}
+            onClose={() => setSelectedProduct(null)}
+            addToCart={handleAddToCart}
+          />
+        )}
       </div>
     </>
   );

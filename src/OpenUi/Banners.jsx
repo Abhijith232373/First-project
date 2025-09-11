@@ -5,8 +5,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import HomeInteriors from "../assets/Banners/onamoffer.jpg";
-import Dining from "../assets/Banners/Dining_starting_Slideshow.png";
-import Storage from "../assets/Banners/Storage_beds_starting.png";
+import Mattress from '../assets/Banners/mattress-online.png';
+import Herobanner from  '../assets/Banners/Hero-banner.webp';
 import SofaBeds from "../assets/Banners/Sofa_Cum_Beds_Slidehsow-min.png";
 
 const Banners = () => {
@@ -26,28 +26,28 @@ const Banners = () => {
           <img
             src={HomeInteriors}
             alt="Home Interiors"
-            className="w-full h-full object-cover rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl"
+            className="w-full h-full  rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={Dining}
-            alt="Dining Sets"
-            className="w-full h-full object-cover rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl"
+            src={Mattress}
+            alt="Mattress"
+            className="w-full h-full r rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            src={Storage}
-            alt="Storage Beds"
-            className="w-full h-full object-cover rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl"
+            src={Herobanner}
+            alt="Herobanner"
+            className="w-full h-full  rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl"
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             src={SofaBeds}
             alt="Sofa Beds"
-            className="w-full h-full object-cover rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl"
+            className="w-full h-full  rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl"
           />
         </SwiperSlide>
       </Swiper>

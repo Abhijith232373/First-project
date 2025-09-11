@@ -60,33 +60,33 @@ const NavBar = () => {
       <div className="flex items-center gap-6">
         <Link to="/">
           <img
-            src="src/assets/logo/Home4u-logo-transparent.png"
+            src="src/assets/logo/logo.png"
             alt="Home4U Logo"
-            className="h-12 w-auto object-contain"
+            className="h-14 w-auto object-contain"
           />
         </Link>
 
         <div className="hidden md:flex space-x-6">
           <Link to="/products">
-            <div className={NavStyle("/products")}>Shop All</div>
+            <div className={NavStyle("/products")}>SHOP ALL</div>
           </Link>
           <Link to="/living">
-            <div className={NavStyle("/living")}>Living</div>
+            <div className={NavStyle("/living")}>LIVING</div>
           </Link>
           <Link to="/dining">
-            <div className={NavStyle("/dining")}>Dining</div>
+            <div className={NavStyle("/dining")}>DINING</div>
           </Link>
           <Link to="/bedroom">
-            <div className={NavStyle("/bedroom")}>Bedroom</div>
+            <div className={NavStyle("/bedroom")}>BEDROOM</div>
           </Link>
           <Link to="/storage">
-            <div className={NavStyle("/storage")}>Storage</div>
+            <div className={NavStyle("/storage")}>STORAGE</div>
           </Link>
           <Link to="/homedecor">
-            <div className={NavStyle("/homedecor")}>Home Decor</div>
+            <div className={NavStyle("/homedecor")}>HOME DECOR</div>
           </Link>
           <Link to="/kitchen">
-            <div className={NavStyle("/kitchen")}>Kitchen</div>
+            <div className={NavStyle("/kitchen")}>KITCHEN</div>
           </Link>
         </div>
       </div>

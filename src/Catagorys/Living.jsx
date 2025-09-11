@@ -11,6 +11,7 @@ import NavBar from "../OpenUi/NavBar";
 import QuickViewModal from '../Pages/QuickViewModal';
 import { Listbox } from "@headlessui/react";
 import { ChevronUpDownIcon } from "@heroicons/react/24/solid";
+import ProductSkeleton from "../Animations/ProductSkeleton";
 
 const sortOptions = [
   { value: "", label: "Sort by" },
@@ -34,6 +35,7 @@ const Living = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
+      const startTime = Date.now();
       try {  
         const res = await axios.get("http://localhost:5000/furniture");
         const livingProducts = res.data.filter((p) => p.category === "Living");
@@ -42,7 +44,9 @@ const Living = () => {
       } catch (err) {
         console.error(err);
       } finally {
-        setLoading(false);
+        const elapsed = Date.now() - startTime;
+        const delay = Math.max(800 - elapsed, 0); // enforce 1.5s min
+        setTimeout(() => setLoading(false), delay);
       }
     };
     fetchProducts();
@@ -126,6 +130,17 @@ const Living = () => {
             </div>
           </Listbox>
         </div>
+
+
+
+                {/* Skeleton loader */}
+                {loading && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {Array.from({ length: 8 }).map((_, i) => (
+                      <ProductSkeleton key={i} />
+                    ))}
+                  </div>
+                )}
 
         {loading && (
           <div className="flex justify-center py-8">

@@ -20,7 +20,7 @@ const Future = () => {
   return (
     <div className="relative w-full py-20 overflow-hidden">
       <h1 className="flex justify-center font-serif text-4xl pb-10">
-        Featured Products
+        FEATURED PRODUCTS
       </h1>
 
       <div className="absolute top-1/2 -left-4 transform -translate-y-1/2 z-20">

@@ -9,6 +9,7 @@ import Future from '../OpenUi/Feature'
 const Home = () => {
   return (
     <div>
+      
         <NavBar/>
         <Banners/>
         <ItemsBanners/>

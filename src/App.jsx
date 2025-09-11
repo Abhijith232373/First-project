@@ -26,9 +26,9 @@ import Orders from "./Pages/Orders";
 import CategoryPage from "./Pages/CategoryPage";
 import ProductDetails from "./Pages/ProductDetails";
 
+
 function App() {
   return (
-    
     <AuthProvider>
       <SearchProvider>
         <CartProvider>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SearchContext } from "../Context/SearchContext";
 import { useNavigate } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
@@ -18,20 +18,40 @@ const SearchBar = () => {
     navigate(`/product/${product.id}`);
   };
 
+  const [placeholder, setPlaceholder] = useState("");
+const text = "Search Furniture.....";
+
+useEffect(() => {
+  let i = 0;
+  const type = () => {
+    if (i <= text.length) {
+      setPlaceholder(text.slice(0, i));
+      i++;
+      setTimeout(type, 120); // typing speed
+    } else {
+      i = 0; // restart after finish
+      setTimeout(type, 1000); // delay before restarting
+    }
+  };
+  type();
+}, []);
+
+
   return (
 <div className="relative w-full">
   <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 " />
   <input
-    type="text"
-    value={query}
-    placeholder="Search furniture..."
- className="w-full border rounded-lg p-2 pl-10 focus:outline-none focus:ring-0 focus:border-gray-300" 
-    onChange={(e) => {
-      setQuery(e.target.value);
-      setShowResults(true);
-    }}
-    onBlur={() => setTimeout(() => setShowResults(false), 200)}
-  />
+  type="text"
+  value={query}
+  placeholder={placeholder}   // 👈 animated placeholder
+  className="w-full border rounded-lg p-2 pl-10 focus:outline-none focus:ring-0 focus:border-gray-300"
+  onChange={(e) => {
+    setQuery(e.target.value);
+    setShowResults(true);
+  }}
+  onBlur={() => setTimeout(() => setShowResults(false), 200)}
+/>
+
 
       {showResults && query && (
         <ul className="absolute w-full bg-white shadow-lg rounded-lg mt-1 z-50 max-h-60 overflow-y-auto">

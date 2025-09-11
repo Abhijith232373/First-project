@@ -795,7 +795,7 @@
               "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
               "category": "Dining",
               "quantity": 1,
-              "canceled": false
+              "canceled": true
             }
           ]
         },
