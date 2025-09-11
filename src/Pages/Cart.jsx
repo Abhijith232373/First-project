@@ -44,21 +44,30 @@ const Cart = () => {
               <p className="text-gray-500">₹{item.price}</p>
             </div>
 
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => decrementQuantity(item.id)}
-                className="px-2 py-1 bg-gray-200 rounded cursor-pointer"
-              >
-                -
-              </button>
-              <span className="px-3">{item.quantity}</span>
-              <button
-                onClick={() => incrementQuantity(item.id)}
-                className="px-2 py-1 bg-gray-200 rounded cursor-pointer"
-              >
-                +
-              </button>
-            </div>
+<div className="flex items-center gap-2">
+  <button
+    onClick={() => item.quantity > 1 && decrementQuantity(item.id)}
+    className={`px-2 py-1 rounded cursor-pointer ${
+      item.quantity === 1 ? "bg-gray-300 cursor-not-allowed" : "bg-gray-200"
+    }`}
+    disabled={item.quantity === 1}
+  >
+    -
+  </button>
+
+  <span className="px-3">{item.quantity}</span>
+
+  <button
+    onClick={() => item.quantity < 5 && incrementQuantity(item.id)}
+    className={`px-2 py-1 rounded cursor-pointer ${
+      item.quantity === 5 ? "bg-gray-300 cursor-not-allowed" : "bg-gray-200"
+    }`}
+    disabled={item.quantity === 5}
+  >
+    +
+  </button>
+</div>
+
 
             <p className="w-24 text-right font-semibold">
               ₹{item.price * item.quantity}
@@ -83,7 +92,7 @@ const Cart = () => {
         </div>
         <button
           onClick={() => navigate("/buydetails")}
-          className="bg-gray-600 hover:bg-gray-700 cursor-pointer text-white font-semibold px-6 py-3 rounded-lg shadow-md transition"
+          className="bg-gradient-to-r from-gray-500 to-gray-600 hover:transition delay-150 duration-300 ease-in-out hover:scale-x-115 cursor-pointer text-white font-semibold px-6 py-3 rounded-lg shadow-md transition"
         >
           Place Order
         </button>

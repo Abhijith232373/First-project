@@ -49,7 +49,7 @@ export const CartProvider = ({ children }) => {
           ? { ...item, quantity: (item.quantity || 1) + 1 }
           : item
       );
-      toast("Increased quantity ");
+      
     } else {
       updatedCart = [...cart, { ...product, quantity: 1 }];
       toast.success("Added to cart ");
@@ -65,7 +65,7 @@ export const CartProvider = ({ children }) => {
     );
     setCart(updatedCart);
     updateCartInDB(updatedCart);
-    toast("Quantity increased ");
+    
   };
 
   const decrementQuantity = (id) => {
@@ -77,7 +77,7 @@ export const CartProvider = ({ children }) => {
 
     setCart(updatedCart);
     updateCartInDB(updatedCart);
-    toast("Quantity decreased ");
+   
   };
 
   const removeFromCart = (id) => {
@@ -91,7 +91,7 @@ export const CartProvider = ({ children }) => {
   const clearCart = () => {
     setCart([]);
     updateCartInDB([]);
-    toast("Cart cleared ");
+    
   };
 
   return (

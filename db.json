@@ -753,17 +753,25 @@
           "description": "High-quality nonstick pan for frying, sautéing, and cooking with minimal oil.",
           "image": "https://m.media-amazon.com/images/I/615Xoy83cRL._AC_UL480_FMwebp_QL65_.jpg",
           "category": "Kitchen"
+        },
+        {
+          "id": "2",
+          "name": "Dining Table",
+          "title": "6-Seater Wooden Dining Table",
+          "price": 18999,
+          "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
+          "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
+          "category": "Dining"
         }
       ],
       "cart": [
         {
-          "id": "14",
-          "name": "Bar Stool",
-          "title": "Adjustable Metal Bar Stool",
-          "price": 4499,
-          "description": "Modern bar stool with adjustable height and comfortable seating.",
-          "image": "https://m.media-amazon.com/images/I/51Gi7k1PLgL._AC_UL480_FMwebp_QL65_.jpg",
-          "category": "Living",
+          "id": "4",
+          "name": "Office Chair",
+          "title": "Ergonomic Mesh Chair",
+          "price": 4999,
+          "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
+          "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167",
           "quantity": 1
         }
       ],
@@ -855,6 +863,74 @@
               "description": "Strong and durable wooden bed frame with a modern headboard design.",
               "image": "https://m.media-amazon.com/images/I/71GfbOawqGL._AC_SR230,210_CB1169409_QL70_.jpg",
               "category": "Living",
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        },
+        {
+          "id": "1757566282051",
+          "date": "11/09/2025, 10:21:22",
+          "payment": "gpay",
+          "details": {
+            "name": "Abhijith P.R",
+            "phone": "08590988810",
+            "address": "Pallipurathu, none, kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "14",
+              "name": "Bar Stool",
+              "title": "Adjustable Metal Bar Stool",
+              "price": 4499,
+              "description": "Modern bar stool with adjustable height and comfortable seating.",
+              "image": "https://m.media-amazon.com/images/I/51Gi7k1PLgL._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Living",
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        },
+        {
+          "id": "1757566856524",
+          "date": "11/09/2025, 10:30:56",
+          "payment": "gpay",
+          "details": {
+            "name": "Abhijith P.R",
+            "phone": "08590988810",
+            "address": "Pallipurathu, none, kottyam, Kerala, 686633, Landmark: erunakulam"
+          },
+          "items": [
+            {
+              "id": "4",
+              "name": "Office Chair",
+              "title": "Ergonomic Mesh Chair",
+              "price": 4999,
+              "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
+              "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167",
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        },
+        {
+          "id": "1757571312344",
+          "date": "11/09/2025, 11:45:12",
+          "payment": "gpay",
+          "details": {
+            "name": "Abhijith P.R",
+            "phone": "08590988810",
+            "address": "Pallipurathu, none, kottyam, Kerala, 686633, Landmark: erunakulam"
+          },
+          "items": [
+            {
+              "id": "74",
+              "name": "Nonstick Pan",
+              "title": "Nonstick Frying Pan",
+              "price": 1299,
+              "description": "High-quality nonstick pan for frying, sautéing, and cooking with minimal oil.",
+              "image": "https://m.media-amazon.com/images/I/615Xoy83cRL._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Kitchen",
               "quantity": 1,
               "canceled": false
             }
@@ -1187,6 +1263,68 @@
               "canceled": false
             }
           ]
+        }
+      ]
+    },
+    {
+      "id": "4296",
+      "name": "user2",
+      "email": "user2@gmail.com",
+      "password": "222222",
+      "cart": [],
+      "orders": [
+        {
+          "id": "1757515057567",
+          "date": "10/09/2025, 20:07:37",
+          "payment": "gpay",
+          "details": {
+            "name": "user2",
+            "phone": "8590988810",
+            "address": "Pallipurathu, , kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "1",
+              "name": "Modern Sofa",
+              "title": "Luxury 3-Seater Sofa",
+              "price": 25999,
+              "description": "A premium fabric sofa with wooden legs and soft cushioning for ultimate comfort.",
+              "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
+              "category": "Living",
+              "quantity": 3,
+              "canceled": true
+            },
+            {
+              "id": "3",
+              "name": "Coffee Table",
+              "title": "Round Glass Coffee Table",
+              "price": 6999,
+              "description": "Stylish center table with tempered glass top and metal frame.",
+              "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
+              "category": "Dining",
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        }
+      ],
+      "wishlist": [
+        {
+          "id": "3",
+          "name": "Coffee Table",
+          "title": "Round Glass Coffee Table",
+          "price": 6999,
+          "description": "Stylish center table with tempered glass top and metal frame.",
+          "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
+          "category": "Dining"
+        },
+        {
+          "id": "4",
+          "name": "Office Chair",
+          "title": "Ergonomic Mesh Chair",
+          "price": 4999,
+          "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
+          "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167"
         }
       ]
     }

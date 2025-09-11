@@ -34,7 +34,7 @@ const Living = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
-      try {
+      try {  
         const res = await axios.get("http://localhost:5000/furniture");
         const livingProducts = res.data.filter((p) => p.category === "Living");
         setProducts(livingProducts);

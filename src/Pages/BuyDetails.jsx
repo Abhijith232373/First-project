@@ -1,18 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import toast from "react-hot-toast";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
 import { AuthContext } from "../Context/AuthContext";
 import axios from "axios";
-import HomeIcon from '@mui/icons-material/Home';
-import { Link } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
+import OrderSuccess from "./OrderSuccess"; // ✅ Import animation component
 
 const BuyDetails = () => {
   const { cart, clearCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [orderPlaced, setOrderPlaced] = useState(false); // ✅ state
 
   const quickBuyProduct = location.state?.product;
   const checkoutItems = quickBuyProduct
@@ -89,20 +91,31 @@ const BuyDetails = () => {
 
       if (!quickBuyProduct) clearCart();
 
-      toast.success("Order Placed Successfully!");
       resetForm();
-      navigate("/orders");
+
+      // ✅ Show success animation
+      setOrderPlaced(true);
+
+      // ✅ Redirect home after 2s
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     } catch (err) {
       console.error("Error placing order:", err);
       toast.error("Failed to place order");
     }
   };
 
+  // ✅ If order is placed, show animation instead of form
+  if (orderPlaced) {
+    return <OrderSuccess />;
+  }
+
   return (
     <div className="max-w-7xl mx-auto mt-12 px-4">
-      <h2 className="text-3xl font-bold text-center text-gray-800 mb-10">
-        <Link to='/'> <HomeIcon className="w-12 h-12" />  </Link>    Checkout
-
+      <h2 className="text-3xl font-bold text-center text-gray-600 mb-10">
+ 
+        Checkout
       </h2>
 
       <div className="flex flex-col md:flex-row gap-8">
@@ -229,10 +242,11 @@ const BuyDetails = () => {
                   ].map((method) => (
                     <label
                       key={method.id}
-                      className={`cursor-pointer border rounded-md p-2 flex items-center gap-2 ${values.payment === method.id
+                      className={`cursor-pointer border rounded-md p-2 flex items-center gap-2 ${
+                        values.payment === method.id
                           ? "border-blue-500 ring-1 ring-blue-400 bg-blue-50"
                           : "border-gray-300"
-                        }`}
+                      }`}
                     >
                       <Field
                         type="radio"
@@ -256,7 +270,7 @@ const BuyDetails = () => {
 
                 <button
                   type="submit"
-                  className="w-full hover:bg-gray-200 cursor-pointer transition delay-150 duration-300 ease-in-out active:cursor-progress text-green-600 text-xl py-3 rounded-md font-semibold"
+                  className="w-full bg-gradient-to-r from-gray-500 to-gray-600 hover:transition delay-150 duration-300 ease-in-out hover:scale-102 transition  active:cursor-progress text-white text-xl py-3 rounded-md font-semibold"
                 >
                   Confirm Order
                 </button>
