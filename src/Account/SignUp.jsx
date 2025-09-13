@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -6,18 +6,20 @@ import toast from "react-hot-toast";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from '@mui/icons-material/Lock';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { AuthContext } from "../Context/LoginContext";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
   return (
     <div className="absolute inset-0 bg-[url('src/assets/user/bg4.jpg')] bg-cover bg-center flex items-center justify-center px-4">
       <div className="relative bg-white p-6 sm:p-8 rounded-2xl shadow-xl w-full max-w-sm">
         <div className="flex justify-center mb-4">
           <img
-            src="src/assets/logo/Home4u-logo.png"
+            src="src/assets/logo/logo.png"
             alt="Login"
-            className="w-16 h-16 object-contain rounded-4xl"
+            className="w-16 h-16 object-contain rounded-xl"
           />
         </div>
 
@@ -67,13 +69,15 @@ const SignUp = () => {
                 name: userData.name.trim(),
                 email: userData.email.trim(),
                 password: userData.password.trim(),
+                status: "Active", // ✅ added default status
               };
 
               await axios.post("http://localhost:5000/users", cleanedUser);
 
               toast.success("Success!");
+              login();
               resetForm();
-              navigate("/user");
+              navigate("/");
             } catch (error) {
               console.error("Signup failed", error);
               toast.error("This didn't work.");
@@ -112,7 +116,6 @@ const SignUp = () => {
                 className="text-red-500 text-sm mt-1"
               />
 
-             
               <div>
                 <div className="flex items-center border rounded-lg px-3 focus-within:ring-2 focus-within:ring-indigo-400">
                   <LockIcon className="text-gray-400 mr-2 scale-80" />
@@ -150,7 +153,7 @@ const SignUp = () => {
 
               <button
                 type="submit"
-                className="w-full py-2 bg-gradient-to-r from-gray-500 to-gray-600 text-white rounded-lg shadow-lg hover:opacity-90 transition-all"
+                className="w-full cursor-pointer py-2 bg-gradient-to-r from-gray-500 to-gray-600 text-white rounded-lg shadow-lg hover:opacity-90 transition-all"
               >
                 Sign Up
               </button>

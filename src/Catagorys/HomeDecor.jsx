@@ -49,7 +49,7 @@ const HomeDecor = () => {
         console.error(err);
       }finally {
         const elapsed = Date.now() - startTime;
-        const delay = Math.max(800 - elapsed, 0); // enforce 1.5s min
+        const delay = Math.max(1500 - elapsed, 0); // enforce 1.5s min
         setTimeout(() => setLoading(false), delay);
       }
     };

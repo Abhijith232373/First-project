@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { AuthContext } from "../Context/AuthContext";
+import { AuthContext } from "../Context/LoginContext";
 import toast from "react-hot-toast";
 import EmailIcon from "@mui/icons-material/Email";
-import LockIcon from '@mui/icons-material/Lock';
+import LockIcon from "@mui/icons-material/Lock";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,16 +13,16 @@ const Login = () => {
 
   return (
     <div className="absolute inset-0 bg-[url('src/assets/user/bg4.jpg')] bg-cover bg-center flex items-center justify-center px-4">
-      <div className="relative bg-white p-6 sm:p-8 rounded-2xl shadow-xl w-full max-w-sm
-                     bg-cover bg-center">
+      <div className="relative bg-white p-6 sm:p-8 rounded-2xl shadow-xl w-full max-w-sm">
         <div className="absolute inset-0 bg-gray-400/20 rounded-2xl"></div>
 
         <div className="relative z-10">
+          {/* Logo */}
           <div className="flex justify-center mb-4">
             <img
-              src="src/assets/logo/Home4u-logo.png"
+              src="src/assets/logo/logo.png"
               alt="Login"
-              className="w-16 h-16 object-contain rounded-4xl"
+              className="w-16 h-16 object-contain rounded-xl"
             />
           </div>
 
@@ -46,28 +46,47 @@ const Login = () => {
             }}
             onSubmit={async (values, { resetForm }) => {
               try {
-
                 const res = await axios.get(
                   `http://localhost:5000/users?email=${values.email}&password=${values.password}`
                 );
 
                 if (res.data.length > 0) {
-                  toast.success("Login Successful ");
-                  localStorage.setItem("user", JSON.stringify({ ...res.data[0], role: "user" }));
-                  login({ ...res.data[0], role: "user" });
-                  resetForm();
-                  return navigate("/");
+                  const user = res.data[0];
+
+                  // ✅ Status check before login
+                  if (user.status === "Suspended") {
+                    toast.error("Your account is suspended!!!");
+                    return;
+                  }
+
+                  if (user.status === "Active") {
+                    toast.success("Login Successful");
+                    localStorage.setItem(
+                      "user",
+                      JSON.stringify({ ...user, role: "user" })
+                    );
+                    login({ ...user, role: "user" });
+                    resetForm();
+                    navigate("/");
+                    return;
+                  }
+
+                  // ✅ If status is missing or invalid
+                  toast.error("Your account status is invalid. Contact admin.");
+                  return;
                 }
 
-                toast.error("No account found  Please signup first!");
-
+                // ✅ No user found
+                toast.error("No account found. Please signup first!");
               } catch (error) {
-                toast.error("Something went wrong, try again ");
+                console.error("Login error:", error);
+                toast.error("Something went wrong, try again");
               }
             }}
           >
             {() => (
               <Form className="space-y-4 relative z-10">
+                {/* Email */}
                 <div>
                   <div className="flex items-center border rounded-lg px-3 focus-within:ring-2 focus-within:ring-gray-400">
                     <EmailIcon className="text-gray-400 mr-2 scale-80" />
@@ -75,7 +94,8 @@ const Login = () => {
                       type="email"
                       name="email"
                       placeholder="Email"
-                      className="w-full py-2 outline-none" />
+                      className="w-full py-2 outline-none"
+                    />
                   </div>
                   <ErrorMessage
                     name="email"
@@ -84,6 +104,7 @@ const Login = () => {
                   />
                 </div>
 
+                {/* Password */}
                 <div>
                   <div className="flex items-center border rounded-lg px-3 focus-within:ring-2 focus-within:ring-indigo-400">
                     <LockIcon className="text-gray-400 mr-2 scale-80" />
@@ -101,6 +122,7 @@ const Login = () => {
                   />
                 </div>
 
+                {/* Submit Button */}
                 <button
                   type="submit"
                   className="w-full py-2 bg-gradient-to-r from-gray-500 to-gray-600 text-white rounded-lg shadow-lg hover:opacity-90 transition-all"
@@ -111,10 +133,11 @@ const Login = () => {
             )}
           </Formik>
 
-          <p className="text-sm text-center mt-4 text-gary-600 relative z-10">
+          {/* Signup Link */}
+          <p className="text-sm text-center mt-4 text-gray-600 relative z-10">
             Don’t have an account?{" "}
             <Link to="/signup">
-              <span className="text-gary-700 font-medium cursor-pointer hover:underline">
+              <span className="text-gray-700 font-medium cursor-pointer hover:underline">
                 Sign Up
               </span>
             </Link>

@@ -33,9 +33,9 @@ const Footer = () => {
 
           <ul className="font-serif space-y-2">
             <li className="font-semibold text-white">    <img
-            src="src\assets\logo\Home4u-logo.png"
+            src="src\assets\logo\logo.png"
             alt="Home4U Logo"
-            className="h-12 w-auto object-contain rounded-4xl "
+            className=" h-10 md:h-12  w-auto object-contain rounded mx-auto md:mx-0  "
           /></li>
             <li className='text-white'>Head Office</li>
             <li className='text-white'>MC Road Kottayam, 686633</li>
@@ -43,9 +43,9 @@ const Footer = () => {
             <li className={stylesh}>Call us : 1300 228 252</li><br />
             <li className={stylesh}>Email: Home4u@gmail.com</li>
             <div className="flex justify-center md:justify-start gap-3 mt-2">
-              <FacebookIcon className='text-white' />
-              <InstagramIcon className='text-white' />
-              <XIcon className='text-white' />
+              <FacebookIcon className='hover:scale-115 transition-ease-in-out cursor-pointer text-white' />
+              <InstagramIcon className='hover:scale-115 transition-ease-in-out cursor-pointer text-white' />
+              <XIcon className=' hover:scale-115 transition-ease-in-out cursor-pointer text-white' />
             </div>
           </ul>
 

@@ -12,7 +12,7 @@
     {
       "id": "2",
       "name": "Dining Table",
-      "title": "6-Seater Wooden Dining Table",
+      "title": "8-Seater Wooden Dining Table",
       "price": 18999,
       "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
       "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
@@ -33,7 +33,8 @@
       "title": "Ergonomic Mesh Chair",
       "price": 4999,
       "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
-      "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167"
+      "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167",
+      "category": "Living"
     },
     {
       "id": "5",
@@ -311,7 +312,8 @@
       "title": "Outdoor Wicker Patio Chair",
       "price": 5999,
       "description": "Durable outdoor chair made of weather-resistant wicker material.",
-      "image": "https://m.media-amazon.com/images/I/719lrH6aCDL._AC_UL480_FMwebp_QL65_.jpg"
+      "image": "https://m.media-amazon.com/images/I/719lrH6aCDL._AC_UL480_FMwebp_QL65_.jpg",
+      "category": "Living"
     },
     {
       "id": "36",
@@ -702,12 +704,21 @@
     },
     {
       "id": "79",
-      "name": "Rice Cooker",
-      "title": "Electric Rice Cooker",
-      "price": 2999,
-      "description": "Cook perfect rice every time with this programmable rice cooker and steamer.",
-      "image": "https://m.media-amazon.com/images/I/61QFPttB+UL._AC_UY327_FMwebp_QL65_.jpg",
-      "category": "Kitchen"
+      "name": "Queen box bed",
+      "title": " Hannah Engineered Wood Queen Box Bed  ",
+      "price": 45000,
+      "description": "Godrej Interio Hannah Engineered Wood Queen Box Bed  (Finish Color - Colarain, Delivery Condition - Knock Down",
+      "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/bed/j/b/b/king-205-na-no-188-rosewood-sheesham-yes-65-vf-bed-303-vinod-original-imahbrad5ghee4fw.jpeg?q=70",
+      "category": "Bedroom"
+    },
+    {
+      "id": "80",
+      "name": "Queen box bed vithul",
+      "title": "vithul bed",
+      "price": 500000,
+      "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
+      "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167",
+      "category": "Bedroom"
     }
   ],
   "users": [
@@ -728,7 +739,8 @@
         }
       ],
       "cart": [],
-      "orders": []
+      "orders": [],
+      "status": "Active"
     },
     {
       "id": "3403",
@@ -737,41 +749,63 @@
       "password": "12345678",
       "wishlist": [
         {
-          "id": "72",
-          "name": "Knife Set",
-          "title": "Stainless Steel Kitchen Knife Set",
-          "price": 2599,
-          "description": "8-piece premium stainless steel knife set with ergonomic handles and wooden block.",
-          "image": "https://m.media-amazon.com/images/I/71DfDZ25HkL._AC_UL480_FMwebp_QL65_.jpg",
-          "category": "Kitchen"
+          "id": "23",
+          "name": "Bean Bag",
+          "title": "Large Leather Bean Bag",
+          "price": 2999,
+          "description": "Comfortable bean bag chair filled with high-density beans for extra support.",
+          "image": "https://m.media-amazon.com/images/I/51YxdZGeJLL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Living"
         },
         {
-          "id": "74",
-          "name": "Nonstick Pan",
-          "title": "Nonstick Frying Pan",
-          "price": 1299,
-          "description": "High-quality nonstick pan for frying, sautéing, and cooking with minimal oil.",
-          "image": "https://m.media-amazon.com/images/I/615Xoy83cRL._AC_UL480_FMwebp_QL65_.jpg",
-          "category": "Kitchen"
-        },
-        {
-          "id": "2",
-          "name": "Dining Table",
-          "title": "6-Seater Wooden Dining Table",
-          "price": 18999,
-          "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
-          "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
-          "category": "Dining"
+          "id": "7",
+          "name": "Bookshelf",
+          "title": "5-Tier Wooden Bookshelf",
+          "price": 8999,
+          "description": "A tall open shelf made of engineered wood, perfect for books and decor.",
+          "image": "https://m.media-amazon.com/images/I/61VPI3JU0UL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Storage"
         }
       ],
       "cart": [
         {
-          "id": "4",
-          "name": "Office Chair",
-          "title": "Ergonomic Mesh Chair",
+          "id": "26",
+          "name": "Chaise Lounge",
+          "title": "Velvet Chaise Lounge",
+          "price": 15499,
+          "description": "Luxurious chaise lounge with velvet finish and wooden legs.",
+          "image": "https://m.media-amazon.com/images/I/81Zi+rn3MCL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Living",
+          "quantity": 3
+        },
+        {
+          "id": "27",
+          "name": "Corner Shelf",
+          "title": "Wall-Mounted Corner Shelf",
+          "price": 2499,
+          "description": "Compact corner shelf made of engineered wood, ideal for décor items.",
+          "image": "https://m.media-amazon.com/images/I/61kK+jBUczL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Bedroom",
+          "quantity": 1
+        },
+        {
+          "id": "71",
+          "name": "Blender",
+          "title": "High-Speed Kitchen Blender",
           "price": 4999,
-          "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
-          "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167",
+          "description": "Powerful blender perfect for smoothies, soups, and sauces with multiple speed settings.",
+          "image": "https://m.media-amazon.com/images/I/51V335HxmZL._AC_UY327_FMwebp_QL65_.jpg",
+          "category": "Kitchen",
+          "quantity": 1
+        },
+        {
+          "id": "43",
+          "name": "Storage Bed",
+          "title": "Queen Size Bed with Storage",
+          "price": 25999,
+          "description": "Elegant wooden bed with built-in under-storage compartments.",
+          "image": "https://m.media-amazon.com/images/I/714XukSlrYL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Storage,Bedroom",
           "quantity": 1
         }
       ],
@@ -841,7 +875,7 @@
               "image": "https://m.media-amazon.com/images/I/71GfbOawqGL._AC_SR230,210_CB1169409_QL70_.jpg",
               "category": "Living",
               "quantity": 1,
-              "canceled": false
+              "canceled": true
             }
           ]
         },
@@ -935,8 +969,192 @@
               "canceled": false
             }
           ]
+        },
+        {
+          "id": "1757608146855",
+          "date": "11/09/2025, 21:59:06",
+          "payment": "supermoney",
+          "details": {
+            "name": "Abhijith P.R",
+            "phone": "08590988810",
+            "address": "Pallipurathu, erunkulam bridgeon, kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "6",
+              "name": "Bed Frame",
+              "title": "King Size Bed Frame",
+              "price": 22999,
+              "description": "Strong and durable wooden bed frame with a modern headboard design.",
+              "image": "https://m.media-amazon.com/images/I/71GfbOawqGL._AC_SR230,210_CB1169409_QL70_.jpg",
+              "category": "Living",
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        },
+        {
+          "id": "1757608335963",
+          "date": "11/09/2025, 22:02:15",
+          "payment": "gpay",
+          "details": {
+            "name": "Abhijith P.R",
+            "phone": "9876543210",
+            "address": "abcccccccc, kottayam, kottyam, Kerala, 686633, Landmark: near buy mc road"
+          },
+          "items": [
+            {
+              "id": "38",
+              "name": "Coat Rack",
+              "title": "Standing Wooden Coat Rack",
+              "price": 2599,
+              "description": "Classic standing coat rack with hooks for jackets, hats, and bags.",
+              "image": "https://m.media-amazon.com/images/I/71Xu-vV6X1L._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Bedroom",
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        },
+        {
+          "id": "1757608379469",
+          "date": "11/09/2025, 22:02:59",
+          "payment": "gpay",
+          "details": {
+            "name": "Abhijith P.R",
+            "phone": "9876543210",
+            "address": "abccc, kottayam, kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "38",
+              "name": "Coat Rack",
+              "title": "Standing Wooden Coat Rack",
+              "price": 2599,
+              "description": "Classic standing coat rack with hooks for jackets, hats, and bags.",
+              "image": "https://m.media-amazon.com/images/I/71Xu-vV6X1L._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Bedroom",
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        },
+        {
+          "id": "1757682840736",
+          "date": "12/09/2025, 18:44:00",
+          "payment": "gpay",
+          "details": {
+            "name": "abhijith",
+            "phone": "9876543210",
+            "address": "abcdddd, , kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "73",
+              "name": "Cutting Board",
+              "title": "Bamboo Cutting Board",
+              "price": 799,
+              "description": "Durable and eco-friendly bamboo cutting board suitable for all kitchen tasks.",
+              "image": "https://m.media-amazon.com/images/I/71vNOaJLQ2L._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Kitchen",
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        },
+        {
+          "id": "1757682923573",
+          "date": "12/09/2025, 18:45:23",
+          "payment": "gpay",
+          "details": {
+            "name": "abhijith",
+            "phone": "9876543210",
+            "address": "abcdddd, , kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "2",
+              "name": "Dining Table",
+              "title": "8-Seater Wooden Dining Table",
+              "price": 18999,
+              "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
+              "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
+              "category": "Dining",
+              "quantity": 1,
+              "canceled": false
+            },
+            {
+              "id": "1",
+              "name": "Modern Sofa",
+              "title": "Luxury 3-Seater Sofa",
+              "price": 25999,
+              "description": "A premium fabric sofa with wooden legs and soft cushioning for ultimate comfort.",
+              "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
+              "category": "Living",
+              "quantity": 1,
+              "canceled": false
+            },
+            {
+              "id": "74",
+              "name": "Nonstick Pan",
+              "title": "Nonstick Frying Pan",
+              "price": 1299,
+              "description": "High-quality nonstick pan for frying, sautéing, and cooking with minimal oil.",
+              "image": "https://m.media-amazon.com/images/I/615Xoy83cRL._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Kitchen",
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        },
+        {
+          "id": "1757683303866",
+          "date": "12/09/2025, 18:51:43",
+          "payment": "gpay",
+          "details": {
+            "name": "abhijith",
+            "phone": "9876543210",
+            "address": "abcddd, , kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "2",
+              "name": "Dining Table",
+              "title": "8-Seater Wooden Dining Table",
+              "price": 18999,
+              "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
+              "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
+              "category": "Dining",
+              "quantity": 1,
+              "canceled": true
+            }
+          ]
+        },
+        {
+          "id": "1757683342033",
+          "date": "12/09/2025, 18:52:22",
+          "payment": "supermoney",
+          "details": {
+            "name": "abhijith",
+            "phone": "9876543210",
+            "address": "asj sfssn snc, , kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "26",
+              "name": "Chaise Lounge",
+              "title": "Velvet Chaise Lounge",
+              "price": 15499,
+              "description": "Luxurious chaise lounge with velvet finish and wooden legs.",
+              "image": "https://m.media-amazon.com/images/I/81Zi+rn3MCL._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Living",
+              "quantity": 1,
+              "canceled": true
+            }
+          ]
         }
-      ]
+      ],
+      "status": "Active"
     },
     {
       "id": "f40a",
@@ -981,7 +1199,8 @@
           "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167"
         }
       ],
-      "orders": []
+      "orders": [],
+      "status": "Active"
     },
     {
       "id": "d6be",
@@ -1013,7 +1232,8 @@
             }
           ]
         }
-      ]
+      ],
+      "status": "Active"
     },
     {
       "id": "e5e9",
@@ -1021,7 +1241,8 @@
       "email": "joji@gmail.com",
       "password": "12345678",
       "cart": [],
-      "orders": []
+      "orders": [],
+      "status": "Active"
     },
     {
       "id": "7a53",
@@ -1088,7 +1309,8 @@
           "image": "https://m.media-amazon.com/images/I/81Boo5TWkcL._AC_UL480_FMwebp_QL65_.jpg",
           "category": "Bedroom"
         }
-      ]
+      ],
+      "status": "Active"
     },
     {
       "id": "6ee2",
@@ -1142,41 +1364,15 @@
             }
           ]
         }
-      ]
-    },
-    {
-      "id": "aeba",
-      "name": "  ",
-      "email": ".@gmail.com",
-      "password": "123456",
-      "cart": [
-        {
-          "id": "1",
-          "name": "Modern Sofa",
-          "title": "Luxury 3-Seater Sofa",
-          "price": 25999,
-          "description": "A premium fabric sofa with wooden legs and soft cushioning for ultimate comfort.",
-          "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
-          "category": "Living",
-          "quantity": 1
-        },
-        {
-          "id": "6",
-          "name": "Bed Frame",
-          "title": "King Size Bed Frame",
-          "price": 22999,
-          "description": "Strong and durable wooden bed frame with a modern headboard design.",
-          "image": "https://m.media-amazon.com/images/I/71GfbOawqGL._AC_SR230,210_CB1169409_QL70_.jpg",
-          "category": "Living",
-          "quantity": 1
-        }
-      ]
+      ],
+      "status": "Active"
     },
     {
       "id": "86e4",
       "name": "aaa",
       "email": "aaa@gmail.com",
-      "password": "111111"
+      "password": "111111",
+      "status": "Active"
     },
     {
       "id": "cc2c",
@@ -1264,7 +1460,8 @@
             }
           ]
         }
-      ]
+      ],
+      "status": "Active"
     },
     {
       "id": "4296",
@@ -1326,7 +1523,211 @@
           "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
           "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167"
         }
+      ],
+      "status": "Active"
+    },
+    {
+      "id": "2b77",
+      "name": "doominic",
+      "email": "dominicmbince@gmail.com",
+      "password": "123456",
+      "wishlist": [
+        {
+          "id": "2",
+          "name": "Dining Table",
+          "title": "6-Seater Wooden Dining Table",
+          "price": 18999,
+          "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
+          "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
+          "category": "Dining"
+        },
+        {
+          "id": "1",
+          "name": "Modern Sofa",
+          "title": "Luxury 3-Seater Sofa",
+          "price": 25999,
+          "description": "A premium fabric sofa with wooden legs and soft cushioning for ultimate comfort.",
+          "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
+          "category": "Living"
+        },
+        {
+          "id": "3",
+          "name": "Coffee Table",
+          "title": "Round Glass Coffee Table",
+          "price": 6999,
+          "description": "Stylish center table with tempered glass top and metal frame.",
+          "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
+          "category": "Dining"
+        }
+      ],
+      "cart": [],
+      "orders": [
+        {
+          "id": "1757655114750",
+          "date": "12/09/2025, 11:01:54",
+          "payment": "cod",
+          "details": {
+            "name": "doominic",
+            "phone": "9876543210",
+            "address": "addadaeko, kottayam, kottyam, Kerala, 769835, Landmark: near buy mc road"
+          },
+          "items": [
+            {
+              "id": "3",
+              "name": "Coffee Table",
+              "title": "Round Glass Coffee Table",
+              "price": 6999,
+              "description": "Stylish center table with tempered glass top and metal frame.",
+              "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
+              "category": "Dining",
+              "quantity": 1,
+              "canceled": true
+            },
+            {
+              "id": "2",
+              "name": "Dining Table",
+              "title": "6-Seater Wooden Dining Table",
+              "price": 18999,
+              "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
+              "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
+              "category": "Dining",
+              "quantity": 1,
+              "canceled": true
+            },
+            {
+              "id": "6",
+              "name": "Bed Frame",
+              "title": "King Size Bed Frame",
+              "price": 22999,
+              "description": "Strong and durable wooden bed frame with a modern headboard design.",
+              "image": "https://m.media-amazon.com/images/I/71GfbOawqGL._AC_SR230,210_CB1169409_QL70_.jpg",
+              "category": "Living",
+              "quantity": 1,
+              "canceled": false
+            },
+            {
+              "id": "7",
+              "name": "Bookshelf",
+              "title": "5-Tier Wooden Bookshelf",
+              "price": 8999,
+              "description": "A tall open shelf made of engineered wood, perfect for books and decor.",
+              "image": "https://m.media-amazon.com/images/I/61VPI3JU0UL._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Storage",
+              "quantity": 1,
+              "canceled": false
+            },
+            {
+              "id": "11",
+              "name": "Accent Chair",
+              "title": "Velvet Upholstered Accent Chair",
+              "price": 11999,
+              "description": "Elegant accent chair with velvet fabric, perfect for living rooms or bedrooms.",
+              "image": "https://m.media-amazon.com/images/I/51cYlJo-HOL._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Living",
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        }
+      ],
+      "status": "Suspended"
+    },
+    {
+      "id": "40c5",
+      "name": "aamir",
+      "email": "aamir@gmail.com",
+      "password": "123456",
+      "status": "Active"
+    },
+    {
+      "id": "6b22",
+      "name": "checking",
+      "email": "c@gmail.com",
+      "password": "111111",
+      "status": "Active",
+      "cart": [
+        {
+          "id": "3",
+          "name": "Coffee Table",
+          "title": "Round Glass Coffee Table",
+          "price": 6999,
+          "description": "Stylish center table with tempered glass top and metal frame.",
+          "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
+          "category": "Dining",
+          "quantity": 1
+        },
+        {
+          "id": "4",
+          "name": "Office Chair",
+          "title": "Ergonomic Mesh Chair",
+          "price": 4999,
+          "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
+          "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167",
+          "category": "Living",
+          "quantity": 1
+        }
       ]
+    },
+    {
+      "id": "5a95",
+      "name": "checking2",
+      "email": "c2@gmail.com",
+      "password": "222222",
+      "status": "Active"
+    },
+    {
+      "id": "8835",
+      "name": "checking3",
+      "email": "c3@gmail.com",
+      "password": "12345678",
+      "status": "Active"
+    },
+    {
+      "id": "6c8f",
+      "name": "checking3",
+      "email": "c3@gmail.com",
+      "password": "333333",
+      "status": "Active"
+    },
+    {
+      "id": "454a",
+      "name": "checking4",
+      "email": "c4@gamil.com",
+      "password": "444444",
+      "status": "Active",
+      "cart": [
+        {
+          "id": "44",
+          "name": "Entryway Bench",
+          "title": "Wooden Bench with Cushion",
+          "price": 6499,
+          "description": "Entryway bench with soft cushioned seating and a bottom shoe rack.",
+          "image": "https://m.media-amazon.com/images/I/41F-iNbwGWL._AC_SR230,210_CB1169409_QL70_.jpg",
+          "category": "HomeDecor",
+          "quantity": 5
+        },
+        {
+          "id": "39",
+          "name": "Gaming Chair",
+          "title": "Ergonomic Leather Gaming Chair",
+          "price": 14499,
+          "description": "High-back gaming chair with adjustable recline and lumbar support.",
+          "image": "https://m.media-amazon.com/images/I/71ubcjZeihL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Bedroom",
+          "quantity": 2
+        },
+        {
+          "id": "50",
+          "name": "Hall Tree",
+          "title": "Wooden Hall Tree with Hooks",
+          "price": 10499,
+          "description": "Tall hall tree with coat hooks, a storage bench, and overhead shelf.",
+          "image": "https://m.media-amazon.com/images/I/81NxwrCh6WL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "HomeDecor",
+          "quantity": 1
+        }
+      ],
+      "wishlist": []
     }
   ]
 }

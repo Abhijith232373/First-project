@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import toast from "react-hot-toast";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
-import { AuthContext } from "../Context/AuthContext";
+import { AuthContext } from "../Context/LoginContext";
 import axios from "axios";
 import HomeIcon from "@mui/icons-material/Home";
 import OrderSuccess from "../Animations/OrderSuccess"; // ✅ Import animation component

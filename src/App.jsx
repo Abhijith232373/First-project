@@ -1,6 +1,6 @@
 import {Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import { AuthProvider } from "./Context/AuthContext";
+import { AuthProvider } from "./Context/LoginContext";
 import { CartProvider } from "./Context/CartContext";
 import { WishlistProvider } from "./Context/WishlistContext";
 import { SortProvider } from "./Context/SortContext";
@@ -10,8 +10,8 @@ import { OrderProvider } from "./Context/OrderContext";
 import ProtectedRoute from "./Protecters/ProtectedRoute";
 import PublicRoute from "./Protecters/PublicRoute";
 import HomePage from "./Pages/HomePage";
-import Login from "./Auth/Login";
-import SignUp from "./Auth/SignUp";
+import Login from "./Account/Login";
+import SignUp from "./Account/SignUp";
 import Products from "./Catagorys/Products";
 import Dining from "./Catagorys/Dining";
 import Living from "./Catagorys/Living";
@@ -25,6 +25,11 @@ import BuyDetails from "./Pages/BuyDetails";
 import Orders from "./Pages/Orders";
 import CategoryPage from "./Pages/CategoryPage";
 import ProductDetails from "./Pages/ProductDetails";
+import ScrollToTop from "./Animations/ScrollToTop";
+import AdminPage from "./Admin/AdminPage";
+import AccessUser from "./Admin/AccessUser";
+import AdminSidebar from "./Admin/AdminSidebar";
+``
 
 
 function App() {
@@ -54,7 +59,16 @@ function App() {
                     <Route path="/homedecor" element={<HomeDecor />} />
                     <Route path="/kitchen" element={<Kitchen />} />
                     <Route path="/category/:category" element={<CategoryPage />} />
+
+
+
+                  <Route path="/admin" element={<AdminPage />} />
+                  <Route path="/adminusers" element={<AccessUser />} />
+                   <Route path="/ad" element={<AdminSidebar />}></Route>
+
+
                   </Routes>
+      <ScrollToTop/>
                     
                 </OrderProvider>
               </ProductFilterProvider>

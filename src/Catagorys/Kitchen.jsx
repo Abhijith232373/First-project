@@ -48,7 +48,7 @@ const Kitchen = () => {
         console.error(err);
       } finally {
         const elapsed = Date.now() - startTime;
-        const delay = Math.max(800 - elapsed, 0); // enforce 1.5s min
+        const delay = Math.max(1500 - elapsed, 0); // enforce 1.5s min
         setTimeout(() => setLoading(false), delay);
       }
     };
@@ -108,8 +108,8 @@ const Kitchen = () => {
   return (
     <>
       <NavBar />
-      <div className="px-6 py-12 bg-gray-50 min-h-screen mt-10">
-        <div className="flex justify-end items-center mb-8">
+      <div className="px-6 py-12 bg-gray-50 min-h-screen mt-10 ">
+        <div className="flex justify-end items-center mb-8 ">
           <Listbox value={sortOrder} onChange={setSortOrder}>
             <div className="relative w-60">
               <Listbox.Button className="w-full rounded-lg border bg-white px-4 py-2 text-left shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500 flex justify-between items-center">
