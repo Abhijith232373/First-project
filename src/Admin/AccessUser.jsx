@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css"; // ✅ Import styles
 
 const AccessUser = () => {
   const [users, setUsers] = useState([]);
@@ -19,10 +21,10 @@ const AccessUser = () => {
     fetchUsers();
   }, []);
 
-  // ✅ Toggle user status
+  // ✅ Toggle Active/Suspended
   const handleToggleStatus = async (id, currentStatus) => {
     try {
-      const newStatus = currentStatus === "Active" ? "Inactive" : "Active";
+      const newStatus = currentStatus === "Active" ? "Suspended" : "Active";
       await axios.patch(`http://localhost:5000/users/${id}`, { status: newStatus });
       toast.success(`User status updated to ${newStatus}`);
       fetchUsers();
@@ -32,16 +34,31 @@ const AccessUser = () => {
     }
   };
 
-  // ✅ Delete user
+  // ✅ Delete user (with confirmation)
   const handleDeleteUser = async (id) => {
-    try {
-      await axios.delete(`http://localhost:5000/users/${id}`);
-      toast.success("User deleted");
-      fetchUsers();
-    } catch (error) {
-      console.error("Error deleting user:", error);
-      toast.error("Failed to delete user");
-    }
+    confirmAlert({
+      title: "Confirm Delete",
+      message: "Are you sure you want to delete this user?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: async () => {
+            try {
+              await axios.delete(`http://localhost:5000/users/${id}`);
+              toast.success("User deleted");
+              fetchUsers();
+            } catch (error) {
+              console.error("Error deleting user:", error);
+              toast.error("Failed to delete user");
+            }
+          },
+        },
+        {
+          label: "No",
+          onClick: () => toast("Cancelled"),
+        },
+      ],
+    });
   };
 
   return (
@@ -72,18 +89,22 @@ const AccessUser = () => {
                     className={`px-2 py-1 rounded text-sm font-medium ${
                       user.status === "Active"
                         ? "bg-green-100 text-green-700"
-                        : "bg-red-100 text-red-700"
+                        : "bg-yellow-100 text-yellow-700"
                     }`}
                   >
-                    {user.status || "Active" /* ✅ fallback if missing */}
+                    {user.status || "Active"}
                   </span>
                 </td>
                 <td className="border border-gray-200 p-2 space-x-2">
                   <button
                     onClick={() => handleToggleStatus(user.id, user.status)}
-                    className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+                    className={`px-3 py-1 rounded text-white ${
+                      user.status === "Active"
+                        ? "bg-yellow-500 hover:bg-yellow-600"
+                        : "bg-green-500 hover:bg-green-600"
+                    }`}
                   >
-                    {user.status === "Active" ? "Deactivate" : "Activate"}
+                    {user.status === "Active" ? "Suspend" : "Activate"}
                   </button>
                   <button
                     onClick={() => handleDeleteUser(user.id)}

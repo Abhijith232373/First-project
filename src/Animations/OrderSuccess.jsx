@@ -8,7 +8,6 @@ const OrderSuccess = () => {
         <span className="text-white text-4xl sm:text-5xl font-bold">✔</span>
       </div>
 
-      {/* Success Message */}
       <p className="mt-4 sm:mt-6 text-2xl sm:text-3xl font-bold text-green-600 text-center animate-fadeIn">
         Order Placed Successfully!
       </p>

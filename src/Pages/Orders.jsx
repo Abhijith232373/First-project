@@ -77,6 +77,7 @@ const Orders = () => {
                   className="w-12 h-12 object-cover rounded"
                 />
                 <span>{item.title}</span>
+                <span className="text-gray-800 text-lg font-bold">Rs:{item.price}</span>
               </div>
 
               <div className="flex gap-2">

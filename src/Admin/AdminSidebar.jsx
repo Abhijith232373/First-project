@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,
   Package,
+  Handbag,
   Users,
   Settings,
   LogOut,
@@ -17,19 +18,19 @@ const AdminSidebar = () => {
   };
 
   return (
-    <aside className="fixed top-0 left-0 h-full w-64 bg-gray-900 text-white shadow-lg flex flex-col">
+    <aside className="fixed top-0 left-0 h-full w-64 bg-gray-600 text-white shadow-lg flex flex-col">
       {/* Logo Section */}
       <div className="h-16 flex items-center justify-center border-b border-gray-700">
         <h1 className="text-xl font-bold tracking-wide">
-          Admin
-          <span className="text-gray-400">Panel</span>
+          ADMIN
+          <span className="text-gray-400"> PANEL</span>
         </h1>
       </div>
 
       {/* Navigation */}
       <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
         <NavLink
-          to="/admin/admin"
+          to="/admin/dashboard"
           className={({ isActive }) =>
             `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
               isActive
@@ -43,7 +44,7 @@ const AdminSidebar = () => {
         </NavLink>
 
         <NavLink
-          to="/admin/products"
+          to="/admin/ProductAccess"
           className={({ isActive }) =>
             `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
               isActive
@@ -56,8 +57,23 @@ const AdminSidebar = () => {
           <span>Product Management</span>
         </NavLink>
 
+
+            <NavLink
+          to="/admin/ProductAccess"
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+              isActive
+                ? "bg-gray-700 text-white"
+                : "text-gray-300 hover:bg-gray-800 hover:text-white"
+            }`
+          }
+        >
+          <Handbag size={20} />
+          <span>Orders details</span>
+        </NavLink>
+
         <NavLink
-          to="/admin/users"
+          to="/admin/adminusers"
           className={({ isActive }) =>
             `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
               isActive

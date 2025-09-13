@@ -5,12 +5,12 @@ import AdminSidebar from "./AdminSidebar";
 const AdminLayout = () => {
   return (
     <div className="flex">
-      {/* Sidebar always visible */}
+      {/* Sidebar fixed */}
       <AdminSidebar />
 
-      {/* Main content area */}
+      {/* Right side content */}
       <main className="ml-64 flex-1 p-6 bg-gray-100 min-h-screen">
-        <Outlet /> {/* Child route components render here */}
+        <Outlet />
       </main>
     </div>
   );

@@ -26,9 +26,12 @@ import Orders from "./Pages/Orders";
 import CategoryPage from "./Pages/CategoryPage";
 import ProductDetails from "./Pages/ProductDetails";
 import ScrollToTop from "./Animations/ScrollToTop";
-import AdminPage from "./Admin/AdminPage";
+import AdminPage from "./Admin/ProductAccess";
 import AccessUser from "./Admin/AccessUser";
 import AdminSidebar from "./Admin/AdminSidebar";
+import AdminLayout from "./Admin/AdminLayout";
+import ProductAccess from './Admin/ProductAccess'
+import AdminDashboard from "./Admin/AdminDashboard";
 ``
 
 
@@ -62,9 +65,17 @@ function App() {
 
 
 
-                  <Route path="/admin" element={<AdminPage />} />
-                  <Route path="/adminusers" element={<AccessUser />} />
-                   <Route path="/ad" element={<AdminSidebar />}></Route>
+                  {/* <Route path="/adm" element={<AdminPage />} /> */}
+                <Route path="/admin" element={<AdminLayout />}>
+  <Route path="adminusers" element={<AccessUser />} />
+  <Route path="ProductAccess" element={<ProductAccess />} />
+  <Route path="dashboard" element={<AdminDashboard/>}/>
+</Route>
+                   {/* <Route path="/ad" element={<AdminSidebar />}></Route> */}
+
+
+
+
 
 
                   </Routes>

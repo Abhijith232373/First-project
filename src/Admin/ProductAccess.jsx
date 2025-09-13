@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css';
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const AdminPage = () => {
   const [furniture, setFurniture] = useState([]);
@@ -13,6 +13,7 @@ const AdminPage = () => {
     description: "",
     image: "",
     category: "",
+    stock: true, // <-- new stock field, default true
   });
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,7 +28,8 @@ const AdminPage = () => {
 
   // Handle input change
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value, type, checked } = e.target;
+    setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
   };
 
   // Add new product
@@ -43,7 +45,15 @@ const AdminPage = () => {
       .then((res) => res.json())
       .then((data) => {
         setFurniture([...furniture, data]);
-        setFormData({ name: "", title: "", price: "", description: "", image: "", category: "" });
+        setFormData({
+          name: "",
+          title: "",
+          price: "",
+          description: "",
+          image: "",
+          category: "",
+          stock: true,
+        });
         setIsAdding(false);
       });
   };
@@ -67,15 +77,54 @@ const AdminPage = () => {
       .then((data) => {
         setFurniture(furniture.map((item) => (item.id === isEditing ? data : item)));
         setIsEditing(null);
-        setFormData({ name: "", title: "", price: "", description: "", image: "", category: "" });
+        setFormData({
+          name: "",
+          title: "",
+          price: "",
+          description: "",
+          image: "",
+          category: "",
+          stock: true,
+        });
       });
   };
 
-  // Delete product
+  // Delete product (same confirm alert as AccessUser)
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/furniture/${id}`, {
-      method: "DELETE",
-    }).then(() => setFurniture(furniture.filter((item) => item.id !== id)));
+    confirmAlert({
+      title: "Confirm Delete",
+      message: "Are you sure you want to delete this product?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {
+            fetch(`http://localhost:5000/furniture/${id}`, {
+              method: "DELETE",
+            }).then(() =>
+              setFurniture(furniture.filter((item) => item.id !== id))
+            );
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {},
+        },
+      ],
+    });
+  };
+
+  // Toggle stock status
+  const toggleStock = (item) => {
+    const updatedProduct = { ...item, stock: !item.stock };
+    fetch(`http://localhost:5000/furniture/${item.id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setFurniture(furniture.map((f) => (f.id === item.id ? data : f)));
+      });
   };
 
   // Pagination logic
@@ -86,7 +135,7 @@ const AdminPage = () => {
 
   return (
     <div className="p-6">
-      <h1 className="text-3xl  font-bold mb-6">PRODUCT DETAILS</h1>
+      <h1 className="text-3xl font-bold mb-6">PRODUCT DETAILS</h1>
 
       {/* Add New Button */}
       <button
@@ -143,10 +192,26 @@ const AdminPage = () => {
             onChange={handleChange}
             className="border p-2 w-full mb-2"
           />
-          <button onClick={handleAdd} className="bg-gray-600 hover:scale-105 transition ease-in cursor-pointer text-white px-4 py-2 rounded mr-2">
+          <div className="mb-2 flex items-center">
+            <input
+              type="checkbox"
+              name="stock"
+              checked={formData.stock}
+              onChange={handleChange}
+              className="mr-2"
+            />
+            <label>In Stock</label>
+          </div>
+          <button
+            onClick={handleAdd}
+            className="bg-gray-600 hover:scale-105 transition ease-in cursor-pointer text-white px-4 py-2 rounded mr-2"
+          >
             Save
           </button>
-          <button onClick={() => setIsAdding(false)} className="bg-red-400 hover:scale-105 transition ease-in-out cursor-pointer text-white px-4 py-2 rounded">
+          <button
+            onClick={() => setIsAdding(false)}
+            className="bg-red-400 hover:scale-105 transition ease-in-out cursor-pointer text-white px-4 py-2 rounded"
+          >
             Cancel
           </button>
         </div>
@@ -199,10 +264,26 @@ const AdminPage = () => {
             onChange={handleChange}
             className="border p-2 w-full mb-2"
           />
-          <button onClick={handleSaveEdit} className="bg-gray-500 hover:scale-105 cursor-pointer transition ease-in-out text-white px-4 py-2 rounded mr-2">
+          <div className="mb-2 flex items-center">
+            <input
+              type="checkbox"
+              name="stock"
+              checked={formData.stock}
+              onChange={handleChange}
+              className="mr-2"
+            />
+            <label>In Stock</label>
+          </div>
+          <button
+            onClick={handleSaveEdit}
+            className="bg-gray-500 hover:scale-105 cursor-pointer transition ease-in-out text-white px-4 py-2 rounded mr-2"
+          >
             Update
           </button>
-          <button onClick={() => setIsEditing(null)} className="bg-red-400 hover:scale-105 cursor-pointer transition ease-in-out text-white px-4 py-2 rounded">
+          <button
+            onClick={() => setIsEditing(null)}
+            className="bg-red-400 hover:scale-105 cursor-pointer transition ease-in-out text-white px-4 py-2 rounded"
+          >
             Cancel
           </button>
         </div>
@@ -213,11 +294,12 @@ const AdminPage = () => {
         <thead>
           <tr className="bg-gray-200">
             <th className="border p-2 text-gray-600">ID</th>
-            <th className="border p-2  text-gray-600">Image</th>
-            <th className="border p-2  text-gray-600">Name</th>
-            <th className="border p-2  text-gray-600">Price</th>
-            <th className="border p-2  text-gray-600">Category</th>
-            <th className="border p-2  text-gray-600">Actions</th>
+            <th className="border p-2 text-gray-600">Image</th>
+            <th className="border p-2 text-gray-600">Name</th>
+            <th className="border p-2 text-gray-600">Price</th>
+            <th className="border p-2 text-gray-600">Category</th>
+            <th className="border p-2 text-gray-600">Stock</th>
+            <th className="border p-2 text-gray-600">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -225,54 +307,40 @@ const AdminPage = () => {
             <tr key={item.id}>
               <td className="border p-2 text-gray-600">{item.id}</td>
               <td className="border p-2 text-gray-600">
-                <img src={item.image} alt={item.name} className="w-20 h-16 object-cover" />
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-20 h-16 object-cover"
+                />
               </td>
               <td className="border p-2 text-gray-600">{item.name}</td>
               <td className="border p-2 text-gray-600">₹{item.price}</td>
               <td className="border p-2 text-gray-600">{item.category}</td>
               <td className="border p-2 text-gray-600">
                 <button
-                  onClick={() => handleEdit(item.id)} 
-                  className="bg-gray-500 text-white  py-1 px-5 rounded mr-2 cursor-pointer hover:scale-105 transition ease-in-out"
+                  onClick={() => toggleStock(item)}
+                  className={`py-1 px-3 rounded cursor-pointer ${
+                    item.stock
+                      ? "bg-green-500 hover:bg-green-600 text-white"
+                      : "bg-red-500 hover:bg-red-600 text-white"
+                  }`}
+                >
+                  {item.stock ? "In Stock" : "Stock Out"}
+                </button>
+              </td>
+              <td className="border p-2 text-gray-600">
+                <button
+                  onClick={() => handleEdit(item.id)}
+                  className="bg-gray-500 text-white py-1 px-5 rounded mr-2 cursor-pointer hover:scale-105 transition ease-in-out"
                 >
                   Edit
                 </button>
-<button
-  onClick={() =>
-    confirmAlert({
-      customUI: ({ onClose }) => (
-        <div className="fixed top-8 left-1/2 -translate-x-1/2 z-50">
-          <div className="bg-white border border-gray-200  rounded-md px-5 py-4 mt-5 w-100 h-56 shadow-2xl hover:scale-105 transition ease-in-out">
-            <p className="text-lg text-gray-700 mb-4 mt-5 ">
-              Are you sure you want to delete this item?
-            </p>
-            <div className="flex justify-end gap-3">
-              <button
-                onClick={() => {
-                  handleDelete(item.id);
-                  onClose();
-                }}
-                className="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded cursor-pointer"
-              >
-                Delete
-              </button>
-              <button
-                onClick={onClose}
-                className="bg-gray-200 hover:bg-gray-300 text-gray-700 text-sm px-3 py-1 rounded cursor-pointer scale-105"
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      ),
-    })
-  }
-  className="bg-red-500 text-white px-2 py-1 rounded cursor-pointer hover:scale-105 transition ease-in-out hover:bg-red-700"
->
-  Delete
-</button>
-
+                <button
+                  onClick={() => handleDelete(item.id)}
+                  className="bg-red-500 text-white px-2 py-1 rounded cursor-pointer hover:scale-105 transition ease-in-out hover:bg-red-700"
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
@@ -286,7 +354,9 @@ const AdminPage = () => {
             key={index + 1}
             onClick={() => setCurrentPage(index + 1)}
             className={`px-3 py-1 rounded ${
-              currentPage === index + 1 ? " underline  text-gray-800" : "text-gray-400"
+              currentPage === index + 1
+                ? "underline text-gray-800"
+                : "text-gray-400"
             }`}
           >
             {index + 1}
