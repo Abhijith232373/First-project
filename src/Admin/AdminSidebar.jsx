@@ -1,4 +1,5 @@
-import React from "react";
+// AdminSidebar.jsx
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,
@@ -7,10 +8,13 @@ import {
   Users,
   Settings,
   LogOut,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 const AdminSidebar = () => {
   const navigate = useNavigate();
+  const [collapsed, setCollapsed] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -18,17 +22,30 @@ const AdminSidebar = () => {
   };
 
   return (
-    <aside className="fixed top-0 left-0 h-full w-64 bg-gray-600 text-white shadow-lg flex flex-col">
+    <aside
+      className={`fixed top-0 left-0 h-full ${
+        collapsed ? "w-20" : "w-64"
+      } bg-gray-600 text-white shadow-lg flex flex-col transition-all duration-300`}
+      onMouseEnter={() => setCollapsed(false)}
+      onMouseLeave={() => setCollapsed(true)}
+    >
       {/* Logo Section */}
-      <div className="h-16 flex items-center justify-center border-b border-gray-700">
-        <h1 className="text-xl font-bold tracking-wide">
-          ADMIN
-          <span className="text-gray-400"> PANEL</span>
-        </h1>
+      <div className="h-16 flex items-center justify-between px-4 border-b border-gray-700">
+        {!collapsed && (
+          <h1 className="text-xl font-bold tracking-wide">
+            ADMIN <span className="text-gray-400">PANEL</span>
+          </h1>
+        )}
+        <button
+          onClick={() => setCollapsed(!collapsed)}
+          className="text-gray-300 hover:text-white"
+        >
+          {collapsed ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
+        </button>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+      <nav className="flex-1 px-2 py-6 space-y-2 overflow-y-auto">
         <NavLink
           to="/admin/dashboard"
           className={({ isActive }) =>
@@ -38,9 +55,10 @@ const AdminSidebar = () => {
                 : "text-gray-300 hover:bg-gray-800 hover:text-white"
             }`
           }
+          end
         >
           <LayoutDashboard size={20} />
-          <span>Dashboard</span>
+          {!collapsed && <span>Dashboard</span>}
         </NavLink>
 
         <NavLink
@@ -54,12 +72,11 @@ const AdminSidebar = () => {
           }
         >
           <Package size={20} />
-          <span>Product Management</span>
+          {!collapsed && <span>Product Management</span>}
         </NavLink>
 
-
-            <NavLink
-          to="/admin/ProductAccess"
+        <NavLink
+          to="/admin/orders"
           className={({ isActive }) =>
             `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
               isActive
@@ -69,7 +86,7 @@ const AdminSidebar = () => {
           }
         >
           <Handbag size={20} />
-          <span>Orders details</span>
+          {!collapsed && <span>Orders Details</span>}
         </NavLink>
 
         <NavLink
@@ -83,7 +100,7 @@ const AdminSidebar = () => {
           }
         >
           <Users size={20} />
-          <span>User Management</span>
+          {!collapsed && <span>User Management</span>}
         </NavLink>
 
         <NavLink
@@ -97,7 +114,7 @@ const AdminSidebar = () => {
           }
         >
           <Settings size={20} />
-          <span>Settings</span>
+          {!collapsed && <span>Settings</span>}
         </NavLink>
       </nav>
 
@@ -108,7 +125,7 @@ const AdminSidebar = () => {
           className="flex items-center w-full gap-3 px-4 py-2 rounded-lg text-gray-300 hover:bg-red-600 hover:text-white transition"
         >
           <LogOut size={20} />
-          <span>Logout</span>
+          {!collapsed && <span>Logout</span>}
         </button>
       </div>
     </aside>

@@ -32,6 +32,7 @@ import AdminSidebar from "./Admin/AdminSidebar";
 import AdminLayout from "./Admin/AdminLayout";
 import ProductAccess from './Admin/ProductAccess'
 import AdminDashboard from "./Admin/AdminDashboard";
+import { Navigate } from "react-router-dom";
 ``
 
 
@@ -67,6 +68,7 @@ function App() {
 
                   {/* <Route path="/adm" element={<AdminPage />} /> */}
                 <Route path="/admin" element={<AdminLayout />}>
+                  <Route index element={<Navigate to="dashboard" replace />} />
   <Route path="adminusers" element={<AccessUser />} />
   <Route path="ProductAccess" element={<ProductAccess />} />
   <Route path="dashboard" element={<AdminDashboard/>}/>

@@ -9,7 +9,7 @@ const AdminLayout = () => {
       <AdminSidebar />
 
       {/* Right side content */}
-      <main className="ml-64 flex-1 p-6 bg-gray-100 min-h-screen">
+      <main className={`flex-1 p-6 transition-all duration-300 ml-64`} id="admin-content">
         <Outlet />
       </main>
     </div>
