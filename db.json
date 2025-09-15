@@ -307,7 +307,8 @@
       "price": 4999,
       "description": "Comfortable hanging hammock chair made of soft cotton, ideal for balconies or patios.",
       "image": "https://m.media-amazon.com/images/I/71gBMYUH0ML._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "HomeDecor"
+      "category": "HomeDecor",
+      "stock": true
     },
     {
       "id": "32",
@@ -316,7 +317,8 @@
       "price": 3299,
       "description": "Minimalist side table with a round wooden top and metal legs.",
       "image": "https://m.media-amazon.com/images/I/818VPBTCxBL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Bedroom"
+      "category": "Bedroom",
+      "stock": true
     },
     {
       "id": "33",
@@ -325,7 +327,8 @@
       "price": 15999,
       "description": "Compact dining set with 1 wooden table and 4 cushioned chairs.",
       "image": "https://m.media-amazon.com/images/I/61oRqBoiknL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Dining"
+      "category": "Dining",
+      "stock": true
     },
     {
       "id": "34",
@@ -334,7 +337,8 @@
       "price": 12499,
       "description": "Modern work desk with adjustable height feature, ideal for home offices.",
       "image": "https://m.media-amazon.com/images/I/81Boo5TWkcL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Bedroom"
+      "category": "Bedroom",
+      "stock": true
     },
     {
       "id": "35",
@@ -343,7 +347,8 @@
       "price": 5999,
       "description": "Durable outdoor chair made of weather-resistant wicker material.",
       "image": "https://m.media-amazon.com/images/I/719lrH6aCDL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Living"
+      "category": "Living",
+      "stock": true
     },
     {
       "id": "36",
@@ -352,7 +357,8 @@
       "price": 8999,
       "description": "Multi-purpose wooden cabinet with shelves and doors for extra storage.",
       "image": "https://m.media-amazon.com/images/I/61-ciXvq36L._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Storage"
+      "category": "Storage",
+      "stock": true
     },
     {
       "id": "37",
@@ -361,7 +367,8 @@
       "price": 17999,
       "description": "Cozy loveseat sofa with soft fabric and sturdy construction.",
       "image": "https://m.media-amazon.com/images/I/61y1NDNi1BL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Bedroom,Living"
+      "category": "Bedroom,Living",
+      "stock": true
     },
     {
       "id": "38",
@@ -370,7 +377,8 @@
       "price": 2599,
       "description": "Classic standing coat rack with hooks for jackets, hats, and bags.",
       "image": "https://m.media-amazon.com/images/I/71Xu-vV6X1L._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Bedroom"
+      "category": "Bedroom",
+      "stock": true
     },
     {
       "id": "39",
@@ -379,7 +387,8 @@
       "price": 14499,
       "description": "High-back gaming chair with adjustable recline and lumbar support.",
       "image": "https://m.media-amazon.com/images/I/71ubcjZeihL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Bedroom"
+      "category": "Bedroom",
+      "stock": true
     },
     {
       "id": "40",
@@ -388,7 +397,8 @@
       "price": 6999,
       "description": "Classic outdoor bench made of wrought iron, perfect for gardens and patios.",
       "image": "https://m.media-amazon.com/images/I/81ZGDTtpMKL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "HomeDecor"
+      "category": "HomeDecor",
+      "stock": true
     },
     {
       "id": "41",
@@ -397,7 +407,8 @@
       "price": 7499,
       "description": "Stylish leaning ladder bookshelf with multiple open shelves for books and décor.",
       "image": "https://m.media-amazon.com/images/I/81uXi3PNX3L._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Bedroom"
+      "category": "Bedroom",
+      "stock": true
     },
     {
       "id": "42",
@@ -406,7 +417,8 @@
       "price": 2999,
       "description": "Compact counter stool made of solid oak, perfect for kitchens and bars.",
       "image": "https://m.media-amazon.com/images/I/51eSN4fNM6L._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Living"
+      "category": "Living",
+      "stock": true
     },
     {
       "id": "43",
@@ -415,7 +427,8 @@
       "price": 25999,
       "description": "Elegant wooden bed with built-in under-storage compartments.",
       "image": "https://m.media-amazon.com/images/I/714XukSlrYL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Storage,Bedroom"
+      "category": "Storage,Bedroom",
+      "stock": true
     },
     {
       "id": "44",
@@ -424,7 +437,8 @@
       "price": 6499,
       "description": "Entryway bench with soft cushioned seating and a bottom shoe rack.",
       "image": "https://m.media-amazon.com/images/I/41F-iNbwGWL._AC_SR230,210_CB1169409_QL70_.jpg",
-      "category": "HomeDecor"
+      "category": "HomeDecor",
+      "stock": true
     },
     {
       "id": "45",
@@ -433,7 +447,8 @@
       "price": 13999,
       "description": "Glass-front display cabinet with wooden frame, ideal for showcasing collections.",
       "image": "https://m.media-amazon.com/images/I/81DzrbVvfFL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Living"
+      "category": "Living",
+      "stock": true
     },
     {
       "id": "46",
@@ -442,7 +457,8 @@
       "price": 2599,
       "description": "Hand-knitted pouf that doubles as seating or footrest in living rooms.",
       "image": "https://m.media-amazon.com/images/I/61KYFBwRQBL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Living"
+      "category": "Living",
+      "stock": true
     },
     {
       "id": "47",
@@ -451,7 +467,8 @@
       "price": 7999,
       "description": "Office filing cabinet with three drawers and lock for secure storage.",
       "image": "https://m.media-amazon.com/images/I/71TEz+XGy4L._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Bedroom"
+      "category": "Bedroom",
+      "stock": true
     },
     {
       "id": "48",
@@ -460,7 +477,8 @@
       "price": 17999,
       "description": "Multi-functional daybed with soft cushions, suitable for lounging or guest rooms.",
       "image": "https://m.media-amazon.com/images/I/718NN8GzkhL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Bedroom"
+      "category": "Bedroom",
+      "stock": true
     },
     {
       "id": "49",
@@ -469,7 +487,8 @@
       "price": 4599,
       "description": "Compact wine rack with storage for 12 bottles, made from premium wood.",
       "image": "https://m.media-amazon.com/images/I/61oVE2CUv+L._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Living"
+      "category": "Living",
+      "stock": true
     },
     {
       "id": "50",
@@ -478,7 +497,8 @@
       "price": 10499,
       "description": "Tall hall tree with coat hooks, a storage bench, and overhead shelf.",
       "image": "https://m.media-amazon.com/images/I/81NxwrCh6WL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "HomeDecor"
+      "category": "HomeDecor",
+      "stock": true
     },
     {
       "id": "51",
@@ -487,7 +507,8 @@
       "price": 18999,
       "description": "Elegant dining hutch with glass doors and shelves for crockery and décor.",
       "image": "https://m.media-amazon.com/images/I/71DCOLTbvvL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Dining"
+      "category": "Dining",
+      "stock": true
     },
     {
       "id": "52",
@@ -496,7 +517,8 @@
       "price": 6499,
       "description": "Classic storage trunk with iron handles, ideal for blankets and accessories.",
       "image": "https://m.media-amazon.com/images/I/61Ry36vxHNL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Storage"
+      "category": "Storage",
+      "stock": true
     },
     {
       "id": "53",
@@ -505,7 +527,8 @@
       "price": 9999,
       "description": "Comfortable swivel chair with cushioned leather seat and adjustable height.",
       "image": "https://m.media-amazon.com/images/I/81Ka6FAoh2L._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Dining"
+      "category": "Dining",
+      "stock": true
     },
     {
       "id": "54",
@@ -514,7 +537,8 @@
       "price": 8499,
       "description": "Compact wooden breakfast table with two matching stools.",
       "image": "https://m.media-amazon.com/images/I/61mYngHWKMS._AC_UY327_FMwebp_QL65_.jpg",
-      "category": "Dining"
+      "category": "Dining",
+      "stock": true
     },
     {
       "id": "55",
@@ -523,7 +547,8 @@
       "price": 3599,
       "description": "Modern wall-mounted shelf with geometric design for books and décor.",
       "image": "https://m.media-amazon.com/images/I/61kt+g-FuUL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Living"
+      "category": "Living",
+      "stock": true
     },
     {
       "id": "56",
@@ -532,7 +557,8 @@
       "price": 12499,
       "description": "Durable outdoor swing with canopy shade, ideal for gardens and patios.",
       "image": "https://m.media-amazon.com/images/I/71szVyUHjDL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "HomeDecor"
+      "category": "HomeDecor",
+      "stock": true
     },
     {
       "id": "57",
@@ -541,7 +567,8 @@
       "price": 14999,
       "description": "Spacious corner office desk with drawers and L-shaped design.",
       "image": "https://m.media-amazon.com/images/I/813NRjUFs2L._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Living"
+      "category": "Living",
+      "stock": true
     },
     {
       "id": "58",
@@ -550,7 +577,8 @@
       "price": 10999,
       "description": "Vintage-style wooden cabinet with hand-carved doors and ample storage.",
       "image": "https://m.media-amazon.com/images/I/51SlCXkVkyL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Storage"
+      "category": "Storage",
+      "stock": true
     },
     {
       "id": "59",
@@ -559,7 +587,8 @@
       "price": 2999,
       "description": "Eco-friendly laundry basket with removable fabric liner.",
       "image": "https://m.media-amazon.com/images/I/81xUmceJfAL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Storage"
+      "category": "Storage",
+      "stock": true
     },
     {
       "id": "60",
@@ -568,7 +597,8 @@
       "price": 7499,
       "description": "Classic 3-panel foldable room divider with intricate wooden carvings.",
       "image": "https://m.media-amazon.com/images/I/71x+UwMzrnL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Bedroom"
+      "category": "Bedroom",
+      "stock": true
     },
     {
       "id": "61",
@@ -577,7 +607,8 @@
       "price": 5499,
       "description": "Compact nesting tables that can be stacked or used separately for versatility.",
       "image": "https://m.media-amazon.com/images/I/61gVH7OggIL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Dining"
+      "category": "Dining",
+      "stock": true
     },
     {
       "id": "62",
@@ -586,7 +617,8 @@
       "price": 45999,
       "description": "Luxury massage chair with multiple modes, reclining function, and heat therapy.",
       "image": "https://m.media-amazon.com/images/I/41keyL9njTL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Living"
+      "category": "Living",
+      "stock": true
     },
     {
       "id": "63",
@@ -595,7 +627,8 @@
       "price": 8799,
       "description": "Stylish rustic console table with drawers, perfect for entryways or hallways.",
       "image": "https://m.media-amazon.com/images/I/61QZu8+VE4L._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "HomeDecor"
+      "category": "HomeDecor",
+      "stock": true
     },
     {
       "id": "64",
@@ -604,7 +637,8 @@
       "price": 2499,
       "description": "Bohemian-style wall shelf with wooden planks and rope hangers.",
       "image": "https://m.media-amazon.com/images/I/81py3y75KnL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "HomeDecor"
+      "category": "HomeDecor",
+      "stock": true
     },
     {
       "id": "65",
@@ -613,7 +647,8 @@
       "price": 6999,
       "description": "Colorful kids study desk with adjustable height and matching chair.",
       "image": "https://m.media-amazon.com/images/I/71Di1+V51kL._AC_UY327_FMwebp_QL65_.jpg",
-      "category": "Living"
+      "category": "Living",
+      "stock": true
     },
     {
       "id": "66",
@@ -622,7 +657,8 @@
       "price": 11999,
       "description": "Spacious modular kitchen cabinet with shelves and sliding doors.",
       "image": "https://m.media-amazon.com/images/I/610ltxZmb-L._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Dining"
+      "category": "Dining",
+      "stock": true
     },
     {
       "id": "67",
@@ -631,7 +667,8 @@
       "price": 25999,
       "description": "Comfortable 2-seater recliner sofa with plush cushioning and smooth reclining.",
       "image": "https://m.media-amazon.com/images/I/71coqr8j97L._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Living"
+      "category": "Living",
+      "stock": true
     },
     {
       "id": "68",
@@ -640,7 +677,8 @@
       "price": 16499,
       "description": "Spacious workstation desk with keyboard tray, storage shelves, and monitor stand.",
       "image": "https://m.media-amazon.com/images/I/6138Uosc7DL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Dining"
+      "category": "Dining",
+      "stock": true
     },
     {
       "id": "69",
@@ -649,7 +687,8 @@
       "price": 13999,
       "description": "Weather-resistant outdoor dining set with metal frame and glass top.",
       "image": "https://m.media-amazon.com/images/I/71eAZ+qqHDL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "HomeDecor"
+      "category": "HomeDecor",
+      "stock": true
     },
     {
       "id": "70",
@@ -658,7 +697,8 @@
       "price": 3499,
       "description": "Cozy wooden pet bed with a soft removable cushion, ideal for cats and dogs.",
       "image": "https://m.media-amazon.com/images/I/81lvIcMPjyL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Living"
+      "category": "Living",
+      "stock": true
     },
     {
       "id": "71",
@@ -667,7 +707,8 @@
       "price": 4999,
       "description": "Powerful blender perfect for smoothies, soups, and sauces with multiple speed settings.",
       "image": "https://m.media-amazon.com/images/I/51V335HxmZL._AC_UY327_FMwebp_QL65_.jpg",
-      "category": "Kitchen"
+      "category": "Kitchen",
+      "stock": true
     },
     {
       "id": "72",
@@ -676,7 +717,8 @@
       "price": 2599,
       "description": "8-piece premium stainless steel knife set with ergonomic handles and wooden block.",
       "image": "https://m.media-amazon.com/images/I/71DfDZ25HkL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Kitchen"
+      "category": "Kitchen",
+      "stock": true
     },
     {
       "id": "73",
@@ -685,7 +727,8 @@
       "price": 799,
       "description": "Durable and eco-friendly bamboo cutting board suitable for all kitchen tasks.",
       "image": "https://m.media-amazon.com/images/I/71vNOaJLQ2L._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Kitchen"
+      "category": "Kitchen",
+      "stock": true
     },
     {
       "id": "74",
@@ -694,7 +737,8 @@
       "price": 1299,
       "description": "High-quality nonstick pan for frying, sautéing, and cooking with minimal oil.",
       "image": "https://m.media-amazon.com/images/I/615Xoy83cRL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Kitchen"
+      "category": "Kitchen",
+      "stock": true
     },
     {
       "id": "75",
@@ -703,7 +747,8 @@
       "price": 2199,
       "description": "Compact toaster with adjustable browning levels and easy-to-clean crumb tray.",
       "image": "https://m.media-amazon.com/images/I/61qQzv0GCfL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Kitchen"
+      "category": "Kitchen",
+      "stock": true
     },
     {
       "id": "76",
@@ -712,7 +757,8 @@
       "price": 5999,
       "description": "Brew fresh coffee at home with programmable settings and built-in grinder.",
       "image": "https://m.media-amazon.com/images/I/618T1K2EnfL._AC_UY327_FMwebp_QL65_.jpg",
-      "category": "Kitchen"
+      "category": "Kitchen",
+      "stock": true
     },
     {
       "id": "77",
@@ -721,7 +767,8 @@
       "price": 1499,
       "description": "Organize your spices with this rotating rack and glass jars for easy access.",
       "image": "https://m.media-amazon.com/images/I/817myYN1wgL._AC_UL480_FMwebp_QL65_.jpg",
-      "category": "Kitchen"
+      "category": "Kitchen",
+      "stock": true
     },
     {
       "id": "78",
@@ -730,7 +777,8 @@
       "price": 1799,
       "description": "Keep your drinking water pure with this easy-to-use and portable filter pitcher.",
       "image": "https://m.media-amazon.com/images/I/51J9yKE61vL._AC_UY327_FMwebp_QL65_.jpg",
-      "category": "Kitchen"
+      "category": "Kitchen",
+      "stock": true
     },
     {
       "id": "79",
@@ -739,44 +787,27 @@
       "price": 45000,
       "description": "Godrej Interio Hannah Engineered Wood Queen Box Bed  (Finish Color - Colarain, Delivery Condition - Knock Down",
       "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/bed/j/b/b/king-205-na-no-188-rosewood-sheesham-yes-65-vf-bed-303-vinod-original-imahbrad5ghee4fw.jpeg?q=70",
-      "category": "Bedroom"
+      "category": "Bedroom",
+      "stock": true
     }
   ],
   "users": [
-    {
-      "id": "66b4",
-      "name": "Abhijith",
-      "email": "abhijith@gmail.com",
-      "password": "1234567",
-      "wishlist": [
-        {
-          "id": "3",
-          "name": "Coffee Table",
-          "title": "Round Glass Coffee Table",
-          "price": 6999,
-          "description": "Stylish center table with tempered glass top and metal frame.",
-          "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
-          "category": "Dining"
-        }
-      ],
-      "cart": [],
-      "orders": [],
-      "status": "Active"
-    },
     {
       "id": "e5e9",
       "name": "joji",
       "email": "joji@gmail.com",
       "password": "12345678",
+      "role": "user",
       "cart": [],
       "orders": [],
-      "status": "Suspended"
+      "status": "Active"
     },
     {
       "id": "6ee2",
       "name": "hashim",
       "email": "hashim@gmail.com",
       "password": "123456",
+      "role": "user",
       "cart": [],
       "wishlist": [
         {
@@ -832,6 +863,7 @@
       "name": "user1",
       "email": "user1@gmail.com",
       "password": "111111",
+      "role": "user",
       "cart": [],
       "wishlist": [],
       "orders": [
@@ -921,6 +953,7 @@
       "name": "user2",
       "email": "user2@gmail.com",
       "password": "222222",
+      "role": "user",
       "cart": [],
       "orders": [
         {
@@ -984,6 +1017,7 @@
       "name": "doominic",
       "email": "dominicmbince@gmail.com",
       "password": "123456",
+      "role": "user",
       "wishlist": [
         {
           "id": "2",
@@ -1090,6 +1124,7 @@
       "name": "aamir",
       "email": "aamir@gmail.com",
       "password": "123456",
+      "role": "user",
       "status": "Active"
     },
     {
@@ -1097,6 +1132,7 @@
       "name": "checking2",
       "email": "c2@gmail.com",
       "password": "222222",
+      "role": "user",
       "status": "Active"
     },
     {
@@ -1104,101 +1140,16 @@
       "name": "checking3",
       "email": "c3@gmail.com",
       "password": "12345678",
+      "role": "user",
       "status": "Active"
-    },
-    {
-      "id": "6c8f",
-      "name": "checking3",
-      "email": "c3@gmail.com",
-      "password": "333333",
-      "status": "Active",
-      "wishlist": [
-        {
-          "id": "71",
-          "name": "Blender",
-          "title": "High-Speed Kitchen Blender",
-          "price": 4999,
-          "description": "Powerful blender perfect for smoothies, soups, and sauces with multiple speed settings.",
-          "image": "https://m.media-amazon.com/images/I/51V335HxmZL._AC_UY327_FMwebp_QL65_.jpg",
-          "category": "Kitchen"
-        },
-        {
-          "id": "72",
-          "name": "Knife Set",
-          "title": "Stainless Steel Kitchen Knife Set",
-          "price": 2599,
-          "description": "8-piece premium stainless steel knife set with ergonomic handles and wooden block.",
-          "image": "https://m.media-amazon.com/images/I/71DfDZ25HkL._AC_UL480_FMwebp_QL65_.jpg",
-          "category": "Kitchen"
-        },
-        {
-          "id": "73",
-          "name": "Cutting Board",
-          "title": "Bamboo Cutting Board",
-          "price": 799,
-          "description": "Durable and eco-friendly bamboo cutting board suitable for all kitchen tasks.",
-          "image": "https://m.media-amazon.com/images/I/71vNOaJLQ2L._AC_UL480_FMwebp_QL65_.jpg",
-          "category": "Kitchen"
-        }
-      ],
-      "cart": [],
-      "orders": [
-        {
-          "id": "1757760355157",
-          "date": "13/09/2025, 16:15:55",
-          "payment": "gpay",
-          "details": {
-            "name": "checking3",
-            "phone": "9876543210",
-            "address": "abcdddd, none, kottyam, Kerala, 686633, Landmark: "
-          },
-          "items": [
-            {
-              "id": "4",
-              "name": "Office Chair",
-              "title": "Ergonomic Mesh Chair",
-              "price": 4999,
-              "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
-              "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167",
-              "category": "Living",
-              "stock": true,
-              "quantity": 1,
-              "canceled": false
-            }
-          ]
-        },
-        {
-          "id": "1757760466907",
-          "date": "13/09/2025, 16:17:46",
-          "payment": "supermoney",
-          "details": {
-            "name": "checking3",
-            "phone": "9876543210",
-            "address": "aaa, none, kottyam, Kerala, 686633, Landmark: "
-          },
-          "items": [
-            {
-              "id": "4",
-              "name": "Office Chair",
-              "title": "Ergonomic Mesh Chair",
-              "price": 4999,
-              "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
-              "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167",
-              "category": "Living",
-              "stock": true,
-              "quantity": 1,
-              "canceled": false
-            }
-          ]
-        }
-      ]
     },
     {
       "id": "454a",
       "name": "checking4",
       "email": "c4@gamil.com",
       "password": "444444",
-      "status": "Active",
+      "role": "user",
+      "status": "Suspended",
       "cart": [
         {
           "id": "44",
@@ -1243,6 +1194,93 @@
         }
       ],
       "wishlist": []
+    },
+    {
+      "id": "1",
+      "name": "John Doe",
+      "email": "john@gmail.com",
+      "password": "123456",
+      "role": "user",
+      "status": "Active"
+    },
+    {
+      "id": "2",
+      "name": "Jane Admin",
+      "email": "admin@gmail.com",
+      "password": "232373",
+      "role": "admin",
+      "status": "Active",
+      "cart": [],
+      "wishlist": []
+    },
+    {
+      "id": "60b9",
+      "name": "checking5",
+      "email": "c5@gmail.com",
+      "password": "555555",
+      "status": "Active",
+      "cart": [],
+      "wishlist": [
+        {
+          "id": "4",
+          "name": "Office Chair",
+          "title": "Ergonomic Mesh Chair",
+          "price": 4999,
+          "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
+          "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167",
+          "category": "Living",
+          "stock": true
+        },
+        {
+          "id": "8",
+          "name": "Recliner Chair",
+          "title": "Leather Recliner Chair",
+          "price": 17999,
+          "description": "Comfortable reclining chair with plush leather upholstery and smooth recline mechanism.",
+          "image": "https://m.media-amazon.com/images/I/81pU8M1ieSL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Living",
+          "stock": true
+        }
+      ],
+      "orders": [
+        {
+          "id": "1757931093698",
+          "date": "15/09/2025, 15:41:33",
+          "payment": "gpay",
+          "details": {
+            "name": "checking5",
+            "phone": "9876543210",
+            "address": "abcdsss, , kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "4",
+              "name": "Office Chair",
+              "title": "Ergonomic Mesh Chair",
+              "price": 4999,
+              "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
+              "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167",
+              "category": "Living",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false
+            },
+            {
+              "id": "8",
+              "name": "Recliner Chair",
+              "title": "Leather Recliner Chair",
+              "price": 17999,
+              "description": "Comfortable reclining chair with plush leather upholstery and smooth recline mechanism.",
+              "image": "https://m.media-amazon.com/images/I/81pU8M1ieSL._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Living",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        }
+      ],
+      "role": "admin"
     }
   ]
 }

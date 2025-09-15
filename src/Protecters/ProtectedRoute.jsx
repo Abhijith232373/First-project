@@ -2,11 +2,15 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../Context/LoginContext";
 
 const ProtectedRoute = ({ children }) => {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, user } = useAuth();
 
   if (!isLoggedIn) {
-  
     return <Navigate to="/user" replace />;
+  }
+
+  // ❌ Block admin from user pages
+  if (user?.role === "admin") {
+    return <Navigate to="/admin/dashboard" replace />;
   }
 
   return children;

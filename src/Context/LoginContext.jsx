@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect, useContext } from "react";
+
 export const AuthContext = createContext();
+
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
@@ -7,16 +9,29 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
-      const parsedUser = JSON.parse(storedUser);
-      setUser(parsedUser);
-      setIsLoggedIn(true);
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        if (parsedUser && typeof parsedUser === "object") {
+          setUser(parsedUser);
+          setIsLoggedIn(true);
+        } else {
+          localStorage.removeItem("user");
+        }
+      } catch (error) {
+        console.error("Failed to parse stored user:", error);
+        localStorage.removeItem("user");
+      }
     }
   }, []);
 
   const login = (userData) => {
-    setUser(userData);
-    setIsLoggedIn(true);
-    localStorage.setItem("user", JSON.stringify(userData));
+    if (userData && typeof userData === "object") {
+      setUser(userData);
+      setIsLoggedIn(true);
+      localStorage.setItem("user", JSON.stringify(userData));
+    } else {
+      console.error("Invalid user data for login:", userData);
+    }
   };
 
   const logout = () => {
@@ -29,9 +44,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider value={{ isLoggedIn, user, login, logout }}>
       {children}
     </AuthContext.Provider>
-  ); 
+  );
 };
 
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
+export const useAuth = () => useContext(AuthContext);

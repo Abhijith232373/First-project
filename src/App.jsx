@@ -33,7 +33,9 @@ import AdminLayout from "./Admin/AdminLayout";
 import ProductAccess from './Admin/ProductAccess'
 import AdminDashboard from "./Admin/AdminDashboard";
 import { Navigate } from "react-router-dom";
-``
+import SubAdmins from "./Admin/SubAdmins";
+import AdminProtectedRoute from "./Protecters/AdminRoute";
+
 
 
 function App() {
@@ -46,41 +48,92 @@ function App() {
               <ProductFilterProvider>
                 <OrderProvider>
                   <Toaster position="top-right" reverseOrder={false} />
-                  <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/user" element={ <PublicRoute><Login /> </PublicRoute> } />
-                    <Route  path="/signup"  element={  <PublicRoute> <SignUp /> </PublicRoute> }/>
-                    <Route path="/wishlist" element={<ProtectedRoute><WishlistPage /></ProtectedRoute>}/>
-                    <Route path="/cart"element={<ProtectedRoute><Cart /></ProtectedRoute> }/>
-                    <Route path="/buydetails" element={ <ProtectedRoute> <BuyDetails /> </ProtectedRoute>}/>
-                    <Route path="/orders"element={<ProtectedRoute><Orders /> </ProtectedRoute>}/>
-                     <Route path="/product/:id" element={<ProductDetails/>} />
-                    <Route path="/products" element={<Products />} />
-                    <Route path="/dining" element={<Dining />} />
-                    <Route path="/living" element={<Living />} />
-                    <Route path="/bedroom" element={<Bedroom />} />
-                    <Route path="/storage" element={<Storage />} />
-                    <Route path="/homedecor" element={<HomeDecor />} />
-                    <Route path="/kitchen" element={<Kitchen />} />
-                    <Route path="/category/:category" element={<CategoryPage />} />
+                 <Routes>
+  {/* Public/User side */}
+  <Route path="/" element={<HomePage />} />
+  <Route
+    path="/user"
+    element={
+      <PublicRoute>
+        <Login />
+      </PublicRoute>
+    }
+  />
+  <Route
+    path="/signup"
+    element={
+      <PublicRoute>
+        <SignUp />
+      </PublicRoute>
+    }
+  />
+
+  {/* Protected User Routes */}
+  <Route
+    path="/wishlist"
+    element={
+      <ProtectedRoute>
+        <WishlistPage />
+      </ProtectedRoute>
+    }
+  />
+  <Route
+    path="/cart"
+    element={
+      <ProtectedRoute>
+        <Cart />
+      </ProtectedRoute>
+    }
+  />
+  <Route
+    path="/buydetails"
+    element={
+      <ProtectedRoute>
+        <BuyDetails />
+      </ProtectedRoute>
+    }
+  />
+  <Route
+    path="/orders"
+    element={
+      <ProtectedRoute>
+        <Orders />
+      </ProtectedRoute>
+    }
+  />
+
+  {/* Public product browsing */}
+  <Route path="/product/:id" element={<ProductDetails />} />
+  <Route path="/products" element={<Products />} />
+  <Route path="/dining" element={<Dining />} />
+  <Route path="/living" element={<Living />} />
+  <Route path="/bedroom" element={<Bedroom />} />
+  <Route path="/storage" element={<Storage />} />
+  <Route path="/homedecor" element={<HomeDecor />} />
+  <Route path="/kitchen" element={<Kitchen />} />
+  <Route path="/category/:category" element={<CategoryPage />} />
 
 
 
-                  {/* <Route path="/adm" element={<AdminPage />} /> */}
-                <Route path="/admin" element={<AdminLayout />}>
-                  <Route index element={<Navigate to="dashboard" replace />} />
-  <Route path="adminusers" element={<AccessUser />} />
-  <Route path="ProductAccess" element={<ProductAccess />} />
-  <Route path="dashboard" element={<AdminDashboard/>}/>
-</Route>
-                   {/* <Route path="/ad" element={<AdminSidebar />}></Route> */}
 
+  {/* Admin Routes → only for admin role */}
+<Route
+  path="/admin"
+  element={
+    <AdminProtectedRoute>
+      <AdminLayout />
+    </AdminProtectedRoute>
+  }
+>
 
+    <Route index element={<Navigate to="dashboard" replace />} />
+    <Route path="adminusers" element={<AccessUser />} />
+    <Route path="dashboard" element={<AdminDashboard />} />
+    <Route path="ProductAccess" element={<ProductAccess />} />
+    <Route path="subadmins" element={<SubAdmins />} />
+  </Route>
+</Routes>
 
-
-
-
-                  </Routes>
       <ScrollToTop/>
                     
                 </OrderProvider>
