@@ -35,6 +35,9 @@ import AdminDashboard from "./Admin/AdminDashboard";
 import { Navigate } from "react-router-dom";
 import SubAdmins from "./Admin/SubAdmins";
 import AdminProtectedRoute from "./Protecters/AdminRoute";
+import AdminSettings from "./Admin/Adminsettings";
+import AdminOrders from "./Admin/AdminOrders";
+
 
 
 
@@ -131,6 +134,9 @@ function App() {
     <Route path="dashboard" element={<AdminDashboard />} />
     <Route path="ProductAccess" element={<ProductAccess />} />
     <Route path="subadmins" element={<SubAdmins />} />
+    <Route path="settings" element={<AdminSettings />} />
+    <Route path="adminorders" element={<AdminOrders/>}/>
+
   </Route>
 </Routes>
 

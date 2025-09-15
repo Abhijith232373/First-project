@@ -4,6 +4,8 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useAuth } from "../Context/LoginContext";
 import { Navigate } from "react-router-dom";
+import { confirmAlert } from "react-confirm-alert"; 
+import "react-confirm-alert/src/react-confirm-alert.css"; // ✅ Required CSS
 
 const SubAdmins = () => {
   const { user } = useAuth();
@@ -54,49 +56,96 @@ const SubAdmins = () => {
     }
   };
 
+  // Confirm before change
+  const confirmRoleChange = (userId, newRole) => {
+    confirmAlert({
+      title: "Confirm Role Change",
+      message: `Are you sure you want to change this user’s role to ${newRole}?`,
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => handleRoleChange(userId, newRole),
+        },
+        {
+          label: "No",
+        },
+      ],
+    });
+  };
+
   if (loading) {
-    return <p className="text-center mt-12">Loading users...</p>;
+    return (
+      <div className="flex justify-center items-center h-64">
+        <p className="text-gray-600 text-lg">Loading users...</p>
+      </div>
+    );
   }
 
   return (
-    <div className="max-w-7xl mx-auto mt-12 px-4">
-      <h2 className="text-3xl font-bold text-center mb-6">Manage Users</h2>
-      <div className="overflow-x-auto">
-        <table className="min-w-full border rounded-lg">
-          <thead className="bg-gray-100">
+    <div className="max-w-7xl mx-auto mt-12 px-6">
+      <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
+        Sub Admin Management
+      </h2>
+
+      <div className="overflow-x-auto bg-white shadow-md rounded-lg border border-gray-200">
+        <table className="min-w-full border-collapse">
+          <thead className="bg-gray-200 text-gray-700">
             <tr>
-              <th className="py-2 px-4 border">ID</th>
-              <th className="py-2 px-4 border">Name</th>
-              <th className="py-2 px-4 border">Email</th>
-              <th className="py-2 px-4 border">Role</th>
-              <th className="py-2 px-4 border">Status</th>
-              <th className="py-2 px-4 border">Change Role</th>
+              <th className="py-3 px-4 text-left">ID</th>
+              <th className="py-3 px-4 text-left">Name</th>
+              <th className="py-3 px-4 text-left">Email</th>
+              <th className="py-3 px-4 text-left">Role</th>
+              <th className="py-3 px-4 text-left">Status</th>
+              <th className="py-3 px-4 text-center">Change Role</th>
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
-              <tr key={user.id} className="text-center">
-                <td className="py-2 px-4 border">{user.id}</td>
-                <td className="py-2 px-4 border">{user.name}</td>
-                <td className="py-2 px-4 border">{user.email}</td>
-                <td className="py-2 px-4 border capitalize">{user.role}</td>
-                <td className="py-2 px-4 border">{user.status}</td>
-                <td className="py-2 px-4 border">
-                  {user.role === "admin" ? (
-                    <button
-                      onClick={() => handleRoleChange(user.id, "user")}
-                      className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-                    >
-                      Make User
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => handleRoleChange(user.id, "admin")}
-                      className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
-                    >
-                      Make Admin
-                    </button>
-                  )}
+            {users.map((user, idx) => (
+              <tr
+                key={user.id}
+                className={`${
+                  idx % 2 === 0 ? "bg-white" : "bg-gray-50"
+                } hover:bg-gray-100 transition`}
+              >
+                <td className="py-3 px-4">{user.id}</td>
+                <td className="py-3 px-4 font-medium text-gray-700">
+                  {user.name}
+                </td>
+                <td className="py-3 px-4 text-gray-600">{user.email}</td>
+                <td className="py-3 px-4 capitalize font-semibold">
+                  <span
+                    className={`px-2 py-1 rounded text-xs ${
+                      user.role === "admin"
+                        ? "bg-gray-200 text-gray-900 font-semibold"
+                        : "bg-gray-100 text-gray-700"
+                    }`}
+                  >
+                    {user.role}
+                  </span>
+                </td>
+                <td className="py-3 px-4">
+                  <span
+                    className={`px-2 py-1 rounded text-xs ${
+                      user.status === "active"
+                        ? "bg-green-100 text-green-700"
+                        : "bg-red-100 text-red-700"
+                    }`}
+                  >
+                    {user.status}
+                  </span>
+                </td>
+                <td className="py-3 px-4 text-center">
+                  {/* ✅ Styled Dropdown for role change */}
+                  <select
+                    value={user.role}
+                    onChange={(e) =>
+                      confirmRoleChange(user.id, e.target.value)
+                    }
+                    className="border border-gray-300 bg-white rounded-md px-3 py-1 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
+                  >
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                  </select>
                 </td>
               </tr>
             ))}

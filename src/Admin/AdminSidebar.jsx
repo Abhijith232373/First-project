@@ -12,16 +12,18 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { useAuth } from "../Context/LoginContext"; // ⬅ import
+import { useAuth } from "../Context/LoginContext"; // ⬅ import useAuth
 
 const AdminSidebar = ({ collapsed, setCollapsed }) => {
   const navigate = useNavigate();
-  const { logout } = useAuth(); // ⬅ get logout from context
+  const { logout } = useAuth(); // ⬅ get logout function from context
 
   const handleLogout = () => {
-    logout(); // ⬅ this clears user + isLoggedIn state
-    navigate("/user", { replace: true }); // ⬅ prevent going back
+    logout(); // clears user and isLoggedIn
+    navigate("/user", { replace: true }); // redirect to login page and prevent back navigation
   };
+
+  const storedUser = JSON.parse(localStorage.getItem("user")); // get current admin info
 
   return (
     <aside
@@ -31,12 +33,19 @@ const AdminSidebar = ({ collapsed, setCollapsed }) => {
       onMouseEnter={() => setCollapsed(false)}
       onMouseLeave={() => setCollapsed(true)}
     >
-      {/* Logo Section */}
+      {/* Logo / Admin Info Section */}
       <div className="h-16 flex items-center justify-between px-4 border-b border-gray-700">
         {!collapsed && (
-          <h1 className="text-xl font-bold tracking-wide">
-            ADMIN <span className="text-gray-400">PANEL</span>
-          </h1>
+          <div className="flex items-center gap-3">
+            <img
+              src={storedUser?.profilePic || "https://via.placeholder.com/40"}
+              alt="Admin Profile"
+              className="w-10 h-10 rounded-full object-cover"
+            />
+            <h1 className="text-lg text-gray-100 font-semibold">
+              {storedUser?.name || "ADMIN"}
+            </h1>
+          </div>
         )}
         <button
           onClick={() => setCollapsed(!collapsed)}
@@ -78,7 +87,7 @@ const AdminSidebar = ({ collapsed, setCollapsed }) => {
         </NavLink>
 
         <NavLink
-          to="/admin/AdminOrders"
+          to="/admin/adminorders"
           className={({ isActive }) =>
             `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
               isActive
@@ -105,9 +114,7 @@ const AdminSidebar = ({ collapsed, setCollapsed }) => {
           {!collapsed && <span>User Management</span>}
         </NavLink>
 
-
-
-                <NavLink
+        <NavLink
           to="/admin/subadmins"
           className={({ isActive }) =>
             `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
@@ -134,11 +141,9 @@ const AdminSidebar = ({ collapsed, setCollapsed }) => {
           <Settings size={20} />
           {!collapsed && <span>Settings</span>}
         </NavLink>
-
-
       </nav>
 
-      {/* Logout Button */}
+      {/* Logout */}
       <div className="p-4 border-t border-gray-700">
         <button
           onClick={handleLogout}

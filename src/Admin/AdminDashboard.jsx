@@ -79,14 +79,15 @@ const Dashboard = () => {
   const COLORS = ["#10b981", "#ef4444"]; // green and red
 
   return (
-    <div className="h-screen w-full bg-gray-100 flex flex-col">
+    <div className="h-screen w-full bg-gray-400 flex flex-col">
       {/* Header */}
       <div className="p-6 border-b bg-white shadow-md">
-        <h1 className="text-3xl font-bold">📊 Dashboard</h1>
+        <h1 className="text-3xl font-bold"> Dashboard</h1>
+        
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 p-6 flex flex-col gap-6">
+      <div className="flex-1 p-6 flex flex-col bg-gray-400 gap-6">
         {/* Top Stats Row */}
         <div className="grid grid-cols-3 md:grid-cols-6 gap-6">
           <StatCard icon={<Users className="text-blue-500 w-10 h-10" />} label="Total Users" value={totalUsers} />

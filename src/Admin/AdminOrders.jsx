@@ -1,129 +1,137 @@
-import React, { useContext, useEffect, useState } from "react";
-import { OrderContext } from "../Context/OrderContext";
-import { AuthContext } from "../Context/LoginContext";
+// AdminOrders.jsx
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import toast from "react-hot-toast";
 
 const AdminOrders = () => {
-  const { orders, setOrders } = useContext(OrderContext); // get all orders
-  const { user: adminUser } = useContext(AuthContext);
-  const [allOrders, setAllOrders] = useState([]);
+  const [orders, setOrders] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  // Fetch users with orders
   useEffect(() => {
-    if (adminUser?.role !== "admin") return; // Only admins can see
-    setAllOrders(orders);
-  }, [orders, adminUser]);
+    const fetchUsers = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/users");
+        setUsers(res.data);
 
-  if (!adminUser || adminUser.role !== "admin") {
-    return (
-      <p className="text-center mt-12 text-red-500">
-        You are not authorized to view this page.
-      </p>
-    );
-  }
+        // Flatten all items for admin table
+        const allItems = res.data.flatMap((user) =>
+          (user.orders || []).flatMap((order) =>
+            (order.items || []).map((item) => ({
+              ...item,
+              orderId: order.id,
+              userId: user.id,
+              userName: user.name,
+              orderDate: order.date,
+              deliveryStatus: item.deliveryStatus || "Pending", // default Pending
+            }))
+          )
+        );
+        setOrders(allItems);
+        setLoading(false);
+      } catch (err) {
+        console.error(err);
+        toast.error("Failed to fetch users/orders");
+        setLoading(false);
+      }
+    };
+    fetchUsers();
+  }, []);
 
-  if (!allOrders || allOrders.length === 0) {
-    return <p className="text-center mt-12">No orders yet.</p>;
-  }
+  const handleStatusChange = async (itemId, orderId, userId, newStatus) => {
+    try {
+      // Find the user
+      const user = users.find((u) => u.id === userId);
+      if (!user) throw new Error("User not found");
 
-  // ✅ Update order status
-  const handleStatusChange = (orderId, newStatus) => {
-    const updatedOrders = allOrders.map((o) =>
-      o.id === orderId ? { ...o, status: newStatus } : o
-    );
+      // Update the correct item in the correct order
+      const updatedOrders = user.orders.map((order) => {
+        if (order.id !== orderId) return order;
+        const updatedItems = order.items.map((item) =>
+          item.id === itemId ? { ...item, deliveryStatus: newStatus } : item
+        );
+        return { ...order, items: updatedItems };
+      });
 
-    setAllOrders(updatedOrders);
-    localStorage.setItem("orders", JSON.stringify(updatedOrders));
-    toast.success(`Order ${orderId} status updated to ${newStatus}`);
+      const updatedUser = { ...user, orders: updatedOrders };
+
+      // Update db.json
+      await axios.put(`http://localhost:5000/users/${userId}`, updatedUser);
+
+      // Update local state
+      setUsers((prev) =>
+        prev.map((u) => (u.id === userId ? updatedUser : u))
+      );
+      setOrders((prev) =>
+        prev.map((o) =>
+          o.id === itemId && o.userId === userId
+            ? { ...o, deliveryStatus: newStatus }
+            : o
+        )
+      );
+
+      toast.success("Order status updated!");
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to update order status");
+    }
   };
 
-  // ✅ Optional: Cancel individual items
-  const handleCancelItem = (orderId, itemId) => {
-    const updatedOrders = allOrders.map((order) =>
-      order.id === orderId
-        ? {
-            ...order,
-            items: order.items.map((item) =>
-              item.id === itemId ? { ...item, canceled: true } : item
-            ),
-          }
-        : order
-    );
-
-    setAllOrders(updatedOrders);
-    localStorage.setItem("orders", JSON.stringify(updatedOrders));
-    toast.error(`Item canceled in order ${orderId}`);
-  };
+  if (loading) return <p className="p-6">Loading orders...</p>;
 
   return (
-    <div className="max-w-7xl mx-auto mt-12 px-4">
-      <h2 className="text-3xl font-bold text-center mb-6">
-        Admin: All User Orders
-      </h2>
-
-      {allOrders.map((order) => (
-        <div
-          key={order.id}
-          className="bg-white p-6 rounded-2xl shadow-2xl mb-6"
-        >
-          <h3 className="text-xl font-semibold mb-2">
-            Order ID: {order.id} (User: {order.user.id})
-          </h3>
-          <p className="text-gray-600 mb-2">Placed on: {order.date}</p>
-          <p className="text-gray-600 mb-2">Payment: {order.payment}</p>
-
-          {/* Order Status */}
-          <div className="mb-4">
-            <label className="font-semibold mr-2">Status:</label>
-            <select
-              value={order.status || "Pending"}
-              onChange={(e) => handleStatusChange(order.id, e.target.value)}
-              className="border rounded px-2 py-1"
+    <div className="p-6">
+      <h2 className="text-2xl font-bold mb-4">Order Management</h2>
+      <table className="w-full border-collapse">
+        <thead>
+          <tr className="bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white">
+            <th className="border px-4 py-2">Order ID</th>
+            <th className="border px-4 py-2">User Name</th>
+            <th className="border px-4 py-2">Product</th>
+            <th className="border px-4 py-2">Quantity</th>
+            <th className="border px-4 py-2">Delivery Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {orders.map((item) => (
+            <tr
+              key={`${item.orderId}-${item.id}`}
+              className="hover:bg-gray-100 dark:hover:bg-gray-200 cursor-pointer"
             >
-              <option value="Pending">Pending</option>
-              <option value="Shipping">Shipping</option>
-              <option value="Delivered">Delivered</option>
-            </select>
-          </div>
-
-          <h4 className="font-semibold mb-2">Items:</h4>
-          {order.items.map((item) => (
-            <div
-              key={item.id}
-              className={`flex items-center justify-between mb-2 p-2 rounded border ${
-                item.canceled ? "bg-gray-100 line-through opacity-50" : ""
-              }`}
-            >
-              <div className="flex items-center gap-3">
+              <td className="border px-4 py-2">{item.orderId}</td>
+              <td className="border px-4 py-2">{item.userName}</td>
+              <td className="border px-4 py-2 flex items-center gap-2">
                 <img
                   src={item.image}
                   alt={item.title}
                   className="w-12 h-12 object-cover rounded"
                 />
                 <span>{item.title}</span>
-                <span className="text-gray-800 text-lg font-bold">
-                  Rs:{item.price}
-                </span>
-              </div>
-
-              <div className="flex gap-2">
-                {!item.canceled && (
-                  <button
-                    onClick={() => handleCancelItem(order.id, item.id)}
-                    className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-                  >
-                    Cancel
-                  </button>
-                )}
-                {item.canceled && (
-                  <span className="text-red-500 font-semibold ml-2">
-                    Canceled
-                  </span>
-                )}
-              </div>
-            </div>
+              </td>
+              <td className="border px-4 py-2">{item.quantity}</td>
+              <td className="border px-4 py-2">
+                <select
+                  value={item.deliveryStatus}
+                  onChange={(e) =>
+                    handleStatusChange(
+                      item.id,
+                      item.orderId,
+                      item.userId,
+                      e.target.value
+                    )
+                  }
+                  className="border rounded-lg p-1"
+                >
+                  <option value="Pending">Pending</option>
+                  <option value="Shipped">Shipped</option>
+                  <option value="Delivered">Delivered</option>
+                </select>
+              </td>
+            </tr>
           ))}
-        </div>
-      ))}
+        </tbody>
+      </table>
     </div>
   );
 };

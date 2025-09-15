@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from "react";
-
 export const OrderContext = createContext();
 
 export const OrderProvider = ({ children }) => {
@@ -12,17 +11,10 @@ export const OrderProvider = ({ children }) => {
     localStorage.setItem("orders", JSON.stringify(orders));
   }, [orders]);
 
-  // ✅ Add new order with default status "Shipping"
   const addOrder = (order) => {
-    const newOrder = {
-      ...order,
-      status: "Shipping", // default status
-      items: order.items.map((item) => ({ ...item, canceled: false })),
-    };
-    setOrders((prev) => [...prev, newOrder]);
+    setOrders((prev) => [...prev, order]);
   };
 
-  // ✅ Cancel a product in an order
   const cancelProduct = (orderId, productId) => {
     setOrders((prevOrders) =>
       prevOrders.map((order) =>
@@ -38,7 +30,6 @@ export const OrderProvider = ({ children }) => {
     );
   };
 
-  // ✅ Remove a product entirely
   const removeProduct = (orderId, productId) => {
     setOrders((prevOrders) =>
       prevOrders
@@ -54,24 +45,9 @@ export const OrderProvider = ({ children }) => {
     );
   };
 
-  // ✅ Admin: Update order status globally
-  const updateOrderStatus = (orderId, newStatus) => {
-    setOrders((prevOrders) =>
-      prevOrders.map((order) =>
-        order.id === orderId ? { ...order, status: newStatus } : order
-      )
-    );
-  };
-
   return (
     <OrderContext.Provider
-      value={{
-        orders,
-        addOrder,
-        cancelProduct,
-        removeProduct,
-        updateOrderStatus, // admin can call this
-      }}
+      value={{ orders, addOrder, cancelProduct, removeProduct }}
     >
       {children}
     </OrderContext.Provider>
