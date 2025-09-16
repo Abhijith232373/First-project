@@ -5,12 +5,16 @@ import toast from "react-hot-toast";
 import { useAuth } from "../Context/LoginContext";
 import { Navigate } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert"; 
-import "react-confirm-alert/src/react-confirm-alert.css"; // ✅ Required CSS
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const SubAdmins = () => {
   const { user } = useAuth();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // ✅ Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5; // show 5 users per page
 
   // ✅ Only admin can access
   if (!user || user.role !== "admin") {
@@ -42,12 +46,10 @@ const SubAdmins = () => {
 
       const updatedUser = { ...userToUpdate, role: newRole };
 
-      // Update in db.json via PATCH
       await axios.patch(`http://localhost:5000/users/${userId}`, {
         role: newRole,
       });
 
-      // Update local state
       setUsers(users.map((u) => (u.id === userId ? updatedUser : u)));
       toast.success(`Role updated to ${newRole}`);
     } catch (error) {
@@ -81,10 +83,16 @@ const SubAdmins = () => {
     );
   }
 
+  // ✅ Pagination logic
+  const indexOfLast = currentPage * itemsPerPage;
+  const indexOfFirst = indexOfLast - itemsPerPage;
+  const currentUsers = users.slice(indexOfFirst, indexOfLast);
+  const totalPages = Math.ceil(users.length / itemsPerPage);
+
   return (
     <div className="max-w-7xl mx-auto mt-12 px-6">
       <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
-        Sub Admin Management
+        SUB ADMIN MANAGEMENT
       </h2>
 
       <div className="overflow-x-auto bg-white shadow-md rounded-lg border border-gray-200">
@@ -100,14 +108,14 @@ const SubAdmins = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, idx) => (
+            {currentUsers.map((user, idx) => (
               <tr
                 key={user.id}
                 className={`${
                   idx % 2 === 0 ? "bg-white" : "bg-gray-50"
                 } hover:bg-gray-100 transition`}
               >
-                <td className="py-3 px-4">{user.id}</td>
+                <td className="py-3 px-4">{user.id}</td> 
                 <td className="py-3 px-4 font-medium text-gray-700">
                   {user.name}
                 </td>
@@ -127,7 +135,7 @@ const SubAdmins = () => {
                   <span
                     className={`px-2 py-1 rounded text-xs ${
                       user.status === "active"
-                        ? "bg-green-100 text-green-700"
+                        ? "bg-green-300 text-green-700"
                         : "bg-red-100 text-red-700"
                     }`}
                   >
@@ -135,7 +143,6 @@ const SubAdmins = () => {
                   </span>
                 </td>
                 <td className="py-3 px-4 text-center">
-                  {/* ✅ Styled Dropdown for role change */}
                   <select
                     value={user.role}
                     onChange={(e) =>
@@ -151,6 +158,23 @@ const SubAdmins = () => {
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* ✅ Pagination buttons */}
+      <div className="flex justify-center mt-6 space-x-2">
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index + 1}
+            onClick={() => setCurrentPage(index + 1)}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+              currentPage === index + 1
+                ? "bg-gray-800 text-white"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+            }`}
+          >
+            {index + 1}
+          </button>
+        ))}
       </div>
     </div>
   );

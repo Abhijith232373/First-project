@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   const stylesh = `relative text-sm text-white inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px]
    after:bg-white after:transition-all after:duration-300 hover:after:w-full hover:cursor-pointer`;
-
+  
   return (
     <div className="w-full">
       <div className="w-full bg-amber-50 flex flex-col md:flex-row justify-around items-center text-center font-serif py-6 gap-6">

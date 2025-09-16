@@ -63,12 +63,8 @@ const AdminSettings = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-12 px-4">
-      <div className="max-w-2xl mx-auto bg-white shadow-md rounded-2xl border border-gray-200 p-8">
-        {/* Header */}
-        <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
-          ⚙️ Admin Settings
-        </h2>
+    <div className="min-h-screen bg-gray-300 py-12 px-4">
+      <div className="max-w-2xl mx-auto bg-white shadow-md rounded-2xl border border-gray-200 p-5">
 
         {/* Name */}
         <div className="mb-6">

@@ -18,7 +18,7 @@
       "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
       "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
       "category": "Dining",
-      "stock": false
+      "stock": true
     },
     {
       "id": "3",
@@ -28,7 +28,7 @@
       "description": "Stylish center table with tempered glass top and metal frame.",
       "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
       "category": "Dining",
-      "stock": false
+      "stock": true
     },
     {
       "id": "4",
@@ -208,7 +208,7 @@
       "description": "Traditional rocking chair made of teak wood, perfect for relaxing evenings.",
       "image": "https://m.media-amazon.com/images/I/81F2HKnJ-PL._AC_UL480_FMwebp_QL65_.jpg",
       "category": "Bedroom",
-      "stock": true
+      "stock": false
     },
     {
       "id": "22",
@@ -218,7 +218,7 @@
       "description": "Spacious wardrobe with sliding doors and multiple storage sections.",
       "image": "https://m.media-amazon.com/images/I/617qPhWNkEL._AC_UL480_FMwebp_QL65_.jpg",
       "category": "Storage",
-      "stock": true
+      "stock": false
     },
     {
       "id": "23",
@@ -228,7 +228,7 @@
       "description": "Comfortable bean bag chair filled with high-density beans for extra support.",
       "image": "https://m.media-amazon.com/images/I/51YxdZGeJLL._AC_UL480_FMwebp_QL65_.jpg",
       "category": "Living",
-      "stock": true
+      "stock": false
     },
     {
       "id": "24",
@@ -238,7 +238,7 @@
       "description": "Minimalist wooden bench ideal for dining tables or entryways.",
       "image": "https://m.media-amazon.com/images/I/51JvjlrSGEL._AC_UL480_FMwebp_QL65_.jpg",
       "category": "Dining",
-      "stock": true
+      "stock": false
     },
     {
       "id": "25",
@@ -308,7 +308,7 @@
       "description": "Comfortable hanging hammock chair made of soft cotton, ideal for balconies or patios.",
       "image": "https://m.media-amazon.com/images/I/71gBMYUH0ML._AC_UL480_FMwebp_QL65_.jpg",
       "category": "HomeDecor",
-      "stock": true
+      "stock": false
     },
     {
       "id": "32",
@@ -748,7 +748,7 @@
       "description": "Compact toaster with adjustable browning levels and easy-to-clean crumb tray.",
       "image": "https://m.media-amazon.com/images/I/61qQzv0GCfL._AC_UL480_FMwebp_QL65_.jpg",
       "category": "Kitchen",
-      "stock": true
+      "stock": false
     },
     {
       "id": "76",
@@ -840,7 +840,8 @@
               "image": "https://m.media-amazon.com/images/I/81ZGDTtpMKL._AC_UL480_FMwebp_QL65_.jpg",
               "category": "HomeDecor",
               "quantity": 1,
-              "canceled": true
+              "canceled": true,
+              "deliveryStatus": "Delivered"
             },
             {
               "id": "44",
@@ -1238,7 +1239,7 @@
     },
     {
       "id": "2",
-      "name": "Abhijith ",
+      "name": "ABHIJITH ",
       "email": "admin@gmail.com",
       "password": "1",
       "role": "admin",
@@ -1253,7 +1254,96 @@
       "email": "c5@gmail.com",
       "password": "555555",
       "status": "Active",
-      "cart": [],
+      "cart": [
+        {
+          "id": "25",
+          "name": "Folding Table",
+          "title": "Portable Folding Study Table",
+          "price": 2799,
+          "description": "Space-saving foldable table suitable for study or work-from-home setups.",
+          "image": "https://m.media-amazon.com/images/I/71SsXTZ15tL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Bedroom",
+          "stock": true,
+          "quantity": 1
+        },
+        {
+          "id": "21",
+          "name": "Rocking Chair",
+          "title": "Classic Wooden Rocking Chair",
+          "price": 8499,
+          "description": "Traditional rocking chair made of teak wood, perfect for relaxing evenings.",
+          "image": "https://m.media-amazon.com/images/I/81F2HKnJ-PL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Bedroom",
+          "stock": true,
+          "quantity": 1
+        },
+        {
+          "id": "12",
+          "name": "Nightstand",
+          "title": "2-Drawer Wooden Nightstand",
+          "price": 5999,
+          "description": "Compact bedside table with two drawers for extra storage space.",
+          "image": "https://m.media-amazon.com/images/I/618+VE0DP7L._SX679_.jpg",
+          "category": "Bedroom",
+          "stock": true,
+          "quantity": 1
+        },
+        {
+          "id": "10",
+          "name": "Study Desk",
+          "title": "Compact Wooden Study Table",
+          "price": 6499,
+          "description": "Space-saving study desk with drawers, ideal for home offices or student rooms.",
+          "image": "https://m.media-amazon.com/images/I/715LbKtHxlL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Bedroom",
+          "stock": true,
+          "quantity": 1
+        },
+        {
+          "id": "27",
+          "name": "Corner Shelf",
+          "title": "Wall-Mounted Corner Shelf",
+          "price": 2499,
+          "description": "Compact corner shelf made of engineered wood, ideal for décor items.",
+          "image": "https://m.media-amazon.com/images/I/61kK+jBUczL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Bedroom",
+          "stock": true,
+          "quantity": 1
+        },
+        {
+          "id": "28",
+          "name": "Bunk Bed",
+          "title": "Wooden Twin Bunk Bed",
+          "price": 21999,
+          "description": "Durable bunk bed with safety rails, perfect for kids’ rooms.",
+          "image": "https://m.media-amazon.com/images/I/816XJVosz+S._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Bedroom",
+          "stock": true,
+          "quantity": 1
+        },
+        {
+          "id": "29",
+          "name": "Console Table",
+          "title": "Entryway Console Table",
+          "price": 5599,
+          "description": "Sleek and modern console table with storage drawer for entryways.",
+          "image": "https://m.media-amazon.com/images/I/81i3aKfDWnL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Bedroom",
+          "stock": true,
+          "quantity": 1
+        },
+        {
+          "id": "30",
+          "name": "Vanity Table",
+          "title": "Makeup Vanity with Mirror",
+          "price": 12999,
+          "description": "Stylish vanity table with drawers and a round mirror, perfect for bedrooms.",
+          "image": "https://m.media-amazon.com/images/I/71te4xwL9RL._AC_UL480_FMwebp_QL65_.jpg",
+          "category": "Bedroom",
+          "stock": true,
+          "quantity": 1
+        }
+      ],
       "wishlist": [
         {
           "id": "4",
@@ -1298,7 +1388,7 @@
               "stock": true,
               "quantity": 1,
               "canceled": false,
-              "deliveryStatus": "Shipped"
+              "deliveryStatus": "Delivered"
             },
             {
               "id": "8",
@@ -1311,12 +1401,240 @@
               "stock": true,
               "quantity": 1,
               "canceled": false,
+              "deliveryStatus": "Shipped"
+            }
+          ]
+        },
+        {
+          "id": "1757998005826",
+          "date": "16/09/2025, 10:16:45",
+          "payment": "gpay",
+          "details": {
+            "name": "checking5",
+            "phone": "9876543210",
+            "address": "ASDFGHJKL, none, kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "1",
+              "name": "Modern Sofa",
+              "title": "Luxury 3-Seater Sofa",
+              "price": 25999,
+              "description": "A premium fabric sofa with wooden legs and soft cushioning for ultimate comfort.",
+              "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
+              "category": "Living",
+              "stock": false,
+              "quantity": 1,
+              "canceled": false
+            },
+            {
+              "id": "4",
+              "name": "Office Chair",
+              "title": "Ergonomic Mesh Chair",
+              "price": 4999,
+              "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
+              "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167",
+              "category": "Living",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false
+            },
+            {
+              "id": "6",
+              "name": "Bed Frame",
+              "title": "King Size Bed Frame",
+              "price": 22999,
+              "description": "Strong and durable wooden bed frame with a modern headboard design.",
+              "image": "https://m.media-amazon.com/images/I/71GfbOawqGL._AC_SR230,210_CB1169409_QL70_.jpg",
+              "category": "Living",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false
+            },
+            {
+              "id": "8",
+              "name": "Recliner Chair",
+              "title": "Leather Recliner Chair",
+              "price": 17999,
+              "description": "Comfortable reclining chair with plush leather upholstery and smooth recline mechanism.",
+              "image": "https://m.media-amazon.com/images/I/81pU8M1ieSL._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Living",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        },
+        {
+          "id": "1758000507258",
+          "date": "16/09/2025, 10:58:27",
+          "payment": "gpay",
+          "details": {
+            "name": "checking5",
+            "phone": "9876543210",
+            "address": "asdfghjk, none, kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "25",
+              "name": "Folding Table",
+              "title": "Portable Folding Study Table",
+              "price": 2799,
+              "description": "Space-saving foldable table suitable for study or work-from-home setups.",
+              "image": "https://m.media-amazon.com/images/I/71SsXTZ15tL._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Bedroom",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false
+            },
+            {
+              "id": "21",
+              "name": "Rocking Chair",
+              "title": "Classic Wooden Rocking Chair",
+              "price": 8499,
+              "description": "Traditional rocking chair made of teak wood, perfect for relaxing evenings.",
+              "image": "https://m.media-amazon.com/images/I/81F2HKnJ-PL._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Bedroom",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false
+            },
+            {
+              "id": "12",
+              "name": "Nightstand",
+              "title": "2-Drawer Wooden Nightstand",
+              "price": 5999,
+              "description": "Compact bedside table with two drawers for extra storage space.",
+              "image": "https://m.media-amazon.com/images/I/618+VE0DP7L._SX679_.jpg",
+              "category": "Bedroom",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false
+            },
+            {
+              "id": "10",
+              "name": "Study Desk",
+              "title": "Compact Wooden Study Table",
+              "price": 6499,
+              "description": "Space-saving study desk with drawers, ideal for home offices or student rooms.",
+              "image": "https://m.media-amazon.com/images/I/715LbKtHxlL._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Bedroom",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false
+            },
+            {
+              "id": "27",
+              "name": "Corner Shelf",
+              "title": "Wall-Mounted Corner Shelf",
+              "price": 2499,
+              "description": "Compact corner shelf made of engineered wood, ideal for décor items.",
+              "image": "https://m.media-amazon.com/images/I/61kK+jBUczL._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Bedroom",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false
+            },
+            {
+              "id": "28",
+              "name": "Bunk Bed",
+              "title": "Wooden Twin Bunk Bed",
+              "price": 21999,
+              "description": "Durable bunk bed with safety rails, perfect for kids’ rooms.",
+              "image": "https://m.media-amazon.com/images/I/816XJVosz+S._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Bedroom",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false
+            },
+            {
+              "id": "29",
+              "name": "Console Table",
+              "title": "Entryway Console Table",
+              "price": 5599,
+              "description": "Sleek and modern console table with storage drawer for entryways.",
+              "image": "https://m.media-amazon.com/images/I/81i3aKfDWnL._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Bedroom",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false,
               "deliveryStatus": "Delivered"
+            },
+            {
+              "id": "30",
+              "name": "Vanity Table",
+              "title": "Makeup Vanity with Mirror",
+              "price": 12999,
+              "description": "Stylish vanity table with drawers and a round mirror, perfect for bedrooms.",
+              "image": "https://m.media-amazon.com/images/I/71te4xwL9RL._AC_UL480_FMwebp_QL65_.jpg",
+              "category": "Bedroom",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false,
+              "deliveryStatus": "Shipped"
             }
           ]
         }
       ],
-      "role": "admin"
+      "role": "user"
+    },
+    {
+      "id": "1aa3",
+      "name": "Abhijith",
+      "email": "abhijith@gmail.com",
+      "password": "abhijith2",
+      "status": "Active",
+      "orders": [
+        {
+          "id": "1758002320400",
+          "date": "16/09/2025, 11:28:40",
+          "payment": "phonepe",
+          "details": {
+            "name": "Abhijith",
+            "phone": "9876543210",
+            "address": "mmmmmmmmmmmmmmm, , kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "12",
+              "name": "Nightstand",
+              "title": "2-Drawer Wooden Nightstand",
+              "price": 5999,
+              "description": "Compact bedside table with two drawers for extra storage space.",
+              "image": "https://m.media-amazon.com/images/I/618+VE0DP7L._SX679_.jpg",
+              "category": "Bedroom",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false,
+              "deliveryStatus": "Delivered"
+            }
+          ]
+        },
+        {
+          "id": "1758002591797",
+          "date": "16/09/2025, 11:33:11",
+          "payment": "supermoney",
+          "details": {
+            "name": "Abhijith",
+            "phone": "9876543210",
+            "address": "asdffgg, none, kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "3",
+              "name": "Coffee Table",
+              "title": "Round Glass Coffee Table",
+              "price": 6999,
+              "description": "Stylish center table with tempered glass top and metal frame.",
+              "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
+              "category": "Dining",
+              "stock": false,
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        }
+      ]
     }
   ]
 }

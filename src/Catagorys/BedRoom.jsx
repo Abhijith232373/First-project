@@ -48,7 +48,7 @@ const Bedroom = () => {
         console.error(err);
       } finally {
         const elapsed = Date.now() - startTime;
-        const delay = Math.max(1500 - elapsed, 0); // enforce 1.5s min
+        const delay = Math.max(1500 - elapsed, 0);
         setTimeout(() => setLoading(false), delay);
       }
     };
@@ -100,6 +100,7 @@ const Bedroom = () => {
   };
 
   const handleAddToCart = (item) => {
+    if (!item.stock) return; // prevent adding out-of-stock items
     setAddingId(item.id);
     addToCart(item);
     setTimeout(() => setAddingId(null), 300);
@@ -110,42 +111,41 @@ const Bedroom = () => {
       <NavBar />
       <div className="px-6 py-12 bg-gray-50 min-h-screen mt-10">
         {/* Sort dropdown */}
-        <div className="flex justify-end items-center mb-8">
-          <Listbox value={sortOrder} onChange={setSortOrder}>
-            <div className="relative w-60">
-              <Listbox.Button className="w-full rounded-lg border bg-white px-4 py-2 text-left shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500 flex justify-between items-center">
-                {sortOptions.find((opt) => opt.value === sortOrder)?.label || "Sort by"}
-                <ChevronUpDownIcon className="h-5 w-5 text-gray-400" />
-              </Listbox.Button>
-              <Listbox.Options className="absolute mt-1 w-full rounded-lg border bg-white shadow-lg z-10">
-                {sortOptions.map((opt, idx) => (
-                  <Listbox.Option
-                    key={idx}
-                    value={opt.value}
-                    className={({ active }) =>
-                      `cursor-pointer px-4 py-2 ${
-                        active ? "bg-gray-100 text-gray-900 hover:bg-gray-300" : "text-gray-700"
-                      }`
-                    }
-                  >
-                    {opt.label}
-                  </Listbox.Option>
-                ))}
-              </Listbox.Options>
-            </div>
-          </Listbox>
-        </div>
-
-
-                {/* Skeleton loader */}
-                {loading && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    {Array.from({ length: 8 }).map((_, i) => (
-                      <ProductSkeleton key={i} />
-                    ))}
-                  </div>
-                )}
-
+              <div className="flex justify-end items-center mb-8">
+                 <Listbox value={sortOrder} onChange={setSortOrder}>
+                   <div className="relative w-40">
+                     <Listbox.Button className="w-full rounded-md border bg-white px-3 py-2 text-left shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500 flex justify-between items-center text-sm">
+                       {sortOptions.find((opt) => opt.value === sortOrder)?.label || "Sort by"}
+                       <ChevronUpDownIcon className="h-4 w-4 text-gray-400" />
+                     </Listbox.Button>
+                     <Listbox.Options className="absolute mt-1 w-full rounded-md border bg-white shadow-lg z-10 text-sm">
+                       {sortOptions.map((opt, idx) => (
+                         <Listbox.Option
+                           key={idx}
+                           value={opt.value}
+                           className={({ active }) =>
+                             `cursor-pointer px-3 py-2 ${
+                               active
+                                 ? "bg-gray-100 text-gray-900 hover:bg-gray-200"
+                                 : "text-gray-700"
+                             }`
+                           }
+                         >
+                           {opt.label}
+                         </Listbox.Option>
+                       ))}
+                     </Listbox.Options>
+                   </div>
+                 </Listbox>
+               </div>
+        {/* Skeleton loader */}
+        {loading && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <ProductSkeleton key={i} />
+            ))}
+          </div>
+        )}
 
         {/* Products */}
         {!loading && (
@@ -154,27 +154,44 @@ const Bedroom = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {filtered.slice(0, visibleCount).map((item) => {
                   const { mrp, discount } = getDiscountInfo(item.price);
+                  const isOutOfStock = item.stock === false;
+
                   return (
                     <div
                       key={item.id}
-                      className="relative group bg-white shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition overflow-hidden cursor-pointer"
-                      onClick={() => setSelectedProduct(item)}
+                      className={`relative group bg-white shadow-md hover:shadow-2xl transform hover:-translate-y-2 transition overflow-hidden ${
+                        isOutOfStock ? "opacity-70 cursor-progress" : "cursor-pointer"
+                      }`}
+                      onClick={() => !isOutOfStock && setSelectedProduct(item)}
                     >
-                      <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-tr-lg rounded-bl-lg opacity-0 group-hover:opacity-100 transition">
-                        {discount}% OFF
-                      </div>
+                      {/* Discount badge */}
+                      {!isOutOfStock && (
+                        <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-tr-lg rounded-bl-lg opacity-0 group-hover:opacity-100 transition">
+                          {discount}% OFF
+                        </div>
+                      )}
 
-                      <FavoriteIcon
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleWishlist(item);
-                        }}
-                        className={`absolute top-2 right-2 cursor-pointer transition-colors duration-200 z-10 ${
-                          wishlist.find((p) => p.id === item.id)
-                            ? "text-red-600"
-                            : "text-red-300 hover:text-red-400"
-                        }`}
-                      />
+                      {/* Stock Out overlay */}
+                     {isOutOfStock && (
+                        <div className="absolute inset-0  bg-opacity-100 flex items-center justify-center">
+                          <span className="rounded text-white text-lg font-bold bg-gray-500 px-26 hover:scale-105 transition ease-in-out">STOCK OUT</span>
+                        </div>
+                      )}
+
+                      {/* Wishlist button */}
+                      {!isOutOfStock && (
+                        <FavoriteIcon
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toggleWishlist(item);
+                          }}
+                          className={`absolute top-2 right-2 cursor-pointer transition-colors duration-200 z-10 ${
+                            wishlist.find((p) => p.id === item.id)
+                              ? "text-red-600"
+                              : "text-red-300 hover:text-red-400"
+                          }`}
+                        />
+                      )}
 
                       <img
                         src={item.image}
@@ -200,15 +217,21 @@ const Bedroom = () => {
                             e.stopPropagation();
                             handleAddToCart(item);
                           }}
-                          disabled={addingId === item.id}
-                          className="mt-4 w-full bg-gray-500 hover:bg-gray-700 text-white py-2 px-4 flex items-center justify-center gap-2"
+                          disabled={isOutOfStock || addingId === item.id}
+                          className={`mt-4 w-full py-2 px-4 flex items-center justify-center gap-2 ${
+                            isOutOfStock
+                              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                              : "bg-gray-500 hover:bg-gray-700 text-white"
+                          }`}
                         >
                           {addingId === item.id ? (
                             <CircularProgress size={20} color="inherit" />
                           ) : (
-                            <ShoppingCartIcon fontSize="small" />
+                            <>
+                              <ShoppingCartIcon fontSize="small" />
+                              {isOutOfStock ? "Unavailable" : "Add to Cart"}
+                            </>
                           )}
-                          Add to Cart
                         </button>
                       </div>
                     </div>

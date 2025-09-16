@@ -89,7 +89,7 @@ const AdminPage = () => {
             );
           },
         },
-        { label: "No", onClick: () => {} },
+        { label: "No" },
       ],
     });
   };
@@ -127,33 +127,37 @@ const AdminPage = () => {
   const totalPages = Math.ceil(furniture.length / itemsPerPage);
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen rounded-lg">
+    <div className="p-8 bg-gray-100 min-h-screen">
       <h1 className="text-3xl font-bold mb-6 text-gray-800">Product Management</h1>
 
-      {/* Add Button */}
+      {/* Add Product Button */}
       <button
         onClick={() => setIsAdding(true)}
-        className="mb-6 bg-gray-700 hover:bg-gray-800 text-white px-5 py-2 rounded-lg shadow-md transition"
+        className="mb-6 bg-gray-800 hover:bg-gray-900 text-white px-5 py-2 rounded-lg shadow transition"
       >
         + Add Product
       </button>
 
-      {/* Add Form */}
-      {isAdding && (
-        <div className="mb-6 bg-white shadow-md p-6 rounded-lg">
-          <h2 className="text-xl font-semibold mb-4 text-gray-700">Add New Product</h2>
+      {/* Add / Edit Form */}
+      {(isAdding || isEditing) && (
+        <div className="mb-8 bg-white shadow-md p-6 rounded-xl border border-gray-200">
+          <h2 className="text-xl font-semibold mb-4 text-gray-700">
+            {isEditing ? "Edit Product" : "Add New Product"}
+          </h2>
           <div className="grid grid-cols-2 gap-4">
-            {["name", "title", "price", "description", "image", "category"].map((field) => (
-              <input
-                key={field}
-                name={field}
-                type={field === "price" ? "number" : "text"}
-                placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-                value={formData[field]}
-                onChange={handleChange}
-                className="border rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-gray-400"
-              />
-            ))}
+            {["name", "title", "price", "description", "image", "category"].map(
+              (field) => (
+                <input
+                  key={field}
+                  name={field}
+                  type={field === "price" ? "number" : "text"}
+                  placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                  value={formData[field]}
+                  onChange={handleChange}
+                  className="border rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-gray-400"
+                />
+              )
+            )}
           </div>
           <div className="mt-4 flex items-center">
             <input
@@ -165,60 +169,29 @@ const AdminPage = () => {
             />
             <label className="text-gray-700">In Stock</label>
           </div>
-          <div className="mt-4 space-x-2">
+          <div className="mt-6 space-x-3">
+            {isEditing ? (
+              <button
+                onClick={handleSaveEdit}
+                className="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg"
+              >
+                Update
+              </button>
+            ) : (
+              <button
+                onClick={handleAdd}
+                className="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-lg"
+              >
+                Save
+              </button>
+            )}
             <button
-              onClick={handleAdd}
-              className="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-lg"
-            >
-              Save
-            </button>
-            <button
-              onClick={() => setIsAdding(false)}
-              className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-lg"
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Edit Form */}
-      {isEditing && (
-        <div className="mb-6 bg-white shadow-md p-6 rounded-lg">
-          <h2 className="text-xl font-semibold mb-4 text-gray-700">Edit Product</h2>
-          <div className="grid grid-cols-2 gap-4">
-            {["name", "title", "price", "description", "image", "category"].map((field) => (
-              <input
-                key={field}
-                name={field}
-                type={field === "price" ? "number" : "text"}
-                placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-                value={formData[field]}
-                onChange={handleChange}
-                className="border rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-gray-400"
-              />
-            ))}
-          </div>
-          <div className="mt-4 flex items-center">
-            <input
-              type="checkbox"
-              name="stock"
-              checked={formData.stock}
-              onChange={handleChange}
-              className="mr-2"
-            />
-            <label className="text-gray-700">In Stock</label>
-          </div>
-          <div className="mt-4 space-x-2">
-            <button
-              onClick={handleSaveEdit}
-              className="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-lg"
-            >
-              Update
-            </button>
-            <button
-              onClick={() => setIsEditing(null)}
-              className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-lg"
+              onClick={() => {
+                resetForm();
+                setIsAdding(false);
+                setIsEditing(null);
+              }}
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-lg"
             >
               Cancel
             </button>
@@ -226,16 +199,21 @@ const AdminPage = () => {
         </div>
       )}
 
-      {/* Table */}
-      <div className="bg-white shadow-md rounded-lg overflow-hidden">
+      {/* Product Table */}
+      <div className="bg-white shadow-md rounded-xl overflow-hidden border border-gray-200">
         <table className="w-full text-left border-collapse">
           <thead className="bg-gray-200">
             <tr>
-              {["ID", "Image", "Name", "Price", "Category", "Stock", "Actions"].map((col) => (
-                <th key={col} className="px-4 py-3 text-gray-700 font-semibold border-b">
-                  {col}
-                </th>
-              ))}
+              {["ID", "Image", "Name", "Price", "Category", "Stock", "Actions"].map(
+                (col) => (
+                  <th
+                    key={col}
+                    className="px-4 py-3 text-gray-700 font-semibold border-b"
+                  >
+                    {col}
+                  </th>
+                )
+              )}
             </tr>
           </thead>
           <tbody>
@@ -246,27 +224,33 @@ const AdminPage = () => {
               >
                 <td className="px-4 py-3 border-b text-gray-700">{item.id}</td>
                 <td className="px-4 py-3 border-b">
-                  <img src={item.image} alt={item.name} className="w-16 h-12 object-cover rounded" />
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-16 h-12 object-cover rounded"
+                  />
                 </td>
                 <td className="px-4 py-3 border-b text-gray-700">{item.name}</td>
                 <td className="px-4 py-3 border-b text-gray-700">₹{item.price}</td>
-                <td className="px-4 py-3 border-b text-gray-700">{item.category}</td>
+                <td className="px-4 py-3 border-b text-gray-700">
+                  {item.category}
+                </td>
                 <td className="px-4 py-3 border-b">
                   <button
                     onClick={() => toggleStock(item)}
                     className={`px-3 py-1 rounded-lg text-sm font-semibold transition ${
                       item.stock
-                        ? "bg-gray-200 text-green-700 hover:bg-gray-300"
-                        : "bg-gray-200 text-red-600 hover:bg-gray-300"
+                        ? "bg-green-100 text-green-700 hover:bg-green-200"
+                        : "bg-red-100 text-red-600 hover:bg-red-200"
                     }`}
                   >
-                    {item.stock ? "Available" : "Stock Out"}
+                    {item.stock ? "Available" : "Out of Stock"}
                   </button>
                 </td>
-                <td className="px-4 py-3 border-b">
+                <td className="px-4 py-3 border-b space-x-2">
                   <button
                     onClick={() => handleEdit(item.id)}
-                    className="bg-gray-600 hover:bg-gray-700 text-white px-3 py-1 rounded-lg mr-2"
+                    className="bg-gray-600 hover:bg-gray-700 text-white px-3 py-1 rounded-lg"
                   >
                     Edit
                   </button>
@@ -289,9 +273,9 @@ const AdminPage = () => {
           <button
             key={index + 1}
             onClick={() => setCurrentPage(index + 1)}
-            className={`px-3 py-1 rounded-lg text-sm font-medium transition ${
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
               currentPage === index + 1
-                ? "bg-gray-700 text-white"
+                ? "bg-gray-800 text-white"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
             }`}
           >

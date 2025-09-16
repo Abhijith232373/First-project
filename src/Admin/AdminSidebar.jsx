@@ -14,6 +14,10 @@ import {
 } from "lucide-react";
 import { useAuth } from "../Context/LoginContext"; // ⬅ import useAuth
 
+const stylesh = `relative text-sm text-white inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[1px]
+   after:bg-white after:transition-all after:duration-300 hover:after:w-full hover:cursor-pointer`;
+
+
 const AdminSidebar = ({ collapsed, setCollapsed }) => {
   const navigate = useNavigate();
   const { logout } = useAuth(); // ⬅ get logout function from context
@@ -42,9 +46,9 @@ const AdminSidebar = ({ collapsed, setCollapsed }) => {
               alt="Admin Profile"
               className="w-10 h-10 rounded-full object-cover"
             />
-            <h1 className="text-lg text-gray-100 font-semibold">
+            <h4 className=" font-semibold text-gray-200 text-xl hover:underline">
               {storedUser?.name || "ADMIN"}
-            </h1>
+            </h4>
           </div>
         )}
         <button
@@ -69,7 +73,7 @@ const AdminSidebar = ({ collapsed, setCollapsed }) => {
           end
         >
           <LayoutDashboard size={20} />
-          {!collapsed && <span>Dashboard</span>}
+          {!collapsed && <span>DASHBOARD</span>}
         </NavLink>
 
         <NavLink
@@ -83,7 +87,7 @@ const AdminSidebar = ({ collapsed, setCollapsed }) => {
           }
         >
           <Package size={20} />
-          {!collapsed && <span>Product Management</span>}
+          {!collapsed && <span>PRODUCT MANAGEMENT</span>}
         </NavLink>
 
         <NavLink
@@ -97,7 +101,7 @@ const AdminSidebar = ({ collapsed, setCollapsed }) => {
           }
         >
           <Handbag size={20} />
-          {!collapsed && <span>Orders Details</span>}
+          {!collapsed && <span>ORDERS MANAGEMENT</span>}
         </NavLink>
 
         <NavLink
@@ -111,7 +115,7 @@ const AdminSidebar = ({ collapsed, setCollapsed }) => {
           }
         >
           <Users size={20} />
-          {!collapsed && <span>User Management</span>}
+          {!collapsed && <span>USER MANAGEMENT</span>}
         </NavLink>
 
         <NavLink
@@ -125,7 +129,7 @@ const AdminSidebar = ({ collapsed, setCollapsed }) => {
           }
         >
           <UserStar size={20} />
-          {!collapsed && <span>Subadmins</span>}
+          {!collapsed && <span>SUBADMINS</span>}
         </NavLink>
 
         <NavLink
@@ -139,7 +143,7 @@ const AdminSidebar = ({ collapsed, setCollapsed }) => {
           }
         >
           <Settings size={20} />
-          {!collapsed && <span>Settings</span>}
+          {!collapsed && <span>SETTINGS</span>}
         </NavLink>
       </nav>
 
@@ -150,7 +154,7 @@ const AdminSidebar = ({ collapsed, setCollapsed }) => {
           className="flex items-center w-full gap-3 px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white transition"
         >
           <LogOut size={20} />
-          {!collapsed && <span>Logout</span>}
+          {!collapsed && <span>LOGOUT</span>}
         </button>
       </div>
     </aside>
