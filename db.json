@@ -789,6 +789,16 @@
       "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/bed/j/b/b/king-205-na-no-188-rosewood-sheesham-yes-65-vf-bed-303-vinod-original-imahbrad5ghee4fw.jpeg?q=70",
       "category": "Bedroom",
       "stock": true
+    },
+    {
+      "id": "80",
+      "name": "COFP Plastic Wall Shelf",
+      "title": "COFP Plastic Wall Shelf  (Number of Shelves - 3, White)",
+      "price": 599,
+      "description": "COFP Plastic Wall Shelf  (Number of Shelves - 3, White)",
+      "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/toothbrush-holder/b/w/k/3-penguin-shaped-toothbrush-holder-storage-rack-chopsticks-pen-original-imahygbhczkyk6f5.jpeg?q=70",
+      "category": "HomeDecor",
+      "stock": false
     }
   ],
   "users": [
@@ -800,7 +810,7 @@
       "role": "user",
       "cart": [],
       "orders": [],
-      "status": "Active"
+      "status": "Suspended"
     },
     {
       "id": "6ee2",
@@ -852,7 +862,8 @@
               "image": "https://m.media-amazon.com/images/I/41F-iNbwGWL._AC_SR230,210_CB1169409_QL70_.jpg",
               "category": "HomeDecor",
               "quantity": 1,
-              "canceled": false
+              "canceled": false,
+              "deliveryStatus": "Pending"
             }
           ],
           "deliveryStatus": "Pending"
@@ -888,7 +899,8 @@
               "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
               "category": "Living",
               "quantity": 1,
-              "canceled": false
+              "canceled": false,
+              "deliveryStatus": "Delivered"
             },
             {
               "id": "2",
@@ -899,7 +911,8 @@
               "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
               "category": "Dining",
               "quantity": 1,
-              "canceled": false
+              "canceled": false,
+              "deliveryStatus": "Delivered"
             },
             {
               "id": "3",
@@ -910,7 +923,8 @@
               "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
               "category": "Dining",
               "quantity": 1,
-              "canceled": false
+              "canceled": false,
+              "deliveryStatus": "Delivered"
             },
             {
               "id": "4",
@@ -920,7 +934,8 @@
               "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
               "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167",
               "quantity": 1,
-              "canceled": false
+              "canceled": false,
+              "deliveryStatus": "Shipped"
             }
           ]
         },
@@ -1019,7 +1034,7 @@
       "name": "doominic",
       "email": "dominicmbince@gmail.com",
       "password": "123456",
-      "role": "user",
+      "role": "admin",
       "wishlist": [
         {
           "id": "2",
@@ -1127,7 +1142,69 @@
       "email": "aamir@gmail.com",
       "password": "123456",
       "role": "user",
-      "status": "Active"
+      "status": "Active",
+      "wishlist": [
+        {
+          "id": "2",
+          "name": "Dining Table",
+          "title": "8-Seater Wooden Dining Table",
+          "price": 18999,
+          "description": "Elegant dining table crafted with high-quality teak wood, perfect for family meals.",
+          "image": "https://media.landmarkshops.in/cdn-cgi/image/h=750,w=750,q=85,fit=cover/homecentre/1000014367041-1000014367041-511_02-2100.jpg",
+          "category": "Dining",
+          "stock": true
+        },
+        {
+          "id": "3",
+          "name": "Coffee Table",
+          "title": "Round Glass Coffee Table",
+          "price": 6999,
+          "description": "Stylish center table with tempered glass top and metal frame.",
+          "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
+          "category": "Dining",
+          "stock": true
+        }
+      ],
+      "cart": [],
+      "orders": [
+        {
+          "id": "1758012635371",
+          "date": "16/09/2025, 14:20:35",
+          "payment": "gpay",
+          "details": {
+            "name": "aamir",
+            "phone": "9876543210",
+            "address": "dtrfgyuhinjk, kottayam, kottyam, Kerala, 686633, Landmark: tfygh"
+          },
+          "items": [
+            {
+              "id": "3",
+              "name": "Coffee Table",
+              "title": "Round Glass Coffee Table",
+              "price": 6999,
+              "description": "Stylish center table with tempered glass top and metal frame.",
+              "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
+              "category": "Dining",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false,
+              "deliveryStatus": "Delivered"
+            },
+            {
+              "id": "4",
+              "name": "Office Chair",
+              "title": "Ergonomic Mesh Chair",
+              "price": 4999,
+              "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
+              "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167",
+              "category": "Living",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "5a95",
@@ -1241,7 +1318,7 @@
       "id": "2",
       "name": "ABHIJITH ",
       "email": "admin@gmail.com",
-      "password": "1",
+      "password": "12",
       "role": "admin",
       "status": "Active",
       "cart": [],
@@ -1606,7 +1683,7 @@
               "stock": true,
               "quantity": 1,
               "canceled": false,
-              "deliveryStatus": "Delivered"
+              "deliveryStatus": "Shipped"
             }
           ]
         },
@@ -1630,11 +1707,51 @@
               "category": "Dining",
               "stock": false,
               "quantity": 1,
-              "canceled": false
+              "canceled": false,
+              "deliveryStatus": "Shipped"
+            }
+          ]
+        },
+        {
+          "id": "1758098553778",
+          "date": "17/09/2025, 14:12:33",
+          "payment": "gpay",
+          "details": {
+            "name": "Abhijith",
+            "phone": "9876543210",
+            "address": "as, , kottyam, Kerala, 686633, Landmark: "
+          },
+          "items": [
+            {
+              "id": "3",
+              "name": "Coffee Table",
+              "title": "Round Glass Coffee Table",
+              "price": 6999,
+              "description": "Stylish center table with tempered glass top and metal frame.",
+              "image": "https://www.furniselan.com/cdn/shop/products/denmark-sheesham-wood-oval-coffee-table-971666_700x_crop_center.jpg?v=1737288486",
+              "category": "Dining",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false,
+              "deliveryStatus": "Shipped"
+            },
+            {
+              "id": "4",
+              "name": "Office Chair",
+              "title": "Ergonomic Mesh Chair",
+              "price": 4999,
+              "description": "Ergonomic chair with breathable mesh back and adjustable height for comfort during long working hours.",
+              "image": "https://in.steelcase.com/cdn/shop/files/2.2MARKETING_ECOM_GESTURE_HR_DD_MONTANALEATHER_R3_REN01_2000x.jpg?v=1747895167",
+              "category": "Living",
+              "stock": true,
+              "quantity": 1,
+              "canceled": false,
+              "deliveryStatus": "Delivered"
             }
           ]
         }
-      ]
+      ],
+      "cart": []
     }
   ]
 }

@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect, useContext } from "react";
-
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {

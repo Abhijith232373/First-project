@@ -1,4 +1,3 @@
-// Orders.jsx
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/LoginContext";
 import axios from "axios";
@@ -8,7 +7,6 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch orders and poll every 3 seconds
   useEffect(() => {
     if (!user) return;
 
@@ -57,7 +55,6 @@ const Orders = () => {
           key={order.id}
           className="bg-white border border-gray-200 p-6 rounded-2xl shadow-sm mb-8"
         >
-          {/* Order Header */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 pb-4 mb-4">
             <div>
               <h3 className="text-lg font-semibold text-gray-800">
@@ -68,7 +65,6 @@ const Orders = () => {
             </div>
           </div>
 
-          {/* Order Items */}
           <div className="space-y-4">
             {order.items.map((item) => (
               <div
@@ -79,7 +75,6 @@ const Orders = () => {
                     : "bg-gray-50"
                 }`}
               >
-                {/* Left side - image + details */}
                 <div className="flex items-center gap-4">
                   <img
                     src={item.image}
@@ -94,7 +89,7 @@ const Orders = () => {
                     <p className="text-xs text-gray-500">
                       Qty: {item.quantity} |{" "}
                       <span
-                        className={`font-medium ${
+                        className={`ml-3 text-md font-serif font-bold ${
                           item.deliveryStatus === "Delivered"
                             ? "text-green-600"
                             : item.deliveryStatus === "Shipped"

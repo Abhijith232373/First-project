@@ -101,7 +101,7 @@ const Dining = () => {
   };
 
   const handleAddToCart = (item) => {
-    if (!item.stock) return; // prevent adding out-of-stock items
+    if (!item.stock) return; 
     setAddingId(item.id);
     addToCart(item);
     setTimeout(() => setAddingId(null), 300);
@@ -111,7 +111,6 @@ const Dining = () => {
     <>
       <NavBar />
       <div className="px-6 py-12 bg-gray-50 min-h-screen mt-10">
-        {/* Sort dropdown */}
         <div className="flex justify-end items-center mb-8">
           <Listbox value={sortOrder} onChange={setSortOrder}>
             <div className="relative w-40">
@@ -140,7 +139,6 @@ const Dining = () => {
           </Listbox>
         </div>
 
-        {/* Skeleton loader */}
         {loading && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {Array.from({ length: 8 }).map((_, i) => (
@@ -155,7 +153,6 @@ const Dining = () => {
           </div>
         )}
 
-        {/* Product Grid */}
         {!loading && (
           <>
             {filtered.length > 0 ? (
@@ -172,21 +169,18 @@ const Dining = () => {
                       }`}
                       onClick={() => !isOutOfStock && setSelectedProduct(item)}
                     >
-                      {/* Discount badge */}
                       {!isOutOfStock && (
                         <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-tr-lg rounded-bl-lg opacity-0 group-hover:opacity-100 transition">
                           {discount}% OFF
                         </div>
                       )}
 
-                      {/* Stock Out overlay (same as Products page) */}
                      {isOutOfStock && (
                         <div className="absolute inset-0  bg-opacity-100 flex items-center justify-center">
                           <span className="rounded text-white text-lg font-bold bg-gray-500 px-26 hover:scale-105 transition ease-in-out">STOCK OUT</span>
                         </div>
                       )}
 
-                      {/* Wishlist button */}
                       {!isOutOfStock && (
                         <FavoriteIcon
                           onClick={(e) => {

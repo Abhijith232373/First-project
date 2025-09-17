@@ -7,7 +7,7 @@ const ProductDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const fromCart = location.state?.fromCart || false; // Check if opened from cart
+  const fromCart = location.state?.fromCart || false; 
 
   const { addToCart } = useContext(CartContext);
   const [product, setProduct] = useState(null);
@@ -42,14 +42,12 @@ const ProductDetails = () => {
     navigate("/buydetails", { state: { product } });
   };
 
-  // Calculate discount
   const mrp = product.price + 5000;
   const discount = Math.round(((mrp - product.price) / mrp) * 100);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start bg-white shadow-lg rounded-xl p-6 sm:p-8">
-        {/* Image Section */}
         <div className="flex justify-center">
           <img
             src={product.image}
@@ -58,7 +56,6 @@ const ProductDetails = () => {
           />
         </div>
 
-        {/* Details Section */}
         <div className="space-y-6">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-800">
             {product.name}
@@ -67,7 +64,6 @@ const ProductDetails = () => {
             {product.description}
           </p>
 
-          {/* Price Section */}
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <p className="text-2xl sm:text-3xl font-bold text-gray-600">
               ₹{product.price}
@@ -80,9 +76,7 @@ const ProductDetails = () => {
             </span>
           </div>
 
-          {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
-            {/* Show Add to Cart only if not from Cart */}
             {!fromCart && (
               <button
                 onClick={handleAddToCart}

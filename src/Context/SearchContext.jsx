@@ -2,7 +2,6 @@ import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 export const SearchContext = createContext();
-
 export const SearchProvider = ({ children }) => {
   const [query, setQuery] = useState("");
   const [products, setProducts] = useState([]);

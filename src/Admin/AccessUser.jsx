@@ -6,10 +6,9 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 
 const AccessUser = () => {
   const [users, setUsers] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1); // ✅ Pagination state
-  const itemsPerPage = 8; // Show 8 users per page
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
 
-  // ✅ Fetch users
   const fetchUsers = async () => {
     try {
       const response = await axios.get("http://localhost:5000/users");
@@ -23,14 +22,13 @@ const AccessUser = () => {
     fetchUsers();
   }, []);
 
-  // ✅ Toggle Active/Suspended
   const handleToggleStatus = async (id, currentStatus) => {
     try {
       const newStatus = currentStatus === "Active" ? "Suspended" : "Active";
       await axios.patch(`http://localhost:5000/users/${id}`, {
         status: newStatus,
       });
-      toast.success(`User status updated to ${newStatus}`);
+      toast.success(`User ${newStatus}`);
       fetchUsers();
     } catch (error) {
       console.error("Error updating status:", error);
@@ -38,7 +36,6 @@ const AccessUser = () => {
     }
   };
 
-  // ✅ Delete user (with confirmation)
   const handleDeleteUser = async (id) => {
     confirmAlert({
       title: "Confirm Delete",
@@ -65,7 +62,6 @@ const AccessUser = () => {
     });
   };
 
-  // ✅ Pagination logic
   const indexOfLast = currentPage * itemsPerPage;
   const indexOfFirst = indexOfLast - itemsPerPage;
   const currentItems = users.slice(indexOfFirst, indexOfLast);
@@ -98,8 +94,8 @@ const AccessUser = () => {
                     <tr
                       key={user.id}
                       className={`text-sm ${
-                        idx % 2 === 0 ? "bg-white" : "bg-gray-50"
-                      } hover:bg-gray-100 transition`}
+                        idx % 2 === 0 ? "bg-white" : "bg-gray-100"
+                      } hover:bg-gray-300 transition`}
                     >
                       <td className="px-4 py-3">{user.id}</td>
                       <td className="px-4 py-3 font-medium text-gray-700">
@@ -143,7 +139,6 @@ const AccessUser = () => {
               </table>
             </div>
 
-            {/* ✅ Pagination UI */}
             <div className="flex justify-center mt-6 space-x-2">
               {Array.from({ length: totalPages }, (_, index) => (
                 <button

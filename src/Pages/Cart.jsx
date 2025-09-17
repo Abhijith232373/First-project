@@ -32,7 +32,6 @@ const Cart = () => {
             key={item.id}
             className="relative flex flex-col md:flex-row md:items-center md:justify-between bg-white p-4 rounded-lg shadow-md hover:scale-[1.01] transition"
           >
-            {/* Close Button (Top Right) */}
             <button
               onClick={() => removeFromCart(item.id)}
               className="absolute top-2 right-2 text-red-500 font-bold text-lg hover:scale-110 transition"
@@ -55,9 +54,7 @@ const Cart = () => {
   </div>
 </div>
 
-            {/* Controls & Price */}
             <div className="flex flex-wrap md:flex-nowrap items-center justify-between gap-3 w-full md:w-auto">
-              {/* Quantity Controls */}
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => item.quantity > 1 && decrementQuantity(item.id)}
@@ -84,7 +81,6 @@ const Cart = () => {
                 </button>
               </div>
 
-              {/* Price */}
               <p className="font-semibold text-gray-700 w-full text-left md:w-24 md:text-right">
                 ₹{item.price * item.quantity}
               </p>
@@ -93,7 +89,6 @@ const Cart = () => {
         ))}
       </div>
 
-      {/* Checkout Bar */}
       <div className="fixed bottom-0 left-0 w-full bg-white shadow-lg border-t px-4 md:px-6 py-3 md:py-4 flex flex-col md:flex-row md:justify-between md:items-center gap-2">
         <div className="text-center md:text-left">
           <p className="text-gray-600 text-sm md:text-base">

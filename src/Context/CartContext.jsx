@@ -4,8 +4,8 @@ import { AuthContext } from "./LoginContext";
 import toast from "react-hot-toast";
 
 export const CartContext = createContext();
-
 export const CartProvider = ({ children }) => {
+  
   const { user } = useContext(AuthContext); 
   const [cart, setCart] = useState([]);
 

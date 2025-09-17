@@ -29,7 +29,6 @@ const sortOptions = [
   { value: "high-low", label: "Price: High → Low" },
 ];
 
-// Reusable small Listbox component
 const SmallListbox = ({ value, onChange, options, isValueLabel = true }) => (
   <Listbox value={value} onChange={onChange}>
     <div className="relative w-40">
@@ -147,7 +146,6 @@ const Products = () => {
     <>
       <NavBar />
       <div className="px-6 py-12 bg-gray-50 min-h-screen mt-10">
-        {/* Filters & Sort: Left & Right */}
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
           <SmallListbox value={category} onChange={setCategory} options={categories} />
           <SmallListbox
@@ -158,7 +156,6 @@ const Products = () => {
           />
         </div>
 
-        {/* Skeleton loader */}
         {loading && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {Array.from({ length: 8 }).map((_, i) => (
@@ -173,7 +170,6 @@ const Products = () => {
           </div>
         )}
 
-        {/* Products */}
         {!loading && (
           <>
             {filtered.length > 0 ? (
@@ -190,14 +186,12 @@ const Products = () => {
                       }`}
                       onClick={() => !isOutOfStock && setSelectedProduct(item)}
                     >
-                      {/* Discount badge */}
                       {!isOutOfStock && (
                         <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-tr-lg rounded-bl-lg opacity-0 group-hover:opacity-100 transition">
                           {discount}% OFF
                         </div>
                       )}
 
-                      {/* Stock Out */}
                          {isOutOfStock && (
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                           <span className="rounded bg-gray-500 text-white text-lg font-bold px-8">
@@ -206,7 +200,6 @@ const Products = () => {
                         </div>
                       )}
 
-                      {/* Wishlist */}
                       {!isOutOfStock && (
                         <FavoriteIcon
                           onClick={(e) => {
@@ -241,13 +234,11 @@ const Products = () => {
                           </p>
                         </div>
 
-                        {/* Add to Cart */}
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
                             handleAddToCart(item);
                           }}
-                          // disabled={isOutOfStock || addingId === item.id}
                           className={`mt-4 w-full py-2 px-4 flex items-center justify-center gap-2 text-sm ${
                             isOutOfStock
                               ? "bg-gray-300 text-gray-500 cursor-pointer"

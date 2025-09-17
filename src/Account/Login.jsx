@@ -14,15 +14,13 @@ const Login = () => {
   const handleLogin = async (userData) => {
     login(userData);
 
-   // after successful login
-if (userData.role === "admin") {
-  navigate("/admin/dashboard", { replace: true }); // ⬅ important
-} else {
-  navigate("/", { replace: true }); // ⬅ important
-}
+    if (userData.role === "admin") {
+      navigate("/admin/dashboard", { replace: true });
+    } else {
+      navigate("/", { replace: true });
+    }
 
   };
-
 
   return (
     <div className="absolute inset-0 bg-[url('src/assets/user/bg4.jpg')] bg-cover bg-center flex items-center justify-center px-4">
@@ -54,33 +52,27 @@ if (userData.role === "admin") {
             }}
             onSubmit={async (values, { resetForm }) => {
               try {
-                // Fetch user from db.json
                 const response = await axios.get(
                   `http://localhost:5000/users?email=${values.email}&password=${values.password}`
                 );
-
                 if (response.data.length === 0) {
                   toast.error("Invalid email or password!");
                   return;
                 }
-
                 const user = response.data[0];
-
                 if (user.status !== "Active") {
-                  toast.error("Your account is suspended!");
+                  toast.error("Your account is suspended!!!");
                   return;
                 }
 
-                // Save user in context and localStorage
                 login(user);
                 toast.success("Login Successful!");
                 resetForm();
 
-                // Redirect based on role
                 if (user.role === "admin") {
-                  navigate("/admin"); // Admin page
+                  navigate("/admin");
                 } else {
-                  navigate("/"); // Normal user home
+                  navigate("/");
                 }
               } catch (err) {
                 console.error(err);

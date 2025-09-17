@@ -19,20 +19,19 @@ const AdminPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
-  // Fetch furniture
+
   useEffect(() => {
     fetch("http://localhost:5000/furniture")
       .then((res) => res.json())
       .then((data) => setFurniture(data));
   }, []);
 
-  // Input handler
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
   };
 
-  // Add product
+
   const handleAdd = () => {
     const newId = (furniture.length + 1).toString();
     const newProduct = { id: newId, ...formData, price: Number(formData.price) };
@@ -50,7 +49,6 @@ const AdminPage = () => {
       });
   };
 
-  // Edit product
   const handleEdit = (id) => {
     const product = furniture.find((item) => item.id === id);
     setFormData(product);
@@ -58,7 +56,6 @@ const AdminPage = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Save edited product
   const handleSaveEdit = () => {
     fetch(`http://localhost:5000/furniture/${isEditing}`, {
       method: "PUT",
@@ -73,7 +70,6 @@ const AdminPage = () => {
       });
   };
 
-  // Delete
   const handleDelete = (id) => {
     confirmAlert({
       title: "Confirm Delete",
@@ -94,7 +90,6 @@ const AdminPage = () => {
     });
   };
 
-  // Toggle stock
   const toggleStock = (item) => {
     const updatedProduct = { ...item, stock: !item.stock };
     fetch(`http://localhost:5000/furniture/${item.id}`, {
@@ -120,7 +115,6 @@ const AdminPage = () => {
     });
   };
 
-  // Pagination
   const indexOfLast = currentPage * itemsPerPage;
   const indexOfFirst = indexOfLast - itemsPerPage;
   const currentItems = furniture.slice(indexOfFirst, indexOfLast);
@@ -130,15 +124,13 @@ const AdminPage = () => {
     <div className="p-8 bg-gray-100 min-h-screen">
       <h1 className="text-3xl font-bold mb-6 text-gray-800">Product Management</h1>
 
-      {/* Add Product Button */}
       <button
         onClick={() => setIsAdding(true)}
-        className="mb-6 bg-gray-800 hover:bg-gray-900 text-white px-5 py-2 rounded-lg shadow transition"
+        className="mb-6 bg-gray-600 hover:bg-gray-700 cursor-pointer text-white px-5 py-2 rounded-lg shadow transition"
       >
-        + Add Product
+        + Add New Product
       </button>
 
-      {/* Add / Edit Form */}
       {(isAdding || isEditing) && (
         <div className="mb-8 bg-white shadow-md p-6 rounded-xl border border-gray-200">
           <h2 className="text-xl font-semibold mb-4 text-gray-700">
@@ -167,20 +159,20 @@ const AdminPage = () => {
               onChange={handleChange}
               className="mr-2"
             />
-            <label className="text-gray-700">In Stock</label>
+            <label className="text-gray-700">Stock</label>
           </div>
           <div className="mt-6 space-x-3">
             {isEditing ? (
               <button
                 onClick={handleSaveEdit}
-                className="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg"
+                className="bg-gray-600 hover:bg-gray-700 cursor-pointer text-white px-4 py-2 rounded-lg"
               >
                 Update
               </button>
             ) : (
               <button
                 onClick={handleAdd}
-                className="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-lg"
+                className="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white px-4 py-2 rounded-lg"
               >
                 Save
               </button>
@@ -191,7 +183,7 @@ const AdminPage = () => {
                 setIsAdding(false);
                 setIsEditing(null);
               }}
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-lg"
+              className="bg-gray-300 hover:bg-gray-400 cursor-pointer text-gray-800 px-4 py-2 rounded-lg"
             >
               Cancel
             </button>
@@ -199,8 +191,7 @@ const AdminPage = () => {
         </div>
       )}
 
-      {/* Product Table */}
-      <div className="bg-white shadow-md rounded-xl overflow-hidden border border-gray-200">
+      <div className="bg-white shadow-md rounded-xl overflow-hidde border-gray-200">
         <table className="w-full text-left border-collapse">
           <thead className="bg-gray-200">
             <tr>
@@ -208,7 +199,7 @@ const AdminPage = () => {
                 (col) => (
                   <th
                     key={col}
-                    className="px-4 py-3 text-gray-700 font-semibold border-b"
+                    className="px-4 py-3 text-gray-700 font-semibold "
                   >
                     {col}
                   </th>
@@ -220,22 +211,22 @@ const AdminPage = () => {
             {currentItems.map((item, idx) => (
               <tr
                 key={item.id}
-                className={idx % 2 === 0 ? "bg-gray-50" : "bg-white"}
+                className={idx % 2 === 0 ? "bg-gray-100" : "bg-white"}
               >
-                <td className="px-4 py-3 border-b text-gray-700">{item.id}</td>
-                <td className="px-4 py-3 border-b">
+                <td className="px-4 py-3  text-gray-700">{item.id}</td>
+                <td className="px-4 py-3 ">
                   <img
                     src={item.image}
                     alt={item.name}
                     className="w-16 h-12 object-cover rounded"
                   />
                 </td>
-                <td className="px-4 py-3 border-b text-gray-700">{item.name}</td>
-                <td className="px-4 py-3 border-b text-gray-700">₹{item.price}</td>
-                <td className="px-4 py-3 border-b text-gray-700">
+                <td className="px-4 py-3  text-gray-700">{item.name}</td>
+                <td className="px-4 py-3  text-gray-700">₹{item.price}</td>
+                <td className="px-4 py-3  text-gray-700">
                   {item.category}
                 </td>
-                <td className="px-4 py-3 border-b">
+                <td className="px-4 py-3 ">
                   <button
                     onClick={() => toggleStock(item)}
                     className={`px-3 py-1 rounded-lg text-sm font-semibold transition ${
@@ -247,16 +238,16 @@ const AdminPage = () => {
                     {item.stock ? "Available" : "Out of Stock"}
                   </button>
                 </td>
-                <td className="px-4 py-3 border-b space-x-2">
+                <td className="px-4 py-3  space-x-2">
                   <button
                     onClick={() => handleEdit(item.id)}
-                    className="bg-gray-600 hover:bg-gray-700 text-white px-3 py-1 rounded-lg"
+                    className="bg-gray-600 hover:bg-gray-700 cursor-pointer text-white px-3 py-1 rounded-lg"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => handleDelete(item.id)}
-                    className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-lg"
+                    className="bg-red-500 hover:bg-red-600 cursor-pointer text-white px-3 py-1 rounded-lg"
                   >
                     Delete
                   </button>

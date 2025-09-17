@@ -27,10 +27,10 @@ useEffect(() => {
     if (i <= text.length) {
       setPlaceholder(text.slice(0, i));
       i++;
-      setTimeout(type, 120); // typing speed
+      setTimeout(type, 120);
     } else {
-      i = 0; // restart after finish
-      setTimeout(type, 1000); // delay before restarting
+      i = 0; 
+      setTimeout(type, 1000); 
     }
   };
   type();
@@ -43,7 +43,7 @@ useEffect(() => {
   <input
   type="text"
   value={query}
-  placeholder={placeholder}   // 👈 animated placeholder
+  placeholder={placeholder}   
   className="w-full border rounded-lg p-2 pl-10 focus:outline-none focus:ring-0 focus:border-gray-300"
   onChange={(e) => {
     setQuery(e.target.value);

@@ -5,7 +5,6 @@ import { CartContext } from "./CartContext";
 import toast from "react-hot-toast";
 
 export const WishlistContext = createContext();
-
 export const WishlistProvider = ({ children }) => {
   const { user } = useContext(AuthContext); 
   const { addToCart } = useContext(CartContext);

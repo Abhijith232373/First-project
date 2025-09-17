@@ -8,7 +8,6 @@ const ProtectedRoute = ({ children }) => {
     return <Navigate to="/user" replace />;
   }
 
-  // ❌ Block admin from user pages
   if (user?.role === "admin") {
     return <Navigate to="/admin/dashboard" replace />;
   }

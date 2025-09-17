@@ -1,4 +1,3 @@
-// SubAdmins.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -12,16 +11,13 @@ const SubAdmins = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // ✅ Pagination states
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5; // show 5 users per page
+  const itemsPerPage = 10; 
 
-  // ✅ Only admin can access
   if (!user || user.role !== "admin") {
     return <Navigate to="/" replace />;
   }
 
-  // Fetch all users
   const fetchUsers = async () => {
     try {
       const res = await axios.get("http://localhost:5000/users");
@@ -38,7 +34,6 @@ const SubAdmins = () => {
     fetchUsers();
   }, []);
 
-  // Handle role change
   const handleRoleChange = async (userId, newRole) => {
     try {
       const userToUpdate = users.find((u) => u.id === userId);
@@ -58,7 +53,6 @@ const SubAdmins = () => {
     }
   };
 
-  // Confirm before change
   const confirmRoleChange = (userId, newRole) => {
     confirmAlert({
       title: "Confirm Role Change",
@@ -83,7 +77,6 @@ const SubAdmins = () => {
     );
   }
 
-  // ✅ Pagination logic
   const indexOfLast = currentPage * itemsPerPage;
   const indexOfFirst = indexOfLast - itemsPerPage;
   const currentUsers = users.slice(indexOfFirst, indexOfLast);
@@ -112,8 +105,8 @@ const SubAdmins = () => {
               <tr
                 key={user.id}
                 className={`${
-                  idx % 2 === 0 ? "bg-white" : "bg-gray-50"
-                } hover:bg-gray-100 transition`}
+                  idx % 2 === 0 ? "bg-white" : "bg-gray-100"
+                } hover:bg-gray-300 transition`}
               >
                 <td className="py-3 px-4">{user.id}</td> 
                 <td className="py-3 px-4 font-medium text-gray-700">
@@ -160,7 +153,6 @@ const SubAdmins = () => {
         </table>
       </div>
 
-      {/* ✅ Pagination buttons */}
       <div className="flex justify-center mt-6 space-x-2">
         {Array.from({ length: totalPages }, (_, index) => (
           <button

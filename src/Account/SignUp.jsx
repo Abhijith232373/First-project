@@ -41,7 +41,7 @@ const SignUp = () => {
             if (!values.email.trim()) {
               errors.email = "Email is required";
             } else if (/^\s|\s$/.test(values.email)) {
-              errors.email = "No spaces allowed at start or end";
+              errors.email = "Enter gmail";
             } else if (!/\S+@\S+\.\S+/.test(values.email)) {
               errors.email = "Enter a valid email";
             }
@@ -49,9 +49,9 @@ const SignUp = () => {
             if (!values.password.trim()) {
               errors.password = "Password is required";
             } else if (/^\s|\s$/.test(values.password)) {
-              errors.password = "No spaces allowed at start or end";
+              errors.password = "Enter password";
             } else if (values.password.length < 6) {
-              errors.password = "Password must be at least 6 characters";
+              errors.password = " must be at least 6 characters";
             }
 
             if (!values.confirm.trim()) {
@@ -69,7 +69,7 @@ const SignUp = () => {
                 name: userData.name.trim(),
                 email: userData.email.trim(),
                 password: userData.password.trim(),
-                status: "Active", // ✅ added default status
+                status: "Active", 
               };
 
               await axios.post("http://localhost:5000/users", cleanedUser);
@@ -133,7 +133,6 @@ const SignUp = () => {
                 />
               </div>
 
-              {/* Confirm Password */}
               <div>
                 <div className="flex items-center border rounded-lg px-3 focus-within:ring-2 focus-within:ring-indigo-400">
                   <LockIcon className="text-gray-400 mr-2 scale-80" />

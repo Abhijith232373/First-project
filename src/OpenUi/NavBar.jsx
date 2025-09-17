@@ -62,16 +62,13 @@ const NavBar = () => {
         showNav ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      {/* ===== Left side ===== */}
       <div className="flex items-center gap-4">
-        {/* Mobile: Menu button */}
         <div className="block md:hidden">
           <IconButton onClick={() => setOpenMenu(true)}>
             <MenuIcon className="text-gray-600" />
           </IconButton>
         </div>
 
-        {/* Desktop: Logo */}
         <Link to="/" className="hidden md:block">
           <img
             src="src/assets/logo/logo.png"
@@ -80,7 +77,6 @@ const NavBar = () => {
           />
         </Link>
 
-        {/* Desktop: Nav links */}
         <div className="hidden md:flex space-x-6">
           <Link to="/products">
             <div className={NavStyle("/products")}>SHOP ALL</div>
@@ -111,9 +107,7 @@ const NavBar = () => {
         <SearchBar />
       </div>
 
-      {/* ===== Right side (desktop only) ===== */}
       <div className="hidden md:flex items-center gap-5">
-        {/* Cart */}
         <Link to="/cart" className="relative">
           <ShoppingCartIcon className="text-gray-600 w-6 h-6" />
           {cart.length > 0 && (
@@ -123,7 +117,6 @@ const NavBar = () => {
           )}
         </Link>
 
-        {/* Wishlist */}
         <Link to="/wishlist" className="relative">
           <FavoriteIcon className="text-gray-600 w-6 h-6" />
           {wishlist.length > 0 && (
@@ -133,19 +126,16 @@ const NavBar = () => {
           )}
         </Link>
 
-        {/* Orders */}
         <Link to="/orders">
           <LocalMallIcon className="text-gray-600 w-6 h-6" />
         </Link>
 
-        {/* Login (if not logged in) */}
         {!isLoggedIn && (
           <Link to="/user" className="text-gray-700 font-medium hover:text-gray-600">
             <AccountCircleIcon/>
           </Link>
         )}
 
-        {/* Logout (if logged in) */}
         {isLoggedIn && (
           <LogoutIcon
             onClick={handleLogout}
@@ -154,7 +144,6 @@ const NavBar = () => {
         )}
       </div>
 
-      {/* ===== Drawer (Mobile) ===== */}
       <Drawer anchor="left" open={openMenu} onClose={() => setOpenMenu(false)}>
         <div className="w-64 p-4 space-y-4">
           <h2 className="text-lg font-bold text-gray-700">Categories</h2>

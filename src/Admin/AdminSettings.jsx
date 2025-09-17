@@ -1,4 +1,3 @@
-// AdminSettings.jsx
 import React, { useState } from "react";
 import { useAuth } from "../Context/LoginContext";
 import axios from "axios";
@@ -12,7 +11,6 @@ const AdminSettings = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  // Handle file upload
   const handleProfilePicChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -28,7 +26,6 @@ const AdminSettings = () => {
     try {
       const updatedUser = { ...user, name, profilePic };
 
-      // Password validation
       if (oldPassword || newPassword || confirmPassword) {
         if (oldPassword !== user.password) {
           toast.error("Old password is incorrect!");
@@ -45,14 +42,11 @@ const AdminSettings = () => {
         updatedUser.password = newPassword;
       }
 
-      // Update in db.json
       await axios.put(`http://localhost:5000/users/${user.id}`, updatedUser);
 
-      // Update context + localStorage
       login(updatedUser);
-      toast.success("Profile updated successfully!");
+      toast.success("updated !");
 
-      // Clear password fields
       setOldPassword("");
       setNewPassword("");
       setConfirmPassword("");
@@ -66,7 +60,6 @@ const AdminSettings = () => {
     <div className="min-h-screen bg-gray-300 py-12 px-4">
       <div className="max-w-2xl mx-auto bg-white shadow-md rounded-2xl border border-gray-200 p-5">
 
-        {/* Name */}
         <div className="mb-6">
           <label className="block text-gray-700 font-medium mb-2">Name</label>
           <input
@@ -77,7 +70,6 @@ const AdminSettings = () => {
           />
         </div>
 
-        {/* Profile Picture */}
         <div className="mb-6">
           <label className="block text-gray-700 font-medium mb-2">
             Profile Picture
@@ -100,7 +92,6 @@ const AdminSettings = () => {
           )}
         </div>
 
-        {/* Password Change */}
         <div className="mb-8">
           <h3 className="text-lg font-semibold text-gray-700 mb-4">
             Change Password
@@ -140,7 +131,6 @@ const AdminSettings = () => {
           />
         </div>
 
-        {/* Save Button */}
         <button
           onClick={handleSave}
           className="w-full py-3 bg-gray-700 text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-200 shadow-md"

@@ -6,7 +6,7 @@ import { CartContext } from "../Context/CartContext";
 import { AuthContext } from "../Context/LoginContext";
 import axios from "axios";
 import HomeIcon from "@mui/icons-material/Home";
-import OrderSuccess from "../Animations/OrderSuccess"; // ✅ Import animation component
+import OrderSuccess from "../Animations/OrderSuccess"; 
 
 const BuyDetails = () => {
   const { cart, clearCart } = useContext(CartContext);
@@ -14,7 +14,7 @@ const BuyDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [orderPlaced, setOrderPlaced] = useState(false); // ✅ state
+  const [orderPlaced, setOrderPlaced] = useState(false); e
 
   const quickBuyProduct = location.state?.product;
   const checkoutItems = quickBuyProduct
@@ -40,7 +40,7 @@ const BuyDetails = () => {
         return `${fieldName} is required`;
       }
       if (/^\s|\s$/.test(val)) {
-        return `No spaces allowed at start or end`;
+        return `not correct`;
       }
       return null;
     };
@@ -93,10 +93,8 @@ const BuyDetails = () => {
 
       resetForm();
 
-      // ✅ Show success animation
       setOrderPlaced(true);
 
-      // ✅ Redirect home after 2s
       setTimeout(() => {
         navigate("/");
       }, 2000);
@@ -106,7 +104,6 @@ const BuyDetails = () => {
     }
   };
 
-  // ✅ If order is placed, show animation instead of form
   if (orderPlaced) {
     return <OrderSuccess />;
   }

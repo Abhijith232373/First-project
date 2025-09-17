@@ -39,7 +39,6 @@ const Dashboard = () => {
       .then((data) => setFurniture(data));
   }, []);
 
-  // ✅ Generate daily revenue + profit for each order
   const generateOrderData = (users) => {
     const ordersList = [];
 
@@ -60,7 +59,7 @@ const Dashboard = () => {
 
           ordersList.push({
             orderId: order._id || `${user._id}-${idx + 1}`,
-            date: order.date || "N/A", // "YYYY-MM-DD"
+            date: order.date || "N/A", 
             revenue,
             profit,
           });
@@ -68,11 +67,9 @@ const Dashboard = () => {
       }
     });
 
-    // ✅ Sort by date
     return ordersList.sort((a, b) => new Date(a.date) - new Date(b.date));
   };
 
-  // Top stats
   const totalUsers = users.length;
   const activeUsers = users.filter((u) => u.status === "Active").length;
   const suspendedUsers = users.filter((u) => u.status === "Suspended").length;
@@ -83,25 +80,21 @@ const Dashboard = () => {
   );
   const totalEarnings = orderData.reduce((sum, r) => sum + r.revenue, 0);
 
-  // Stock Pie Chart
   const inStockCount = furniture.filter((item) => item.stock).length;
   const outOfStockCount = furniture.filter((item) => !item.stock).length;
   const stockData = [
     { name: "In Stock", value: inStockCount },
     { name: "Out of Stock", value: outOfStockCount },
   ];
-  const COLORS = ["#10b981", "#ef4444"]; // green and red
+  const COLORS = ["#10b981", "#ef4444"]; 
 
   return (
     <div className="h-screen w-full bg-gray-400 flex flex-col">
-      {/* Header */}
       <div className="p-6 border-b bg-white shadow-md">
         <h1 className="text-3xl font-bold"> DASHBOARD</h1>
       </div>
 
-      {/* Main Content */}
       <div className="flex-1 p-6 flex flex-col bg-gray-400 gap-6">
-        {/* Top Stats Row */}
         <div className="grid grid-cols-3 md:grid-cols-6 gap-6">
           <StatCard
             icon={<Users className="text-blue-500 w-10 h-10" />}
@@ -135,9 +128,7 @@ const Dashboard = () => {
           />
         </div>
 
-        {/* Charts Row */}
         <div className="grid grid-cols-2 gap-6 flex-1">
-          {/* ✅ Daily Order Revenue + Profit Chart */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -145,7 +136,7 @@ const Dashboard = () => {
             className="bg-white p-6 rounded-2xl shadow-lg flex flex-col"
           >
             <h2 className="text-lg font-semibold mb-4">
-              Daily Revenue & Profit (Per Order)
+              Profit (Per Order)
             </h2>
             <ResponsiveContainer width="100%" height={350}>
               <LineChart data={orderData}>
@@ -156,15 +147,7 @@ const Dashboard = () => {
                   formatter={(value, name) => [`₹${value}`, name]}
                   labelFormatter={(label) => `Date: ${label}`}
                 />
-                <Line
-                  type="monotone"
-                  dataKey="revenue"
-                  stroke="#3b82f6"
-                  strokeWidth={3}
-                  dot={{ r: 5 }}
-                  name="Revenue"
-                  animationDuration={1500}
-                />
+ 
                 <Line
                   type="monotone"
                   dataKey="profit"
@@ -178,7 +161,6 @@ const Dashboard = () => {
             </ResponsiveContainer>
           </motion.div>
 
-          {/* Stock Pie Chart */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}

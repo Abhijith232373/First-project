@@ -1,13 +1,10 @@
-// PublicRoute.jsx
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../Context/LoginContext"; // adjust path if needed
-
+import { useAuth } from "../Context/LoginContext"; 
 const PublicRoute = ({ children }) => {
   const { user } = useAuth();
 
   if (user) {
-    // if already logged in → redirect based on role
     if (user.role === "admin") {
       return <Navigate to="/admin/dashboard" replace />;
     }

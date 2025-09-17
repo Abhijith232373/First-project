@@ -20,7 +20,6 @@ const QuickViewModal = ({ product, onClose, addToCart }) => {
   return (
     <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 px-4">
       <div className="bg-white w-full max-w-6xl rounded-2xl shadow-xl p-6 sm:p-8 md:p-10 relative overflow-y-auto max-h-[90vh]">
-        {/* Close Button */}
         <button
           className="absolute top-3 right-3 text-gray-500 hover:text-red-500"
           onClick={onClose}
@@ -29,14 +28,12 @@ const QuickViewModal = ({ product, onClose, addToCart }) => {
         </button>
 
         <div className="flex flex-col md:flex-row gap-6">
-          {/* Product Image */}
           <img
             src={product.image}
             alt={product.name}
             className="w-full md:w-1/2 h-64 md:h-[400px] object-cover rounded-xl"
           />
 
-          {/* Product Details */}
           <div className="flex-1 flex flex-col justify-between">
             <div>
               <h2 className="text-xl sm:text-2xl font-bold mb-2">{product.name}</h2>
@@ -45,7 +42,6 @@ const QuickViewModal = ({ product, onClose, addToCart }) => {
                 {product.description}
               </p>
 
-              {/* Price + Discount */}
               <div className="flex flex-wrap items-center gap-3 mb-6">
                 <span className="text-gray-400 line-through">₹{mrp}</span>
                 <span className="text-xl sm:text-2xl font-bold text-gray-600">
@@ -55,7 +51,6 @@ const QuickViewModal = ({ product, onClose, addToCart }) => {
               </div>
             </div>
 
-            {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={() => {
